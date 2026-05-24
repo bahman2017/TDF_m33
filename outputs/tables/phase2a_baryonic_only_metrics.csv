@@ -1,0 +1,2 @@
+model_name,n_points,rmse_kms,chi_square,reduced_chi_square,parameter_count,aic,bic,n_negative_residual_v2,notes
+baryonic_only,58,57.62446643939413,20111.144838407257,352.8271024281975,0,20111.144838407257,20111.144838407257,0,"Phase 2A baryonic-only baseline: v_gas/v_disk from Phase 1D-D1 derivation (not published Corbelli velocity columns). data_quality_flag derived_baryonic_velocity_pass_with_caveat. No halo or TDF terms. parameter_count=0 (components fixed, not fitted in Phase 2A)."

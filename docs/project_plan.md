@@ -114,30 +114,54 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Acceptance criteria:**
 
-- [ ] Official PDF/tables acquired and checksums recorded
-- [ ] No surface density passed off as baryonic velocity without derivation
-- [ ] All processed rows traceable via `source_id`
-- [ ] Manifest and CSV validation CLIs pass
-- [ ] No fake data rows
+- [x] Official PDF/tables acquired and checksums recorded
+- [x] No surface density passed off as baryonic velocity without derivation
+- [x] All processed rows traceable via `source_id`
+- [x] Manifest and CSV validation CLIs pass
+- [x] No fake data rows
+
+**Status:** Complete (through Phase 1D-D2-B).
 
 ---
 
-## Phase 2: Baryonic-only + NFW + Burkert baselines
+## Phase 2A: Baryonic-only baseline diagnostics
 
-**Goal:** Implement and compare minimum baryonic model and standard halo baselines against \(v_{\mathrm{obs}}(r)\).
+**Goal:** Establish fixed baryonic-only residuals and metrics on the canonical 58-point grid—**not** a halo fit.
 
 **Deliverables:**
 
-- `tdf_m33.models` baryonic, NFW, and Burkert velocity modules
-- Fitting hooks in `tdf_m33.fitting` (configuration-driven)
-- Baseline rotation-curve figures in `outputs/figures/`
+- `tdf_m33.data.m33_dataset`, `tdf_m33.models.baryonic`, `tdf_m33.fitting.metrics`
+- `scripts/run_phase2a_baryonic_only.py`
+- `outputs/tables/phase2a_baryonic_only_{metrics,profile}.csv`
+- Residual figures in `outputs/figures/`
 
 **Acceptance criteria:**
 
-- [ ] Baryonic-only curve computed from documented mass models
+- [x] Load and validate `m33_rotation.csv` (58 rows)
+- [x] Recompute \(v_{\mathrm{bar}}\), \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) without clipping
+- [x] Export RMSE / χ² with `parameter_count = 0` (fixed derived baryonic)
+- [x] Document PASS_WITH_CAVEAT on derived baryonic velocities
+- [x] No NFW, Burkert, or TDF in this phase
+
+**Status:** Complete.
+
+---
+
+## Phase 2B: NFW + Burkert halo baselines
+
+**Goal:** Implement and compare standard halo baselines against \(v_{\mathrm{obs}}(r)\) on the same grid.
+
+**Deliverables:**
+
+- `tdf_m33.models` NFW and Burkert velocity modules
+- Fitting hooks in `tdf_m33.fitting` (configuration-driven)
+- Model comparison metrics alongside Phase 2A baryonic-only row
+
+**Acceptance criteria:**
+
 - [ ] NFW and Burkert fits run from `configs/m33_default.yaml` without code edits
 - [ ] Model comparison metrics exported to `outputs/tables/`
-- [ ] Residuals \(v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) available for Phase 3
+- [ ] Residuals \(v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) remain available for Phase 3
 
 ---
 

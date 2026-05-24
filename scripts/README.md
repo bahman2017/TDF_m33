@@ -42,3 +42,9 @@ python scripts/validate_corbelli2014_baryonic_velocity_derivation.py
 ```
 
 Canonical processed CSV: `python scripts/build_m33_rotation_processed.py` (Phase 1D-D2-B).
+
+**Phase 2A — baryonic-only baseline (no halo/TDF fit):**
+
+```bash
+python scripts/run_phase2a_baryonic_only.py
+```

@@ -58,7 +58,8 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 1C** | Complete — raw acquisition layout, Table 1 raw template, source audit |
 | **Phase 1D** | Complete — Table 1 extraction, D1 baryonic derivation, Fig. 12 checks |
 | **Phase 1D-D2-B** | Complete — canonical `data/processed/m33_rotation.csv` (58 rows) |
-| Phase 2+ | Not started — NFW/Burkert baselines, TDF τ reconstruction |
+| **Phase 2A** | Complete — baryonic-only baseline diagnostics and residuals |
+| Phase 2B+ | Not started — NFW/Burkert fits, TDF τ reconstruction |
 
 ## Data provenance status
 
@@ -73,11 +74,12 @@ Processed-data commands:
 ```bash
 python scripts/build_m33_rotation_processed.py
 python scripts/validate_m33_data.py data/processed/m33_rotation.csv
+python scripts/run_phase2a_baryonic_only.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```
 
-See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 2 (NFW/Burkert) not started.
+See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 2A establishes baryonic-only residuals (\(\Delta v^2\)) for later TDF work; Phase 2B (NFW/Burkert) not started.
 
 ## Expected data sources
 

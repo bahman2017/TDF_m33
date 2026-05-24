@@ -23,6 +23,7 @@ from tdf_m33.data.source_status import (
     sha256_file,
     summarize_source_files,
 )
+from tdf_m33.data.m33_dataset import M33RotationDataset, load_m33_rotation_dataset
 from tdf_m33.data.validation import assert_valid_m33_dataframe, validate_m33_dataframe
 
 __all__ = [
@@ -42,7 +43,9 @@ __all__ = [
     "assert_valid_m33_dataframe",
     "assert_valid_sources_manifest",
     "load_m33_processed_csv",
+    "load_m33_rotation_dataset",
     "load_sources_manifest",
+    "M33RotationDataset",
     "save_m33_processed_csv",
     "validate_m33_dataframe",
     "validate_sources_manifest",

@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 1C  # raw acquisition audit; no model-ready CSV yet
+  phase: 2A  # baryonic-only baseline on canonical m33_rotation.csv
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 

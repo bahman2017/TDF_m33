@@ -14,6 +14,8 @@ Explicit scope control for reviewers and future paper text.
 |-------|-------|----------------------|
 | Axisymmetry | 2–3 | Rotation curve interpreted in axisymmetric approximation unless 2D map (Phase 4) states otherwise |
 | Baryonic mass models | 2 | Mass-to-light and gas scaling documented in `data_sources.md` |
+| Baryonic velocities (Phase 2A) | 2A | \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) from Phase 1D-D1 derivation (`derived_baryonic_velocity_pass_with_caveat`); not published Corbelli velocity columns; Fig. 12 sanity check PASS_WITH_CAVEAT |
+| Phase 2A scope | 2A | Baryonic-only diagnostic only—no halo or TDF conclusion from RMSE/χ² alone |
 | \(K_\tau\) | 3 | Coupling constant fixed or fit from config; sensitivity analysis planned |
 | τ smoothness | 3 | Regularization required for stable \(d\tau/dr\) |
 | 2D τ-map | 4 | Optional; may impose additional symmetry |
@@ -32,6 +34,8 @@ Explicit scope control for reviewers and future paper text.
 5. **Degeneracies.** Baryonic mass-to-light, distance, inclination, and τ regularization can trade off; fits must report uncertainties and degeneracy directions where possible.
 
 6. **Phase 0 code.** No scientific results are produced until later phases; documentation may precede implementation.
+
+7. **Phase 2A baryonic baseline.** Large χ² for baryonic-only vs \(v_{\mathrm{obs}}\) reflects missing halo support, not a validated TDF or anti-DM claim. Negative \(\Delta v^2\) at some radii (if present) are reported unclipped and do not imply baryons exceed observed speeds globally.
 
 ## Claim control (mandatory framing)
 

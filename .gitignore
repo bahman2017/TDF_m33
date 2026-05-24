@@ -66,6 +66,10 @@ outputs/tables/*
 !outputs/tables/corbelli2014_fig12_label_audit.csv
 !outputs/tables/corbelli2014_baryonic_fig12_comparison.csv
 !outputs/tables/corbelli2014_baryonic_fig12_comparison_corrected.csv
+!outputs/tables/phase2a_baryonic_only_metrics.csv
+!outputs/tables/phase2a_baryonic_only_profile.csv
+!outputs/figures/phase2a_baryonic_only_rotation_curve.png
+!outputs/figures/phase2a_residual_velocity_squared.png
 outputs/reports/*
 !outputs/reports/README.md
 

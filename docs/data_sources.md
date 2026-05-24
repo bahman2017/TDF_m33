@@ -106,6 +106,18 @@ Contains **observed rotation** (\(V_r\), \(\sigma_V\)) and **surface densities**
 
 **Caveats for Phase 2/3:** Baryonic velocities are derived, not published table columns; D1 ≠ Casertano (1983); possible ~7–10 km s\(^{-1}\) stellar offset vs Fig. 12 at some radii. This file does **not** contain halo or TDF components.
 
+### Phase 2A — baryonic-only baseline (2026-05-24)
+
+**Script:** `python scripts/run_phase2a_baryonic_only.py`
+
+| Output | Path |
+|--------|------|
+| Metrics | `outputs/tables/phase2a_baryonic_only_metrics.csv` |
+| Radial profile | `outputs/tables/phase2a_baryonic_only_profile.csv` |
+| Figures | `outputs/figures/phase2a_baryonic_only_rotation_curve.png`, `phase2a_residual_velocity_squared.png` |
+
+**Scope:** Diagnostic only—recomputes \(v_{\mathrm{bar}}\) from processed components, \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\), and acceleration proxy \(\Delta v^2/r\). **`parameter_count = 0`** (baryonic components fixed from D1, not fitted). AIC/BIC use χ² + 2k and χ² + k ln n with k=0 for comparison with future halo fits. **Not** an NFW/Burkert fit; **not** a TDF result. Loader: `tdf_m33.data.m33_dataset.load_m33_rotation_dataset`.
+
 ## Canonical processed CSV schema
 
 File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  
