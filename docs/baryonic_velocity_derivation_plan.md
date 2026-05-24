@@ -2,7 +2,7 @@
 
 Audit and strategy for populating `v_gas_kms`, `v_disk_kms`, and `v_bulge_kms` in `data/processed/m33_rotation.csv` from Corbelli et al. (2014) inputs **without** mapping surface densities directly into velocity columns.
 
-**Status:** Phase 1D-D0 — planning only (no baryonic velocity numbers committed yet).  
+**Status:** Phase 1D-D1 complete — interim audit velocities derived; **not** canonical `m33_rotation.csv`.  
 **Primary source:** Corbelli et al. 2014, A&A 572, A23 ([DOI 10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033))  
 **Raw inputs on hand:** `data/raw/extracted/corbelli2014_table1_raw.csv` (58 rows: \(R\), \(V_r\), \(\sigma_V\), \(\Sigma_{\mathrm{HI}}\), \(\Sigma_\*\))
 
@@ -138,7 +138,7 @@ Do **not** use López Fune et al. 2017 as the Phase 1D primary baryonic source (
    \(\Sigma_{\mathrm{gas}}(R) = 1.33 \left[\Sigma_{\mathrm{HI,table}}(R) + \Sigma_{\mathrm{H_2}}(R)\right]\),  
    \(\Sigma_{\mathrm{H_2}}(R) = 10 \exp(-R/2.2)\) M\(_\odot\) pc\(^{-2}\).
 3. **Stellar disk** uses Table 1 \(\Sigma_\*\) (BVIgi table values).
-4. **Casertano (1983)** for both components with §6 vertical thickness rules.
+4. **Axisymmetric disk gravity** (Phase 1D-D1 implementation): numerical midplane integration with exponential vertical \(\rho(z)\), matching §6 \(h_z\) laws — related to but not a full reimplementation of Casertano (1983) Bessel-function formalism.
 5. **\(v_{\mathrm{obs}}\)** from Table 1 \(V_r\) (finite-thickness corrections already in adopted curve per Appendix B).
 6. **Radius grid:** Table 1 radii only (\(N=58\)); no extrapolation; rows outside dynamical fit range \(0.4\)–23 kpc flagged in `notes` if needed (first row \(R=0.24\) kpc).
 7. **Interpolation:** None required if output is evaluated on the same Table 1 \(R\) grid; if resampling is ever needed, document spline type in `docs/data_sources.md`.
@@ -163,18 +163,41 @@ Do **not** use López Fune et al. 2017 as the Phase 1D primary baryonic source (
 
 ---
 
-## 7. Phase 1D-D1 — next implementation step
+## 7. Phase 1D-D1 — implementation (2026-05-24)
 
-1. Add **`scripts/derive_corbelli2014_baryonic_velocities.py`** (or `src/tdf_m33/data/baryonic_corbelli2014.py`) that:
-   - Loads `corbelli2014_table1_raw.csv`
-   - Builds \(\Sigma_{\mathrm{gas}}(R)\) with H\(_2\) + He per Sect. 2.2
-   - Computes \(v_{\mathrm{gas}}(R)\), \(v_{\mathrm{disk}}(R)\) via Casertano (1983) with §6 \(h_z\) laws
-   - Writes interim audit table + proposed `m33_rotation.csv` columns (no commit until validated)
-2. Add **`tests/test_baryonic_derivation_corbelli2014.py`** with algebraic checks and first/last row spot checks on \(v_{\mathrm{obs}}\) only (from existing raw CSV).
-3. Optional: digitize Fig. 12 at 5 radii for Option B cross-check (document tool and uncertainty).
-4. Update `docs/extraction_log.md` and manifest `acquisition_status` → `processed` only after validation PASS.
+| Item | Value |
+|------|--------|
+| Module | `src/tdf_m33/models/disk_gravity.py` |
+| Derivation | `scripts/derive_corbelli2014_baryonic_velocities.py` |
+| Validation | `scripts/validate_corbelli2014_baryonic_velocity_derivation.py` |
+| Interim output | `outputs/tables/corbelli2014_baryonic_velocity_derivation_audit.csv` (58 rows) |
+| Method tag | `axisymmetric_disk_gravity_exponential_vertical` |
 
-**Do not create `m33_rotation.csv` in D1 until derivation tests and Fig. 12 spot-check (or documented waiver) pass.**
+**Numerical method:** For each component, convert \(\Sigma\) [M\(_\odot\) pc\(^{-2}\)] → [M\(_\odot\) kpc\(^{-2}\)]; use \(G = 4.30091\times10^{-6}\) kpc (km/s)\(^2\) M\(_\odot^{-1}\); integrate midplane inward radial acceleration over \(R'\), \(\phi\), \(z\) with \(\rho = \Sigma/(2h_z)\exp(-|z|/h_z)\); \(v_c=\sqrt{R\,g_R}\). Default grid: 240×72×48 (midpoint quadrature, \(r\) softening 0.02 kpc).
+
+**Sample audit values (interim, not validated vs Fig. 12 yet):**
+
+| \(R\) [kpc] | \(v_{\mathrm{obs}}\) | \(v_{\mathrm{gas}}\) | \(v_{\mathrm{disk}}\) | \(v_{\mathrm{bar}}\) |
+|-------------|----------------------|----------------------|-----------------------|----------------------|
+| 0.24 | 37.3 | 2.7 | 16.3 | 16.5 |
+| 5.13 | 108.8 | 27.2 | 59.5 | 65.5 |
+| 22.72 | 119.6 | 24.3 | 31.8 | 40.0 |
+
+### Known numerical caveats (D1)
+
+- Implementation uses **cylindrical numerical integration**, not the paper’s Casertano (1983) routine; absolute \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) may differ by tens of percent from Fig. 12 dashed curves.
+- Innermost radii (\(R < 0.4\) kpc) are outside the paper’s quoted dynamical fit range; treat as extrapolation of the \(\Sigma\) profiles.
+- \(v_{\mathrm{bar}} < v_{\mathrm{obs}}\) at most radii is expected (dark matter not included in baryonic derivation).
+- Fig. 12 digitization remains the **fallback sanity check** for Phase 1D-D2.
+
+## 8. Phase 1D-D2 — next step
+
+1. Cross-check audit \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) against Fig. 12 at \(R \in \{1, 5, 10, 15, 20\}\) kpc (digitize or tabulate if within ~5–10 km s\(^{-1}\), or document systematic offset).
+2. Tune integrator / compare to Casertano (1983) if offsets are unacceptable.
+3. Build **`data/processed/m33_rotation.csv`** from audit columns + schema fields (`galaxy_id`, `data_quality_flag`, `notes`, …).
+4. Run `validate_m33_data.py`; update `docs/data_sources.md` transformation log and manifest `acquisition_status` → `processed` when justified.
+
+**Do not claim scientific results until D2 validation is documented.**
 
 ---
 

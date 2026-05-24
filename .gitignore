@@ -55,6 +55,7 @@ outputs/figures/*
 !outputs/figures/README.md
 outputs/tables/*
 !outputs/tables/README.md
+!outputs/tables/corbelli2014_baryonic_velocity_derivation_audit.csv
 outputs/reports/*
 !outputs/reports/README.md
 

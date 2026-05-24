@@ -159,7 +159,18 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 
 **Validation:** `python scripts/validate_corbelli2014_table1_raw.py` (and `tests/test_corbelli2014_table1_raw.py`).
 
-**Next step (Phase 1D-D1):** Implement baryonic velocity derivation per `docs/baryonic_velocity_derivation_plan.md` (primary: Casertano 1983 from \(\Sigma\) profiles; fallback: Fig. 12 cross-check).
+**Next step (Phase 1D-D2):** Fig. 12 cross-check, then canonical `m33_rotation.csv` if validated.
+
+### Phase 1D-D1 — baryonic velocity derivation audit (2026-05-24)
+
+| Item | Outcome |
+|------|---------|
+| Method | Axisymmetric disk gravity + exponential vertical profile (`src/tdf_m33/models/disk_gravity.py`) |
+| Interim table | `outputs/tables/corbelli2014_baryonic_velocity_derivation_audit.csv` (58 rows) |
+| \(\Sigma_{\mathrm{H_2}}\) | \(10\,e^{-R/2.2}\) M\(_\odot\) pc\(^{-2}\); \(\Sigma_{\mathrm{gas}} = 1.33(\Sigma_{\mathrm{HI}}+\Sigma_{\mathrm{H_2}})\) |
+| \(v_{\mathrm{bulge}}\) | 0 (documented) |
+| Model-ready CSV | **Not created** |
+| Validation | `scripts/validate_corbelli2014_baryonic_velocity_derivation.py` PASS |
 
 ### Phase 1D-D0 — baryonic velocity strategy audit (2026-05-24)
 
