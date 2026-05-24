@@ -48,3 +48,9 @@ Canonical processed CSV: `python scripts/build_m33_rotation_processed.py` (Phase
 ```bash
 python scripts/run_phase2a_baryonic_only.py
 ```
+
+**Phase 2B — NFW/Burkert halo baselines (comparison only):**
+
+```bash
+python scripts/run_phase2b_halo_baselines.py
+```

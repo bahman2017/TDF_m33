@@ -149,25 +149,31 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ## Phase 2B: NFW + Burkert halo baselines
 
-**Goal:** Implement and compare standard halo baselines against \(v_{\mathrm{obs}}(r)\) on the same grid.
+**Goal:** Standard ΛCDM comparison baselines: \(v_{\mathrm{model}}^2 = v_{\mathrm{bar}}^2 + v_{\mathrm{halo}}^2\) on Corbelli fit range \(0.4 \le R \le 23\) kpc.
 
 **Deliverables:**
 
-- `tdf_m33.models` NFW and Burkert velocity modules
-- Fitting hooks in `tdf_m33.fitting` (configuration-driven)
-- Model comparison metrics alongside Phase 2A baryonic-only row
+- `tdf_m33.models.halo`, `tdf_m33.fitting.halo_fit`, `scripts/run_phase2b_halo_baselines.py`
+- `outputs/tables/phase2b_model_comparison.csv`, `phase2b_halo_fit_parameters.csv`, `phase2b_rotation_profiles.csv`
+- Comparison figures in `outputs/figures/`
 
 **Acceptance criteria:**
 
-- [ ] NFW and Burkert fits run from `configs/m33_default.yaml` without code edits
-- [ ] Model comparison metrics exported to `outputs/tables/`
-- [ ] Residuals \(v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) remain available for Phase 3
+- [x] NFW and Burkert fits from `configs/m33_default.yaml` bounds and fit mask
+- [x] Model comparison with baryonic_only (k=0), NFW (k=2), Burkert (k=2); AIC/BIC on masked points
+- [x] Full 58-row profile table; metrics use fit mask only
+- [x] Corbelli 2014 reference values reported as sanity context only
+- [x] No TDF τ reconstruction
+
+**Status:** Complete.
 
 ---
 
 ## Phase 3: τ-gradient and radial τ-profile reconstruction
 
 **Goal:** Reconstruct \(d\tau/dr\) and a radial \(\tau(r)\) profile from rotation residuals using TDF relations, without an independent halo in the TDF branch.
+
+**Prerequisite:** Fixed baryonic residual \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) from Phase 2A profile (not halo-subtracted).
 
 **Deliverables:**
 

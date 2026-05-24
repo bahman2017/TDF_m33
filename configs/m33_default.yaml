@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 2A  # baryonic-only baseline on canonical m33_rotation.csv
+  phase: 2B  # NFW/Burkert halo baselines on canonical m33_rotation.csv
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -70,10 +70,23 @@ tdf_model:
     enabled: false  # Phase 4 optional
     grid_resolution: null  # PLACEHOLDER
 
+halo_fitting:
+  fit_min_radius_kpc: 0.4
+  fit_max_radius_kpc: 23.0
+  bounds:
+    log10_rho_min: -3.0
+    log10_rho_max: 15.0
+    log10_scale_radius_min: -1.0   # 0.1 kpc
+    log10_scale_radius_max: 2.301  # ~200 kpc
+  nfw_p0_log10_rho: 8.0
+  nfw_p0_log10_r_s: 0.0
+  burkert_p0_log10_rho: 4.3   # ~1.8e4 M_sun/kpc^3 (~0.018 M_sun/pc^3 ref)
+  burkert_p0_log10_r0: 0.88   # ~7.5 kpc (Corbelli BVI sanity ref)
+
 fitting:
-  method: null  # PLACEHOLDER: e.g. least_squares, mcmc
-  parameters_to_fit: []  # PLACEHOLDER: list of parameter names
-  priors: {}  # PLACEHOLDER
+  method: least_squares
+  parameters_to_fit: []  # halo params set in halo_fitting section
+  priors: {}
   max_iterations: null
 
 plotting:

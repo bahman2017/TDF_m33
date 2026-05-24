@@ -16,6 +16,8 @@ Explicit scope control for reviewers and future paper text.
 | Baryonic mass models | 2 | Mass-to-light and gas scaling documented in `data_sources.md` |
 | Baryonic velocities (Phase 2A) | 2A | \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) from Phase 1D-D1 derivation (`derived_baryonic_velocity_pass_with_caveat`); not published Corbelli velocity columns; Fig. 12 sanity check PASS_WITH_CAVEAT |
 | Phase 2A scope | 2A | Baryonic-only diagnostic only—no halo or TDF conclusion from RMSE/χ² alone |
+| Halo baselines (Phase 2B) | 2B | NFW/Burkert are ΛCDM comparison models on \(0.4 \le R \le 23\) kpc; not TDF; do not imply DM is ruled out |
+| AIC/BIC (Phase 2B) | 2B | χ² + 2k and χ² + k ln n with k=0,2; baryonic components fixed from D1 |
 | \(K_\tau\) | 3 | Coupling constant fixed or fit from config; sensitivity analysis planned |
 | τ smoothness | 3 | Regularization required for stable \(d\tau/dr\) |
 | 2D τ-map | 4 | Optional; may impose additional symmetry |
@@ -36,6 +38,8 @@ Explicit scope control for reviewers and future paper text.
 6. **Phase 0 code.** No scientific results are produced until later phases; documentation may precede implementation.
 
 7. **Phase 2A baryonic baseline.** Large χ² for baryonic-only vs \(v_{\mathrm{obs}}\) reflects missing halo support, not a validated TDF or anti-DM claim. Negative \(\Delta v^2\) at some radii (if present) are reported unclipped and do not imply baryons exceed observed speeds globally.
+
+8. **Phase 2B halo fits.** Better NFW/Burkert χ² vs baryonic-only is expected for a disk galaxy in ΛCDM; this does **not** validate TDF or disprove dark matter. Corbelli et al. 2014 published halo parameters are sanity references only—D1 baryonic caveat applies.
 
 ## Claim control (mandatory framing)
 

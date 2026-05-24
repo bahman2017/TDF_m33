@@ -118,6 +118,21 @@ Contains **observed rotation** (\(V_r\), \(\sigma_V\)) and **surface densities**
 
 **Scope:** Diagnostic only—recomputes \(v_{\mathrm{bar}}\) from processed components, \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\), and acceleration proxy \(\Delta v^2/r\). **`parameter_count = 0`** (baryonic components fixed from D1, not fitted). AIC/BIC use χ² + 2k and χ² + k ln n with k=0 for comparison with future halo fits. **Not** an NFW/Burkert fit; **not** a TDF result. Loader: `tdf_m33.data.m33_dataset.load_m33_rotation_dataset`.
 
+### Phase 2B — NFW and Burkert halo baselines (2026-05-24)
+
+**Script:** `python scripts/run_phase2b_halo_baselines.py`
+
+| Output | Path |
+|--------|------|
+| Model comparison | `outputs/tables/phase2b_model_comparison.csv` |
+| Halo parameters | `outputs/tables/phase2b_halo_fit_parameters.csv` |
+| Full profiles (58 rows) | `outputs/tables/phase2b_rotation_profiles.csv` |
+| Figures | `outputs/figures/phase2b_rotation_curve_comparison.png`, `phase2b_residuals_comparison.png` |
+
+**Fit mask (default):** \(0.4 \le R \le 23\) kpc (Corbelli 2014 dynamical range); all 58 radii retained in profile CSV with `fit_mask` column. Metrics computed on masked points only.
+
+**Models:** `v_model² = v_bar² + v_halo²`; NFW and Burkert k=2; baryonic_only k=0 (recomputed on same mask). **Not TDF.** Phase 3 uses Phase 2A baryonic \(\Delta v^2\), not halo-subtracted residuals.
+
 ## Canonical processed CSV schema
 
 File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  

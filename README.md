@@ -59,7 +59,8 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 1D** | Complete — Table 1 extraction, D1 baryonic derivation, Fig. 12 checks |
 | **Phase 1D-D2-B** | Complete — canonical `data/processed/m33_rotation.csv` (58 rows) |
 | **Phase 2A** | Complete — baryonic-only baseline diagnostics and residuals |
-| Phase 2B+ | Not started — NFW/Burkert fits, TDF τ reconstruction |
+| **Phase 2B** | Complete — NFW and Burkert halo baseline fits (comparison only) |
+| Phase 3+ | Not started — TDF τ reconstruction |
 
 ## Data provenance status
 
@@ -75,11 +76,12 @@ Processed-data commands:
 python scripts/build_m33_rotation_processed.py
 python scripts/validate_m33_data.py data/processed/m33_rotation.csv
 python scripts/run_phase2a_baryonic_only.py
+python scripts/run_phase2b_halo_baselines.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```
 
-See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 2A establishes baryonic-only residuals (\(\Delta v^2\)) for later TDF work; Phase 2B (NFW/Burkert) not started.
+See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 2A \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) feeds Phase 3 TDF work; Phase 2B halo fits are ΛCDM baselines only—not TDF and not a dark-matter replacement claim.
 
 ## Expected data sources
 

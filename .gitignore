@@ -70,6 +70,11 @@ outputs/tables/*
 !outputs/tables/phase2a_baryonic_only_profile.csv
 !outputs/figures/phase2a_baryonic_only_rotation_curve.png
 !outputs/figures/phase2a_residual_velocity_squared.png
+!outputs/figures/phase2b_rotation_curve_comparison.png
+!outputs/figures/phase2b_residuals_comparison.png
+!outputs/tables/phase2b_model_comparison.csv
+!outputs/tables/phase2b_halo_fit_parameters.csv
+!outputs/tables/phase2b_rotation_profiles.csv
 outputs/reports/*
 !outputs/reports/README.md
 
