@@ -159,7 +159,17 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 
 **Validation:** `python scripts/validate_corbelli2014_table1_raw.py` (and `tests/test_corbelli2014_table1_raw.py`).
 
-**Next step (Phase 1D-D):** Derive or source \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) (and bulge if needed) before building `data/processed/m33_rotation.csv`.
+**Next step (Phase 1D-D1):** Implement baryonic velocity derivation per `docs/baryonic_velocity_derivation_plan.md` (primary: Casertano 1983 from \(\Sigma\) profiles; fallback: Fig. 12 cross-check).
+
+### Phase 1D-D0 — baryonic velocity strategy audit (2026-05-24)
+
+| Item | Outcome |
+|------|---------|
+| Planning doc | `docs/baryonic_velocity_derivation_plan.md` |
+| Primary path | Option A — Casertano (1983) from Table 1 \(\Sigma_{\mathrm{HI}}\), \(\Sigma_\*\) + Sect. 2.2 H\(_2\)/He |
+| Fallback | Option B — Fig. 12 digitization for validation only |
+| Bulge | \(v_{\mathrm{bulge}} = 0\) justified (no supported bulge; §5) |
+| Model-ready CSV | **Not created** |
 
 ### Expected raw/interim columns (template)
 

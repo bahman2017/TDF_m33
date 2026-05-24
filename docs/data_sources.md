@@ -83,6 +83,8 @@ Contains **observed rotation** (\(V_r\), \(\sigma_V\)) and **surface densities**
 
 **Validate raw file:** `python scripts/validate_corbelli2014_table1_raw.py`
 
+**Baryonic velocity derivation (Phase 1D-D0+):** Table 1 does not include \(v_{\mathrm{gas}}\) or \(v_{\mathrm{disk}}\). Strategy, Casertano (1983) assumptions, H\(_2\)+helium treatment, and validation plan: **`docs/baryonic_velocity_derivation_plan.md`**. Do not build `m33_rotation.csv` until Phase 1D-D1/D2 completes that plan.
+
 `configs/m33_default.yaml` → `processed_data.allow_creation_without_baryonic_velocity_components: false`
 
 Phase 1C intentionally does **not** create `m33_rotation.csv` until Phase 1D provides traceable baryonic velocity components.
