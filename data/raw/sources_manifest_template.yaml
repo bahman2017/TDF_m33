@@ -38,13 +38,13 @@ sources:
     title: "Dynamical signatures of a ΛCDM-halo and the distribution of the baryons in M33"
     authors: "Corbelli, E.; Thilker, D. A.; Zschaechner, L.; et al."
     year: 2014
-    publication: "Astronomy & Astrophysics"
+    publication: "Astronomy & Astrophysics, Volume 572, Article A23"
     data_type: baryonic_and_rotation_model
     planned_use: >
       Primary modern source for M33 HI/gas mapping, tilted-ring rotation curve,
       stellar mass surface density, and baryonic velocity decomposition (v_gas, v_disk).
     acquisition_status: located
-    url_or_doi: "10.1051/0004-6361/201322790"
+    url_or_doi: "10.1051/0004-6361/201424033"
     expected_fields:
       - r_kpc
       - v_obs_kms
@@ -68,7 +68,10 @@ sources:
       Baryonic model tied to stated ΛCDM-halo framework; use components for v_bar,
       not as endorsement of any single dark-matter interpretation in this repo.
     citation_key: "Corbelli2014"
-    notes: "Primary target for Phase 1C ingestion; no files committed yet."
+    notes: >
+      Primary target for Phase 1C ingestion; no files committed yet. Official A&A
+      manuscript ID aa24033-14; expected local PDF:
+      data/raw/downloads/corbelli2014_aa24033_14.pdf.
 
   - source_id: lopez_fune_salucci_corbelli_2017
     title: "The radial dependence of dark matter distribution in M33"

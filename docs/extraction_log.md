@@ -8,13 +8,27 @@ Chronological record of official source acquisition and table extraction audits.
 **Date:** 2026-05-23 (repository local audit)  
 **Outcome:** Raw directory structure, active manifest, raw Table 1 template, and audit tooling in place. **No model-ready** `data/processed/m33_rotation.csv`. **No fabricated numerical rows.**
 
+### Metadata correction (2026-05-24)
+
+An earlier audit used an **incorrect DOI** (`10.1051/0004-6361/201322790`) and filename stem `aa22790` for the primary Corbelli et al. 2014 M33 paper. The correct bibliographic record is:
+
+| Field | Value |
+|-------|--------|
+| Title | Dynamical signatures of a ΛCDM-halo and the distribution of the baryons in M33 |
+| Journal | Astronomy & Astrophysics **572**, A23 |
+| DOI | [10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033) |
+| A&A manuscript ID | `aa24033-14` |
+| Planned local PDF | `data/raw/downloads/corbelli2014_aa24033_14.pdf` |
+
+Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be **discarded** and not used for extraction.
+
 ---
 
 ## 2. Source files attempted
 
 | source_id | Action | Result |
 |-----------|--------|--------|
-| `corbelli_et_al_2014` | Automated fetch via `https://doi.org/10.1051/0004-6361/201322790` | DOI landing HTML saved locally (not committed; see downloads/) |
+| `corbelli_et_al_2014` | Automated fetch via wrong DOI `10.1051/0004-6361/201322790` (pre-2026-05-24) | Obsolete landing HTML only — **not** the M33 paper; see metadata correction above |
 | `corbelli_salucci_2000` | Not attempted in automation | Remains `located` |
 | `lopez_fune_salucci_corbelli_2017` | Not attempted in automation | Remains `located` |
 
@@ -24,16 +38,16 @@ Chronological record of official source acquisition and table extraction audits.
 
 | Artifact | Path (local) | Committed to git | Notes |
 |----------|--------------|------------------|-------|
-| DOI redirect HTML | `data/raw/downloads/corbelli2014_aa22790_doi_redirect.html` | No (gitignored) | Publisher landing page, **not** the A&A PDF or Table 1 |
-| A&A PDF | — | — | **Manual acquisition required** (institutional access or author copy) |
+| Obsolete DOI redirect HTML (wrong DOI) | `data/raw/downloads/corbelli2014_aa22790_doi_redirect.html` | No (gitignored) | **Discard if present** — from incorrect DOI `201322790`, not the M33 paper |
+| A&A PDF | `data/raw/downloads/corbelli2014_aa24033_14.pdf` | No (gitignored) | **Manual acquisition required** — official `aa24033-14.pdf` from publisher |
 | Machine-readable Table 1 | — | — | **Not yet extracted** |
 
 ### Manual acquisition (if automation insufficient)
 
-1. Open [doi.org/10.1051/0004-6361/201322790](https://doi.org/10.1051/0004-6361/201322790) or the A&A journal page.
-2. Download the **official PDF** from the publisher (not third-party figure hosts).
-3. Save as `data/raw/downloads/corbelli2014_aa22790.pdf`.
-4. Run `sha256sum` (or project `sha256_file`) and write `corbelli2014_aa22790.pdf.sha256`.
+1. Open [doi.org/10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033) or the [A&A article page](https://www.aanda.org/articles/aa/abs/2014/12/aa24033-14/aa24033-14.html).
+2. Download the **official PDF** from the publisher (manuscript `aa24033-14.pdf`; not third-party mirrors).
+3. Save as `data/raw/downloads/corbelli2014_aa24033_14.pdf`.
+4. Run `sha256sum` (or project `sha256_file`) and write `corbelli2014_aa24033_14.pdf.sha256`.
 5. Update `data/raw/sources_manifest.yaml` → `corbelli_et_al_2014.acquisition_status: downloaded`.
 6. Add a row to this log with date and checksum.
 
@@ -43,9 +57,10 @@ Chronological record of official source acquisition and table extraction audits.
 
 | File | SHA-256 | Recorded |
 |------|---------|----------|
-| `corbelli2014_aa22790_doi_redirect.html` | `4dca28603c88e7a7501065c61135943f1b747e70319673950453252b617fbd69` | Local audit 2026-05-23; companion `.sha256` in downloads/ (gitignored) |
+| `corbelli2014_aa22790_doi_redirect.html` (obsolete) | `4dca28603c88e7a7501065c61135943f1b747e70319673950453252b617fbd69` | Wrong-DOI fetch 2026-05-23 — **do not use**; delete if present locally |
+| `corbelli2014_aa24033_14.pdf` | — | **Pending** manual download |
 
-> This file is the DOI publisher **landing page HTML**, not the A&A PDF. Do not treat as table extraction source.
+> The `aa22790` artifact is from an incorrect DOI, not the Corbelli et al. 2014 M33 paper. Record checksums only for the official `corbelli2014_aa24033_14.pdf`.
 
 ---
 

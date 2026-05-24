@@ -18,13 +18,13 @@ Every future row in `data/processed/m33_rotation.csv` must be traceable via `sou
 
 | Priority | Source | Role |
 |----------|--------|------|
-| **Primary** | Corbelli et al. 2014 | Modern HI/gas mapping, tilted-ring \(v_{\mathrm{obs}}\), stellar mass surface density, baryonic \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) (and bulge if tabulated) |
+| **Primary** | Corbelli et al. 2014 (A&A 572, A23; DOI `10.1051/0004-6361/201424033`; manuscript `aa24033-14`) | Modern HI/gas mapping, tilted-ring \(v_{\mathrm{obs}}\), stellar mass surface density, baryonic \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) (and bulge if tabulated) |
 | **Baseline** | López Fune, Salucci & Corbelli 2017 | NFW/Burkert halo parameters, extended radial coverage, DM density comparison, decomposition cross-check for Phase 2 |
 | **Validation** | Corbelli & Salucci 2000 | Historical 21-cm rotation curve; rising outer disk; independent check of \(v_{\mathrm{obs}}(r)\) |
 | **Optional later** | HI/CO map placeholders | Phase 4 2D τ-map; FITS or survey products TBD |
 | **Optional later** | Lensing limits placeholder | Phase 5 prediction vs limits |
 
-**Why Corbelli et al. 2014 is primary:** It provides the most complete modern baryonic and kinematic picture of M33 for building \(v_{\mathrm{bar}}\) and the observed rotation curve on a consistent tilted-ring framework.
+**Why Corbelli et al. 2014 is primary:** *Dynamical signatures of a ΛCDM-halo and the distribution of the baryons in M33* ([doi.org/10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033)) provides the most complete modern baryonic and kinematic picture of M33 for building \(v_{\mathrm{bar}}\) and the observed rotation curve on a consistent tilted-ring framework. Official PDF: save publisher file `aa24033-14.pdf` as `data/raw/downloads/corbelli2014_aa24033_14.pdf` (see `docs/extraction_log.md`).
 
 **Why López Fune et al. 2017 is next:** It supplies standardized NFW/Burkert halo fits and an extended radial domain for **comparison baselines**, not as the TDF τ input.
 
