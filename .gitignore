@@ -1,0 +1,65 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Project data and outputs (keep README placeholders)
+data/raw/*
+!data/raw/README.md
+!data/raw/sources_manifest_template.yaml
+!data/raw/sources_manifest.yaml
+!data/raw/downloads/README.md
+!data/raw/extracted/README.md
+!data/raw/extracted/corbelli2014_table1_raw_template.csv
+data/raw/downloads/*
+!data/raw/downloads/README.md
+data/raw/extracted/*
+!data/raw/extracted/README.md
+!data/raw/extracted/corbelli2014_table1_raw_template.csv
+data/processed/*
+!data/processed/README.md
+!data/processed/m33_rotation_schema_template.csv
+outputs/figures/*
+!outputs/figures/README.md
+outputs/tables/*
+!outputs/tables/README.md
+outputs/reports/*
+!outputs/reports/README.md
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Local config overrides
+configs/*_local.yaml
+.env
+.env.*

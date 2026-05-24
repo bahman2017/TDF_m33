@@ -1,0 +1,90 @@
+# M33 default configuration — placeholders only (Phase 0 scaffold)
+# Replace null/PLACEHOLDER values when implementing each phase.
+# Do not commit real proprietary survey data paths without documentation in docs/data_sources.md
+
+project:
+  name: tdf-m33-tau-geometry
+  galaxy: M33
+  phase: 1C  # raw acquisition audit; no model-ready CSV yet
+  random_seed: null  # PLACEHOLDER: set integer for reproducible fits
+  output_root: outputs/
+
+data:
+  raw_dir: data/raw/
+  processed_dir: data/processed/
+  rotation_curve_file: null  # PLACEHOLDER: path relative to raw_dir or processed_dir
+  gas_model_file: null
+  stellar_disk_file: null
+  bulge_file: null  # optional
+  distance_kpc: null  # PLACEHOLDER
+  inclination_deg: null  # PLACEHOLDER
+  systemic_velocity_kms: null  # PLACEHOLDER
+  documented_in: docs/data_sources.md
+
+data_schema:
+  processed_csv: data/processed/m33_rotation.csv
+  schema_template: data/processed/m33_rotation_schema_template.csv
+  validate_script: scripts/validate_m33_data.py
+
+source_manifest:
+  template_path: data/raw/sources_manifest_template.yaml
+  active_path: data/raw/sources_manifest.yaml
+  require_valid_manifest: true
+  check_script: scripts/check_sources_manifest.py
+
+raw_sources:
+  downloads_dir: data/raw/downloads
+  extracted_dir: data/raw/extracted
+  corbelli2014_table1_raw_template: data/raw/extracted/corbelli2014_table1_raw_template.csv
+  audit_script: scripts/audit_m33_sources.py
+  prepare_table1_script: scripts/prepare_corbelli2014_table1_template.py
+
+processed_data:
+  model_ready_csv: data/processed/m33_rotation.csv
+  allow_creation_without_baryonic_velocity_components: false
+
+baryonic_model:
+  components:
+    - gas
+    - stellar_disk
+    # - bulge  # uncomment when needed
+  mass_to_light: null  # PLACEHOLDER
+  profile_type: null  # PLACEHOLDER: e.g. exponential_disk, etc.
+
+dark_matter_baselines:
+  nfw:
+    enabled: true
+    m200_solar: null  # PLACEHOLDER
+    concentration: null  # PLACEHOLDER
+  burkert:
+    enabled: true
+    m200_solar: null  # PLACEHOLDER
+    core_radius_kpc: null  # PLACEHOLDER
+
+tdf_model:
+  K_tau: null  # PLACEHOLDER: coupling constant in v_tau^2 = r * K_tau * d tau/dr
+  radial_profile:
+    parameterization: null  # PLACEHOLDER: e.g. spline, analytic template
+    n_knots: null
+  map_2d:
+    enabled: false  # Phase 4 optional
+    grid_resolution: null  # PLACEHOLDER
+
+fitting:
+  method: null  # PLACEHOLDER: e.g. least_squares, mcmc
+  parameters_to_fit: []  # PLACEHOLDER: list of parameter names
+  priors: {}  # PLACEHOLDER
+  max_iterations: null
+
+plotting:
+  style: null  # PLACEHOLDER: matplotlib style name
+  figure_dpi: 150
+  save_formats:
+    - png
+    - pdf
+
+lensing_prediction:
+  enabled: false  # Phase 5
+  use_same_tau_map_as_rotation: true
+  deflection_limits_file: null  # PLACEHOLDER
+  treatment: prediction_consistency  # not a substitute for direct lensing inference unless data available

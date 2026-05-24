@@ -1,0 +1,202 @@
+# Project plan: TDF–M33 τ-geometry
+
+Phased roadmap for the computational companion. Each phase has explicit acceptance criteria before moving on.
+
+---
+
+## Phase 0: Repository scaffold
+
+**Goal:** Publication-ready repository layout, documentation skeleton, configuration skeleton, and minimal tests—no scientific models.
+
+**Deliverables:**
+
+- Package layout under `src/tdf_m33/`
+- `docs/`, `configs/`, `data/`, `outputs/`, `scripts/`, `tests/`
+- `README.md`, `pyproject.toml`, `.gitignore`
+- Placeholder tests for imports and core equation algebra
+
+**Acceptance criteria:**
+
+- [x] `python -m pip install -e .` succeeds
+- [x] `python -m pytest` passes
+- [x] Core equations appear in `docs/theory_summary.md` and README
+- [x] No unsupported claims about disproving dark matter
+- [x] `configs/m33_default.yaml` contains all required sections with placeholders only
+
+**Status:** Complete.
+
+---
+
+## Phase 1A: M33 data schema, provenance registry, and validation
+
+**Goal:** Define the canonical processed CSV schema, source manifest template, and validation layer—no real data download or digitization.
+
+**Deliverables:**
+
+- `tdf_m33.data.schema`, `io`, `validation`
+- `data/processed/m33_rotation_schema_template.csv` (headers only)
+- `data/raw/sources_manifest_template.yaml`
+- `scripts/validate_m33_data.py`
+- Documentation updates in `docs/data_sources.md` and README
+
+**Acceptance criteria:**
+
+- [x] Required and optional columns documented and defined in code
+- [x] CSV template has correct headers and no fake data rows
+- [x] `validate_m33_dataframe` catches missing columns, bad signs, empty `source_id`
+- [x] Empty template passes structural validation
+- [x] Provenance template lists planned literature sources with `acquisition_status: not_downloaded`
+- [x] Unit tests for schema and validation pass
+
+**Status:** Complete.
+
+---
+
+## Phase 1B: Source registry, manifest loader, and acquisition plan
+
+**Goal:** Define literature sources, structured provenance manifest, validation CLI, and acquisition plan—no numerical ingestion.
+
+**Deliverables:**
+
+- `tdf_m33.data.manifest` and `scripts/check_sources_manifest.py`
+- Updated `data/raw/sources_manifest_template.yaml` with full metadata fields
+- `docs/data_acquisition_plan.md`
+- Tests in `tests/test_manifest.py`
+
+**Acceptance criteria:**
+
+- [x] Manifest loader loads and validates template YAML
+- [x] Template manifest validates (PASS from CLI)
+- [x] `docs/data_acquisition_plan.md` documents sources, extraction, and Phase 1C checklist
+- [x] No fake or real numerical data in `data/processed/`
+- [x] Unit tests for manifest pass
+
+**Status:** Complete.
+
+---
+
+## Phase 1C: Official source acquisition and raw extraction audit
+
+**Goal:** Prepare download/extracted layout, active manifest, raw Table 1 template, source audit tooling, and extraction log—**no model-ready processed CSV**.
+
+**Deliverables:**
+
+- `data/raw/sources_manifest.yaml` (active registry)
+- `data/raw/downloads/`, `data/raw/extracted/` with READMEs
+- `corbelli2014_table1_raw_template.csv` (headers only)
+- `tdf_m33.data.source_status`, `scripts/audit_m33_sources.py`, `scripts/prepare_corbelli2014_table1_template.py`
+- `docs/extraction_log.md`
+
+**Acceptance criteria:**
+
+- [x] Active manifest exists and validates
+- [x] Raw download/extracted directories exist
+- [x] Raw Table 1 template exists with no fake rows
+- [x] `scripts/audit_m33_sources.py` passes
+- [x] `data/processed/m33_rotation.csv` **not** created prematurely
+- [x] Documentation separates raw/interim from model-ready data
+- [x] Tests pass
+
+**Status:** Complete.
+
+---
+
+## Phase 1D: Baryonic velocity derivation and model-ready ingestion
+
+**Goal:** Extract real Table 1 rows, derive or source \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) where needed, build validated `m33_rotation.csv`.
+
+**Deliverables:**
+
+- Populated `data/raw/extracted/corbelli2014_table1_raw.csv` (real rows only)
+- Derivation pipeline documented in `docs/data_sources.md` and `docs/extraction_log.md`
+- `data/processed/m33_rotation.csv` passing schema validation
+- Updated `acquisition_status` through `processed` / `validated` as justified
+
+**Acceptance criteria:**
+
+- [ ] Official PDF/tables acquired and checksums recorded
+- [ ] No surface density passed off as baryonic velocity without derivation
+- [ ] All processed rows traceable via `source_id`
+- [ ] Manifest and CSV validation CLIs pass
+- [ ] No fake data rows
+
+---
+
+## Phase 2: Baryonic-only + NFW + Burkert baselines
+
+**Goal:** Implement and compare minimum baryonic model and standard halo baselines against \(v_{\mathrm{obs}}(r)\).
+
+**Deliverables:**
+
+- `tdf_m33.models` baryonic, NFW, and Burkert velocity modules
+- Fitting hooks in `tdf_m33.fitting` (configuration-driven)
+- Baseline rotation-curve figures in `outputs/figures/`
+
+**Acceptance criteria:**
+
+- [ ] Baryonic-only curve computed from documented mass models
+- [ ] NFW and Burkert fits run from `configs/m33_default.yaml` without code edits
+- [ ] Model comparison metrics exported to `outputs/tables/`
+- [ ] Residuals \(v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) available for Phase 3
+
+---
+
+## Phase 3: τ-gradient and radial τ-profile reconstruction
+
+**Goal:** Reconstruct \(d\tau/dr\) and a radial \(\tau(r)\) profile from rotation residuals using TDF relations, without an independent halo in the TDF branch.
+
+**Deliverables:**
+
+- TDF radial profile module and \(v_\tau(r)\) from \(r K_\tau \, d\tau/dr\)
+- Constraints on smoothness / regularization documented in `docs/assumptions_and_limitations.md`
+- τ-profile and composite \(v_{\mathrm{obs}}\) fit figures
+
+**Acceptance criteria:**
+
+- [ ] Implementation matches documented equations in `docs/theory_summary.md`
+- [ ] \(v_{\mathrm{obs}}^2 \approx v_{\mathrm{bar}}^2 + v_\tau^2\) within stated tolerance after reconstruction
+- [ ] \(K_\tau\) and profile choices traceable via config and docs
+- [ ] Comparison table includes baryonic, NFW, Burkert, and TDF radial models
+
+---
+
+## Phase 4: 2D τ-map visualization (optional)
+
+**Goal:** Extend radial τ to a smooth 2D τ-map for spatial interpretation.
+
+**Deliverables:**
+
+- 2D grid or parametric τ-map in `tdf_m33.models` / `tdf_m33.plotting`
+- Consistency check: azimuthally averaged 2D map matches radial Phase 3 profile within tolerance
+
+**Acceptance criteria:**
+
+- [ ] 2D map visualization in `outputs/figures/`
+- [ ] Documentation of symmetries and assumptions (axisymmetry, etc.)
+- [ ] Phase 3 radial results remain reproducible when 2D mode is disabled
+
+---
+
+## Phase 5: Lensing / deflection prediction from the same τ-map
+
+**Goal:** Predict lensing/deflection signatures from the τ-map reconstructed in Phases 3–4 and compare to observational limits.
+
+**Deliverables:**
+
+- `tdf_m33.lensing` prediction module using the **same** τ as rotation
+- Consistency report in `outputs/reports/`
+
+**Acceptance criteria:**
+
+- [ ] No additional halo dof added in the TDF lensing pathway
+- [ ] Results labeled as prediction/consistency unless direct lensing data are used
+- [ ] Limits and uncertainties from `docs/data_sources.md` applied correctly
+- [ ] Discussion in outputs aligns with `docs/assumptions_and_limitations.md`
+
+---
+
+## Cross-cutting requirements
+
+- All science parameters in YAML config, not hard-coded in library code.
+- Every data transformation documented in `docs/data_sources.md`.
+- Conservative language in README, docs, and paper notes at all phases.

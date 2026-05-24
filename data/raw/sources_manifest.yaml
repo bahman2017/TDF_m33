@@ -1,0 +1,167 @@
+# Active M33 source registry (Phase 1C).
+# Sync structural changes back to sources_manifest_template.yaml when appropriate.
+# Validate: python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
+
+sources:
+  - source_id: corbelli_salucci_2000
+    title: "The Extended Rotation Curve and the Dark Matter Halo of M33"
+    authors: "Corbelli, E.; Salucci, P."
+    year: 2000
+    publication: "Monthly Notices of the Royal Astronomical Society"
+    data_type: rotation_curve
+    planned_use: >
+      Historical 21-cm rotation curve reference; rising outer rotation curve;
+      cross-check of v_obs(r) and outer-disk behavior against modern HI models.
+    acquisition_status: located
+    url_or_doi: "10.1046/j.1365-8711.2000.02425.x"
+    expected_fields:
+      - r_kpc
+      - v_obs_kms
+      - v_err_kms
+      - source_id
+      - notes
+    extraction_method: >
+      Prefer published tabulated radii and velocities from the paper or supplementary
+      material; digitize figures only if no table is available.
+    transformation_notes: >
+      Convert radius and velocity to kpc and km/s using documented distance and
+      inclination from the primary modern source (Corbelli et al. 2014) when merging.
+    limitations: >
+      Older dataset; use as validation/backup for v_obs, not as sole baryonic model.
+    citation_key: "CorbelliSalucci2000"
+    notes: "Phase 1C: not downloaded; validation source for Phase 1D+."
+
+  - source_id: corbelli_et_al_2014
+    title: "Dynamical signatures of a ΛCDM-halo and the distribution of the baryons in M33"
+    authors: "Corbelli, E.; Thilker, D. A.; Zschaechner, L.; et al."
+    year: 2014
+    publication: "Astronomy & Astrophysics"
+    data_type: baryonic_and_rotation_model
+    planned_use: >
+      Primary modern source for M33 HI/gas mapping, tilted-ring rotation curve,
+      stellar mass surface density, and baryonic velocity decomposition (v_gas, v_disk).
+    acquisition_status: located
+    url_or_doi: "10.1051/0004-6361/201322790"
+    expected_fields:
+      - r_kpc
+      - v_obs_kms
+      - v_err_kms
+      - v_gas_kms
+      - v_disk_kms
+      - v_bulge_kms
+      - inclination_deg
+      - distance_mpc
+      - sigma_gas
+      - sigma_star
+      - source_id
+      - notes
+    extraction_method: >
+      Machine-readable tables or author-provided data where available; otherwise
+      explicit published tables with documented column definitions.
+    transformation_notes: >
+      Align tilted-ring radii to common galactocentric grid; document distance,
+      inclination, and mass-to-light assumptions; record HI cube vs. 1D curve provenance.
+    limitations: >
+      Baryonic model tied to stated ΛCDM-halo framework; use components for v_bar,
+      not as endorsement of any single dark-matter interpretation in this repo.
+    citation_key: "Corbelli2014"
+    notes: >
+      Phase 1C primary target. Raw Table 1 template at
+      data/raw/extracted/corbelli2014_table1_raw_template.csv. Official PDF/tables
+      not yet in repo; see docs/extraction_log.md. acquisition_status remains located
+      until publisher PDF or machine-readable tables are archived under downloads/.
+
+  - source_id: lopez_fune_salucci_corbelli_2017
+    title: "The radial dependence of dark matter distribution in M33"
+    authors: "López Fune, M. C.; Salucci, P.; Corbelli, E."
+    year: 2017
+    publication: "Monthly Notices of the Royal Astronomical Society"
+    data_type: halo_and_decomposition_model
+    planned_use: >
+      NFW and Burkert halo baseline parameters; extended radial range; dark-matter
+      density slope comparison; baryonic decomposition cross-check for Phase 2 fits.
+    acquisition_status: located
+    url_or_doi: "10.1093/mnras/stx2742"
+    expected_fields:
+      - r_kpc
+      - v_obs_kms
+      - v_gas_kms
+      - v_disk_kms
+      - v_bulge_kms
+      - source_id
+      - notes
+    extraction_method: >
+      Extract halo parameter tables and rotation-curve decomposition columns from
+      published tables; document which columns feed NFW vs Burkert baselines only.
+    transformation_notes: >
+      Map halo parameters to Phase 2 config keys; do not mix radii with Corbelli et al.
+      2014 grid without documented interpolation.
+    limitations: >
+      Halo-centric analysis; retained for comparison, not to claim dark matter is ruled out.
+    citation_key: "LopezFune2017"
+    notes: "Phase 1C: not downloaded; Phase 2 halo baseline reference."
+
+  - source_id: hi_map_placeholder
+    title: "HI surface density / kinematics map (survey TBD)"
+    authors: "TBD"
+    year: null
+    publication: "TBD — e.g. THINGS, Little THINGS, or Corbelli et al. 2014 cube products"
+    data_type: hi_map
+    planned_use: >
+      Optional Phase 4 input for 2D τ-map visualization and gas morphology context.
+    acquisition_status: planned
+    url_or_doi: "TBD"
+    expected_fields:
+      - r_kpc
+      - sigma_gas
+      - original_radius_unit
+      - original_velocity_unit
+      - source_id
+      - notes
+    extraction_method: "Select survey product; prefer FITS cubes with WCS and documented beam."
+    transformation_notes: "Document reprojection, beam smearing, and velocity field construction."
+    limitations: "Not required for radial Phase 1C rotation table."
+    citation_key: "HI_MAP_TBD"
+    notes: "Placeholder until map product is chosen."
+
+  - source_id: co_map_placeholder
+    title: "CO molecular gas map (survey TBD)"
+    authors: "TBD"
+    year: null
+    publication: "TBD — e.g. HERACLES or follow-up CO surveys of M33"
+    data_type: co_map
+    planned_use: >
+      Optional Phase 4 molecular gas tracer for 2D τ-map and baryonic prior context.
+    acquisition_status: planned
+    url_or_doi: "TBD"
+    expected_fields:
+      - r_kpc
+      - sigma_gas
+      - source_id
+      - notes
+    extraction_method: "FITS or published CO surface density maps with documented resolution."
+    transformation_notes: "Record H2 conversion factor assumptions if deriving gas mass."
+    limitations: "Optional; radial analysis can proceed with HI-only gas model."
+    citation_key: "CO_MAP_TBD"
+    notes: "Placeholder only."
+
+  - source_id: lensing_limits_placeholder
+    title: "M33 weak lensing / deflection observational limits (source TBD)"
+    authors: "TBD"
+    year: null
+    publication: "TBD — literature compilation for Phase 5 consistency checks"
+    data_type: lensing_limits
+    planned_use: >
+      Phase 5 comparison of τ-map lensing/deflection predictions against observational
+      upper limits or published constraints.
+    acquisition_status: planned
+    url_or_doi: "TBD"
+    expected_fields:
+      - distance_mpc
+      - source_id
+      - notes
+    extraction_method: "Compile published limits with explicit radius or mass scale."
+    transformation_notes: "Document metric conversion and line-of-sight geometry assumptions."
+    limitations: "M33 lensing signal may be weak; treat as consistency unless direct data ingested."
+    citation_key: "LENSING_TBD"
+    notes: "Phase 5 only; no data committed."
