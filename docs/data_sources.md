@@ -61,6 +61,22 @@ Download/extraction audit: `docs/extraction_log.md`.
 
 **Surface densities are not baryonic velocities.** Values such as `sigma_hi`, `sigma_gas`, and `sigma_star` in the raw Corbelli et al. 2014 Table 1 template must **not** be copied into `v_gas_kms` or `v_disk_kms` without a documented mass-model derivation (Phase 1D).
 
+### Corbelli et al. 2014 — Table 1 column audit (Phase 1D-B, 2026-05-24)
+
+Audited against `data/raw/downloads/corbelli2014_aa24033_14.pdf`, **page 13 of 18** (table title: *Rotation curve, atomic gas, and stellar mass surface densities across the M 33 disk*). Full mapping in `docs/extraction_log.md` §5.1.
+
+| Published (A&A Table 1) | Unit | Raw template column |
+|-------------------------|------|---------------------|
+| \(R\) | kpc | `r_kpc` |
+| \(V_r\) | km s\(^{-1}\) | `v_rot_kms` |
+| \(\sigma_V\) | km s\(^{-1}\) | `v_err_kms` |
+| \(\Sigma_{\mathrm{HI}}\) | M\(_\odot\) pc\(^{-2}\) | `sigma_hi` |
+| \(\Sigma_\*\) | M\(_\odot\) pc\(^{-2}\) | `sigma_star` |
+
+**Gaps:** Table 1 has **no** \(\Sigma_{\mathrm{H_2}}\), total \(\Sigma_{\mathrm{gas}}\), \(v_{\mathrm{gas}}\), or \(v_{\mathrm{disk}}\). Template columns `sigma_h2` and `sigma_gas` remain for optional interim use but must stay empty unless derived elsewhere. **58 rows** to transcribe in Phase 1D-C into `corbelli2014_table1_raw.csv` (not created yet).
+
+**Warning:** Do **not** map \(\Sigma_{\mathrm{HI}}\) → `v_gas_kms` or \(\Sigma_\*\) → `v_disk_kms`. Baryonic velocity components require a separate documented step (mass model / dynamical fit), not Table 1 transcription.
+
 `configs/m33_default.yaml` → `processed_data.allow_creation_without_baryonic_velocity_components: false`
 
 Phase 1C intentionally does **not** create `m33_rotation.csv` until Phase 1D provides traceable baryonic velocity components.

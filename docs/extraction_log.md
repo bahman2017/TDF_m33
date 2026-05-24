@@ -81,28 +81,82 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 | Item | Status |
 |------|--------|
 | Raw template CSV | Created: `data/raw/extracted/corbelli2014_table1_raw_template.csv` (headers only) |
-| Rows extracted | **None** (by design in Phase 1C) |
-| Column audit vs paper | **Pending** — requires official PDF/table access |
+| Rows extracted | **None** — Phase 1D-C pending |
+| Column audit vs paper | **Complete** — Phase 1D-B (2026-05-24); see §5.1 |
+| Published row count (PDF) | **58** radial bins (\(R \approx 0.24\)–\(22.72\) kpc) |
+
+### 5.1 Phase 1D-B — Table 1 column audit (2026-05-24)
+
+**Source PDF:** `data/raw/downloads/corbelli2014_aa24033_14.pdf` (SHA-256 recorded in §4).
+
+| Audit field | Value |
+|-------------|--------|
+| Table title | Rotation curve, atomic gas, and stellar mass surface densities across the M 33 disk. |
+| PDF location | **Page 13 of 18** in the downloaded PDF (`A23, page 13 of 18` footer); PyMuPDF page index **12** (0-based). |
+| In-text reference | §6.2 introduces the table; §5 notes the adopted rotation curve is given in Table 1. |
+| `raw_table_id` (planned) | `corbelli2014_table1` |
+
+#### Published columns and units (confirmed)
+
+| Published column | Unit | Notes from paper |
+|------------------|------|------------------|
+| \(R\) | kpc | Galactocentric radius of tilted-ring bins |
+| \(V_r\) | km s\(^{-1}\) | Adopted rotation velocity (tilted-ring / deconvolution pipeline) |
+| \(\sigma_V\) | km s\(^{-1}\) | Rotation-curve uncertainty (dispersion, deconvolution, finite-disk correction; not a lone statistical error) |
+| \(\Sigma_{\mathrm{HI}}\) | M\(_\odot\) pc\(^{-2}\) | Neutral atomic gas surface density perpendicular to the disk |
+| \(\Sigma_\*\) | M\(_\odot\) pc\(^{-2}\) | Modelled stellar mass surface density (BVIgi map; “most likely” values per §6 text) |
+
+**Not present in Table 1:** \(\Sigma_{\mathrm{H_2}}\), total gas \(\Sigma_{\mathrm{gas}}\), \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\), \(v_{\mathrm{bulge}}\), inclination, distance.
+
+#### Mapping: published column → raw template column
+
+| Published | Unit | Raw template column | Status |
+|-----------|------|---------------------|--------|
+| \(R\) | kpc | `r_kpc` | Direct |
+| \(V_r\) | km s\(^{-1}\) | `v_rot_kms` | Direct |
+| \(\sigma_V\) | km s\(^{-1}\) | `v_err_kms` | Direct (store as rotation-curve uncertainty; document semantics in `raw_notes`) |
+| \(\Sigma_{\mathrm{HI}}\) | M\(_\odot\) pc\(^{-2}\) | `sigma_hi` | Direct |
+| \(\Sigma_\*\) | M\(_\odot\) pc\(^{-2}\) | `sigma_star` | Direct |
+| — | — | `sigma_h2` | **No published column** — leave empty; H\(_2\)/helium enter total baryonic \(\Sigma\) in text/Fig. 10, not Table 1 |
+| — | — | `sigma_gas` | **No published column** — leave empty unless later derived (e.g. HI + He) in Phase 1D+ |
+| (provenance) | — | `source_id`, `raw_table_id`, `row_id`, `raw_notes`, `extraction_method`, `reference` | Fill on extraction |
+
+#### Mapping: raw template → processed schema (Phase 1D+; not executed yet)
+
+| Raw template | Processed (`m33_rotation.csv`) | Phase 1D-B note |
+|--------------|-------------------------------|-----------------|
+| `v_rot_kms` | `v_obs_kms` | After unit check only |
+| `v_err_kms` | `v_err_kms` | From \(\sigma_V\); document in `notes` |
+| `sigma_hi`, `sigma_star` | optional `sigma_gas`, `sigma_star` | **Not** `v_gas_kms` / `v_disk_kms` |
+| — | `v_gas_kms`, `v_disk_kms` | **Gap:** require mass-model / dynamical decomposition (paper Figs. 12–13), not Table 1 |
+
+#### Explicit gaps and warnings
+
+1. **Surface densities only:** Table 1 tabulates \(\Sigma_{\mathrm{HI}}\) and \(\Sigma_\*\), not circular-speed components \(v_{\mathrm{gas}}\) or \(v_{\mathrm{disk}}\).
+2. **Do not alias densities to velocities:** \(\Sigma_{\mathrm{HI}}\) and \(\Sigma_\*\) must **not** be copied into `v_gas_kms` or `v_disk_kms` in `data/processed/m33_rotation.csv`.
+3. **Template sufficiency:** Existing `corbelli2014_table1_raw_template.csv` headers are **sufficient**; optional `sigma_h2` / `sigma_gas` remain for interim fields not in Table 1 (empty unless derived later).
+4. **No numerical extraction in Phase 1D-B:** `data/raw/extracted/corbelli2014_table1_raw.csv` **not** created yet.
+
+**Next step (Phase 1D-C):** Transcribe all **58** rows from PDF Table 1 into `corbelli2014_table1_raw.csv` with `source_id=corbelli_et_al_2014`, `raw_table_id=corbelli2014_table1`, `extraction_method=manual_from_pdf_table1`, and per-row `reference` to A&A 572, A23 Table 1.
 
 ### Expected raw/interim columns (template)
 
 `source_id`, `raw_table_id`, `row_id`, `r_kpc`, `v_rot_kms`, `v_err_kms`, `sigma_hi`, `sigma_h2`, `sigma_gas`, `sigma_star`, `raw_notes`, `extraction_method`, `reference`
 
-If the published table uses different labels (e.g. \(V_{\mathrm{rot}}\), \(\Sigma_{\mathrm{HI}}\), arcsec), document mappings here before filling rows.
-
 ---
 
-## 6. Table 1 content audit (literature expectation — verify against PDF)
+## 6. Table 1 content audit (confirmed against PDF, 2026-05-24)
 
-Based on the published Corbelli et al. (2014) A&A analysis of M33 baryons and dynamics, **verify on the official table** before extraction:
+Supersedes pre-PDF literature expectations. See §5.1 for column mapping.
 
-| Quantity | Expected in Table 1 / paper? | Maps to processed schema |
-|----------|------------------------------|---------------------------|
-| Observed rotation curve \(V_{\mathrm{rot}}(R)\) | **Likely yes** (tilted-ring / model curve) | `v_obs_kms` |
-| Velocity uncertainty | **May be partial** — check columns | `v_err_kms` |
-| HI / gas surface density \(\Sigma_{\mathrm{HI}}\), \(\Sigma_{\mathrm{gas}}\) | **Likely yes** | `sigma_gas` (raw), not `v_gas_kms` |
-| Stellar surface density \(\Sigma_\*\) | **Likely yes** | `sigma_star` (raw), not `v_disk_kms` |
-| Baryonic velocity components \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) | **Often not tabulated directly** — may require mass-model integration | `v_gas_kms`, `v_disk_kms` |
+| Quantity | In Table 1? | Raw / processed handling |
+|----------|-------------|---------------------------|
+| Adopted rotation \(V_r(R)\) | **Yes** | `v_rot_kms` → later `v_obs_kms` |
+| Rotation uncertainty \(\sigma_V\) | **Yes** | `v_err_kms` |
+| \(\Sigma_{\mathrm{HI}}\) | **Yes** | `sigma_hi` (raw only) |
+| \(\Sigma_\*\) | **Yes** | `sigma_star` (raw only) |
+| \(\Sigma_{\mathrm{H_2}}\), total \(\Sigma_{\mathrm{gas}}\) | **No** | Optional empty `sigma_h2` / `sigma_gas`; derive later if needed |
+| Baryonic \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) | **No** | Phase 1D+ decomposition; **not** from Table 1 |
 
 ---
 
