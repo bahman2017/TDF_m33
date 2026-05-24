@@ -22,6 +22,18 @@ An earlier audit used an **incorrect DOI** (`10.1051/0004-6361/201322790`) and f
 
 Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be **discarded** and not used for extraction.
 
+### Phase 1D-A acquisition (2026-05-24)
+
+| Field | Value |
+|-------|--------|
+| `source_id` | `corbelli_et_al_2014` |
+| Title | Dynamical signatures of a ΛCDM-halo and the distribution of the baryons in M33 |
+| DOI | `10.1051/0004-6361/201424033` |
+| Local file | `data/raw/downloads/corbelli2014_aa24033_14.pdf` |
+| Checksum file | `data/raw/downloads/corbelli2014_aa24033_14.pdf.sha256` |
+| SHA-256 | `c1d4db5c8c5902cc943533283fcec1700c85655745af56844137faffe4dfbd40` |
+| Note | Official A&A PDF acquired and checksum recorded; **no numerical table extraction yet**. |
+
 ---
 
 ## 2. Source files attempted
@@ -39,7 +51,7 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 | Artifact | Path (local) | Committed to git | Notes |
 |----------|--------------|------------------|-------|
 | Obsolete DOI redirect HTML (wrong DOI) | `data/raw/downloads/corbelli2014_aa22790_doi_redirect.html` | No (gitignored) | **Discard if present** — from incorrect DOI `201322790`, not the M33 paper |
-| A&A PDF | `data/raw/downloads/corbelli2014_aa24033_14.pdf` | No (gitignored) | **Manual acquisition required** — official `aa24033-14.pdf` from publisher |
+| A&A PDF | `data/raw/downloads/corbelli2014_aa24033_14.pdf` | No (gitignored) | **Acquired 2026-05-24** — official `aa24033-14.pdf`; SHA-256 recorded |
 | Machine-readable Table 1 | — | — | **Not yet extracted** |
 
 ### Manual acquisition (if automation insufficient)
@@ -58,7 +70,7 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 | File | SHA-256 | Recorded |
 |------|---------|----------|
 | `corbelli2014_aa22790_doi_redirect.html` (obsolete) | `4dca28603c88e7a7501065c61135943f1b747e70319673950453252b617fbd69` | Wrong-DOI fetch 2026-05-23 — **do not use**; delete if present locally |
-| `corbelli2014_aa24033_14.pdf` | — | **Pending** manual download |
+| `corbelli2014_aa24033_14.pdf` | `c1d4db5c8c5902cc943533283fcec1700c85655745af56844137faffe4dfbd40` | Phase 1D-A 2026-05-24; sidecar `corbelli2014_aa24033_14.pdf.sha256` (gitignored) |
 
 > The `aa22790` artifact is from an incorrect DOI, not the Corbelli et al. 2014 M33 paper. Record checksums only for the official `corbelli2014_aa24033_14.pdf`.
 

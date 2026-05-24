@@ -42,7 +42,7 @@ Do not advance status without a real file and validation (see `docs/data_acquisi
 | source_id | Citation | acquisition_status | Role |
 |-----------|----------|-------------------|------|
 | `corbelli_salucci_2000` | Corbelli & Salucci 2000 | located | Historical \(v_{\mathrm{obs}}\) validation |
-| `corbelli_et_al_2014` | Corbelli et al. 2014, A&A 572, A23; DOI [10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033); manuscript `aa24033-14` | located | Primary baryonic + rotation model |
+| `corbelli_et_al_2014` | Corbelli et al. 2014, A&A 572, A23; DOI [10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033); manuscript `aa24033-14` | downloaded | Primary baryonic + rotation model (PDF Phase 1D-A 2026-05-24) |
 | `lopez_fune_salucci_corbelli_2017` | López Fune et al. 2017 | located | NFW/Burkert baselines (Phase 2) |
 | `hi_map_placeholder` | TBD | planned | Optional 2D τ-map |
 | `co_map_placeholder` | TBD | planned | Optional CO map |
