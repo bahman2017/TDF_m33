@@ -40,7 +40,7 @@ sources:
     planned_use: >
       Primary modern source for M33 HI/gas mapping, tilted-ring rotation curve,
       stellar mass surface density, and baryonic velocity decomposition (v_gas, v_disk).
-    acquisition_status: downloaded
+    acquisition_status: processed
     url_or_doi: "10.1051/0004-6361/201424033"
     expected_fields:
       - r_kpc
@@ -66,11 +66,12 @@ sources:
       not as endorsement of any single dark-matter interpretation in this repo.
     citation_key: "Corbelli2014"
     notes: >
-      Phase 1D-A (2026-05-24): official PDF archived locally at
-      data/raw/downloads/corbelli2014_aa24033_14.pdf with SHA-256 sidecar; see
-      docs/extraction_log.md. Table 1 not yet extracted. Raw template at
-      data/raw/extracted/corbelli2014_table1_raw_template.csv. (Metadata correction
-      2026-05-24: replaced erroneous DOI 201322790.)
+      Phase 1D-D2-B (2026-05-24): canonical processed rotation table at
+      data/processed/m33_rotation.csv (58 rows). Observed rotation from Table 1
+      (data/raw/extracted/corbelli2014_table1_raw.csv); baryonic v_gas/v_disk from
+      Phase 1D-D1 disk-gravity audit (outputs/tables/corbelli2014_baryonic_velocity_derivation_audit.csv).
+      Fig. 12 corrected sanity check PASS_WITH_CAVEAT; digitization not used as canonical
+      velocities. PDF: data/raw/downloads/corbelli2014_aa24033_14.pdf. (DOI 10.1051/0004-6361/201424033.)
 
   - source_id: lopez_fune_salucci_corbelli_2017
     title: "The radial dependence of dark matter distribution in M33"

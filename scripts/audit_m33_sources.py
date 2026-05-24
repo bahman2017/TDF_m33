@@ -92,10 +92,22 @@ def main() -> int:
     model_ready = REPO_ROOT / "data" / "processed" / "m33_rotation.csv"
     print(f"\nmodel-ready CSV: {model_ready}")
     if model_ready.is_file():
-        print("  WARNING: m33_rotation.csv exists — should not be created prematurely in Phase 1C")
-        errors.append("Model-ready m33_rotation.csv must not exist until Phase 1D")
+        print("  status: present (Phase 1D-D2-B canonical processed table)")
+        try:
+            from tdf_m33.data.io import load_m33_processed_csv
+            from tdf_m33.data.validation import validate_m33_dataframe
+
+            proc_df = load_m33_processed_csv(model_ready)
+            proc_errors = validate_m33_dataframe(proc_df)
+            if proc_errors:
+                for msg in proc_errors:
+                    errors.append(f"m33_rotation.csv: {msg}")
+            else:
+                print(f"  validation: PASS ({len(proc_df)} rows)")
+        except Exception as exc:
+            errors.append(f"m33_rotation.csv load/validate failed: {exc}")
     else:
-        print("  status: not created (expected)")
+        print("  status: not created")
 
     if errors:
         print("\nFAIL")

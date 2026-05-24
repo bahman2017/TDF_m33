@@ -52,10 +52,6 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    if MODEL_READY.is_file():
-        print(f"FAIL: model-ready CSV must not exist yet: {MODEL_READY}")
-        return 1
-
     for label, path in (("audit", args.audit), ("spotcheck", args.spotcheck)):
         if not path.is_file():
             print(f"FAIL: {label} not found: {path}")
@@ -76,7 +72,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  recommendation: {rec}")
     print(f"  label audit: {args.output.resolve()}")
     print(f"  corrected spot-check: {args.write_corrected.resolve()}")
-    print(f"  model-ready CSV absent: {not MODEL_READY.is_file()}")
+    print(f"  model-ready CSV: {'present' if MODEL_READY.is_file() else 'absent'}")
     print()
     print("Residual sum |Δv_gas|+|Δv_disk| (km/s):")
     for _, row in label_df.iterrows():

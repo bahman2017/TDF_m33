@@ -43,7 +43,10 @@ def main(argv: list[str] | None = None) -> int:
     n_rows = len(df)
     print("PASS")
     print(f"  file: {path.resolve()}")
-    print(f"  rows: {n_rows} (structural validation only when empty)")
+    if n_rows == 0:
+        print(f"  rows: {n_rows} (structural validation only when empty)")
+    else:
+        print(f"  rows: {n_rows}")
     return 0
 
 

@@ -29,10 +29,6 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    if MODEL_READY.is_file():
-        print(f"FAIL: model-ready CSV must not exist yet: {MODEL_READY}")
-        return 1
-
     path = args.csv_path
     if not path.is_file():
         print(f"FAIL: file not found: {path}")
@@ -51,7 +47,10 @@ def main(argv: list[str] | None = None) -> int:
     print("PASS")
     print(f"  file: {path.resolve()}")
     print(f"  rows: {len(df)}")
-    print(f"  model-ready CSV absent: {MODEL_READY}")
+    if MODEL_READY.is_file():
+        print(f"  model-ready CSV present: {MODEL_READY}")
+    else:
+        print(f"  model-ready CSV absent: {MODEL_READY}")
     return 0
 
 

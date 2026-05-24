@@ -62,5 +62,7 @@ def test_comparison_csv_on_disk_if_present() -> None:
     )
 
 
-def test_model_ready_csv_still_absent() -> None:
-    assert not MODEL_READY.is_file()
+def test_model_ready_csv_present_after_d2b() -> None:
+    if not MODEL_READY.is_file():
+        pytest.skip("run scripts/build_m33_rotation_processed.py")
+    assert MODEL_READY.is_file()

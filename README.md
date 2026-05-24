@@ -56,25 +56,28 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 1A** | Complete — canonical CSV schema and processed-data validation |
 | **Phase 1B** | Complete — source manifest loader, acquisition plan |
 | **Phase 1C** | Complete — raw acquisition layout, Table 1 raw template, source audit |
-| Phase 1D+ | Not started — table extraction, baryonic velocity derivation, model-ready CSV |
+| **Phase 1D** | Complete — Table 1 extraction, D1 baryonic derivation, Fig. 12 checks |
+| **Phase 1D-D2-B** | Complete — canonical `data/processed/m33_rotation.csv` (58 rows) |
+| Phase 2+ | Not started — NFW/Burkert baselines, TDF τ reconstruction |
 
 ## Data provenance status
 
 - **Phase 0** completed the publication-oriented repository scaffold.
 - **Phase 1A** completed the processed CSV schema (`tdf_m33.data.schema`, `validation`, `io`) and empty template — **no M33 numbers**.
 - **Phase 1B** added the literature source registry (`tdf_m33.data.manifest`) and `docs/data_acquisition_plan.md`.
-- **Phase 1C** added download/extracted directories, active `sources_manifest.yaml`, raw Table 1 template, `docs/extraction_log.md`, and audit scripts — still **no model-ready** `m33_rotation.csv` and **no fake rows**.
+- **Phase 1C** added download/extracted directories, active `sources_manifest.yaml`, raw Table 1 template, `docs/extraction_log.md`, and audit scripts.
+- **Phase 1D-D2-B** created **`data/processed/m33_rotation.csv`** (58 rows): observed rotation from Corbelli 2014 Table 1; baryonic \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) from documented D1 disk-gravity derivation (`derived_baryonic_velocity_pass_with_caveat`). Fig. 12 corrected sanity check is PASS_WITH_CAVEAT; digitized curves are **not** canonical velocities.
 
-Phase 1C commands:
+Processed-data commands:
 
 ```bash
-python scripts/prepare_corbelli2014_table1_template.py
+python scripts/build_m33_rotation_processed.py
+python scripts/validate_m33_data.py data/processed/m33_rotation.csv
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
-python scripts/validate_m33_data.py data/processed/m33_rotation_schema_template.csv
 ```
 
-See `docs/extraction_log.md` for download/table audit status. Phase 1D will extract real Table 1 values and derive baryonic velocities before creating `data/processed/m33_rotation.csv`.
+See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 2 (NFW/Burkert) not started.
 
 ## Expected data sources
 

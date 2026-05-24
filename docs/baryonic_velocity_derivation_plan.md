@@ -2,7 +2,7 @@
 
 Audit and strategy for populating `v_gas_kms`, `v_disk_kms`, and `v_bulge_kms` in `data/processed/m33_rotation.csv` from Corbelli et al. (2014) inputs **without** mapping surface densities directly into velocity columns.
 
-**Status:** Phase 1D-D2-A2 complete — Fig. 12 label audit; corrected spot-check; **`m33_rotation.csv` still blocked** until D2-B gate.  
+**Status:** Phase 1D-D2-B complete — canonical **`data/processed/m33_rotation.csv`** (58 rows) built from D1 audit with documented caveats.  
 **Primary source:** Corbelli et al. 2014, A&A 572, A23 ([DOI 10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033))  
 **Raw inputs on hand:** `data/raw/extracted/corbelli2014_table1_raw.csv` (58 rows: \(R\), \(V_r\), \(\sigma_V\), \(\Sigma_{\mathrm{HI}}\), \(\Sigma_\*\))
 
@@ -245,17 +245,33 @@ Do **not** use López Fune et al. 2017 as the Phase 1D primary baryonic source (
 
 **Corrected comparison status:** **`PASS_WITH_CAVEAT`** — gas spot points align well; stellar still ~7–10 km s\(^{-1}\) low vs digitized at \(R \gtrsim 5\) kpc (D1 ≠ Casertano / digitization uncertainty). Fig. 12 remains a **low-precision sanity check**, not a calibration target.
 
-## 9. Phase 1D-D2-B — next step
+## 9. Phase 1D-D2-B — canonical processed CSV (2026-05-24)
 
-1. **Decision gate:** Proceed with **D1 audit** as primary ingest source; document Fig. 12 label correction (D2-A2) and remaining ~7–10 km s\(^{-1}\) stellar offsets in `notes` / `data_quality_flag`, **or** improve derivation (Casertano 1983 / Fig. 10 \(\Sigma\)) if tighter Fig. 12 agreement is required.
-2. Build **`data/processed/m33_rotation.csv`** only after gate passes or caveats are explicitly accepted in docs/manifest.
-3. Map audit columns + schema fields; run `validate_m33_data.py`; update `docs/data_sources.md` transformation log.
+| Item | Value |
+|------|--------|
+| Output | `data/processed/m33_rotation.csv` (58 rows) |
+| Build script | `scripts/build_m33_rotation_processed.py` |
+| Primary baryonic source | `outputs/tables/corbelli2014_baryonic_velocity_derivation_audit.csv` (D1) |
+| Observed rotation | Table 1 \(V_r\) via audit / `corbelli2014_table1_raw.csv` |
+| `data_quality_flag` | `derived_baryonic_velocity_pass_with_caveat` |
+| Fig. 12 | Corrected sanity check **PASS_WITH_CAVEAT**; **not** used as canonical velocities |
+| Validation | `python scripts/validate_m33_data.py data/processed/m33_rotation.csv` → PASS |
 
-**Do not claim scientific results until D2-B ingest and caveats are documented.**
+**Remaining caveats before Phase 2:**
+
+- Baryonic \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) are **derived** (numerical disk gravity), not tabulated in the paper.
+- D1 implementation ≠ Casertano (1983); stellar \(v_{\mathrm{disk}}\) may be ~7–10 km s\(^{-1}\) below Fig. 12 at some radii.
+- No NFW/Burkert/TDF results in this dataset — Phase 2+ only.
+
+## 10. Phase 2 — next step
+
+1. NFW / Burkert halo baselines on the canonical 58-point grid.
+2. Carry documented baryonic uncertainties into model comparison metrics.
+3. Do not claim dark matter is ruled out or replaced.
 
 ---
 
-## 8. Explicit non-goals (Phase 1D-D0)
+## 11. Explicit non-goals (Phase 1D-D0)
 
 - No NFW/Burkert fitting (Phase 2)
 - No TDF \(\tau\) reconstruction (Phase 3)

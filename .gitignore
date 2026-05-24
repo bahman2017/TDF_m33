@@ -55,6 +55,7 @@ data/raw/extracted/*
 data/processed/*
 !data/processed/README.md
 !data/processed/m33_rotation_schema_template.csv
+!data/processed/m33_rotation.csv
 outputs/figures/*
 !outputs/figures/README.md
 !outputs/figures/corbelli2014_baryonic_fig12_sanity_check.png

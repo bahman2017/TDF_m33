@@ -86,17 +86,29 @@ Contains **observed rotation** (\(V_r\), \(\sigma_V\)) and **surface densities**
 **Baryonic velocity derivation (Phase 1D-D1):** Interim audit table  
 `outputs/tables/corbelli2014_baryonic_velocity_derivation_audit.csv` — axisymmetric disk-gravity derivation from Table 1 \(\Sigma\) profiles (see **`docs/baryonic_velocity_derivation_plan.md`**). Contains \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\), \(v_{\mathrm{bar}}\); **not** the canonical processed file. Regenerate: `python scripts/derive_corbelli2014_baryonic_velocities.py`; validate: `python scripts/validate_corbelli2014_baryonic_velocity_derivation.py`.
 
-**Fig. 12 sanity-check (Phase 1D-D2-A / D2-A2):** Validation only — not primary. Original spot-check `corbelli2014_fig12_baryonic_spotcheck.csv` is **superseded** for comparisons (likely gas/stellar label swap). **Use:** `corbelli2014_fig12_baryonic_spotcheck_corrected.csv`; label audit `outputs/tables/corbelli2014_fig12_label_audit.csv`. Run `python scripts/audit_corbelli2014_fig12_labels.py` then `python scripts/compare_corbelli2014_baryonic_to_fig12.py --corrected`. **Outcome (D2-A2):** `PASS_WITH_CAVEAT` on corrected labels — gas agrees well; stellar offset ~7–10 km s\(^{-1}\) at mid/outer radii. D1 from Table 1 \(\Sigma\) remains the reproducible primary path.
+**Fig. 12 sanity-check (Phase 1D-D2-A / D2-A2):** Validation only — not canonical. Corrected comparison: **PASS_WITH_CAVEAT**. See `docs/baryonic_velocity_derivation_plan.md` §8–8.1.
 
-Do not build `m33_rotation.csv` until Phase 1D-D2-B (decision gate + schema ingest).
+### Corbelli et al. 2014 — canonical processed rotation (Phase 1D-D2-B, 2026-05-24)
 
-`configs/m33_default.yaml` → `processed_data.allow_creation_without_baryonic_velocity_components: false`
+**File:** `data/processed/m33_rotation.csv` (**58 rows**, tracked in git).
 
-Phase 1C intentionally does **not** create `m33_rotation.csv` until Phase 1D provides traceable baryonic velocity components.
+| Field | Provenance |
+|-------|------------|
+| `v_obs_kms`, `v_err_kms` | Corbelli 2014 Table 1 adopted \(V_r\), \(\sigma_V\) |
+| `v_gas_kms`, `v_disk_kms` | Phase 1D-D1 axisymmetric disk-gravity derivation from Table 1 \(\Sigma\) (+ H\(_2\)/He formula) |
+| `v_bulge_kms` | 0 (no separate bulge per paper) |
+| `sigma_gas`, `sigma_star` | Derived/tabuluated surface densities from audit (not velocities) |
+| `data_quality_flag` | `derived_baryonic_velocity_pass_with_caveat` |
+| `notes` | Documents Fig. 12 PASS_WITH_CAVEAT and that digitization is not canonical |
+
+**Build:** `python scripts/build_m33_rotation_processed.py`  
+**Validate:** `python scripts/validate_m33_data.py data/processed/m33_rotation.csv`
+
+**Caveats for Phase 2/3:** Baryonic velocities are derived, not published table columns; D1 ≠ Casertano (1983); possible ~7–10 km s\(^{-1}\) stellar offset vs Fig. 12 at some radii. This file does **not** contain halo or TDF components.
 
 ## Canonical processed CSV schema
 
-File: `data/processed/m33_rotation.csv` (not committed until real data exist).  
+File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  
 Template (headers only): `data/processed/m33_rotation_schema_template.csv`
 
 | Column | Required | Description |

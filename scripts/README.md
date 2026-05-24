@@ -41,4 +41,4 @@ python scripts/derive_corbelli2014_baryonic_velocities.py
 python scripts/validate_corbelli2014_baryonic_velocity_derivation.py
 ```
 
-Model-ready `m33_rotation.csv` ingestion is Phase 1D-D2 (not implemented yet).
+Canonical processed CSV: `python scripts/build_m33_rotation_processed.py` (Phase 1D-D2-B).

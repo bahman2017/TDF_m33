@@ -48,6 +48,13 @@ def test_phase1c_directories_exist() -> None:
     assert (REPO_ROOT / "data" / "raw" / "extracted").is_dir()
 
 
-def test_model_ready_csv_not_created() -> None:
+def test_model_ready_csv_valid_when_present() -> None:
+    from tdf_m33.data.io import load_m33_processed_csv
+    from tdf_m33.data.validation import validate_m33_dataframe
+
     model_ready = REPO_ROOT / "data" / "processed" / "m33_rotation.csv"
-    assert not model_ready.is_file()
+    if not model_ready.is_file():
+        return
+    df = load_m33_processed_csv(model_ready)
+    assert validate_m33_dataframe(df) == []
+    assert len(df) == 58

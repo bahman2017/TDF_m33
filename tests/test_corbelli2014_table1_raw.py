@@ -49,5 +49,11 @@ def test_raw_table1_columns_match_template() -> None:
         assert col in df.columns
 
 
-def test_model_ready_csv_still_absent() -> None:
-    assert not MODEL_READY.is_file()
+def test_model_ready_csv_valid_when_present() -> None:
+    if not MODEL_READY.is_file():
+        return
+    from tdf_m33.data.io import load_m33_processed_csv
+    from tdf_m33.data.validation import validate_m33_dataframe
+
+    df = load_m33_processed_csv(MODEL_READY)
+    assert validate_m33_dataframe(df) == []

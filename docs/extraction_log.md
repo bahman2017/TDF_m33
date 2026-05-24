@@ -159,7 +159,19 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 
 **Validation:** `python scripts/validate_corbelli2014_table1_raw.py` (and `tests/test_corbelli2014_table1_raw.py`).
 
-**Next step (Phase 1D-D2-B):** Decision gate on D1 vs Fig. 12 offsets, then canonical `m33_rotation.csv` if caveats accepted.
+**Next step (Phase 2):** NFW/Burkert baselines on canonical processed grid; no TDF yet.
+
+### Phase 1D-D2-B — canonical processed rotation CSV (2026-05-24)
+
+| Field | Value |
+|-------|--------|
+| Output | `data/processed/m33_rotation.csv` (58 rows) |
+| Build | `scripts/build_m33_rotation_processed.py` from D1 audit |
+| Observed velocities | Table 1 \(V_r\), \(\sigma_V\) |
+| Baryonic velocities | D1 audit (`axisymmetric_disk_gravity_exponential_vertical`) |
+| Fig. 12 gate | PASS_WITH_CAVEAT (corrected labels); not used as canonical velocities |
+| Manifest | `corbelli_et_al_2014.acquisition_status` → `processed` |
+| Validation | `validate_m33_data.py` PASS |
 
 ### Phase 1D-D2-A — Fig. 12 baryonic sanity-check (2026-05-24)
 

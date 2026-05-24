@@ -79,10 +79,6 @@ def main(argv: list[str] | None = None) -> int:
         args.output = args.output or DEFAULT_COMPARISON
         args.figure = args.figure or DEFAULT_FIGURE
 
-    if MODEL_READY.is_file():
-        print(f"FAIL: model-ready CSV must not exist yet: {MODEL_READY}")
-        return 1
-
     for label, path in (("audit", args.audit), ("spotcheck", args.spotcheck)):
         if not path.is_file():
             print(f"FAIL: {label} not found: {path}")
@@ -107,7 +103,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  notes: {notes}")
     print(f"  comparison: {args.output.resolve()}")
     print(f"  figure: {args.figure.resolve()}")
-    print(f"  model-ready CSV absent: {not MODEL_READY.is_file()}")
+    print(f"  model-ready CSV: {'present' if MODEL_READY.is_file() else 'absent'}")
     print()
     print("Residual summary (derived - digitized) [km/s]:")
     for _, row in comparison.iterrows():
