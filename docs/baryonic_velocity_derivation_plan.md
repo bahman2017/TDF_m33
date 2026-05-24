@@ -2,7 +2,7 @@
 
 Audit and strategy for populating `v_gas_kms`, `v_disk_kms`, and `v_bulge_kms` in `data/processed/m33_rotation.csv` from Corbelli et al. (2014) inputs **without** mapping surface densities directly into velocity columns.
 
-**Status:** Phase 1D-D1 complete — interim audit velocities derived; **not** canonical `m33_rotation.csv`.  
+**Status:** Phase 1D-D2-A2 complete — Fig. 12 label audit; corrected spot-check; **`m33_rotation.csv` still blocked** until D2-B gate.  
 **Primary source:** Corbelli et al. 2014, A&A 572, A23 ([DOI 10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033))  
 **Raw inputs on hand:** `data/raw/extracted/corbelli2014_table1_raw.csv` (58 rows: \(R\), \(V_r\), \(\sigma_V\), \(\Sigma_{\mathrm{HI}}\), \(\Sigma_\*\))
 
@@ -190,14 +190,68 @@ Do **not** use López Fune et al. 2017 as the Phase 1D primary baryonic source (
 - \(v_{\mathrm{bar}} < v_{\mathrm{obs}}\) at most radii is expected (dark matter not included in baryonic derivation).
 - Fig. 12 digitization remains the **fallback sanity check** for Phase 1D-D2.
 
-## 8. Phase 1D-D2 — next step
+## 8. Phase 1D-D2-A — Fig. 12 sanity-check (2026-05-24)
 
-1. Cross-check audit \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) against Fig. 12 at \(R \in \{1, 5, 10, 15, 20\}\) kpc (digitize or tabulate if within ~5–10 km s\(^{-1}\), or document systematic offset).
-2. Tune integrator / compare to Casertano (1983) if offsets are unacceptable.
-3. Build **`data/processed/m33_rotation.csv`** from audit columns + schema fields (`galaxy_id`, `data_quality_flag`, `notes`, …).
-4. Run `validate_m33_data.py`; update `docs/data_sources.md` transformation log and manifest `acquisition_status` → `processed` when justified.
+| Item | Value |
+|------|--------|
+| Spot-check (validation only) | `data/raw/extracted/corbelli2014_fig12_baryonic_spotcheck.csv` |
+| Comparison table | `outputs/tables/corbelli2014_baryonic_fig12_comparison.csv` |
+| Script | `scripts/compare_corbelli2014_baryonic_to_fig12.py` |
+| Figure | `outputs/figures/corbelli2014_baryonic_fig12_sanity_check.png` |
+| Panel used | Fig. 12 **bottom** (BVIgi): small blue dashes = gas; large red dashes = stellar |
 
-**Do not claim scientific results until D2 validation is documented.**
+**Digitization:** Visual read from `data/raw/downloads/corbelli2014_aa24033_14.pdf` (PDF p. 12 of 18). Conservative uncertainty ±5 km s\(^{-1}\). **Lower precision** than Table 1 or D1 numerical derivation — sanity check only.
+
+**Residuals (D1 derived − Fig. 12 digitized) at spot radii:**
+
+| \(R\) [kpc] | \(\Delta v_{\mathrm{gas}}\) | \(\Delta v_{\mathrm{disk}}\) |
+|-------------|----------------------------|------------------------------|
+| 1 | ≈ −36 | ≈ +39 |
+| 5 | ≈ −43 | ≈ +35 |
+| 10 | ≈ −19 | ≈ +9 |
+| 15 | ≈ −16 | ≈ +6 |
+| 20 | ≈ −14 | ≈ +6 |
+
+**Outcome:** **`REVIEW_REQUIRED`** — D1 \(v_{\mathrm{gas}}\) is systematically **low** vs Fig. 12 (often 15–40 km s\(^{-1}\)); \(v_{\mathrm{disk}}\) is **high** in the inner disk (≈30–40 km s\(^{-1}\) at \(R \lesssim 5\) kpc), closer at \(R \gtrsim 10\) kpc. This is consistent with D1 using numerical cylindrical quadrature + exponential vertical profiles rather than the paper’s Casertano (1983) routine and possibly different \(\Sigma(r)\) weighting than the Fig. 10 curves used for dynamics.
+
+**Rules honored:** No silent retuning of D1; no `m33_rotation.csv`; Fig. 12 is **not** the primary source — D1 audit from tabulated \(\Sigma\) remains reproducible primary.
+
+**D2-A original spot-check superseded for comparisons** by label audit (see §8.1).
+
+## 8.1 Phase 1D-D2-A2 — Fig. 12 label audit (2026-05-24)
+
+| Item | Value |
+|------|--------|
+| Caption (PDF p. 12) | “red and blue … show the **gas** and **stellar** disk” → **red = gas**, **blue = stellar** |
+| D2-A error | Inner **blue** (high) curve was digitized as gas; **red** (lower) as stellar — **labels swapped** |
+| Physics check | Paper §5/§6: stars dominate potential for \(R < 7\) kpc; gas and stars comparable beyond |
+| Label audit | `outputs/tables/corbelli2014_fig12_label_audit.csv` |
+| Script | `scripts/audit_corbelli2014_fig12_labels.py` |
+| Corrected spot-check | `data/raw/extracted/corbelli2014_fig12_baryonic_spotcheck_corrected.csv` (original file retained) |
+| Corrected comparison | `outputs/tables/corbelli2014_baryonic_fig12_comparison_corrected.csv` |
+| Corrected figure | `outputs/figures/corbelli2014_baryonic_fig12_sanity_check_corrected.png` |
+
+**Verdict:** **`LIKELY_SWAPPED`** — swapping gas/disk columns cuts total residual sum sharply and restores \(v_{\mathrm{disk}} > v_{\mathrm{gas}}\) at \(R < 7\) kpc.
+
+**Corrected residuals (D1 − Fig. 12 corrected digitization):**
+
+| \(R\) [kpc] | \(\Delta v_{\mathrm{gas}}\) | \(\Delta v_{\mathrm{disk}}\) |
+|-------------|----------------------------|------------------------------|
+| 1 | ≈ −1 | ≈ +1 |
+| 5 | ≈ +2 | ≈ −10 |
+| 10 | ≈ −2 | ≈ −9 |
+| 15 | ≈ −3 | ≈ −7 |
+| 20 | ≈ −2 | ≈ −6 |
+
+**Corrected comparison status:** **`PASS_WITH_CAVEAT`** — gas spot points align well; stellar still ~7–10 km s\(^{-1}\) low vs digitized at \(R \gtrsim 5\) kpc (D1 ≠ Casertano / digitization uncertainty). Fig. 12 remains a **low-precision sanity check**, not a calibration target.
+
+## 9. Phase 1D-D2-B — next step
+
+1. **Decision gate:** Proceed with **D1 audit** as primary ingest source; document Fig. 12 label correction (D2-A2) and remaining ~7–10 km s\(^{-1}\) stellar offsets in `notes` / `data_quality_flag`, **or** improve derivation (Casertano 1983 / Fig. 10 \(\Sigma\)) if tighter Fig. 12 agreement is required.
+2. Build **`data/processed/m33_rotation.csv`** only after gate passes or caveats are explicitly accepted in docs/manifest.
+3. Map audit columns + schema fields; run `validate_m33_data.py`; update `docs/data_sources.md` transformation log.
+
+**Do not claim scientific results until D2-B ingest and caveats are documented.**
 
 ---
 

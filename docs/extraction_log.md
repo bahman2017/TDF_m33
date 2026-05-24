@@ -159,7 +159,33 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 
 **Validation:** `python scripts/validate_corbelli2014_table1_raw.py` (and `tests/test_corbelli2014_table1_raw.py`).
 
-**Next step (Phase 1D-D2):** Fig. 12 cross-check, then canonical `m33_rotation.csv` if validated.
+**Next step (Phase 1D-D2-B):** Decision gate on D1 vs Fig. 12 offsets, then canonical `m33_rotation.csv` if caveats accepted.
+
+### Phase 1D-D2-A — Fig. 12 baryonic sanity-check (2026-05-24)
+
+| Field | Value |
+|-------|--------|
+| Spot-check CSV | `data/raw/extracted/corbelli2014_fig12_baryonic_spotcheck.csv` (5 radii: 1, 5, 10, 15, 20 kpc) |
+| Method | `visual_from_pdf_fig12_bottom_panel_bvigi`; ±5 km s\(^{-1}\) uncertainty |
+| Comparison | `outputs/tables/corbelli2014_baryonic_fig12_comparison.csv` |
+| Figure | `outputs/figures/corbelli2014_baryonic_fig12_sanity_check.png` |
+| Validation status | **REVIEW_REQUIRED** (later traced to likely label swap — see D2-A2) |
+| Model-ready CSV | **Not created** |
+| Script | `python scripts/compare_corbelli2014_baryonic_to_fig12.py` |
+
+### Phase 1D-D2-A2 — Fig. 12 label audit (2026-05-24)
+
+| Field | Value |
+|-------|--------|
+| Label audit | `outputs/tables/corbelli2014_fig12_label_audit.csv` |
+| Verdict | **LIKELY_SWAPPED** — caption: red=gas, blue=stellar; D2-A assigned inner blue curve to gas |
+| Original spot-check | Retained; **superseded** by corrected file for comparisons |
+| Corrected spot-check | `data/raw/extracted/corbelli2014_fig12_baryonic_spotcheck_corrected.csv` |
+| Corrected comparison | `outputs/tables/corbelli2014_baryonic_fig12_comparison_corrected.csv` |
+| Corrected figure | `outputs/figures/corbelli2014_baryonic_fig12_sanity_check_corrected.png` |
+| Validation status | **PASS_WITH_CAVEAT** (corrected labels; D1 still ≠ Casertano) |
+| Model-ready CSV | **Not created** |
+| Scripts | `audit_corbelli2014_fig12_labels.py`; `compare_corbelli2014_baryonic_to_fig12.py --corrected` |
 
 ### Phase 1D-D1 — baryonic velocity derivation audit (2026-05-24)
 

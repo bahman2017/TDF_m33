@@ -1,0 +1,6 @@
+source_id,figure_id,r_kpc,v_gas_digitized_kms,v_disk_digitized_kms,digitization_method,digitization_uncertainty_kms,notes
+corbelli_et_al_2014,fig12_bottom_bvigi,1,45,10,visual_from_pdf_fig12_bottom_panel_bvigi,5,"Phase 1D-D2-A sanity check only; lower precision than Table 1 or D1 audit. Bottom panel (BVIgi): small blue dashes = gas, large red dashes = stellar disk contribution."
+corbelli_et_al_2014,fig12_bottom_bvigi,5,70,25,visual_from_pdf_fig12_bottom_panel_bvigi,5,"Gas curve near inner peak; stellar still rising at R=5 kpc."
+corbelli_et_al_2014,fig12_bottom_bvigi,10,55,38,visual_from_pdf_fig12_bottom_panel_bvigi,5,"Gas past peak; stellar near disk-component peak."
+corbelli_et_al_2014,fig12_bottom_bvigi,15,45,32,visual_from_pdf_fig12_bottom_panel_bvigi,5,"Both baryonic components declining slowly with radius."
+corbelli_et_al_2014,fig12_bottom_bvigi,20,40,28,visual_from_pdf_fig12_bottom_panel_bvigi,5,"Outer disk; conservative read of dashed curves (not Casertano routine)."
