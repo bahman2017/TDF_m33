@@ -56,7 +56,7 @@ Download/extraction audit: `docs/extraction_log.md`.
 | Layer | Location | Model-ready? |
 |-------|----------|----------------|
 | Downloads | `data/raw/downloads/` | No — publisher PDFs, HTML, supplementary files |
-| Raw extracted | `data/raw/extracted/` | **No** — interim table columns (`sigma_*`, `v_rot_kms`, etc.) |
+| Raw extracted | `data/raw/extracted/` | **No** — interim table columns (`sigma_*`, `v_rot_kms`, etc.); see `corbelli2014_table1_raw.csv` |
 | Processed | `data/processed/m33_rotation.csv` | **Yes** — requires real \(v_{\mathrm{obs}}\), \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\), … |
 
 **Surface densities are not baryonic velocities.** Values such as `sigma_hi`, `sigma_gas`, and `sigma_star` in the raw Corbelli et al. 2014 Table 1 template must **not** be copied into `v_gas_kms` or `v_disk_kms` without a documented mass-model derivation (Phase 1D).
@@ -73,9 +73,15 @@ Audited against `data/raw/downloads/corbelli2014_aa24033_14.pdf`, **page 13 of 1
 | \(\Sigma_{\mathrm{HI}}\) | M\(_\odot\) pc\(^{-2}\) | `sigma_hi` |
 | \(\Sigma_\*\) | M\(_\odot\) pc\(^{-2}\) | `sigma_star` |
 
-**Gaps:** Table 1 has **no** \(\Sigma_{\mathrm{H_2}}\), total \(\Sigma_{\mathrm{gas}}\), \(v_{\mathrm{gas}}\), or \(v_{\mathrm{disk}}\). Template columns `sigma_h2` and `sigma_gas` remain for optional interim use but must stay empty unless derived elsewhere. **58 rows** to transcribe in Phase 1D-C into `corbelli2014_table1_raw.csv` (not created yet).
+### Corbelli et al. 2014 — Table 1 raw extraction (Phase 1D-C, 2026-05-24)
 
-**Warning:** Do **not** map \(\Sigma_{\mathrm{HI}}\) → `v_gas_kms` or \(\Sigma_\*\) → `v_disk_kms`. Baryonic velocity components require a separate documented step (mass model / dynamical fit), not Table 1 transcription.
+**File:** `data/raw/extracted/corbelli2014_table1_raw.csv` (**58 rows**, tracked in git).
+
+Contains **observed rotation** (\(V_r\), \(\sigma_V\)) and **surface densities** (\(\Sigma_{\mathrm{HI}}\), \(\Sigma_\*\)) from A&A 572, A23 Table 1 only. Columns `sigma_h2` and `sigma_gas` are empty. This file is **not** model-ready.
+
+**Gaps (unchanged):** No \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\), or \(v_{\mathrm{bulge}}\) in Table 1. **Warning:** Do **not** map \(\Sigma_{\mathrm{HI}}\) → `v_gas_kms` or \(\Sigma_\*\) → `v_disk_kms`. Baryonic velocity components still require a documented mass-model / dynamical decomposition step (Phase 1D-D) before `data/processed/m33_rotation.csv`.
+
+**Validate raw file:** `python scripts/validate_corbelli2014_table1_raw.py`
 
 `configs/m33_default.yaml` → `processed_data.allow_creation_without_baryonic_velocity_components: false`
 

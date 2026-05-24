@@ -9,10 +9,19 @@ They are **not** the model-ready `data/processed/m33_rotation.csv`:
 
 ## Corbelli et al. 2014 Table 1
 
-Template (headers only until extraction): `corbelli2014_table1_raw_template.csv`
+| File | Role |
+|------|------|
+| `corbelli2014_table1_raw_template.csv` | Header-only template |
+| `corbelli2014_table1_raw.csv` | **58 rows** from A&A Table 1 (Phase 1D-C); raw/interim only |
 
-Create or refresh template:
+Validate extracted table:
 
 ```bash
-python scripts/prepare_corbelli2014_table1_template.py
+python scripts/validate_corbelli2014_table1_raw.py
+```
+
+Re-extract from official PDF (requires `pymupdf`):
+
+```bash
+python scripts/extract_corbelli2014_table1_from_pdf.py
 ```

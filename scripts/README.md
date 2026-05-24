@@ -27,4 +27,11 @@ python scripts/prepare_corbelli2014_table1_template.py
 python scripts/audit_m33_sources.py
 ```
 
-Model-ready ingestion and fit/plot scripts are not implemented yet (Phase 1D+).
+**Phase 1D-C — extract and validate Corbelli 2014 Table 1 (raw/interim):**
+
+```bash
+python scripts/extract_corbelli2014_table1_from_pdf.py   # requires pymupdf; official PDF on disk
+python scripts/validate_corbelli2014_table1_raw.py
+```
+
+Model-ready ingestion and fit/plot scripts are not implemented yet (Phase 1D-D+).

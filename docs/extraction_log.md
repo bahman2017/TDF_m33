@@ -81,9 +81,11 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 | Item | Status |
 |------|--------|
 | Raw template CSV | Created: `data/raw/extracted/corbelli2014_table1_raw_template.csv` (headers only) |
-| Rows extracted | **None** — Phase 1D-C pending |
+| Raw extracted CSV | **Complete** — `data/raw/extracted/corbelli2014_table1_raw.csv` (Phase 1D-C, 2026-05-24) |
+| Rows extracted | **58** — matches PDF Table 1 |
 | Column audit vs paper | **Complete** — Phase 1D-B (2026-05-24); see §5.1 |
 | Published row count (PDF) | **58** radial bins (\(R \approx 0.24\)–\(22.72\) kpc) |
+| Model-ready CSV | **Not created** — no `m33_rotation.csv` |
 
 ### 5.1 Phase 1D-B — Table 1 column audit (2026-05-24)
 
@@ -135,9 +137,29 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 1. **Surface densities only:** Table 1 tabulates \(\Sigma_{\mathrm{HI}}\) and \(\Sigma_\*\), not circular-speed components \(v_{\mathrm{gas}}\) or \(v_{\mathrm{disk}}\).
 2. **Do not alias densities to velocities:** \(\Sigma_{\mathrm{HI}}\) and \(\Sigma_\*\) must **not** be copied into `v_gas_kms` or `v_disk_kms` in `data/processed/m33_rotation.csv`.
 3. **Template sufficiency:** Existing `corbelli2014_table1_raw_template.csv` headers are **sufficient**; optional `sigma_h2` / `sigma_gas` remain for interim fields not in Table 1 (empty unless derived later).
-4. **No numerical extraction in Phase 1D-B:** `data/raw/extracted/corbelli2014_table1_raw.csv` **not** created yet.
+4. **Phase 1D-C complete:** `data/raw/extracted/corbelli2014_table1_raw.csv` created (see §5.2).
 
-**Next step (Phase 1D-C):** Transcribe all **58** rows from PDF Table 1 into `corbelli2014_table1_raw.csv` with `source_id=corbelli_et_al_2014`, `raw_table_id=corbelli2014_table1`, `extraction_method=manual_from_pdf_table1`, and per-row `reference` to A&A 572, A23 Table 1.
+### 5.2 Phase 1D-C — Table 1 numerical extraction (2026-05-24)
+
+| Field | Value |
+|-------|--------|
+| Output file | `data/raw/extracted/corbelli2014_table1_raw.csv` |
+| Extraction method | `manual_from_pdf_table1` (reproducible via `scripts/extract_corbelli2014_table1_from_pdf.py` from official PDF) |
+| Source PDF | `data/raw/downloads/corbelli2014_aa24033_14.pdf` (page 13 of 18) |
+| Row count | **58** |
+| `sigma_h2`, `sigma_gas` | Empty for all rows (not tabulated in Table 1) |
+| Layer | **Raw/interim only** — not model-ready; no baryonic velocity components |
+
+**Spot checks (first / last row vs PDF Table 1):**
+
+| Row | \(R\) [kpc] | \(V_r\) [km s\(^{-1}\)] | \(\sigma_V\) | \(\Sigma_{\mathrm{HI}}\) | \(\Sigma_\*\) |
+|-----|-------------|-------------------------|--------------|--------------------------|----------------|
+| 1 | 0.24 | 37.3 | 6.2 | 7.12 | 316.59 |
+| 58 | 22.72 | 119.6 | 13.4 | 0.07 | 0.13 |
+
+**Validation:** `python scripts/validate_corbelli2014_table1_raw.py` (and `tests/test_corbelli2014_table1_raw.py`).
+
+**Next step (Phase 1D-D):** Derive or source \(v_{\mathrm{gas}}\), \(v_{\mathrm{disk}}\) (and bulge if needed) before building `data/processed/m33_rotation.csv`.
 
 ### Expected raw/interim columns (template)
 
