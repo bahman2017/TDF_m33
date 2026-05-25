@@ -1,0 +1,3 @@
+source_id,extracted_artifact,extraction_status,suitability,limitations,next_phase_use,row_count,fig6_digitized_rows,model_evaluated_rows
+lopez_fune_salucci_corbelli_2017,data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv,extracted,upper_bound_dynamical_consistency,Fig.6 points approximate; overlaps Corbelli 2014 dynamics; not lensing,Phase 5C-B enclosed-mass / rho consistency only,25,7.0,18.0
+lopez_fune_salucci_corbelli_2017,data/raw/extracted/lopez_fune_2017_halo_parameters_raw.csv,extracted,halo_parameter_reference,Quoted prose only; no machine tables in paper,Phase 5C-B anchor NFW/BRK reference fits,16,,

@@ -1,0 +1,17 @@
+source_id,model_label,parameter_name,value,unit,quoted_uncertainty,page_or_section,reference,notes
+lopez_fune_salucci_corbelli_2017,nfw_global_corbelli2014_cited,concentration_c,9.5,dimensionless,1.5,"Section 2.2, page 4",LopezFune2017 Eq.3-8; values from Corbelli et al. 2014 cited,Global RC fit context; not local density method
+lopez_fune_salucci_corbelli_2017,nfw_global_corbelli2014_cited,M_vir,430000000000.0,M_sun,100000000000.0,"Section 2.2, page 4",LopezFune2017 Section 2.2,Global RC fit; Corbelli et al. 2014 cited
+lopez_fune_salucci_corbelli_2017,burkert_global_rc_fit,r_c,7.5,kpc,,"Section 2.2, page 5",LopezFune2017 Section 2.2 BRK global fit,Global RC fit with synthesis stellar mass 7.2e9 M_sun
+lopez_fune_salucci_corbelli_2017,burkert_global_rc_fit,rho_c,18000000.0,M_sun/kpc^3,,"Section 2.2, page 5",LopezFune2017 Section 2.2,18.0 x 10^6 M_sun kpc^-3 in paper
+lopez_fune_salucci_corbelli_2017,burkert_global_rc_fit,M_star,7200000000.0,M_sun,,"Section 2.2, page 5",LopezFune2017 Section 2.2,Stellar mass used in global BRK fit
+lopez_fune_salucci_corbelli_2017,rational_rc_fit,V0,130.2,km/s,1.0,"Section 3.2, page 6",LopezFune2017 Eq.18,Empirical RC fit for local density method
+lopez_fune_salucci_corbelli_2017,rational_rc_fit,r0,1.3,kpc,0.1,"Section 3.2, page 6",LopezFune2017 Eq.18,
+lopez_fune_salucci_corbelli_2017,rational_rc_fit,d,0.12,dimensionless,0.03,"Section 3.2, page 6",LopezFune2017 Eq.18,chi2_red=0.75 quoted
+lopez_fune_salucci_corbelli_2017,burkert_local_density,r_c,9.6,kpc,0.5,"Section 3.3, page 6-7",LopezFune2017 Section 3.3,9.5 <= r <= 22.72 kpc local method
+lopez_fune_salucci_corbelli_2017,burkert_local_density,rho_c,12300000.0,M_sun/kpc^3,1000000.0,"Section 3.3, page 6-7",LopezFune2017 Section 3.3,12.3 x 10^6 M_sun kpc^-3
+lopez_fune_salucci_corbelli_2017,burkert_local_density,M_vir,300000000000.0,M_sun,80000000000.0,"Section 3.3 / Section 4, page 6-9",LopezFune2017 Section 3.3 and Conclusions,Local density estimator BRK fit
+lopez_fune_salucci_corbelli_2017,nfw_local_density,concentration_c,9.5,dimensionless,0.7,"Section 3.3, page 7",LopezFune2017 Section 3.3,chi2_red=1.0
+lopez_fune_salucci_corbelli_2017,nfw_local_density,M_vir,540000000000.0,M_sun,60000000000.0,"Section 3.3, page 7",LopezFune2017 Section 3.3,Local density estimator NFW fit
+lopez_fune_salucci_corbelli_2017,burkert_local_density,M_enclosed_23kpc,67000000000.0,M_sun,12000000000.0,"Section 4 Conclusions, page 9",LopezFune2017 Conclusions,BRK halo mass within ~23 kpc; not full virial mass
+lopez_fune_salucci_corbelli_2017,analysis_range,r_min_kpc,9.53,kpc,,Abstract; Section 3.3,LopezFune2017,DM-dominated local analysis range lower bound
+lopez_fune_salucci_corbelli_2017,analysis_range,r_max_kpc,22.72,kpc,,Abstract; Section 3.3,LopezFune2017,Upper bound of local density analysis

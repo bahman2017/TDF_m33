@@ -71,7 +71,8 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 5B-A** | Complete — calibration/limits planning audit (no physical units yet) |
 | **Phase 5B-B** | Complete — constraint source review; no comparison yet |
 | **Phase 5B-C** | Complete — López Fune et al. 2017 PDF + extraction plan (documented) |
-| Phase 5C | Planned — dynamical upper-bound extraction/comparison |
+| **Phase 5C-A** | Complete — López Fune 2017 constraint tables extracted (no comparison) |
+| Phase 5C-B | Planned — dynamical upper-bound consistency check |
 
 ## Data provenance status
 
@@ -99,6 +100,7 @@ python scripts/run_phase5a_lensing_prediction.py
 python scripts/run_phase5b_lensing_calibration_audit.py
 python scripts/run_phase5b_constraint_source_audit.py
 python scripts/audit_lopez_fune_2017_source.py
+python scripts/validate_lopez_fune_2017_extracted_constraints.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```

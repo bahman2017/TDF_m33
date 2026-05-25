@@ -271,4 +271,6 @@ This repository **does not** invent M33 velocities, surface densities, or baryon
 | SHA-256 | `753c93a49ff56e4c60ea0eed8fe8c4e85ed9fb59880a4d2b11cc84968609d3b4` |
 | Provenance | arXiv accepted manuscript (publisher OUP PDF optional) |
 | Extraction plan | `docs/lopez_fune_2017_extraction_plan.md` |
-| Numerical extraction | **Not performed** — figure digitization deferred to Phase 5C |
+| DM profile CSV | `data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv` |
+| Parameters CSV | `data/raw/extracted/lopez_fune_2017_halo_parameters_raw.csv` |
+| Numerical extraction | **Phase 5C-A** — Fig. 6 digitized (approx.) + quoted parameters; no TDF comparison |

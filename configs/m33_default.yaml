@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 5B-C  # Acquire selected López Fune et al. 2017 source (PDF + plan)
+  phase: 5C-A  # Extract López Fune 2017 dynamical constraints (no comparison)
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -161,6 +161,9 @@ tdf:
         doi: "10.1093/mnras/stx2742"
         extraction_plan: docs/lopez_fune_2017_extraction_plan.md
         provenance_note: "arXiv PDF (accepted manuscript); publisher PDF via Oxford Academic if needed"
+        extraction_status: extracted
+        profile_csv: data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv
+        parameters_csv: data/raw/extracted/lopez_fune_2017_halo_parameters_raw.csv
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys

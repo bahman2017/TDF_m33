@@ -410,7 +410,29 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Status:** Complete.
 
-**Phase 5C (planned):** Upper-bound dynamical-mass consistency using extracted tables for `selected_source_id`; deflection remains `normalized_proxy` until calibration documented.
+**Phase 5C-B (planned):** Upper-bound dynamical-mass consistency using extracted tables for `selected_source_id`; deflection remains `normalized_proxy` until calibration documented.
+
+---
+
+## Phase 5C-A: Extract López Fune et al. 2017 constraints
+
+**Goal:** Traceable raw CSVs from quoted text and approximate Fig. 6 digitization—no TDF comparison.
+
+**Deliverables:**
+
+- `data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv`
+- `data/raw/extracted/lopez_fune_2017_halo_parameters_raw.csv`
+- `scripts/validate_lopez_fune_2017_extracted_constraints.py`
+- `outputs/reports/phase5c_lopez_fune_extraction_audit.md`
+
+**Acceptance criteria:**
+
+- [x] Quoted NFW/BRK parameters transcribed with page references
+- [x] Fig. 6 points digitized with documented uncertainty (~15%)
+- [x] No comparison columns; observational_limits disabled
+- [x] Circularity documented
+
+**Status:** Complete.
 
 ---
 
@@ -473,7 +495,9 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Phase 5B-C (complete):** López Fune et al. 2017 PDF acquisition and extraction plan (see section above).
 
-**Phase 5C (planned):** Upper-bound dynamical comparison for selected source; physical calibration still deferred unless documented.
+**Phase 5C-A (complete):** Extract López Fune 2017 dynamical tables (see section above).
+
+**Phase 5C-B (planned):** Upper-bound dynamical comparison for selected source; physical calibration still deferred unless documented.
 
 **Acceptance criteria (5A):**
 

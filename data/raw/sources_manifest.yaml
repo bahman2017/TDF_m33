@@ -82,7 +82,7 @@ sources:
     planned_use: >
       NFW and Burkert halo baseline parameters; extended radial range; dark-matter
       density slope comparison; baryonic decomposition cross-check for Phase 2 fits.
-    acquisition_status: documented
+    acquisition_status: digitized
     url_or_doi: "10.1093/mnras/stx2742"
     local_pdf: data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf
     checksum_file: data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf.sha256
@@ -105,8 +105,8 @@ sources:
       Halo-centric analysis; retained for comparison, not to claim dark matter is ruled out.
     citation_key: "LopezFune2017"
     notes: >
-      Phase 5B-C: PDF acquired (arXiv accepted manuscript). Extraction plan:
-      docs/lopez_fune_2017_extraction_plan.md. Phase 5C dynamical upper-bound only.
+      Phase 5B-C: PDF acquired. Phase 5C-A: raw CSVs in data/raw/extracted/
+      lopez_fune_2017_*.csv. Phase 5C-B comparison only; not lensing.
 
   - source_id: hi_map_placeholder
     title: "HI surface density / kinematics map (survey TBD)"

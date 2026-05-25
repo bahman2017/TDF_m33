@@ -54,9 +54,10 @@ No numbered data tables were identified in the acquired PDF text layer. Numerica
 - This paper refits NFW/Burkert on related RC data — **not independent** of the TDF τ reconstruction inputs.
 - Phase 5C comparisons must be labeled **consistency / upper-bound** against an external halo literature model, not as verification of τ lensing against independent lensing data.
 
-## Phase 5B-C vs 5C
+## Phase 5B-C vs 5C-A vs 5C-B
 
 | Phase | Action |
 |-------|--------|
-| **5B-C (this)** | Acquire PDF + checksum; document extraction plan; audit only |
-| **5C (next)** | Digitize Fig. 6 (and/or transcribe quoted parameters) → `data/raw/extracted/lopez_fune_2017_*.csv`; then enable comparison workflow (still `observational_limits.enabled: false` until review) |
+| **5B-C** | Acquire PDF + checksum; document extraction plan |
+| **5C-A (complete)** | Extract to `lopez_fune_2017_dm_profile_raw.csv` and `lopez_fune_2017_halo_parameters_raw.csv`; audit via `validate_lopez_fune_2017_extracted_constraints.py` |
+| **5C-B (next)** | Upper-bound dynamical consistency vs TDF (no τ tuning; still `normalized_proxy`) |

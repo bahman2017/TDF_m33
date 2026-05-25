@@ -137,3 +137,11 @@ python scripts/audit_lopez_fune_2017_source.py
 ```
 
 Requires `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf` and checksum sidecar. Plan: `docs/lopez_fune_2017_extraction_plan.md`. No comparison tables yet.
+
+**Phase 5C-A — extract dynamical constraints (no comparison):**
+
+```bash
+python scripts/validate_lopez_fune_2017_extracted_constraints.py
+```
+
+Writes/validates `data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv`, `lopez_fune_2017_halo_parameters_raw.csv`, and audit outputs under `outputs/`.
