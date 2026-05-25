@@ -235,9 +235,28 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
-## Phase 3B-B / 3C: Low-parameter τ and formal comparison (planned)
+## Phase 3C: Low-parameter knot τ-gradient model comparison
 
-**Goal:** Low-DOF τ parameterization and AIC/BIC comparison vs Phase 2 baselines.
+**Goal:** Fairer TDF comparison vs NFW/Burkert using k=3,4,5 fitted knot values (K_τ fixed).
+
+**Deliverables:**
+
+- `tdf_m33.models.tdf_lowparam`, `scripts/run_phase3c_tdf_lowparam_model.py`
+- `phase3c_tdf_lowparam_*` tables, `phase3c_combined_model_comparison.csv`, figures
+
+**Acceptance criteria:**
+
+- [x] Fit on Corbelli mask 0.4–23 kpc; v_model² = v_bar² + r K_τ dτ/dr
+- [x] AIC/BIC for low-parameter TDF only (3A/3B not in formal comparison)
+- [x] Combined table with baryonic, NFW, Burkert, TDF knot models; Burkert boundary preserved
+
+**Status:** Complete.
+
+---
+
+## Phase 3D / 4: Sensitivity and 2D τ (planned)
+
+**Goal:** K_τ sensitivity, optional 2D τ-map; lensing consistency (Phase 5).
 
 ---
 

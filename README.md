@@ -63,7 +63,8 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 2C** | Complete — model audit, Burkert boundary flag, Phase 3 residual readiness |
 | **Phase 3A** | Complete — direct pointwise τ from baryonic Δv² (unsmoothed) |
 | **Phase 3B-A** | Complete — regularized τ-gradient (Gaussian + spline) |
-| Phase 3C+ | Not started — low-parameter τ, formal model comparison |
+| **Phase 3C** | Complete — low-parameter knot τ; AIC/BIC vs NFW/Burkert |
+| Phase 4+ | Not started — 2D τ-map, lensing |
 
 ## Data provenance status
 
@@ -83,11 +84,12 @@ python scripts/run_phase2b_halo_baselines.py
 python scripts/run_phase2c_model_audit.py
 python scripts/run_phase3a_tdf_radial_reconstruction.py
 python scripts/run_phase3b_tdf_regularized_reconstruction.py
+python scripts/run_phase3c_tdf_lowparam_model.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```
 
-See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 3A/3B-A use baryonic \(\Delta v^2\) only (\(K_\tau=1\) normalization). Phase 3B-A smooths \(d\tau/dr\) (config-fixed σ or spline s)—not a halo fit or anti-DM claim. Formal comparison vs NFW is Phase 3C.
+See `docs/extraction_log.md` and docs for provenance. Phase 3C fits k=3,4,5 knot τ-gradient models (\(K_\tau=1\) fixed) with AIC/BIC on the Corbelli mask alongside NFW/Burkert. Phase 3A/3B are reconstruction steps, not fair AIC/BIC competitors. No dark-matter replacement claim.
 
 ## Expected data sources
 

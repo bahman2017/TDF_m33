@@ -23,6 +23,7 @@ Explicit scope control for reviewers and future paper text.
 | Phase 3A direct τ | 3A | Pointwise \(d\tau/dr=\Delta v^2/(rK_\tau)\); \(K_\tau=1\) is project-unit normalization; \(\tau\) offset arbitrary; identity check not AIC/BIC competitor |
 | \(K_\tau\) | 3B+ | Physical calibration and fitting deferred; sensitivity analysis planned |
 | Phase 3B-A regularization | 3B-A | Gaussian/spline smoothing of \(d\tau/dr\); parameters fixed in config—not fitted; not evidence vs NFW by itself |
+| Phase 3C low-parameter TDF | 3C | k knot dτ/dr values fitted; K_τ fixed; first fair AIC/BIC row for TDF; 3A/3B excluded from formal comparison |
 | τ smoothness | 3B-A | Raw spikes reduced; interpretive claims still require Phase 3C comparison |
 | 2D τ-map | 4 | Optional; may impose additional symmetry |
 | Lensing geometry | 5 | Line-of-sight and thin-lens approximations as documented in lensing module |
@@ -50,6 +51,8 @@ Explicit scope control for reviewers and future paper text.
 10. **Phase 3A direct τ.** Raw \(d\tau/dr\) and \(\tau(r)\) are reconstructed algebraically from baryonic residuals—**not** a new fitted halo model. Reconstruction error \(\approx 0\) is an identity check. No lensing predictions. No dark-matter disproof claim.
 
 11. **Phase 3B-A smoothed τ.** Smoothing reduces gradient spikes but introduces reconstruction RMSE vs \(v_{\mathrm{obs}}\). This is a **regularization step**, not proof that TDF outperforms NFW. Raw Phase 3A profiles remain available. AIC/BIC comparison requires Phase 3C.
+
+12. **Phase 3C low-parameter TDF.** Knot models (k=3,4,5) enable AIC/BIC vs NFW (k=2). Better AIC alone does not disprove DM or validate TDF microphysics. No lensing. Baryonic PASS_WITH_CAVEAT unchanged.
 
 ## Claim control (mandatory framing)
 

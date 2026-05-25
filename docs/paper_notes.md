@@ -35,7 +35,8 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - **Phase 3A (2026-05-24):** Raw \(d\tau/dr\) and \(\tau(r)\) from baryonic \(\Delta v^2\) with \(K_\tau=1\) normalization; direct reconstruction matches \(v_{\mathrm{obs}}\) by construction (identity check).
 - **Not** a fair AIC/BIC competitor to NFW until Phase 3B regularization.
 - **Phase 3B-A:** Gaussian (σ=0.75 kpc) and spline smoothing of raw \(d\tau/dr\); tradeoff vs \(v_{\mathrm{obs}}\) documented—not a claim that TDF beats NFW.
-- Formal AIC/BIC deferred to Phase 3C.
+- **Phase 3C:** Low-parameter knot τ models (k=3,4,5) with AIC/BIC vs NFW/Burkert on fit mask; K_τ fixed. 3A/3B not formal competitors.
+- Qualify any TDF vs NFW comparison — not a DM disproof.
 - No lensing predictions yet. No dark-matter replacement claim.
 
 ## Planned figures

@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 3B-A  # Regularized τ-gradient from Phase 3A raw profile
+  phase: 3C  # Low-parameter knot τ model vs Phase 2 baselines
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -76,11 +76,21 @@ tdf:
     compare_methods:
       - gaussian_radius_smoothing
       - smoothing_spline
+  low_parameter_model:
+    enabled: true
+    default_model: knot_tau_gradient
+    k_tau: 1.0
+    knot_count: 4
+    knot_strategy: quantile_radius_fit_mask
+    enforce_nonnegative_vtau2: true
+    fit_min_radius_kpc: 0.4
+    fit_max_radius_kpc: 23.0
+    compare_knot_counts: [3, 4, 5]
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys
   radial_profile:
-    parameterization: regularized  # Phase 3B-A; direct_pointwise in 3A
+    parameterization: lowparam_knot  # Phase 3C; regularized in 3B-A
     n_knots: null
   map_2d:
     enabled: false  # Phase 4 optional

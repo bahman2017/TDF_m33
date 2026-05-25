@@ -68,6 +68,14 @@ Phase 3A applies the inversion algebraically at each radius on the canonical gri
 - Negative smoothed \(v_\tau^2\) are **flagged**, not silently clipped.
 - Formal AIC/BIC vs NFW deferred to Phase 3C (low-parameter / effective DOF).
 
+## Phase 3C implementation (low-parameter knot model)
+
+- **Fitted parameters:** dτ/dr at `k` knot radii (linear interpolation in r); **K_τ fixed** from config.
+- **Fit target:** weighted \((v_{\mathrm{obs}} - v_{\mathrm{model}})/\sigma_v\) on Corbelli mask; \(v_{\mathrm{model}}^2 = v_{\mathrm{bar}}^2 + r K_\tau\, d\tau/dr\).
+- **AIC/BIC** apply to 3-/4-/5-knot models (`tdf_lowparam_*knot`); Phase 3A direct and Phase 3B smoothed profiles are **not** fair competitors (one value per radius or fixed smoothing).
+- Negative \(v_\tau^2\) flagged; optional non-negative knot bounds.
+- Does not imply TDF disproves dark matter; Burkert baseline may remain bound-limited.
+
 ## Reconstruction from rotation, use for lensing
 
 **Step 1 (rotation):** Using \(v_{\mathrm{obs}}(r)\) and a documented \(v_{\mathrm{bar}}(r)\), infer \(d\tau/dr\) and \(\tau(r)\) (or a 2D \(\tau\) map in Phase 4) subject to smoothness and config choices.

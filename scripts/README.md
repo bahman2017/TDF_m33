@@ -76,3 +76,9 @@ python scripts/run_phase3a_tdf_radial_reconstruction.py
 python scripts/run_phase3a_tdf_radial_reconstruction.py  # prerequisite
 python scripts/run_phase3b_tdf_regularized_reconstruction.py
 ```
+
+**Phase 3C — low-parameter knot τ model (AIC/BIC vs baselines):**
+
+```bash
+python scripts/run_phase3c_tdf_lowparam_model.py
+```

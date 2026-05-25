@@ -89,6 +89,13 @@ outputs/tables/*
 !outputs/figures/phase3b_tau_profile_regularized.png
 !outputs/figures/phase3b_tdf_regularized_reconstruction_check.png
 !outputs/figures/phase3b_regularization_tradeoff.png
+!outputs/tables/phase3c_tdf_lowparam_model_comparison.csv
+!outputs/tables/phase3c_tdf_lowparam_fit_parameters.csv
+!outputs/tables/phase3c_tdf_lowparam_profiles.csv
+!outputs/tables/phase3c_combined_model_comparison.csv
+!outputs/figures/phase3c_tdf_lowparam_rotation_comparison.png
+!outputs/figures/phase3c_tdf_lowparam_tau_gradient.png
+!outputs/figures/phase3c_tdf_lowparam_residuals.png
 outputs/reports/*
 !outputs/reports/README.md
 !outputs/reports/phase2c_model_audit_report.md

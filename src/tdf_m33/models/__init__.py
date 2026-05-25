@@ -25,6 +25,10 @@ from tdf_m33.models.tdf_radial import (
     compute_v_tau_squared_from_gradient,
     integrate_tau_profile,
 )
+from tdf_m33.models.tdf_lowparam import (
+    knot_interpolated_tau_gradient,
+    tdf_velocity_model,
+)
 from tdf_m33.models.tdf_regularization import (
     gaussian_radius_smoothing,
     smooth_tau_gradient,
@@ -47,7 +51,9 @@ __all__ = [
     "compute_v_tau_squared_from_gradient",
     "gaussian_radius_smoothing",
     "integrate_tau_profile",
+    "knot_interpolated_tau_gradient",
     "nfw_density",
+    "tdf_velocity_model",
     "smooth_tau_gradient",
     "smoothing_spline",
     "nfw_mass_enclosed",
