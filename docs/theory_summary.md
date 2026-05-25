@@ -47,7 +47,17 @@ Interpretation (careful):
 - Where baryons alone underpredict \(v_{\mathrm{obs}}\), \(\Delta v^2 > 0\) and the reconstructed \(d\tau/dr\) has a sign and magnitude set by \(K_\tau\) and radius.
 - This is a **reparameterization** of the missing dynamical support in the TDF branch, not by itself a proof of any specific microphysical origin.
 
-Regularization (smooth splines, bounded gradients, etc.) will be stated in Phase 3 documentation; unregularized pointwise inversion is generally ill-posed.
+Regularization (smooth splines, bounded gradients, etc.) will be stated in Phase 3B documentation; unregularized pointwise inversion is generally ill-posed.
+
+## Phase 3A implementation (direct pointwise)
+
+Phase 3A applies the inversion algebraically at each radius on the canonical grid:
+
+- Input: \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) from Phase 2A (baryonic-only; not NFW/Burkert-subtracted).
+- \(d\tau/dr = \Delta v^2 / (r\, K_\tau)\) with default \(K_\tau = 1\) as a **project-unit normalization** (not a fitted physical constant in 3A).
+- \(\tau(r)\) from cumulative trapezoidal integration with \(\tau(r_{\min}) = 0\); **additive offset of \(\tau\) is arbitrary**.
+- \(v_{\mathrm{TDF,direct}} = \sqrt{v_{\mathrm{bar}}^2 + r K_\tau\, d\tau/dr}\) is an **identity check** (reconstruction error \(\approx 0\) numerically), not a new halo fit or AIC/BIC competitor.
+- Raw \(d\tau/dr\) inherits spikes from \(\Delta v^2\); Phase 3B will add smoothing/regularization.
 
 ## Reconstruction from rotation, use for lensing
 

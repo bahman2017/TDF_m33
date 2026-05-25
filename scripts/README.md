@@ -62,3 +62,10 @@ python scripts/run_phase2a_baryonic_only.py   # prerequisite
 python scripts/run_phase2b_halo_baselines.py  # prerequisite
 python scripts/run_phase2c_model_audit.py
 ```
+
+**Phase 3A — direct pointwise TDF τ from baryonic Δv² (no smoothing):**
+
+```bash
+python scripts/run_phase2c_model_audit.py   # prerequisite
+python scripts/run_phase3a_tdf_radial_reconstruction.py
+```

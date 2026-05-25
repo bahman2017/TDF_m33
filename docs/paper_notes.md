@@ -32,8 +32,10 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - NFW: good fit on fit mask (reduced χ² ≈ 1.2)—**ΛCDM comparison baseline**, not TDF.
 - Burkert: poor fit; r₀ at upper bound (~200 kpc)—**do not over-interpret** vs Corbelli BVI reference.
 - Baryonic velocities: D1-derived, `PASS_WITH_CAVEAT`.
-- **No τ-profile reconstructed yet.** Phase 3 uses \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) from Phase 2A only.
-- No dark-matter replacement claim at this stage.
+- **Phase 3A (2026-05-24):** Raw \(d\tau/dr\) and \(\tau(r)\) from baryonic \(\Delta v^2\) with \(K_\tau=1\) normalization; direct reconstruction matches \(v_{\mathrm{obs}}\) by construction (identity check).
+- **Not** a fair AIC/BIC competitor to NFW until Phase 3B regularization.
+- Raw gradient has spikes; smoothing in Phase 3B.
+- No lensing predictions yet. No dark-matter replacement claim.
 
 ## Planned figures
 

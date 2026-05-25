@@ -20,8 +20,9 @@ Explicit scope control for reviewers and future paper text.
 | AIC/BIC (Phase 2B) | 2B | χ² + 2k and χ² + k ln n with k=0,2; baryonic components fixed from D1 |
 | Phase 2C audit | 2C | Consolidates 2A/2B; Burkert r₀ often bound-limited (~200 kpc)—not publication-stable vs Corbelli; NFW good fit is ΛCDM baseline only |
 | Phase 3 τ input | 3 | \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) from Phase 2A only—not NFW/Burkert residuals |
-| \(K_\tau\) | 3 | Coupling constant fixed or fit from config; sensitivity analysis planned |
-| τ smoothness | 3 | Regularization required for stable \(d\tau/dr\) |
+| Phase 3A direct τ | 3A | Pointwise \(d\tau/dr=\Delta v^2/(rK_\tau)\); \(K_\tau=1\) is project-unit normalization; \(\tau\) offset arbitrary; identity check not AIC/BIC competitor |
+| \(K_\tau\) | 3B+ | Physical calibration and fitting deferred; sensitivity analysis planned |
+| τ smoothness | 3B | Regularization required for stable \(d\tau/dr\) (9 raw spikes in Phase 2C) |
 | 2D τ-map | 4 | Optional; may impose additional symmetry |
 | Lensing geometry | 5 | Line-of-sight and thin-lens approximations as documented in lensing module |
 
@@ -43,7 +44,9 @@ Explicit scope control for reviewers and future paper text.
 
 8. **Phase 2B halo fits.** Better NFW/Burkert χ² vs baryonic-only is expected for a disk galaxy in ΛCDM; this does **not** validate TDF or disprove dark matter. Corbelli et al. 2014 published halo parameters are sanity references only—D1 baryonic caveat applies.
 
-9. **Phase 2C audit.** NFW performs well on the processed dataset (reduced χ² ≈ 1 on the fit mask); Burkert is **boundary-limited** (r₀ at upper bound) and should not be over-interpreted. No τ reconstruction has been run. Phase 3 will use baryonic \(\Delta v^2\) only; smoothing/regularization may be needed depending on residual gradient diagnostics.
+9. **Phase 2C audit.** NFW performs well on the processed dataset (reduced χ² ≈ 1 on the fit mask); Burkert is **boundary-limited** (r₀ at upper bound) and should not be over-interpreted. Phase 3 uses baryonic \(\Delta v^2\) only; smoothing/regularization may be needed depending on residual gradient diagnostics.
+
+10. **Phase 3A direct τ.** Raw \(d\tau/dr\) and \(\tau(r)\) are reconstructed algebraically from baryonic residuals—**not** a new fitted halo model. Reconstruction error \(\approx 0\) is an identity check. No lensing predictions. No dark-matter disproof claim. Phase 3B should smooth the gradient before interpretive or comparative claims.
 
 ## Claim control (mandatory framing)
 

@@ -78,6 +78,11 @@ outputs/tables/*
 !outputs/tables/phase2c_model_audit_summary.csv
 !outputs/tables/phase2c_residual_readiness.csv
 !outputs/figures/phase2c_model_audit_summary.png
+!outputs/tables/phase3a_tau_radial_reconstruction.csv
+!outputs/tables/phase3a_tau_reconstruction_diagnostics.csv
+!outputs/figures/phase3a_tau_gradient_raw.png
+!outputs/figures/phase3a_tau_profile_raw.png
+!outputs/figures/phase3a_tdf_direct_reconstruction_check.png
 outputs/reports/*
 !outputs/reports/README.md
 !outputs/reports/phase2c_model_audit_report.md

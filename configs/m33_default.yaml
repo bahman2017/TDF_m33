@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 2C  # Phase 2 model audit consolidated; Phase 3 τ not started
+  phase: 3A  # Direct pointwise τ from baryonic Δv²; smoothing in 3B
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -61,10 +61,17 @@ dark_matter_baselines:
     m200_solar: null  # PLACEHOLDER
     core_radius_kpc: null  # PLACEHOLDER
 
+tdf:
+  k_tau: 1.0  # project-unit normalization for first reconstruction (not physical calibration)
+  tau0: 0.0  # τ(r_min); additive offset of τ is arbitrary
+  reconstruction_mode: direct_pointwise
+  input_residual: baryonic_only_delta_v2
+  use_fit_mask_for_summary: true
+
 tdf_model:
-  K_tau: null  # PLACEHOLDER: coupling constant in v_tau^2 = r * K_tau * d tau/dr
+  K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys
   radial_profile:
-    parameterization: null  # PLACEHOLDER: e.g. spline, analytic template
+    parameterization: direct_pointwise  # Phase 3A; spline/regularized in 3B
     n_knots: null
   map_2d:
     enabled: false  # Phase 4 optional

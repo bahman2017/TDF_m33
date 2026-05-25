@@ -20,6 +20,11 @@ from tdf_m33.models.disk_gravity import (
     circular_velocity_kms,
     circular_velocity_curve_kms,
 )
+from tdf_m33.models.tdf_radial import (
+    compute_tau_gradient,
+    compute_v_tau_squared_from_gradient,
+    integrate_tau_profile,
+)
 
 __all__ = [
     "DiskGravityGrid",
@@ -32,7 +37,10 @@ __all__ = [
     "circular_velocity_curve_kms",
     "compute_residual_acceleration",
     "compute_residual_velocity_squared",
+    "compute_tau_gradient",
     "compute_v_bar",
+    "compute_v_tau_squared_from_gradient",
+    "integrate_tau_profile",
     "nfw_density",
     "nfw_mass_enclosed",
     "nfw_velocity",

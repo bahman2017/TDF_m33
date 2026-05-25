@@ -146,6 +146,18 @@ Contains **observed rotation** (\(V_r\), \(\sigma_V\)) and **surface densities**
 
 Consolidates fit-mask metrics, Burkert r₀ boundary flag, NFW enclosed-mass sanity at 23 kpc, and Phase 2A \(\Delta v^2\) smoothness for τ reconstruction planning. **No τ columns or lensing outputs.**
 
+### Phase 3A — Direct τ reconstruction (2026-05-24)
+
+**Script:** `python scripts/run_phase3a_tdf_radial_reconstruction.py`
+
+| Output | Path |
+|--------|------|
+| Radial reconstruction | `outputs/tables/phase3a_tau_radial_reconstruction.csv` |
+| Diagnostics | `outputs/tables/phase3a_tau_reconstruction_diagnostics.csv` |
+| Figures | `phase3a_tau_gradient_raw.png`, `phase3a_tau_profile_raw.png`, `phase3a_tdf_direct_reconstruction_check.png` |
+
+Input: `phase2c_residual_readiness.csv` \(\Delta v^2\); \(d\tau/dr = \Delta v^2/(r K_\tau)\), default \(K_\tau=1\). **Not** NFW/Burkert residuals. Direct reconstruction is an identity check—not AIC/BIC model comparison (Phase 3B).
+
 ## Canonical processed CSV schema
 
 File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  

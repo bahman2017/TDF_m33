@@ -192,24 +192,45 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
-## Phase 3: τ-gradient and radial τ-profile reconstruction
+## Phase 3A: Direct pointwise τ-gradient reconstruction
 
-**Goal:** Reconstruct \(d\tau/dr\) and a radial \(\tau(r)\) profile from rotation residuals using TDF relations, without an independent halo in the TDF branch.
+**Goal:** Algebraic τ reconstruction from baryonic \(\Delta v^2\) only—no smoothing, fitting, or AIC/BIC comparison yet.
 
-**Prerequisite:** Fixed baryonic residual \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) from Phase 2A profile (not halo-subtracted).
+**Prerequisite:** `phase2c_residual_readiness.csv` / Phase 2A \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\).
 
 **Deliverables:**
 
-- TDF radial profile module and \(v_\tau(r)\) from \(r K_\tau \, d\tau/dr\)
-- Constraints on smoothness / regularization documented in `docs/assumptions_and_limitations.md`
-- τ-profile and composite \(v_{\mathrm{obs}}\) fit figures
+- `tdf_m33.models.tdf_radial`, `scripts/run_phase3a_tdf_radial_reconstruction.py`
+- `outputs/tables/phase3a_tau_radial_reconstruction.csv`, `phase3a_tau_reconstruction_diagnostics.csv`
+- Raw τ gradient/profile and direct reconstruction-check figures
 
 **Acceptance criteria:**
 
-- [ ] Implementation matches documented equations in `docs/theory_summary.md`
-- [ ] \(v_{\mathrm{obs}}^2 \approx v_{\mathrm{bar}}^2 + v_\tau^2\) within stated tolerance after reconstruction
-- [ ] \(K_\tau\) and profile choices traceable via config and docs
-- [ ] Comparison table includes baryonic, NFW, Burkert, and TDF radial models
+- [x] \(d\tau/dr = \Delta v^2/(r K_\tau)\); \(K_\tau=1\) normalization documented
+- [x] Identity check: \(v_{\mathrm{TDF,direct}} \approx v_{\mathrm{obs}}\) (not a new halo fit)
+- [x] No NFW/Burkert residuals; no lensing; negative \(\Delta v^2\) flagged not clipped
+- [x] AIC/BIC comparison deferred to Phase 3B/3C
+
+**Status:** Complete.
+
+---
+
+## Phase 3B: τ smoothing / regularization (planned)
+
+**Goal:** Stabilize \(d\tau/dr\) and low-parameter \(\tau(r)\) for interpretable profiles and formal model comparison.
+
+**Acceptance criteria:**
+
+- [ ] Smoothing or regularization documented; spike mitigation vs Phase 3A raw gradient
+- [ ] Eligible for comparison metrics alongside Phase 2 baselines
+
+---
+
+## Phase 3 (overview): τ-gradient and radial τ-profile
+
+**Goal:** Full TDF radial pathway from rotation residuals without an independent halo in the TDF branch.
+
+**Remaining (3B+):** Regularized τ models, \(K_\tau\) sensitivity, comparison table with Phase 2 baselines.
 
 ---
 
