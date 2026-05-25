@@ -42,7 +42,7 @@ Any local files named `corbelli2014_aa22790*` from the wrong DOI fetch should be
 |-----------|--------|--------|
 | `corbelli_et_al_2014` | Automated fetch via wrong DOI `10.1051/0004-6361/201322790` (pre-2026-05-24) | Obsolete landing HTML only — **not** the M33 paper; see metadata correction above |
 | `corbelli_salucci_2000` | Not attempted in automation | Remains `located` |
-| `lopez_fune_salucci_corbelli_2017` | Not attempted in automation | Remains `located` |
+| `lopez_fune_salucci_corbelli_2017` | arXiv PDF `1611.01409` (2026-05-24) | **documented** — see Phase 5B-C below |
 
 ---
 
@@ -256,3 +256,19 @@ Supersedes pre-PDF literature expectations. See §5.1 for column mapping.
 ## 8. No-data-fabrication statement
 
 This repository **does not** invent M33 velocities, surface densities, or baryonic components. Phase 1C adds structure and audit tools only. Any row in a processed CSV must trace to an official table, documented transformation, and `source_id` in `data/raw/sources_manifest.yaml`.
+
+---
+
+## 9. Phase 5B-C — López Fune et al. 2017 (2026-05-24)
+
+| Field | Value |
+|-------|--------|
+| `source_id` | `lopez_fune_salucci_corbelli_2017` |
+| DOI | `10.1093/mnras/stx2742` |
+| arXiv | `1611.01409` |
+| Local PDF | `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf` |
+| Checksum file | `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf.sha256` (tracked in git) |
+| SHA-256 | `753c93a49ff56e4c60ea0eed8fe8c4e85ed9fb59880a4d2b11cc84968609d3b4` |
+| Provenance | arXiv accepted manuscript (publisher OUP PDF optional) |
+| Extraction plan | `docs/lopez_fune_2017_extraction_plan.md` |
+| Numerical extraction | **Not performed** — figure digitization deferred to Phase 5C |

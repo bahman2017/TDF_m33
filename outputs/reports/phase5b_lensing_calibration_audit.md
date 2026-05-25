@@ -19,7 +19,7 @@
 - output_units: **normalized_proxy**
 - calibration_status: **uncalibrated**
 - observational_limits.enabled: **False**
-- limits_status: **source_review_complete**
+- limits_status: **source_documented**
 - limits_source_id: `none`
 - comparison_mode (planned): `upper_bound_consistency`
 

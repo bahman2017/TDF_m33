@@ -30,6 +30,7 @@ ALLOWED_ACQUISITION_STATUS: frozenset[str] = frozenset(
         "planned",
         "located",
         "downloaded",
+        "documented",  # PDF + checksum + citation; extraction pending
         "digitized",
         "processed",
         "validated",

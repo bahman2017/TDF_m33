@@ -129,3 +129,11 @@ python scripts/run_phase5b_constraint_source_audit.py
 ```
 
 Outputs: `outputs/tables/phase5b_constraint_source_status.csv`, `outputs/reports/phase5b_constraint_source_audit.md`. Review: `docs/lensing_constraint_source_review.md`. Selected Phase 5C candidate: `lopez_fune_salucci_corbelli_2017` (dynamical mass; not weak lensing).
+
+**Phase 5B-C — acquire López Fune et al. 2017 (selected source):**
+
+```bash
+python scripts/audit_lopez_fune_2017_source.py
+```
+
+Requires `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf` and checksum sidecar. Plan: `docs/lopez_fune_2017_extraction_plan.md`. No comparison tables yet.

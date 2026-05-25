@@ -65,5 +65,5 @@ def test_config_limits_disabled() -> None:
         cfg = yaml.safe_load(f)
     limits = cfg["tdf"]["lensing"]["observational_limits"]
     assert limits["enabled"] is False
-    assert limits["status"] == "source_review_complete"
+    assert limits["status"] in ("source_review_complete", "source_documented")
     assert "lopez_fune_salucci_corbelli_2017" in limits["candidate_source_ids"]

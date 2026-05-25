@@ -414,6 +414,28 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 5B-C: Acquire López Fune et al. 2017 (selected source)
+
+**Goal:** Download and checksum the selected dynamical constraint paper; document figure/table extraction plan—no comparison yet.
+
+**Deliverables:**
+
+- `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf` + `.sha256`
+- `docs/lopez_fune_2017_extraction_plan.md`
+- `scripts/audit_lopez_fune_2017_source.py`
+- Registry update: `lopez_fune_salucci_corbelli_2017` → **documented**
+
+**Acceptance criteria:**
+
+- [x] PDF + checksum exist and verify
+- [x] `observational_limits.enabled: false`; no comparison CSV
+- [x] No arcsec conversion; no `alpha_tau_scale` fit
+- [x] Circularity with Corbelli 2014 documented
+
+**Status:** Complete.
+
+---
+
 ## Phase 3 (overview): τ-gradient and radial τ-profile
 
 **Goal:** Full TDF radial pathway from rotation residuals without an independent halo in the TDF branch.
@@ -448,6 +470,8 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 **Phase 5B-A (complete):** Calibration/limits planning audit (see section above).
 
 **Phase 5B-B (complete):** Constraint source review and registration (see section above).
+
+**Phase 5B-C (complete):** López Fune et al. 2017 PDF acquisition and extraction plan (see section above).
 
 **Phase 5C (planned):** Upper-bound dynamical comparison for selected source; physical calibration still deferred unless documented.
 

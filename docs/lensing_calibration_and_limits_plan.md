@@ -68,12 +68,13 @@ All comparisons must use `comparison_mode: upper_bound_consistency` unless a ful
 - Claim dark matter is replaced or disproven.
 - Compare to observational limits without a registered source in `docs/data_sources.md`.
 
-## Next steps (Phase 5B-B / 5C)
+## Selected source acquisition (Phase 5B-C)
 
-Proceed only when:
+**`lopez_fune_salucci_corbelli_2017`** — PDF at `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf` (arXiv 1611.01409 accepted manuscript); SHA-256 sidecar committed; extraction plan in `docs/lopez_fune_2017_extraction_plan.md`. Registry status: **documented**. Comparison still **disabled**.
 
-1. At least one calibration document or cited equation is recorded in this file and config (`physical_calibration.calibration_status` → `documented`).
-2. At least one limit source is registered with real files and `acquisition_status` ≠ `planned`.
-3. `scripts/run_phase5b_lensing_calibration_audit.py` reports all Phase 5A safeguards still pass.
+## Next steps (Phase 5C)
 
-Then enable `tdf.lensing.physical_calibration.enabled` or `tdf.lensing.observational_limits.enabled` in `configs/m33_default.yaml` with explicit `limits_source_id` and audit outputs.
+1. Digitize Fig. 6 / transcribe NFW–Burkert parameters → `data/raw/extracted/lopez_fune_2017_*.csv`.
+2. Run upper-bound enclosed-mass consistency (not arcsec deflection; not τ tuning).
+3. Physical calibration (`alpha_tau_scale` physical units) remains separate and undocumented.
+4. Do **not** enable `observational_limits` until extracted tables are reviewed.

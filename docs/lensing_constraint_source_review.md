@@ -35,8 +35,9 @@
 | Physical calibration | **No** — does not link τ to deflection |
 | Upper-bound comparison | **Yes (candidate)** — enclosed mass / halo slope at 0.24–22.72 kpc |
 | Context only | **Yes** — cross-check Phase 2 NFW/Burkert baselines |
-| Limitations | Halo-centric; not lensing; PDF/tables not yet in `data/raw/downloads/` |
-| Phase 5C | **Candidate (selected)** — pending table extraction |
+| Limitations | Halo-centric; not lensing; partial circularity with Corbelli 2014 |
+| Phase 5B-C | PDF + checksum acquired; `docs/lopez_fune_2017_extraction_plan.md` |
+| Phase 5C | **Candidate (selected)** — pending figure/table extraction to CSV |
 
 ### 3. `kam_et_al_2018_m33_hi_masses` (located)
 

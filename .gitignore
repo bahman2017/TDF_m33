@@ -46,6 +46,7 @@ data/raw/*
 !data/raw/extracted/corbelli2014_fig12_baryonic_spotcheck_corrected.csv
 data/raw/downloads/*
 !data/raw/downloads/README.md
+!data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf.sha256
 data/raw/extracted/*
 !data/raw/extracted/README.md
 !data/raw/extracted/corbelli2014_table1_raw_template.csv
@@ -129,6 +130,8 @@ outputs/reports/*
 !outputs/reports/phase5a_lensing_prediction_report.md
 !outputs/reports/phase5b_lensing_calibration_audit.md
 !outputs/reports/phase5b_constraint_source_audit.md
+!outputs/reports/phase5b_lopez_fune_source_audit.md
+!outputs/tables/phase5b_lopez_fune_source_status.csv
 
 # Jupyter
 .ipynb_checkpoints/

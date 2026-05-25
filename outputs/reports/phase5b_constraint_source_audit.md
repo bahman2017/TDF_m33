@@ -11,7 +11,7 @@
 ## Config (unchanged safeguards)
 
 - observational_limits.enabled: **False**
-- limits.status: **source_review_complete**
+- limits.status: **source_documented**
 - selected_source_id (Phase 5C candidate): `lopez_fune_salucci_corbelli_2017`
 - candidate_source_ids: `lopez_fune_salucci_corbelli_2017, kam_et_al_2018_m33_hi_masses, m33_direct_weak_lensing_gap`
 - physical_calibration.enabled: **False**

@@ -12,6 +12,9 @@ from tdf_m33.lensing.phase5b_calibration_audit import run_phase5b_calibration_au
 from tdf_m33.lensing.phase5b_constraint_source_audit import (
     run_phase5b_constraint_source_audit,
 )
+from tdf_m33.lensing.phase5bc_lopez_fune_source_audit import (
+    run_phase5bc_lopez_fune_source_audit,
+)
 
 __all__ = [
     "compute_convergence_proxy",
@@ -22,4 +25,5 @@ __all__ = [
     "run_phase5a_lensing_prediction",
     "run_phase5b_calibration_audit",
     "run_phase5b_constraint_source_audit",
+    "run_phase5bc_lopez_fune_source_audit",
 ]

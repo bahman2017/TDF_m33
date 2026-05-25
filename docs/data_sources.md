@@ -43,10 +43,9 @@ Do not advance status without a real file and validation (see `docs/data_acquisi
 |-----------|----------|-------------------|------|
 | `corbelli_salucci_2000` | Corbelli & Salucci 2000 | located | Historical \(v_{\mathrm{obs}}\) validation |
 | `corbelli_et_al_2014` | Corbelli et al. 2014, A&A 572, A23; DOI [10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033); manuscript `aa24033-14` | downloaded | Primary baryonic + rotation model (PDF Phase 1D-A 2026-05-24) |
-| `lopez_fune_salucci_corbelli_2017` | López Fune et al. 2017 | located | NFW/Burkert baselines (Phase 2) |
+| `lopez_fune_salucci_corbelli_2017` | López Fune et al. 2017 MNRAS; DOI 10.1093/mnras/stx2742 | **documented** | Phase 5C dynamical upper-bound (PDF acquired) |
 | `hi_map_placeholder` | TBD | planned | Optional 2D τ-map |
 | `co_map_placeholder` | TBD | planned | Optional CO map |
-| `lopez_fune_salucci_corbelli_2017` | López Fune et al. 2017 MNRAS | located | Phase 5C dynamical candidate |
 | `kam_et_al_2018_m33_hi_masses` | Kam et al. 2018 AJ (arXiv 1706.04248) | located | Alternate dynamical candidate |
 | `m33_direct_weak_lensing_gap` | Phase 5B-B literature synthesis | documented | Context — no M33 WL map found |
 | `corbelli_salucci_2000` | Corbelli & Salucci 2000 MNRAS | located | Superseded dynamical context |
@@ -262,14 +261,33 @@ Plan: `docs/lensing_calibration_and_limits_plan.md`. Physical calibration and ob
 
 Review: `docs/lensing_constraint_source_review.md`. No observational comparison; `observational_limits.enabled: false`.
 
-### Lensing / deflection constraint registry (Phase 5B-B)
+### Phase 5B-C — López Fune et al. 2017 acquisition (2026-05-24)
+
+**Script:** `python scripts/audit_lopez_fune_2017_source.py`
+
+| Output | Path |
+|--------|------|
+| Status table | `outputs/tables/phase5b_lopez_fune_source_status.csv` |
+| Audit report | `outputs/reports/phase5b_lopez_fune_source_audit.md` |
+
+| Artifact | Path / value |
+|----------|----------------|
+| PDF (accepted manuscript) | `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf` |
+| SHA-256 sidecar | `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf.sha256` |
+| SHA-256 | `753c93a49ff56e4c60ea0eed8fe8c4e85ed9fb59880a4d2b11cc84968609d3b4` |
+| Provenance | arXiv [1611.01409](https://arxiv.org/abs/1611.01409); DOI [10.1093/mnras/stx2742](https://doi.org/10.1093/mnras/stx2742) (MNRAS 474, 4010) |
+| Extraction plan | `docs/lopez_fune_2017_extraction_plan.md` |
+
+**Use:** Dynamical halo / enclosed-mass **upper-bound consistency** context for Phase 5C — **not** direct lensing, **not** τ or `alpha_tau_scale` tuning. Partial circularity with Corbelli et al. 2014 rotation inputs (see extraction plan).
+
+### Lensing / deflection constraint registry (Phase 5B-B+)
 
 **Do not invent numerical limits.** Review: `docs/lensing_constraint_source_review.md`. Audit: `python scripts/run_phase5b_constraint_source_audit.py`.
 
 | source_id | Title (short) | Year | DOI / URL | Constraint class | acquisition_status | calibration | upper-bound | context | Phase 5C |
 |-----------|---------------|------|-----------|------------------|-------------------|-------------|-------------|---------|----------|
 | `corbelli_et_al_2014` | Corbelli et al. 2014 A&A 572 A23 | 2014 | [10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033) | dynamical + rotation (primary) | downloaded | no | no (circular) | yes | no |
-| `lopez_fune_salucci_corbelli_2017` | The radial dependence of dark matter distribution in M33 | 2017 | [10.1093/mnras/stx2742](https://doi.org/10.1093/mnras/stx2742) | dynamical halo | located | no | yes | yes | **candidate (selected)** |
+| `lopez_fune_salucci_corbelli_2017` | The radial dependence of dark matter distribution in M33 | 2017 | [10.1093/mnras/stx2742](https://doi.org/10.1093/mnras/stx2742) | dynamical halo | **documented** | no | yes | yes | **selected — extract in 5C** |
 | `kam_et_al_2018_m33_hi_masses` | Hi Kinematics and Mass Distribution of Messier 33 | 2018 | [10.3847/1538-3881/aa79f3](https://doi.org/10.3847/1538-3881/aa79f3) | dynamical halo | located | no | yes | yes | alternate |
 | `corbelli_salucci_2000` | Extended rotation curve and DM halo of M33 | 2000 | [astro-ph/9909252](https://arxiv.org/abs/astro-ph/9909252) | dynamical | located | no | marginal | yes | no (superseded) |
 | `mcconnachie_2012_local_group` | Dwarf galaxies in and around the Local Group | 2012 | [10.1088/0004-6256/144/1/4](https://doi.org/10.1088/0004-6256/144/1/4) | Local Group | located | no | no | yes | no |

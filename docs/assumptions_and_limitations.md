@@ -72,6 +72,8 @@ Explicit scope control for reviewers and future paper text.
 
 19. **Phase 5B-B constraint source review.** Registers candidate literature (`docs/lensing_constraint_source_review.md`, `docs/data_sources.md` registry). **No M33-specific weak-lensing map** identified for direct deflection comparison. Selected Phase 5C candidate: López Fune et al. 2017 (dynamical enclosed-mass / halo profile, `located` not `documented` until tables extracted). **No numeric limits** in repo tables; comparison still disabled.
 
+20. **Phase 5B-C López Fune 2017 acquisition.** PDF (arXiv accepted manuscript) and SHA-256 recorded; extraction plan identifies figure-based quantities (no machine tables). **Not** direct lensing; **not** for τ or `alpha_tau_scale` tuning; circularity with Corbelli 2014 inputs documented. Comparison remains disabled.
+
 ## Claim control (mandatory framing)
 
 Use language equivalent to:
