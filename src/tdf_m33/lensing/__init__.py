@@ -8,6 +8,7 @@ from tdf_m33.lensing.deflection import (
     deflection_summary_stats,
 )
 from tdf_m33.lensing.phase5a_lensing_prediction import run_phase5a_lensing_prediction
+from tdf_m33.lensing.phase5b_calibration_audit import run_phase5b_calibration_audit
 
 __all__ = [
     "compute_convergence_proxy",
@@ -16,4 +17,5 @@ __all__ = [
     "compute_tau_gradients_sky",
     "deflection_summary_stats",
     "run_phase5a_lensing_prediction",
+    "run_phase5b_calibration_audit",
 ]

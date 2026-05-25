@@ -112,3 +112,12 @@ python scripts/run_phase5a_lensing_prediction.py
 ```
 
 Outputs: `outputs/maps/phase5a_tau_deflection_proxy_map.npz`, metadata/summary tables, report, magnitude/vector/convergence figures. Units: `normalized_proxy`. No separate halo; no observational limit comparison until documented in `docs/data_sources.md`.
+
+**Phase 5B-A — calibration and limits planning audit (no physical conversion):**
+
+```bash
+python scripts/run_phase5a_lensing_prediction.py  # prerequisite
+python scripts/run_phase5b_lensing_calibration_audit.py
+```
+
+Outputs: `outputs/tables/phase5b_lensing_calibration_status.csv`, `outputs/reports/phase5b_lensing_calibration_audit.md`. Plan: `docs/lensing_calibration_and_limits_plan.md`. Physical calibration and observational limits remain disabled in config.

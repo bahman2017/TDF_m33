@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 5A  # Normalized deflection-proxy maps from frozen sky-plane tau
+  phase: 5B-A  # Calibration and observational-limits planning audit
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -137,6 +137,17 @@ tdf:
     compute_convergence_proxy: true
     compare_to_observational_limits: false
     observational_limits_source: null
+    physical_calibration:
+      enabled: false
+      alpha_tau_scale_physical: null
+      output_units: normalized_proxy
+      calibration_status: uncalibrated
+      calibration_notes: "Phase 5A outputs are normalized tau-gradient proxies; physical calibration deferred."
+    observational_limits:
+      enabled: false
+      limits_source_id: null
+      comparison_mode: upper_bound_consistency
+      status: planned
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys

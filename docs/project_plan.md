@@ -360,7 +360,32 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Status:** Complete.
 
-**Phase 5B (planned):** Physical α_τ calibration; observational limits once documented in `docs/data_sources.md`.
+**Phase 5B-B (planned):** Physical α_τ calibration; observational limits once documented in `docs/data_sources.md`.
+
+---
+
+## Phase 5B-A: Calibration and observational-limits planning
+
+**Goal:** Document how normalized deflection proxies become physical lensing units and which M33 constraints are needed—**without** converting units or comparing to limits yet.
+
+**Deliverables:**
+
+- `docs/lensing_calibration_and_limits_plan.md`
+- Lensing constraint registry in `docs/data_sources.md` (planned sources only; no invented limits)
+- `scripts/run_phase5b_lensing_calibration_audit.py`
+- `outputs/tables/phase5b_lensing_calibration_status.csv`
+- `outputs/reports/phase5b_lensing_calibration_audit.md`
+
+**Acceptance criteria:**
+
+- [x] Phase 5A metadata audited: `units = normalized_proxy`, no halo, no lensing-only fit, no observational comparison
+- [x] `physical_calibration.enabled: false`, `observational_limits.enabled: false` in config
+- [x] No arcsec conversion; no `alpha_tau_scale` tuning to observations
+- [x] No dark-matter disproof claim
+
+**Status:** Complete.
+
+**Phase 5B-B (planned):** Implement physical units when calibration is documented; enable limit comparison only for registered sources.
 
 ---
 
@@ -395,7 +420,9 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Phase 5A (complete):** Normalized deflection-proxy maps from frozen sky τ (see section above).
 
-**Phase 5B (planned):** Physical calibration and limit comparison when sources exist in `docs/data_sources.md`.
+**Phase 5B-A (complete):** Calibration/limits planning audit (see section above).
+
+**Phase 5B-B / 5C (planned):** Physical calibration and limit comparison when sources exist in `docs/data_sources.md`.
 
 **Acceptance criteria (5A):**
 

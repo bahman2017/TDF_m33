@@ -68,6 +68,8 @@ Explicit scope control for reviewers and future paper text.
 
 17. **Phase 5A deflection proxy.** Uses the **same frozen** sky τ as rotation (Phase 4B). Deflection is a normalized gradient proxy (`alpha_tau_scale=1`); not tuned to lensing data. **No separate dark-matter halo** in the TDF lensing branch. **No lensing-only fit.** Convergence proxy is illustrative and may be edge-unstable. **No observational limit comparison** until a source is listed in `data_sources.md`. This is a prediction/consistency scaffold only—not evidence that dark matter is disproven.
 
+18. **Phase 5B-A calibration/limits planning.** Documents requirements for physical units and M33 constraints (`docs/lensing_calibration_and_limits_plan.md`). **No arcsec conversion**, **no observational comparison**, **no fitting** of `alpha_tau_scale` or a lensing-only τ field. Config keeps `physical_calibration.enabled: false` and `observational_limits.enabled: false`. Future Phase 5B-B/5C may add physical units or upper-bound checks only when sources are registered with real files.
+
 ## Claim control (mandatory framing)
 
 Use language equivalent to:

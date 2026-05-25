@@ -46,7 +46,11 @@ Do not advance status without a real file and validation (see `docs/data_acquisi
 | `lopez_fune_salucci_corbelli_2017` | López Fune et al. 2017 | located | NFW/Burkert baselines (Phase 2) |
 | `hi_map_placeholder` | TBD | planned | Optional 2D τ-map |
 | `co_map_placeholder` | TBD | planned | Optional CO map |
-| `lensing_limits_placeholder` | TBD | planned | Phase 5 limits |
+| `m33_weak_lensing_placeholder` | TBD (M33 weak-lensing mass/shear) | planned | Phase 5B upper-bound consistency |
+| `local_group_m33_mass_placeholder` | TBD (Local Group / M33 dynamical mass) | planned | Enclosed-mass consistency |
+| `m33_stream_satellite_placeholder` | TBD (stellar streams / satellite dynamics) | planned | Outer-halo upper bounds |
+| `m33_lensing_upper_bound_placeholder` | TBD (published limit papers) | planned | One-sided consistency checks |
+| `m33_direct_deflection_placeholder` | TBD (direct deflection / time-delay) | planned | Future direct lensing source |
 
 Acquisition workflow: `docs/data_acquisition_plan.md`.  
 Download/extraction audit: `docs/extraction_log.md`.
@@ -232,7 +236,32 @@ Geometry: `tdf.projection` in `configs/m33_default.yaml`. Phase 4B-B uses `geome
 | Report | `outputs/reports/phase5a_lensing_prediction_report.md` |
 | Figures | `outputs/figures/phase5a_deflection_magnitude_map.png`, `phase5a_deflection_vector_field.png`, `phase5a_convergence_proxy_map.png` (if stable) |
 
-Source: `outputs/maps/phase4b_tau_sky_projected_map.npz`; `source_model: tdf_lowparam_3knot`; `deflection_mode: normalized_tau_gradient_proxy`; `units: normalized_proxy`. No lensing-only fit; no separate halo. `compare_to_observational_limits: false` — **no documented M33 lensing limit table** in this file yet (`lensing_limits_placeholder` remains planned for Phase 5B).
+Source: `outputs/maps/phase4b_tau_sky_projected_map.npz`; `source_model: tdf_lowparam_3knot`; `deflection_mode: normalized_tau_gradient_proxy`; `units: normalized_proxy`. No lensing-only fit; no separate halo. `compare_to_observational_limits: false`.
+
+### Phase 5B-A — Calibration and limits planning audit (2026-05-24)
+
+**Script:** `python scripts/run_phase5b_lensing_calibration_audit.py` (requires Phase 5A metadata)
+
+| Output | Path |
+|--------|------|
+| Status table | `outputs/tables/phase5b_lensing_calibration_status.csv` |
+| Audit report | `outputs/reports/phase5b_lensing_calibration_audit.md` |
+
+Plan: `docs/lensing_calibration_and_limits_plan.md`. Physical calibration and observational comparison remain **disabled** in config until sources below are documented with real files.
+
+### Lensing / deflection constraint registry (Phase 5B+)
+
+**Do not invent numerical limits.** Set `acquisition_status: planned` until raw/processed files and citations are added.
+
+| source_id | Constraint class | acquisition_status | comparison_mode | Notes |
+|-----------|------------------|-------------------|-----------------|-------|
+| `m33_weak_lensing_placeholder` | M33 weak-lensing (κ, shear, mass map) | planned | upper_bound_consistency | Enable when paper + data path documented |
+| `local_group_m33_mass_placeholder` | Local Group / M33 dynamical mass | planned | upper_bound_consistency | Enclosed mass vs radius |
+| `m33_stream_satellite_placeholder` | Stellar streams / satellite dynamics | planned | upper_bound_consistency | Outer halo if relevant to M33 |
+| `m33_lensing_upper_bound_placeholder` | Published limit-only studies | planned | upper_bound_consistency | Non-detection / limit tables |
+| `m33_direct_deflection_placeholder` | Direct deflection / time-delay / strong lensing | planned | profile_consistency | Future if applicable to M33 |
+
+Config keys: `tdf.lensing.observational_limits.limits_source_id` must match a row here before `enabled: true`.
 
 **Corbelli 2014 geometry notes (PDF audit):**
 
