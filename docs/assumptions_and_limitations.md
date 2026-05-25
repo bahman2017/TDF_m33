@@ -80,6 +80,8 @@ Explicit scope control for reviewers and future paper text.
 
 23. **Phase 6A publication audit.** Consolidates existing outputs into claim traceability and key-results tables without refitting. **Strongest supported claim:** low-parameter τ rotation-curve consistency. **Caveated:** lensing (`normalized_proxy`), López Fune (dynamics), 3D stability under mask/K_τ. **Future work:** physical lensing calibration, M33 weak lensing. **Prohibited:** dark-matter disproof language.
 
+24. **Phase 6B manuscript skeleton.** `paper/m33_tdf_tau_geometry_draft.tex` is a drafting scaffold aligned with Phase 6A; not submission-ready; bibliography placeholders only.
+
 ## Claim control (mandatory framing)
 
 Use language equivalent to:

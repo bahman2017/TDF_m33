@@ -556,6 +556,28 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 6B: Manuscript skeleton
+
+**Goal:** LaTeX draft structure and claim-safe language docs from existing outputs only.
+
+**Deliverables:**
+
+- `paper/m33_tdf_tau_geometry_draft.tex`
+- `paper/README.md`
+- `docs/manuscript_outline.md`, `manuscript_figures_and_tables.md`, `manuscript_allowed_language.md`
+- `scripts/run_phase6b_manuscript_audit.py`
+
+**Acceptance criteria:**
+
+- [x] Figure/table placeholders tied to pipeline paths
+- [x] Prohibited DM-disproof / lensing-detection language absent (affirmative)
+- [x] Caveats: baryonic PASS_WITH_CAVEAT, K_τ, normalized_proxy, weak lensing future work
+- [x] No new numerical results or invented citations (placeholders marked)
+
+**Status:** Complete.
+
+---
+
 ## Cross-cutting requirements
 
 - All science parameters in YAML config, not hard-coded in library code.

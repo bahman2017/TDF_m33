@@ -161,3 +161,11 @@ python scripts/run_phase6a_publication_audit.py
 ```
 
 Outputs: `outputs/reports/phase6a_publication_results_summary.md`, key-results and claim-traceability tables, `phase6a_reproducibility_commands.md`. Does not refit models or enable physical lensing calibration.
+
+**Phase 6B — manuscript skeleton audit:**
+
+```bash
+python scripts/run_phase6b_manuscript_audit.py
+```
+
+Checks `paper/m33_tdf_tau_geometry_draft.tex`, `docs/manuscript_*.md`, prohibited claims, and references to existing pipeline outputs. No new numerical results.
