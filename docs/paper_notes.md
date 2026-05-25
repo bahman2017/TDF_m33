@@ -46,6 +46,7 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - **Phase 5B-C:** López Fune et al. 2017 PDF acquired + extraction plan; **documented** in registry.
 - **Phase 5C-A:** Raw DM profile + halo parameter tables extracted; no τ comparison.
 - **Phase 5C-B:** Enclosed-mass proxy vs López Fune `M_enclosed_23kpc` — dynamical upper-bound scale check only; deflection still `normalized_proxy`.
+- **Phase 6A:** Publication summary + claim matrix (`phase6a_*`). Lead with 3-knot τ rotation fit; caveate lensing and López Fune; no DM disproof.
 - No gas morphology, spiral structure, or non-axisymmetric regularization yet.
 - Qualify any TDF vs NFW comparison — not a DM disproof.
 - Physical lensing units deferred; observational comparison deferred to Phase 5C after table extraction for selected source.

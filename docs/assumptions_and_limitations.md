@@ -78,6 +78,8 @@ Explicit scope control for reviewers and future paper text.
 
 22. **Phase 5C-B upper-bound consistency.** Compares Newtonian-equivalent τ mass proxy `M_tau_eff = r v_τ²/G` from frozen `tdf_lowparam_3knot` to López Fune 2017 `M_enclosed_23kpc` at ~23 kpc. **Not** weak lensing; **not** DM replacement; **not** deflection arcsec calibration; `observational_limits.enabled` remains false. Partial circularity with Corbelli 2014 rotation inputs.
 
+23. **Phase 6A publication audit.** Consolidates existing outputs into claim traceability and key-results tables without refitting. **Strongest supported claim:** low-parameter τ rotation-curve consistency. **Caveated:** lensing (`normalized_proxy`), López Fune (dynamics), 3D stability under mask/K_τ. **Future work:** physical lensing calibration, M33 weak lensing. **Prohibited:** dark-matter disproof language.
+
 ## Claim control (mandatory framing)
 
 Use language equivalent to:

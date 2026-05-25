@@ -522,12 +522,37 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Phase 5C-B (complete):** Upper-bound enclosed-mass proxy vs López Fune `M_enclosed_23kpc` (see section above). Physical lensing calibration and weak lensing still deferred.
 
+**Phase 6A (complete):** Publication results consolidation and claim-control audit (see section below).
+
 **Acceptance criteria (5A):**
 
 - [x] No additional halo dof in the TDF lensing pathway
 - [x] Results labeled prediction/consistency; `normalized_proxy` units
 - [ ] Observational limits from `docs/data_sources.md` (Phase 5B)
 - [x] Discussion aligns with `docs/assumptions_and_limitations.md`
+
+---
+
+## Phase 6A: Publication results consolidation
+
+**Goal:** Manuscript-facing summary of supported results, caveats, and future work without refitting models.
+
+**Deliverables:**
+
+- `outputs/reports/phase6a_publication_results_summary.md`
+- `outputs/tables/phase6a_key_results_table.csv`
+- `outputs/tables/phase6a_claim_traceability_matrix.csv`
+- `outputs/reports/phase6a_reproducibility_commands.md`
+- `scripts/run_phase6a_publication_audit.py`
+
+**Acceptance criteria:**
+
+- [x] Key metrics from Phase 2–5C existing tables only
+- [x] Ten claim categories with supported/caveated/future_work/prohibited status
+- [x] No prohibited DM-disproof language in reports
+- [x] Reproducibility command list for Phases 1D–5C
+
+**Status:** Complete.
 
 ---
 

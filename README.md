@@ -73,6 +73,9 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 5B-C** | Complete — López Fune et al. 2017 PDF + extraction plan (documented) |
 | **Phase 5C-A** | Complete — López Fune 2017 constraint tables extracted (no comparison) |
 | **Phase 5C-B** | Complete — enclosed-mass upper-bound consistency vs López Fune 2017 (not lensing) |
+| **Phase 6A** | Complete — publication summary, claim traceability, reproducibility commands |
+
+**Phase 6A audit:** `python scripts/run_phase6a_publication_audit.py` → `outputs/reports/phase6a_publication_results_summary.md`. Strongest result: rotation-dynamics consistency of low-parameter τ (not lensing detection). Deflection remains `normalized_proxy`; López Fune check is dynamical upper-bound only; dark matter is not claimed disproven.
 
 ## Data provenance status
 

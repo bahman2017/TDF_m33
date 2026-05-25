@@ -153,3 +153,11 @@ python scripts/run_phase5c_upper_bound_consistency.py
 ```
 
 Compares frozen `tdf_lowparam_3knot` enclosed-mass proxy `M_tau_eff = r v_tau^2 / G` to López Fune 2017 `M_enclosed_23kpc`. Does **not** enable `observational_limits`, fit `alpha_tau_scale`, or convert deflection to arcsec.
+
+**Phase 6A — publication audit (read-only consolidation):**
+
+```bash
+python scripts/run_phase6a_publication_audit.py
+```
+
+Outputs: `outputs/reports/phase6a_publication_results_summary.md`, key-results and claim-traceability tables, `phase6a_reproducibility_commands.md`. Does not refit models or enable physical lensing calibration.

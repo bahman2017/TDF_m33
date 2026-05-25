@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 5C-B  # Upper-bound dynamical consistency vs López Fune 2017 (no lensing fit)
+  phase: 6A  # Publication results consolidation and claim-control audit
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 

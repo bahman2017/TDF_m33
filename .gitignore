@@ -135,10 +135,14 @@ outputs/reports/*
 !outputs/reports/phase5b_lopez_fune_source_audit.md
 !outputs/reports/phase5c_lopez_fune_extraction_audit.md
 !outputs/reports/phase5c_upper_bound_consistency_report.md
+!outputs/reports/phase6a_publication_results_summary.md
+!outputs/reports/phase6a_reproducibility_commands.md
 !outputs/tables/phase5b_lopez_fune_source_status.csv
 !outputs/tables/phase5c_lopez_fune_extraction_status.csv
 !outputs/tables/phase5c_tau_mass_proxy_profile.csv
 !outputs/tables/phase5c_upper_bound_consistency_summary.csv
+!outputs/tables/phase6a_key_results_table.csv
+!outputs/tables/phase6a_claim_traceability_matrix.csv
 !outputs/figures/phase5c_tau_mass_proxy_vs_lopez_fune.png
 
 # Jupyter
