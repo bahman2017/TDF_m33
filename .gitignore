@@ -137,6 +137,7 @@ outputs/reports/*
 !outputs/reports/phase5c_upper_bound_consistency_report.md
 !outputs/reports/phase6a_publication_results_summary.md
 !outputs/reports/phase6a_reproducibility_commands.md
+!outputs/reports/phase6d_manuscript_polish_audit.md
 !outputs/tables/phase5b_lopez_fune_source_status.csv
 !outputs/tables/phase5c_lopez_fune_extraction_status.csv
 !outputs/tables/phase5c_tau_mass_proxy_profile.csv
@@ -144,6 +145,15 @@ outputs/reports/*
 !outputs/tables/phase6a_key_results_table.csv
 !outputs/tables/phase6a_claim_traceability_matrix.csv
 !outputs/figures/phase5c_tau_mass_proxy_vs_lopez_fune.png
+
+# LaTeX build artifacts (paper/)
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.synctex.gz
+paper/*.pdf
 
 # Jupyter
 .ipynb_checkpoints/

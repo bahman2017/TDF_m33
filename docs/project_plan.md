@@ -600,6 +600,28 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 6D: Bibliography and LaTeX polish
+
+**Goal:** Verify cited bibliography metadata; attempt PDF compile; no new science.
+
+**Deliverables:**
+
+- `docs/manuscript_bibliography_verification.md`
+- Updated bibliography in `paper/m33_tdf_tau_geometry_draft.tex`
+- `scripts/run_phase6d_manuscript_polish_audit.py`
+- `outputs/reports/phase6d_manuscript_polish_audit.md`
+
+**Acceptance criteria:**
+
+- [x] Corbelli 2014 and López Fune 2017 verified from repo registry + DOI
+- [x] Open bibliography TODOs removed for those keys
+- [x] LaTeX compile attempted or documented
+- [x] Phase 6C metrics and claim language preserved
+
+**Status:** Complete.
+
+---
+
 ## Cross-cutting requirements
 
 - All science parameters in YAML config, not hard-coded in library code.

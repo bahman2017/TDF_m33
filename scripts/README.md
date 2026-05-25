@@ -170,6 +170,14 @@ python scripts/run_phase6c_manuscript_draft_audit.py
 
 Checks readable draft sections, required metrics, figure paths, bibliography TODO markers. See `docs/manuscript_drafting_notes.md`.
 
+**Phase 6D — bibliography + LaTeX polish:**
+
+```bash
+python scripts/run_phase6d_manuscript_polish_audit.py
+```
+
+Verifies `docs/manuscript_bibliography_verification.md`, runs `latexmk` when available, writes `outputs/reports/phase6d_manuscript_polish_audit.md`.
+
 **Phase 6B — manuscript skeleton audit:**
 
 ```bash

@@ -76,10 +76,11 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 6A** | Complete — publication summary, claim traceability, reproducibility commands |
 | **Phase 6B** | Complete — manuscript LaTeX skeleton + claim-safe language audit |
 | **Phase 6C** | Complete — first readable manuscript draft (`paper/`) + draft audit |
+| **Phase 6D** | Complete — verified bibliography + LaTeX compile readiness audit |
 
 **Phase 6A audit:** `python scripts/run_phase6a_publication_audit.py` → `outputs/reports/phase6a_publication_results_summary.md`. Strongest result: rotation-dynamics consistency of low-parameter τ (not lensing detection). Deflection remains `normalized_proxy`; López Fune check is dynamical upper-bound only; dark matter is not claimed disproven.
 
-**Phase 6B–6C manuscript:** `paper/m33_tdf_tau_geometry_draft.tex` (readable draft; no new science). Audits: `run_phase6b_manuscript_audit.py`, `run_phase6c_manuscript_draft_audit.py`. Guides: `docs/manuscript_allowed_language.md`, `docs/manuscript_drafting_notes.md`.
+**Phase 6B–6D manuscript:** `paper/m33_tdf_tau_geometry_draft.tex` (readable draft; no new science). Audits: `run_phase6b_manuscript_audit.py` through `run_phase6d_manuscript_polish_audit.py`. Bibliography: `docs/manuscript_bibliography_verification.md`.
 
 ## Data provenance status
 

@@ -36,4 +36,6 @@ python scripts/run_phase6b_manuscript_audit.py
 python scripts/run_phase6c_manuscript_draft_audit.py
 ```
 
-Drafting log: `docs/manuscript_drafting_notes.md`.
+Drafting log: `docs/manuscript_drafting_notes.md`.  
+Bibliography verification: `docs/manuscript_bibliography_verification.md`.  
+Polish audit: `python scripts/run_phase6d_manuscript_polish_audit.py`.

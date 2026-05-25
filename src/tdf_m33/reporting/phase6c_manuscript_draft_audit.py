@@ -64,6 +64,10 @@ FIGURE_PATH_SNIPPETS = (
 )
 
 BIB_TODO_MARKERS = ("todo", "placeholder", "verify")
+VERIFIED_BIB_DOIS = (
+    "10.1051/0004-6361/201424033",
+    "10.1093/mnras/stx2742",
+)
 
 
 def audit_phase6c_draft(repo: Path) -> list[str]:
@@ -78,8 +82,10 @@ def audit_phase6c_draft(repo: Path) -> list[str]:
         errors.append(f"missing file: {DRAFTING_NOTES_MD}")
 
     # Phase 6C: expanded draft markers
-    if "phase 6c" not in tex and "first readable draft" not in tex:
-        errors.append("manuscript missing Phase 6C draft marker")
+    if not any(
+        m in tex for m in ("phase 6c", "phase 6d", "first readable draft", "readable draft")
+    ):
+        errors.append("manuscript missing Phase 6C/6D draft marker")
 
     for sec in REQUIRED_SECTIONS:
         if sec.lower() not in tex and sec not in tex_raw:
@@ -100,8 +106,13 @@ def audit_phase6c_draft(repo: Path) -> list[str]:
             errors.append(f"missing figure path reference: {fig!r}")
 
     bib_lower = tex_raw.split(r"\begin{thebibliography}")[-1].lower() if "thebibliography" in tex_raw else ""
-    if bib_lower and not any(m in bib_lower for m in BIB_TODO_MARKERS):
-        errors.append("bibliography entries must contain TODO/placeholder/verify marker")
+    if bib_lower:
+        has_todo_marker = any(m in bib_lower for m in BIB_TODO_MARKERS)
+        has_verified_dois = all(d in bib_lower for d in VERIFIED_BIB_DOIS)
+        if not has_todo_marker and not has_verified_dois:
+            errors.append(
+                "bibliography must contain TODO/placeholder markers or verified DOIs"
+            )
 
     # Minimum length for readable draft (excluding comments)
     body = re.sub(r"%.*", "", tex_raw)

@@ -62,6 +62,7 @@ def test_figure_paths_referenced() -> None:
     assert "phase4b_tau_sky_projected_map" in tex
 
 
-def test_bibliography_todo() -> None:
+def test_bibliography_verified_or_todo() -> None:
     tex = (REPO_ROOT / MANUSCRIPT_TEX).read_text(encoding="utf-8").lower()
-    assert "todo" in tex or "placeholder" in tex
+    assert "10.1051/0004-6361/201424033" in tex
+    assert "10.1093/mnras/stx2742" in tex

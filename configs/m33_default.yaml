@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 6C  # First readable manuscript draft and draft audit
+  phase: 6D  # Bibliography verification and LaTeX compile readiness
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 

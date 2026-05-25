@@ -50,20 +50,21 @@ No new fits were run for Phase 6C.
 - Weak lensing: **future work**.
 - Dark matter disproof: **prohibited** (stated only as negation).
 
-## Citations still needing verification (TODO)
+## Citations (Phase 6D)
 
 | Key | Status |
 |-----|--------|
-| `Corbelli2014` | Placeholder volume/pages; full author list TODO in `.tex` |
-| `LopezFune2017` | Placeholder; verify MNRAS 474, 4010 and DOI `10.1093/mnras/stx2742` |
+| `Corbelli2014` | **Verified** — see `docs/manuscript_bibliography_verification.md` |
+| `LopezFune2017` | **Verified** — see `docs/manuscript_bibliography_verification.md` |
 
-Do not submit until bibliographic data are checked against publisher records.
+Additional references require a new verification row before adding to `.tex`.
 
-## Remaining TODO before full paper polish
+## Remaining TODO before journal submission
 
 1. Replace figure placeholders with final PNGs (or copy figures into `paper/figures/`).
-2. Verify all citations and add TDF / methodology references as needed.
+2. Add TDF / methodology references only with new verification rows in `manuscript_bibliography_verification.md`.
 3. Author list, affiliations, acknowledgments, funding.
+4. Run `latexmk -pdf paper/m33_tdf_tau_geometry_draft.tex` after figure copy (Phase 6D audit documents compile status).
 4. Journal-specific formatting and word limits.
 5. Uncertainty propagation (not in current pipeline tables).
 6. Optional: 4-knot row in Table 2 for completeness.

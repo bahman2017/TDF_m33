@@ -1,6 +1,6 @@
-% Phase 6C — first readable manuscript draft (M33 TDF tau-geometry)
+% Phase 6D — readable draft with verified bibliography (M33 TDF tau-geometry)
 % Numerical values: outputs/tables/phase6a_key_results_table.csv (fit mask 0.4--23 kpc).
-% Bibliography: TODO placeholders — verify before submission.
+% Bibliography: Corbelli2014 and LopezFune2017 verified — see docs/manuscript_bibliography_verification.md
 
 \documentclass[11pt,a4paper]{article}
 \usepackage[margin=2.5cm]{geometry}
@@ -22,7 +22,7 @@
 }
 
 \title{Reconstructing the Missing Acceleration of M33 as a Low-Parameter Time-Delay Field Geometry}
-\author{M33 TDF $\tau$-Geometry Collaboration\\ \textit{Phase 6C first readable draft --- claim review required}}
+\author{M33 TDF $\tau$-Geometry Collaboration\\ \textit{Phase 6D draft --- claim review required; bibliography verified for cited sources}}
 \date{\today}
 
 \begin{document}
@@ -311,16 +311,20 @@ Physical lensing calibration and weak-lensing comparison remain necessary before
 
 \section*{Reproducibility}
 Scripts and phase order are listed in \texttt{outputs/reports/phase6a\_reproducibility\_commands.md}.
-Phase~6A/6B/6C audits: \texttt{run\_phase6a\_publication\_audit.py}, \texttt{run\_phase6b\_manuscript\_audit.py}, \texttt{run\_phase6c\_manuscript\_draft\_audit.py}.
+Phase~6A--6D audits: \texttt{run\_phase6a\_publication\_audit.py} through \texttt{run\_phase6d\_manuscript\_polish\_audit.py}.
 
 \bibliographystyle{plain}
 \begin{thebibliography}{99}
 \bibitem[Corbelli et al.(2014)]{Corbelli2014}
-% TODO: verify journal volume, pages, and full author list before submission.
-Corbelli, E., et al.\ 2014, A\&A, 572, A23 --- \textit{placeholder; verify bibliographic data}.
+Corbelli, E., Thiliker, D.~A., Zschaechner, L., et al.\ 2014,
+\textit{Dynamical signatures of a $\Lambda$CDM-halo and the distribution of the baryons in M33},
+A\&A, 572, A23.
+\href{https://doi.org/10.1051/0004-6361/201424033}{doi:10.1051/0004-6361/201424033}.
 \bibitem[L\'opez Fune et al.(2017)]{LopezFune2017}
-% TODO: verify MNRAS volume, pages, DOI.
-L\'opez Fune, M.~C., Salucci, P., \& Corbelli, E.\ 2017, MNRAS, 474, 4010 --- \textit{placeholder; verify}.
+L\'opez Fune, M.~C., Salucci, P., \& Corbelli, E.\ 2017,
+\textit{The radial dependence of dark matter distribution in M33},
+MNRAS, 474, 4010.
+\href{https://doi.org/10.1093/mnras/stx2742}{doi:10.1093/mnras/stx2742}.
 \end{thebibliography}
 
 \end{document}

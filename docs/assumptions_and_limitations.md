@@ -82,7 +82,9 @@ Explicit scope control for reviewers and future paper text.
 
 24. **Phase 6B manuscript skeleton.** `paper/m33_tdf_tau_geometry_draft.tex` is a drafting scaffold aligned with Phase 6A; not submission-ready; bibliography placeholders only.
 
-25. **Phase 6C readable draft.** Expanded LaTeX prose from existing outputs only; Phase 6C audit enforces metrics and claim language; citations remain TODO until verified.
+25. **Phase 6C readable draft.** Expanded LaTeX prose from existing outputs only; Phase 6C audit enforces metrics and claim language.
+
+26. **Phase 6D bibliography polish.** Corbelli 2014 and López Fune 2017 metadata verified in `docs/manuscript_bibliography_verification.md`; LaTeX compile readiness audited; no new citations or numerical results.
 
 ## Claim control (mandatory framing)
 

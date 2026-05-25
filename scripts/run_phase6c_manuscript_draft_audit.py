@@ -35,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
     print("  prohibited claims: absent")
     print("  required metrics and caveats: present")
     print("  figure paths: referenced")
-    print("  bibliography: TODO/placeholder marked")
+    print("  bibliography: verified DOIs or TODO markers checked")
     return 0
 
 
