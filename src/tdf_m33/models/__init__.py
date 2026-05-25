@@ -41,7 +41,10 @@ from tdf_m33.models.tdf_map2d import (
     radial_interpolate_to_grid,
 )
 from tdf_m33.models.tdf_projection import (
+    ProjectionGeometry,
     deproject_sky_to_disk_coordinates,
+    interpolate_ring_geometry,
+    load_tilted_ring_geometry_table,
     project_disk_to_sky_coordinates,
     project_tau_map_to_sky_plane,
     resolve_projection_geometry,
@@ -75,7 +78,10 @@ __all__ = [
     "deproject_sky_to_disk_coordinates",
     "project_disk_to_sky_coordinates",
     "project_tau_map_to_sky_plane",
+    "ProjectionGeometry",
     "resolve_projection_geometry",
+    "load_tilted_ring_geometry_table",
+    "interpolate_ring_geometry",
     "nfw_mass_enclosed",
     "nfw_velocity",
 ]

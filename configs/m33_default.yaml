@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 4B-A  # Disk-to-sky tau map projection (geometry only)
+  phase: 4B-B  # Lock Corbelli 2014 projection geometry for sky tau map
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -115,12 +115,18 @@ tdf:
     source_map: outputs/maps/phase4a_tau_2d_map.npz
     coordinate_frame_in: disk_plane
     coordinate_frame_out: sky_plane
-    inclination_deg: null  # set explicit values when adopted; see data.inclination_deg
+    geometry_mode: radial_tilted_ring  # global_approximation | radial_tilted_ring
+    geometry_source: corbelli_et_al_2014
+    geometry_reference: "Corbelli et al. 2014 A&A 572 A23 Sect. 4.1 Fig. 3; Appendix A tilted-ring fit"
+    tilted_ring_table: data/raw/extracted/corbelli2014_tilted_ring_geometry_model_shape.csv
+    tilted_ring_method: model_shape  # open triangles in Fig. 3; used in Sect. 4.2 deconvolution
+    inclination_deg: null  # global mode only; radial mode uses tilted_ring_table
     position_angle_deg: null
-    placeholder_inclination_deg: 56.0  # ballpark M33 literature; NOT from Corbelli Table 1
-    placeholder_position_angle_deg: 23.0  # config placeholder only
-    geometry_source: corbelli_et_al_2014_or_config_placeholder
-    allow_placeholder_geometry: true
+    global_reference_inclination_deg: 54.0  # inner-disk representative (Fig. 3, R<8 kpc); not used in radial mode
+    global_reference_position_angle_deg: 22.0
+    placeholder_inclination_deg: 56.0  # legacy Phase 4B-A ballpark; disabled when allow_placeholder_geometry=false
+    placeholder_position_angle_deg: 23.0
+    allow_placeholder_geometry: false
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys

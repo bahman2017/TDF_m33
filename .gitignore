@@ -52,6 +52,7 @@ data/raw/extracted/*
 !data/raw/extracted/corbelli2014_table1_raw.csv
 !data/raw/extracted/corbelli2014_fig12_baryonic_spotcheck.csv
 !data/raw/extracted/corbelli2014_fig12_baryonic_spotcheck_corrected.csv
+!data/raw/extracted/corbelli2014_tilted_ring_geometry_model_shape.csv
 data/processed/*
 !data/processed/README.md
 !data/processed/m33_rotation_schema_template.csv

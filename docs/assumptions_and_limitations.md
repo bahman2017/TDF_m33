@@ -26,7 +26,8 @@ Explicit scope control for reviewers and future paper text.
 | Phase 3C low-parameter TDF | 3C | k knot dτ/dr values fitted; K_τ fixed; first fair AIC/BIC row for TDF; 3A/3B excluded from formal comparison |
 | Phase 3D sensitivity | 3D | Robustness audit only; K_τ sweep tests scale degeneracy; not independent physical calibration |
 | Phase 4A 2D τ-map | 4A | Axisymmetric disk-plane extension τ₂D(x,y)=τ_rad(R) from Phase 3C; not separately fitted |
-| Phase 4B-A projection | 4B-A | Disk→sky coordinate transform only; τ unchanged; inclination/PA may be placeholders until adopted |
+| Phase 4B projection | 4B | Disk→sky coordinate transform only; τ unchanged; Corbelli 2014 Fig. 3 model-shape i(R), PA(R) |
+| Phase 4B-B geometry lock | 4B-B | Placeholder i/PA removed; radial tilted-ring preferred over global single i/PA (warped disk) |
 | τ smoothness | 3B-A | Raw spikes reduced; interpretive claims still require Phase 3C comparison |
 | 2D τ-map (morphology) | 4B+ | Gas/spiral/non-axisymmetric structure not yet included |
 | Lensing geometry | 5 | Line-of-sight and thin-lens approximations as documented in lensing module |
@@ -61,7 +62,9 @@ Explicit scope control for reviewers and future paper text.
 
 14. **Phase 4A 2D τ-map.** First spatial extension: axisymmetric disk-plane map from `tdf_lowparam_3knot` radial profile only. No new parameters, no lensing, no gas morphology or spiral arms. Not the final physical τ map. Baryonic PASS_WITH_CAVEAT and K_τ=1 normalization unchanged.
 
-15. **Phase 4B-A projection.** Geometry preparation only: sky-plane coordinates from inclination/PA. Does not alter τ values or Phase 3C radial model. Placeholder geometry (when config null) is explicit in metadata— not adopted Corbelli Table 1 values. No lensing yet.
+15. **Phase 4B projection.** Geometry preparation only: sky-plane coordinates from inclination/PA. Does not alter τ values or Phase 3C radial model. No lensing yet.
+
+16. **Phase 4B-B geometry lock.** Adopted geometry from Corbelli et al. 2014 §4.1 Fig. 3 (model-shape tilted rings, 11 radii). M33 is warped; a single global i/PA is an approximation—radial mode is preferred. Digitized ring values are traceable but not machine tables in the paper PDF. Inner-disk global reference (i≈54°, PA≈22°) documented for comparison. Not a final observational lensing prediction.
 
 ## Claim control (mandatory framing)
 

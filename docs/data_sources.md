@@ -218,7 +218,14 @@ Source: `tdf_lowparam_3knot` from `phase3c_tdf_lowparam_profiles.csv`. Disk-plan
 | Metadata | `outputs/tables/phase4b_tau_projection_metadata.csv` |
 | Figures | `outputs/figures/phase4b_tau_sky_projected_map.png`, `phase4b_projection_geometry_check.png` |
 
-Geometry: `tdf.projection` in `configs/m33_default.yaml`. Placeholder i/PA used when null (`placeholder_geometry_flag` in metadata). No lensing.
+Geometry: `tdf.projection` in `configs/m33_default.yaml`. Phase 4B-B uses `geometry_mode: radial_tilted_ring` with `data/raw/extracted/corbelli2014_tilted_ring_geometry_model_shape.csv` (digitized from Corbelli et al. 2014 A&A 572 A23 **Fig. 3**, model-shape triangles, **Sect. 4.1**). `placeholder_geometry_flag: false`. No lensing.
+
+**Corbelli 2014 geometry notes (PDF audit):**
+
+- §4.1 + Fig. 3: 11 free tilted rings; i and PA vary with R; model-shape vs model-mean methods (Appendix A).
+- Abstract: warp from ~8 kpc; inclination nearly constant; PA rotates ~30° toward M31 at large R.
+- Table 1 rotation velocities use tilted-ring deconvolution (not single global i/PA).
+- Inner-disk representative global values (not used in radial mode): i≈54°, PA≈22°.
 
 ## Canonical processed CSV schema
 

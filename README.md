@@ -66,7 +66,7 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 3C** | Complete — low-parameter knot τ; AIC/BIC vs NFW/Burkert |
 | **Phase 3D** | Complete — sensitivity audit (K_τ, mask, smoothing) |
 | **Phase 4A** | Complete — axisymmetric disk-plane 2D τ map from Phase 3C |
-| **Phase 4B-A** | Complete — disk-to-sky τ projection (geometry only) |
+| **Phase 4B** | Complete — disk-to-sky τ projection; Corbelli 2014 geometry locked (4B-B) |
 | Phase 4B+ / 5 | Not started — morphology-aware τ, lensing |
 
 ## Data provenance status

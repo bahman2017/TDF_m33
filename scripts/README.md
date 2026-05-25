@@ -97,9 +97,9 @@ python scripts/run_phase3c_tdf_lowparam_model.py  # prerequisite
 python scripts/run_phase4a_tdf_2d_map.py
 ```
 
-**Phase 4B-A — disk-to-sky τ projection (geometry only):**
+**Phase 4B — disk-to-sky τ projection (Corbelli 2014 geometry):**
 
 ```bash
 python scripts/run_phase4a_tdf_2d_map.py  # prerequisite
-python scripts/run_phase4b_tau_projection.py
+python scripts/run_phase4b_tau_projection.py  # uses corbelli2014_tilted_ring_geometry_model_shape.csv
 ```

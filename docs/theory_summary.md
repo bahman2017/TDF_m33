@@ -90,11 +90,12 @@ Phase 3A applies the inversion algebraically at each radius on the canonical gri
 - **Consistency check:** azimuthal average of \(\tau_{2\mathrm{D}}\) compared to the input radial \(\tau(R)\).
 - **Not included yet:** gas morphology, spiral structure, non-axisymmetric regularization, lensing.
 
-## Phase 4B-A (disk-to-sky projection)
+## Phase 4B (disk-to-sky projection)
 
 - **Input:** Phase 4A `phase4a_tau_2d_map.npz` (disk-plane kpc).
-- **Operation:** thin-disk coordinate transform (inclination + position angle); τ values **unchanged** at each grid index (no resampling, no new fit).
-- **Geometry:** `inclination_deg` and `position_angle_deg` from config; if null and `allow_placeholder_geometry=true`, documented ballpark placeholders are used and flagged in metadata.
+- **Operation:** thin-disk coordinate transform; τ values **unchanged** at each grid index (no resampling, no new fit).
+- **Phase 4B-B geometry:** Corbelli et al. 2014 §4.1 Fig. 3 model-shape tilted rings (`geometry_mode: radial_tilted_ring`); i(R) and PA(R) interpolated on the disk grid. Placeholder ballpark i/PA disabled.
+- **Global approximation (optional):** single i, PA (inner-disk representative ~54°, ~22° from Fig. 3); inferior for warped outer disk.
 - **Output:** sky-plane coordinate arrays + same τ field for Phase 5 deflection preparation.
 - **Not included:** lensing predictions, morphology corrections, halo residuals.
 

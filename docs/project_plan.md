@@ -311,6 +311,26 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 4B-B: Lock Corbelli 2014 projection geometry
+
+**Goal:** Replace placeholder i/PA with documented Corbelli et al. 2014 tilted-ring geometry before lensing.
+
+**Deliverables:**
+
+- `corbelli2014_tilted_ring_geometry_model_shape.csv` (Fig. 3 model-shape digitization)
+- Radial `i(R)`, `PA(R)` projection in `tdf_projection`; metadata flags `placeholder_geometry_flag: false`
+
+**Acceptance criteria:**
+
+- [x] Geometry from Corbelli 2014 §4.1 / Fig. 3 (model-shape), not config ballpark placeholders
+- [x] `geometry_mode: radial_tilted_ring` with traceable ring table
+- [x] Global inner-disk reference values documented (54°, 22°) for comparison only
+- [x] No lensing; τ values unchanged
+
+**Status:** Complete.
+
+---
+
 ## Phase 4B+ / 5 (planned)
 
 **Phase 4B+ (optional):** morphology-aware or non-axisymmetric τ extensions after projection review.

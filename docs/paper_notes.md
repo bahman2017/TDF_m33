@@ -38,7 +38,8 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - **Phase 3C:** Low-parameter knot τ models (k=3,4,5) with AIC/BIC vs NFW/Burkert on fit mask; K_τ fixed. 3A/3B not formal competitors.
 - **Phase 3D:** Robustness audit (K_τ, mask, smoothing σ); K_τ is normalization.
 - **Phase 4A:** First 2D disk-plane τ map: axisymmetric τ₂D(x,y)=τ_rad(R) from `tdf_lowparam_3knot`; not separately fitted; not final physical map.
-- **Phase 4B-A:** Disk-to-sky coordinate projection only; τ field unchanged; prepares Phase 5 deflection. Placeholder inclination/PA flagged when used.
+- **Phase 4B:** Disk-to-sky coordinate projection only; τ field unchanged; prepares Phase 5 deflection.
+- **Phase 4B-B:** Corbelli 2014 Fig. 3 model-shape tilted-ring i(R), PA(R) locked; placeholders removed. Warped disk—global i/PA is approximation only.
 - No gas morphology, spiral structure, or non-axisymmetric regularization yet.
 - Qualify any TDF vs NFW comparison — not a DM disproof.
 - No lensing predictions yet. No dark-matter replacement claim.

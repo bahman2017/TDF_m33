@@ -44,7 +44,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     meta = metadata_df.iloc[0]
-    print("PASS — Phase 4B-A disk-to-sky τ projection")
+    print("PASS — Phase 4B disk-to-sky τ projection")
     print(f"  source_map: {meta['source_map']}")
     print(f"  source_model: {meta['source_model']}")
     print(f"  projected map: {args.map.resolve()}")
@@ -52,11 +52,24 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  figure sky: {args.fig_sky.resolve()}")
     print(f"  figure geometry: {args.fig_geometry.resolve()}")
     print()
-    print(f"  inclination_deg: {meta['inclination_deg']}")
-    print(f"  position_angle_deg: {meta['position_angle_deg']}")
+    print(f"  geometry_mode: {meta['geometry_mode']}")
     print(f"  geometry_source: {meta['geometry_source']}")
+    print(f"  geometry_reference: {meta['geometry_reference']}")
     print(f"  geometry_resolution: {meta['geometry_resolution']}")
     print(f"  placeholder_geometry_flag: {meta['placeholder_geometry_flag']}")
+    print(f"  tilted_ring_method: {meta['tilted_ring_method']}")
+    print(f"  n_tilted_rings: {int(meta['n_tilted_rings'])}")
+    print(
+        f"  i ring range: {meta['inclination_min_deg']:.1f}–"
+        f"{meta['inclination_max_deg']:.1f} deg"
+    )
+    print(
+        f"  PA ring range: {meta['position_angle_min_deg']:.1f}–"
+        f"{meta['position_angle_max_deg']:.1f} deg"
+    )
+    if meta["geometry_mode"] == "global_approximation":
+        print(f"  inclination_deg: {meta['inclination_deg']}")
+        print(f"  position_angle_deg: {meta['position_angle_deg']}")
     print(f"  masked_fraction: {meta['masked_fraction']:.4f}")
     print(f"  max_roundtrip_error_kpc: {meta['max_roundtrip_error_kpc']}")
     print()
