@@ -331,11 +331,36 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
-## Phase 4B+ / 5 (planned)
+## Phase 4B+ (planned)
 
 **Phase 4B+ (optional):** morphology-aware or non-axisymmetric τ extensions after projection review.
 
-**Phase 5A:** Lensing/deflection consistency using the sky-projected τ map.
+---
+
+## Phase 5A: Normalized deflection-proxy from frozen sky τ
+
+**Goal:** First lensing/deflection **prediction scaffold** from the same frozen Phase 4B sky-plane τ map used for rotation—without fitting lensing data or adding a separate halo.
+
+**Deliverables:**
+
+- `src/tdf_m33/lensing/deflection.py` — τ gradients, α proxy, |α|, optional κ proxy
+- `src/tdf_m33/lensing/phase5a_lensing_prediction.py` + `scripts/run_phase5a_lensing_prediction.py`
+- `outputs/maps/phase5a_tau_deflection_proxy_map.npz`
+- Metadata, summary, report, magnitude/vector/convergence figures
+
+**Model:** α_x = −α_τ_scale ∂τ/∂x_sky, α_y = −α_τ_scale ∂τ/∂y_sky with `alpha_tau_scale = 1.0` and `units = normalized_proxy`.
+
+**Acceptance criteria:**
+
+- [x] Source map: `phase4b_tau_sky_projected_map.npz`; `source_model = tdf_lowparam_3knot`
+- [x] `placeholder_geometry_flag = false`; `geometry_mode = radial_tilted_ring`
+- [x] No separate halo; no lensing-only fit; no observational limit comparison (none documented in `data_sources.md`)
+- [x] Baryonic PASS_WITH_CAVEAT and K_τ normalization caveats in metadata/report
+- [x] Results labeled prediction/consistency scaffold only; no dark-matter disproof claim
+
+**Status:** Complete.
+
+**Phase 5B (planned):** Physical α_τ calibration; observational limits once documented in `docs/data_sources.md`.
 
 ---
 
@@ -366,19 +391,18 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ## Phase 5: Lensing / deflection prediction from the same τ-map
 
-**Goal:** Predict lensing/deflection signatures from the τ-map reconstructed in Phases 3–4 and compare to observational limits.
+**Goal:** Predict lensing/deflection signatures from the τ-map reconstructed in Phases 3–4; compare to observational limits only when documented.
 
-**Deliverables:**
+**Phase 5A (complete):** Normalized deflection-proxy maps from frozen sky τ (see section above).
 
-- `tdf_m33.lensing` prediction module using the **same** τ as rotation
-- Consistency report in `outputs/reports/`
+**Phase 5B (planned):** Physical calibration and limit comparison when sources exist in `docs/data_sources.md`.
 
-**Acceptance criteria:**
+**Acceptance criteria (5A):**
 
-- [ ] No additional halo dof added in the TDF lensing pathway
-- [ ] Results labeled as prediction/consistency unless direct lensing data are used
-- [ ] Limits and uncertainties from `docs/data_sources.md` applied correctly
-- [ ] Discussion in outputs aligns with `docs/assumptions_and_limitations.md`
+- [x] No additional halo dof in the TDF lensing pathway
+- [x] Results labeled prediction/consistency; `normalized_proxy` units
+- [ ] Observational limits from `docs/data_sources.md` (Phase 5B)
+- [x] Discussion aligns with `docs/assumptions_and_limitations.md`
 
 ---
 

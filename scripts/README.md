@@ -103,3 +103,12 @@ python scripts/run_phase4a_tdf_2d_map.py
 python scripts/run_phase4a_tdf_2d_map.py  # prerequisite
 python scripts/run_phase4b_tau_projection.py  # uses corbelli2014_tilted_ring_geometry_model_shape.csv
 ```
+
+**Phase 5A — normalized deflection-proxy from frozen sky τ (no lensing fit):**
+
+```bash
+python scripts/run_phase4b_tau_projection.py  # prerequisite
+python scripts/run_phase5a_lensing_prediction.py
+```
+
+Outputs: `outputs/maps/phase5a_tau_deflection_proxy_map.npz`, metadata/summary tables, report, magnitude/vector/convergence figures. Units: `normalized_proxy`. No separate halo; no observational limit comparison until documented in `docs/data_sources.md`.

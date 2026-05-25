@@ -66,6 +66,8 @@ Explicit scope control for reviewers and future paper text.
 
 16. **Phase 4B-B geometry lock.** Adopted geometry from Corbelli et al. 2014 §4.1 Fig. 3 (model-shape tilted rings, 11 radii). M33 is warped; a single global i/PA is an approximation—radial mode is preferred. Digitized ring values are traceable but not machine tables in the paper PDF. Inner-disk global reference (i≈54°, PA≈22°) documented for comparison. Not a final observational lensing prediction.
 
+17. **Phase 5A deflection proxy.** Uses the **same frozen** sky τ as rotation (Phase 4B). Deflection is a normalized gradient proxy (`alpha_tau_scale=1`); not tuned to lensing data. **No separate dark-matter halo** in the TDF lensing branch. **No lensing-only fit.** Convergence proxy is illustrative and may be edge-unstable. **No observational limit comparison** until a source is listed in `data_sources.md`. This is a prediction/consistency scaffold only—not evidence that dark matter is disproven.
+
 ## Claim control (mandatory framing)
 
 Use language equivalent to:

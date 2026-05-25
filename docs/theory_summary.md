@@ -97,7 +97,15 @@ Phase 3A applies the inversion algebraically at each radius on the canonical gri
 - **Phase 4B-B geometry:** Corbelli et al. 2014 §4.1 Fig. 3 model-shape tilted rings (`geometry_mode: radial_tilted_ring`); i(R) and PA(R) interpolated on the disk grid. Placeholder ballpark i/PA disabled.
 - **Global approximation (optional):** single i, PA (inner-disk representative ~54°, ~22° from Fig. 3); inferior for warped outer disk.
 - **Output:** sky-plane coordinate arrays + same τ field for Phase 5 deflection preparation.
-- **Not included:** lensing predictions, morphology corrections, halo residuals.
+- **Not included:** morphology corrections, halo residuals.
+
+## Phase 5A (normalized deflection proxy)
+
+- **Input:** Phase 4B `phase4b_tau_sky_projected_map.npz` (frozen τ; `tdf_lowparam_3knot`; `placeholder_geometry_flag: false`).
+- **Proxy:** \(\alpha_x = -\alpha_{\tau,\mathrm{scale}}\,\partial\tau/\partial x_{\mathrm{sky}}\), \(\alpha_y = -\alpha_{\tau,\mathrm{scale}}\,\partial\tau/\partial y_{\mathrm{sky}}\) with `alpha_tau_scale = 1.0` (placeholder).
+- **Units:** `normalized_proxy` — not arcseconds or physical lensing until Phase 5B calibration.
+- **Optional:** convergence proxy \(\kappa \approx \tfrac{1}{2}(\partial\alpha_x/\partial x + \partial\alpha_y/\partial y)\); edge pixels may be unstable and masked.
+- **Not included:** lensing-only fit, separate halo, observational limit comparison (no documented limit source yet).
 
 ## Reconstruction from rotation, use for lensing
 
@@ -120,4 +128,4 @@ Model comparison will use quantitative metrics (e.g. χ², AIC/BIC where appropr
 ## References and framework notes
 
 - Full TDF theoretical references will be added when the manuscript bibliography is fixed.
-- \(K_\tau\) physical interpretation and units will be locked when connecting to lensing (Phase 5).
+- \(K_\tau\) physical interpretation and units will be locked in Phase 5B; Phase 5A uses `normalized_proxy` only.

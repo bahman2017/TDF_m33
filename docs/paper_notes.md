@@ -40,9 +40,10 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - **Phase 4A:** First 2D disk-plane τ map: axisymmetric τ₂D(x,y)=τ_rad(R) from `tdf_lowparam_3knot`; not separately fitted; not final physical map.
 - **Phase 4B:** Disk-to-sky coordinate projection only; τ field unchanged; prepares Phase 5 deflection.
 - **Phase 4B-B:** Corbelli 2014 Fig. 3 model-shape tilted-ring i(R), PA(R) locked; placeholders removed. Warped disk—global i/PA is approximation only.
+- **Phase 5A:** Normalized deflection-proxy maps from frozen sky τ (α ∝ −∇τ); no lensing fit; no separate halo; `normalized_proxy` units; not a detection claim.
 - No gas morphology, spiral structure, or non-axisymmetric regularization yet.
 - Qualify any TDF vs NFW comparison — not a DM disproof.
-- No lensing predictions yet. No dark-matter replacement claim.
+- Observational lensing limits deferred to Phase 5B when documented in `data_sources.md`.
 
 ## Planned figures
 

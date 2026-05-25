@@ -218,7 +218,21 @@ Source: `tdf_lowparam_3knot` from `phase3c_tdf_lowparam_profiles.csv`. Disk-plan
 | Metadata | `outputs/tables/phase4b_tau_projection_metadata.csv` |
 | Figures | `outputs/figures/phase4b_tau_sky_projected_map.png`, `phase4b_projection_geometry_check.png` |
 
-Geometry: `tdf.projection` in `configs/m33_default.yaml`. Phase 4B-B uses `geometry_mode: radial_tilted_ring` with `data/raw/extracted/corbelli2014_tilted_ring_geometry_model_shape.csv` (digitized from Corbelli et al. 2014 A&A 572 A23 **Fig. 3**, model-shape triangles, **Sect. 4.1**). `placeholder_geometry_flag: false`. No lensing.
+Geometry: `tdf.projection` in `configs/m33_default.yaml`. Phase 4B-B uses `geometry_mode: radial_tilted_ring` with `data/raw/extracted/corbelli2014_tilted_ring_geometry_model_shape.csv` (digitized from Corbelli et al. 2014 A&A 572 A23 **Fig. 3**, model-shape triangles, **Sect. 4.1**). `placeholder_geometry_flag: false`.
+
+### Phase 5A — Deflection-proxy from frozen sky τ (2026-05-24)
+
+**Script:** `python scripts/run_phase5a_lensing_prediction.py` (requires Phase 4B NPZ)
+
+| Output | Path |
+|--------|------|
+| Deflection proxy map | `outputs/maps/phase5a_tau_deflection_proxy_map.npz` |
+| Metadata | `outputs/tables/phase5a_lensing_prediction_metadata.csv` |
+| Summary | `outputs/tables/phase5a_deflection_summary.csv` |
+| Report | `outputs/reports/phase5a_lensing_prediction_report.md` |
+| Figures | `outputs/figures/phase5a_deflection_magnitude_map.png`, `phase5a_deflection_vector_field.png`, `phase5a_convergence_proxy_map.png` (if stable) |
+
+Source: `outputs/maps/phase4b_tau_sky_projected_map.npz`; `source_model: tdf_lowparam_3knot`; `deflection_mode: normalized_tau_gradient_proxy`; `units: normalized_proxy`. No lensing-only fit; no separate halo. `compare_to_observational_limits: false` — **no documented M33 lensing limit table** in this file yet (`lensing_limits_placeholder` remains planned for Phase 5B).
 
 **Corbelli 2014 geometry notes (PDF audit):**
 

@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 4B-B  # Lock Corbelli 2014 projection geometry for sky tau map
+  phase: 5A  # Normalized deflection-proxy maps from frozen sky-plane tau
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -127,6 +127,16 @@ tdf:
     placeholder_inclination_deg: 56.0  # legacy Phase 4B-A ballpark; disabled when allow_placeholder_geometry=false
     placeholder_position_angle_deg: 23.0
     allow_placeholder_geometry: false
+  lensing:
+    enabled: true
+    source_map: outputs/maps/phase4b_tau_sky_projected_map.npz
+    source_model: tdf_lowparam_3knot
+    deflection_mode: normalized_tau_gradient_proxy
+    alpha_tau_scale: 1.0
+    units: normalized_proxy
+    compute_convergence_proxy: true
+    compare_to_observational_limits: false
+    observational_limits_source: null
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys
@@ -164,7 +174,7 @@ plotting:
     - pdf
 
 lensing_prediction:
-  enabled: false  # Phase 5
+  enabled: true  # Phase 5A via tdf.lensing
   use_same_tau_map_as_rotation: true
-  deflection_limits_file: null  # PLACEHOLDER
+  deflection_limits_file: null  # no documented limit source in data_sources.md yet
   treatment: prediction_consistency  # not a substitute for direct lensing inference unless data available
