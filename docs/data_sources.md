@@ -156,7 +156,19 @@ Consolidates fit-mask metrics, Burkert r₀ boundary flag, NFW enclosed-mass san
 | Diagnostics | `outputs/tables/phase3a_tau_reconstruction_diagnostics.csv` |
 | Figures | `phase3a_tau_gradient_raw.png`, `phase3a_tau_profile_raw.png`, `phase3a_tdf_direct_reconstruction_check.png` |
 
-Input: `phase2c_residual_readiness.csv` \(\Delta v^2\); \(d\tau/dr = \Delta v^2/(r K_\tau)\), default \(K_\tau=1\). **Not** NFW/Burkert residuals. Direct reconstruction is an identity check—not AIC/BIC model comparison (Phase 3B).
+Input: `phase2c_residual_readiness.csv` \(\Delta v^2\); \(d\tau/dr = \Delta v^2/(r K_\tau)\), default \(K_\tau=1\). **Not** NFW/Burkert residuals. Direct reconstruction is an identity check—not AIC/BIC model comparison (Phase 3C).
+
+### Phase 3B-A — Regularized τ reconstruction (2026-05-24)
+
+**Script:** `python scripts/run_phase3b_tdf_regularized_reconstruction.py`
+
+| Output | Path |
+|--------|------|
+| Regularized profiles | `outputs/tables/phase3b_tau_regularized_profiles.csv` |
+| Diagnostics | `outputs/tables/phase3b_tau_regularization_diagnostics.csv` |
+| Figures | `phase3b_tau_gradient_regularized.png`, `phase3b_tau_profile_regularized.png`, `phase3b_tdf_regularized_reconstruction_check.png`, `phase3b_regularization_tradeoff.png` |
+
+Methods: `gaussian_radius_smoothing` (σ_kpc from config), `smoothing_spline` (fixed s). Smoothing parameters not fitted to rotation. **No** AIC/BIC vs NFW yet.
 
 ## Canonical processed CSV schema
 

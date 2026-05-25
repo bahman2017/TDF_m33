@@ -62,7 +62,8 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 2B** | Complete — NFW and Burkert halo baseline fits (comparison only) |
 | **Phase 2C** | Complete — model audit, Burkert boundary flag, Phase 3 residual readiness |
 | **Phase 3A** | Complete — direct pointwise τ from baryonic Δv² (unsmoothed) |
-| Phase 3B+ | Not started — τ smoothing, K_τ sensitivity, model comparison |
+| **Phase 3B-A** | Complete — regularized τ-gradient (Gaussian + spline) |
+| Phase 3C+ | Not started — low-parameter τ, formal model comparison |
 
 ## Data provenance status
 
@@ -81,11 +82,12 @@ python scripts/run_phase2a_baryonic_only.py
 python scripts/run_phase2b_halo_baselines.py
 python scripts/run_phase2c_model_audit.py
 python scripts/run_phase3a_tdf_radial_reconstruction.py
+python scripts/run_phase3b_tdf_regularized_reconstruction.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```
 
-See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 3A reconstructs raw \(d\tau/dr\) and \(\tau(r)\) from Phase 2A baryonic \(\Delta v^2\) with \(K_\tau=1\) (normalization only); smoothing is Phase 3B. NFW/Burkert remain ΛCDM baselines only. No dark-matter replacement claim.
+See `docs/extraction_log.md` and `docs/baryonic_velocity_derivation_plan.md` for provenance and caveats. Phase 3A/3B-A use baryonic \(\Delta v^2\) only (\(K_\tau=1\) normalization). Phase 3B-A smooths \(d\tau/dr\) (config-fixed σ or spline s)—not a halo fit or anti-DM claim. Formal comparison vs NFW is Phase 3C.
 
 ## Expected data sources
 

@@ -25,6 +25,11 @@ from tdf_m33.models.tdf_radial import (
     compute_v_tau_squared_from_gradient,
     integrate_tau_profile,
 )
+from tdf_m33.models.tdf_regularization import (
+    gaussian_radius_smoothing,
+    smooth_tau_gradient,
+    smoothing_spline,
+)
 
 __all__ = [
     "DiskGravityGrid",
@@ -40,8 +45,11 @@ __all__ = [
     "compute_tau_gradient",
     "compute_v_bar",
     "compute_v_tau_squared_from_gradient",
+    "gaussian_radius_smoothing",
     "integrate_tau_profile",
     "nfw_density",
+    "smooth_tau_gradient",
+    "smoothing_spline",
     "nfw_mass_enclosed",
     "nfw_velocity",
 ]

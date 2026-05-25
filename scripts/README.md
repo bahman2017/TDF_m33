@@ -69,3 +69,10 @@ python scripts/run_phase2c_model_audit.py
 python scripts/run_phase2c_model_audit.py   # prerequisite
 python scripts/run_phase3a_tdf_radial_reconstruction.py
 ```
+
+**Phase 3B-A — regularized τ-gradient (Gaussian + spline):**
+
+```bash
+python scripts/run_phase3a_tdf_radial_reconstruction.py  # prerequisite
+python scripts/run_phase3b_tdf_regularized_reconstruction.py
+```

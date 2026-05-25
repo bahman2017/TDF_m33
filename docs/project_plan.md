@@ -215,14 +215,29 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
-## Phase 3B: τ smoothing / regularization (planned)
+## Phase 3B-A: τ-gradient smoothing / regularization
 
-**Goal:** Stabilize \(d\tau/dr\) and low-parameter \(\tau(r)\) for interpretable profiles and formal model comparison.
+**Goal:** Smooth raw \(d\tau/dr\) from Phase 3A (Gaussian and spline methods) while preserving baryonic \(\Delta v^2\) structure; no AIC/BIC yet.
+
+**Deliverables:**
+
+- `tdf_m33.models.tdf_regularization`, `scripts/run_phase3b_tdf_regularized_reconstruction.py`
+- `outputs/tables/phase3b_tau_regularized_profiles.csv`, `phase3b_tau_regularization_diagnostics.csv`
+- Regularized gradient/profile and tradeoff figures
 
 **Acceptance criteria:**
 
-- [ ] Smoothing or regularization documented; spike mitigation vs Phase 3A raw gradient
-- [ ] Eligible for comparison metrics alongside Phase 2 baselines
+- [x] Gaussian (σ_kpc) and spline (fixed s) from config; not tuned to minimize RMSE
+- [x] Raw and smoothed τ both available; negative \(v_\tau^2\) flagged not clipped
+- [x] Spike/smoothness metrics before vs after; AIC/BIC deferred to Phase 3C
+
+**Status:** Complete.
+
+---
+
+## Phase 3B-B / 3C: Low-parameter τ and formal comparison (planned)
+
+**Goal:** Low-DOF τ parameterization and AIC/BIC comparison vs Phase 2 baselines.
 
 ---
 

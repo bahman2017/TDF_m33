@@ -83,6 +83,12 @@ outputs/tables/*
 !outputs/figures/phase3a_tau_gradient_raw.png
 !outputs/figures/phase3a_tau_profile_raw.png
 !outputs/figures/phase3a_tdf_direct_reconstruction_check.png
+!outputs/tables/phase3b_tau_regularized_profiles.csv
+!outputs/tables/phase3b_tau_regularization_diagnostics.csv
+!outputs/figures/phase3b_tau_gradient_regularized.png
+!outputs/figures/phase3b_tau_profile_regularized.png
+!outputs/figures/phase3b_tdf_regularized_reconstruction_check.png
+!outputs/figures/phase3b_regularization_tradeoff.png
 outputs/reports/*
 !outputs/reports/README.md
 !outputs/reports/phase2c_model_audit_report.md

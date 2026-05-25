@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 3A  # Direct pointwise τ from baryonic Δv²; smoothing in 3B
+  phase: 3B-A  # Regularized τ-gradient from Phase 3A raw profile
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -67,11 +67,20 @@ tdf:
   reconstruction_mode: direct_pointwise
   input_residual: baryonic_only_delta_v2
   use_fit_mask_for_summary: true
+  regularization:
+    enabled: true
+    default_method: gaussian_radius_smoothing
+    gaussian_sigma_kpc: 0.75
+    spline_smoothing_factor: null  # null → documented variance fallback in code
+    preserve_positive_vtau2: true
+    compare_methods:
+      - gaussian_radius_smoothing
+      - smoothing_spline
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys
   radial_profile:
-    parameterization: direct_pointwise  # Phase 3A; spline/regularized in 3B
+    parameterization: regularized  # Phase 3B-A; direct_pointwise in 3A
     n_knots: null
   map_2d:
     enabled: false  # Phase 4 optional

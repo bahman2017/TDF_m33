@@ -22,7 +22,8 @@ Explicit scope control for reviewers and future paper text.
 | Phase 3 τ input | 3 | \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) from Phase 2A only—not NFW/Burkert residuals |
 | Phase 3A direct τ | 3A | Pointwise \(d\tau/dr=\Delta v^2/(rK_\tau)\); \(K_\tau=1\) is project-unit normalization; \(\tau\) offset arbitrary; identity check not AIC/BIC competitor |
 | \(K_\tau\) | 3B+ | Physical calibration and fitting deferred; sensitivity analysis planned |
-| τ smoothness | 3B | Regularization required for stable \(d\tau/dr\) (9 raw spikes in Phase 2C) |
+| Phase 3B-A regularization | 3B-A | Gaussian/spline smoothing of \(d\tau/dr\); parameters fixed in config—not fitted; not evidence vs NFW by itself |
+| τ smoothness | 3B-A | Raw spikes reduced; interpretive claims still require Phase 3C comparison |
 | 2D τ-map | 4 | Optional; may impose additional symmetry |
 | Lensing geometry | 5 | Line-of-sight and thin-lens approximations as documented in lensing module |
 
@@ -46,7 +47,9 @@ Explicit scope control for reviewers and future paper text.
 
 9. **Phase 2C audit.** NFW performs well on the processed dataset (reduced χ² ≈ 1 on the fit mask); Burkert is **boundary-limited** (r₀ at upper bound) and should not be over-interpreted. Phase 3 uses baryonic \(\Delta v^2\) only; smoothing/regularization may be needed depending on residual gradient diagnostics.
 
-10. **Phase 3A direct τ.** Raw \(d\tau/dr\) and \(\tau(r)\) are reconstructed algebraically from baryonic residuals—**not** a new fitted halo model. Reconstruction error \(\approx 0\) is an identity check. No lensing predictions. No dark-matter disproof claim. Phase 3B should smooth the gradient before interpretive or comparative claims.
+10. **Phase 3A direct τ.** Raw \(d\tau/dr\) and \(\tau(r)\) are reconstructed algebraically from baryonic residuals—**not** a new fitted halo model. Reconstruction error \(\approx 0\) is an identity check. No lensing predictions. No dark-matter disproof claim.
+
+11. **Phase 3B-A smoothed τ.** Smoothing reduces gradient spikes but introduces reconstruction RMSE vs \(v_{\mathrm{obs}}\). This is a **regularization step**, not proof that TDF outperforms NFW. Raw Phase 3A profiles remain available. AIC/BIC comparison requires Phase 3C.
 
 ## Claim control (mandatory framing)
 

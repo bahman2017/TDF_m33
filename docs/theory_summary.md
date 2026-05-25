@@ -57,7 +57,16 @@ Phase 3A applies the inversion algebraically at each radius on the canonical gri
 - \(d\tau/dr = \Delta v^2 / (r\, K_\tau)\) with default \(K_\tau = 1\) as a **project-unit normalization** (not a fitted physical constant in 3A).
 - \(\tau(r)\) from cumulative trapezoidal integration with \(\tau(r_{\min}) = 0\); **additive offset of \(\tau\) is arbitrary**.
 - \(v_{\mathrm{TDF,direct}} = \sqrt{v_{\mathrm{bar}}^2 + r K_\tau\, d\tau/dr}\) is an **identity check** (reconstruction error \(\approx 0\) numerically), not a new halo fit or AIC/BIC competitor.
-- Raw \(d\tau/dr\) inherits spikes from \(\Delta v^2\); Phase 3B will add smoothing/regularization.
+- Raw \(d\tau/dr\) inherits spikes from \(\Delta v^2\); Phase 3B-A applies configurable smoothing (Gaussian in radius, or smoothing spline).
+
+## Phase 3B-A implementation (regularized radial)
+
+- Input: `tau_gradient_raw` from Phase 3A (still derived from baryonic \(\Delta v^2\) only).
+- Methods: **Gaussian radius smoothing** (σ_kpc from config) and **smoothing spline** (fixed `s`, not fit to rotation).
+- Rebuild \(v_{\tau}^2 = r K_\tau\, d\tau/dr\) from smoothed gradient; integrate \(\tau(r)\) with \(\tau(r_{\min})=0\).
+- \(v_{\mathrm{TDF,smooth}}\) may differ from \(v_{\mathrm{obs}}\) — this is expected (regularization tradeoff), not an identity check.
+- Negative smoothed \(v_\tau^2\) are **flagged**, not silently clipped.
+- Formal AIC/BIC vs NFW deferred to Phase 3C (low-parameter / effective DOF).
 
 ## Reconstruction from rotation, use for lensing
 
