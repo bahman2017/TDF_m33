@@ -36,6 +36,7 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - **Not** a fair AIC/BIC competitor to NFW until Phase 3B regularization.
 - **Phase 3B-A:** Gaussian (σ=0.75 kpc) and spline smoothing of raw \(d\tau/dr\); tradeoff vs \(v_{\mathrm{obs}}\) documented—not a claim that TDF beats NFW.
 - **Phase 3C:** Low-parameter knot τ models (k=3,4,5) with AIC/BIC vs NFW/Burkert on fit mask; K_τ fixed. 3A/3B not formal competitors.
+- **Phase 3D:** Robustness audit (K_τ, mask, smoothing σ); K_τ is normalization.
 - Qualify any TDF vs NFW comparison — not a DM disproof.
 - No lensing predictions yet. No dark-matter replacement claim.
 

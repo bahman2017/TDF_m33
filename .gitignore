@@ -96,9 +96,15 @@ outputs/tables/*
 !outputs/figures/phase3c_tdf_lowparam_rotation_comparison.png
 !outputs/figures/phase3c_tdf_lowparam_tau_gradient.png
 !outputs/figures/phase3c_tdf_lowparam_residuals.png
+!outputs/tables/phase3d_tdf_sensitivity_summary.csv
+!outputs/tables/phase3d_ktau_sweep.csv
+!outputs/tables/phase3d_fitmask_sensitivity.csv
+!outputs/tables/phase3d_smoothing_sensitivity.csv
+!outputs/figures/phase3d_tdf_sensitivity_summary.png
 outputs/reports/*
 !outputs/reports/README.md
 !outputs/reports/phase2c_model_audit_report.md
+!outputs/reports/phase3d_tdf_sensitivity_report.md
 
 # Jupyter
 .ipynb_checkpoints/

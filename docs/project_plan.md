@@ -254,9 +254,28 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
-## Phase 3D / 4: Sensitivity and 2D τ (planned)
+## Phase 3D: TDF sensitivity and robustness audit
 
-**Goal:** K_τ sensitivity, optional 2D τ-map; lensing consistency (Phase 5).
+**Goal:** Knot-count, K_τ, smoothing σ, and fit-mask stability before 2D τ or lensing.
+
+**Deliverables:**
+
+- `tdf_m33.fitting.phase3d_tdf_sensitivity`, `scripts/run_phase3d_tdf_sensitivity.py`
+- `phase3d_*` tables, `phase3d_tdf_sensitivity_report.md`, summary figure
+
+**Acceptance criteria:**
+
+- [x] K_τ sweep documented as normalization / scale degeneracy audit
+- [x] Phase 3C knot ranking vs NFW; fit-mask variants for 3-knot
+- [x] Gaussian σ diagnostic from Phase 3B; no lensing; no DM disproof claim
+
+**Status:** Complete.
+
+---
+
+## Phase 4: 2D τ-map (planned)
+
+**Goal:** Optional 2D τ extension; proceed after Phase 3D stability review.
 
 ---
 

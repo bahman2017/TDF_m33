@@ -82,3 +82,10 @@ python scripts/run_phase3b_tdf_regularized_reconstruction.py
 ```bash
 python scripts/run_phase3c_tdf_lowparam_model.py
 ```
+
+**Phase 3D — TDF sensitivity / robustness audit:**
+
+```bash
+python scripts/run_phase3c_tdf_lowparam_model.py  # prerequisite
+python scripts/run_phase3d_tdf_sensitivity.py
+```

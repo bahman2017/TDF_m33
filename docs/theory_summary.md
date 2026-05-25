@@ -76,6 +76,12 @@ Phase 3A applies the inversion algebraically at each radius on the canonical gri
 - Negative \(v_\tau^2\) flagged; optional non-negative knot bounds.
 - Does not imply TDF disproves dark matter; Burkert baseline may remain bound-limited.
 
+## Phase 3D (robustness audit)
+
+- Knot-count ranking (3/4/5) vs NFW AIC/BIC on the Corbelli mask.
+- **K_τ sweep:** refitting knot values at K_τ ∈ {0.5, 1, 2} tests whether velocity fits change materially; often they do not (scale degeneracy in v_τ² = r K_τ dτ/dr).
+- Gaussian σ and alternate fit masks: qualitative stability checks only.
+
 ## Reconstruction from rotation, use for lensing
 
 **Step 1 (rotation):** Using \(v_{\mathrm{obs}}(r)\) and a documented \(v_{\mathrm{bar}}(r)\), infer \(d\tau/dr\) and \(\tau(r)\) (or a 2D \(\tau\) map in Phase 4) subject to smoothness and config choices.

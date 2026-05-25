@@ -1,0 +1,5 @@
+audit_type,sigma_kpc,k_tau,gradient_spike_count,gradient_smoothness_metric,reconstruction_rmse_kms,n_negative_vtau2,notes
+gaussian_smoothing,0.5,1.0,0,58.16656917489146,1.663857746699369,0,Phase 3B diagnostic; not AIC/BIC formal comparison.
+gaussian_smoothing,0.75,1.0,0,42.52926084891915,2.125463908487595,0,Phase 3B diagnostic; not AIC/BIC formal comparison.
+gaussian_smoothing,1.0,1.0,0,27.321865432113583,2.475142750180502,0,Phase 3B diagnostic; not AIC/BIC formal comparison.
+gaussian_smoothing,1.5,1.0,0,9.083197520092774,2.996794215445779,0,Phase 3B diagnostic; not AIC/BIC formal comparison.

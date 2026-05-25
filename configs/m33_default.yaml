@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 3C  # Low-parameter knot τ model vs Phase 2 baselines
+  phase: 3D  # TDF sensitivity / robustness audit
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -86,6 +86,21 @@ tdf:
     fit_min_radius_kpc: 0.4
     fit_max_radius_kpc: 23.0
     compare_knot_counts: [3, 4, 5]
+  sensitivity:
+    k_tau_values: [0.5, 1.0, 2.0]
+    k_tau_sweep_knot_counts: [3, 4]
+    gaussian_sigma_values_kpc: [0.5, 0.75, 1.0, 1.5]
+    fitmask_knot_count: 3
+    fit_mask_variants:
+      - name: corbelli_default
+        min_kpc: 0.4
+        max_kpc: 23.0
+      - name: stricter_0p5_22p5
+        min_kpc: 0.5
+        max_kpc: 22.5
+      - name: stricter_1p0_22p0
+        min_kpc: 1.0
+        max_kpc: 22.0
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys

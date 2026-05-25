@@ -183,6 +183,18 @@ Methods: `gaussian_radius_smoothing` (σ_kpc from config), `smoothing_spline` (f
 
 k=3,4,5 knot dτ/dr fitted; K_τ=1 fixed. Combined with Phase 2B baryonic/NFW/Burkert. Phase 3A/3B not in AIC/BIC comparison table.
 
+### Phase 3D — Sensitivity audit (2026-05-24)
+
+**Script:** `python scripts/run_phase3d_tdf_sensitivity.py`
+
+| Output | Path |
+|--------|------|
+| Summary | `outputs/tables/phase3d_tdf_sensitivity_summary.csv` |
+| K_τ sweep | `outputs/tables/phase3d_ktau_sweep.csv` |
+| Fit-mask | `outputs/tables/phase3d_fitmask_sensitivity.csv` |
+| Smoothing σ | `outputs/tables/phase3d_smoothing_sensitivity.csv` |
+| Report | `outputs/reports/phase3d_tdf_sensitivity_report.md` |
+
 ## Canonical processed CSV schema
 
 File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  

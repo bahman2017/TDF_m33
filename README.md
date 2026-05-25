@@ -64,6 +64,7 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 3A** | Complete — direct pointwise τ from baryonic Δv² (unsmoothed) |
 | **Phase 3B-A** | Complete — regularized τ-gradient (Gaussian + spline) |
 | **Phase 3C** | Complete — low-parameter knot τ; AIC/BIC vs NFW/Burkert |
+| **Phase 3D** | Complete — sensitivity audit (K_τ, mask, smoothing) |
 | Phase 4+ | Not started — 2D τ-map, lensing |
 
 ## Data provenance status
@@ -85,6 +86,7 @@ python scripts/run_phase2c_model_audit.py
 python scripts/run_phase3a_tdf_radial_reconstruction.py
 python scripts/run_phase3b_tdf_regularized_reconstruction.py
 python scripts/run_phase3c_tdf_lowparam_model.py
+python scripts/run_phase3d_tdf_sensitivity.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```

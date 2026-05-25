@@ -1,0 +1,10 @@
+audit_type,check_name,value,detail
+summary,best_tdf_by_aic,tdf_lowparam_3knot,NFW AIC=67.97
+summary,best_tdf_by_bic,tdf_lowparam_3knot,NFW BIC=72.02
+summary,tdf_3knot_aic_beats_nfw,True,Qualify: rotation-only; D1 baryonic caveat.
+summary,k_tau_velocity_metrics_stable,False,max RMSE spread=0.4150 km/s across sweep
+summary,k_tau_knot_scaling_degeneracy,True,"k=3, K_tau=0.5: median knot ratio vs K_tau=1 is 2.000 (expected ~2.000 if scale degeneracy); k=3, K_tau=2.0: median knot ratio vs K_tau=1 is 0.500 (expected ~0.500 if scale degeneracy)"
+summary,smoothing_sigma_range_rmse,1.66–3.00 km/s,Diagnostic only; not AIC/BIC.
+summary,fitmask_3knot_aic_range,62.7–70.9,"Mask names: corbelli_default, stricter_0p5_22p5, stricter_1p0_22p0"
+summary,lensing_tested,false,Rotation dynamics only.
+summary,dark_matter_disproven,false,Robustness audit only; NFW remains ΛCDM reference.
