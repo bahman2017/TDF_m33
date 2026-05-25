@@ -145,3 +145,11 @@ python scripts/validate_lopez_fune_2017_extracted_constraints.py
 ```
 
 Writes/validates `data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv`, `lopez_fune_2017_halo_parameters_raw.csv`, and audit outputs under `outputs/`.
+
+**Phase 5C-B — upper-bound dynamical consistency (not lensing):**
+
+```bash
+python scripts/run_phase5c_upper_bound_consistency.py
+```
+
+Compares frozen `tdf_lowparam_3knot` enclosed-mass proxy `M_tau_eff = r v_tau^2 / G` to López Fune 2017 `M_enclosed_23kpc`. Does **not** enable `observational_limits`, fit `alpha_tau_scale`, or convert deflection to arcsec.

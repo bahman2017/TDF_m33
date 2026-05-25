@@ -38,7 +38,7 @@
 | Limitations | Halo-centric; not lensing; partial circularity with Corbelli 2014 |
 | Phase 5B-C | PDF + checksum acquired; `docs/lopez_fune_2017_extraction_plan.md` |
 | Phase 5C-A | **Extracted** — raw CSVs; Fig. 6 approx. digitization + quoted parameters |
-| Phase 5C-B | **Next** — upper-bound consistency only (no τ tuning) |
+| Phase 5C-B | **Complete** — enclosed-mass proxy vs `M_enclosed_23kpc`; not lensing |
 
 ### 3. `kam_et_al_2018_m33_hi_masses` (located)
 

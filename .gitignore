@@ -134,8 +134,12 @@ outputs/reports/*
 !outputs/reports/phase5b_constraint_source_audit.md
 !outputs/reports/phase5b_lopez_fune_source_audit.md
 !outputs/reports/phase5c_lopez_fune_extraction_audit.md
+!outputs/reports/phase5c_upper_bound_consistency_report.md
 !outputs/tables/phase5b_lopez_fune_source_status.csv
 !outputs/tables/phase5c_lopez_fune_extraction_status.csv
+!outputs/tables/phase5c_tau_mass_proxy_profile.csv
+!outputs/tables/phase5c_upper_bound_consistency_summary.csv
+!outputs/figures/phase5c_tau_mass_proxy_vs_lopez_fune.png
 
 # Jupyter
 .ipynb_checkpoints/

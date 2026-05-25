@@ -293,6 +293,19 @@ Review: `docs/lensing_constraint_source_review.md`. No observational comparison;
 
 No τ comparison. `observational_limits.enabled: false`.
 
+### Phase 5C-B — Upper-bound dynamical consistency (2026-05-24)
+
+**Script:** `python scripts/run_phase5c_upper_bound_consistency.py`
+
+| Output | Path |
+|--------|------|
+| τ mass proxy profile | `outputs/tables/phase5c_tau_mass_proxy_profile.csv` |
+| Consistency summary | `outputs/tables/phase5c_upper_bound_consistency_summary.csv` |
+| Report | `outputs/reports/phase5c_upper_bound_consistency_report.md` |
+| Figure | `outputs/figures/phase5c_tau_mass_proxy_vs_lopez_fune.png` |
+
+Dynamical scale check only (`M_tau_eff = r v_τ²/G` vs López Fune `M_enclosed_23kpc`). Not weak lensing; deflection remains `normalized_proxy`; `observational_limits.enabled: false`.
+
 ### Lensing / deflection constraint registry (Phase 5B-B+)
 
 **Do not invent numerical limits.** Review: `docs/lensing_constraint_source_review.md`. Audit: `python scripts/run_phase5b_constraint_source_audit.py`.
@@ -300,7 +313,7 @@ No τ comparison. `observational_limits.enabled: false`.
 | source_id | Title (short) | Year | DOI / URL | Constraint class | acquisition_status | calibration | upper-bound | context | Phase 5C |
 |-----------|---------------|------|-----------|------------------|-------------------|-------------|-------------|---------|----------|
 | `corbelli_et_al_2014` | Corbelli et al. 2014 A&A 572 A23 | 2014 | [10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033) | dynamical + rotation (primary) | downloaded | no | no (circular) | yes | no |
-| `lopez_fune_salucci_corbelli_2017` | The radial dependence of dark matter distribution in M33 | 2017 | [10.1093/mnras/stx2742](https://doi.org/10.1093/mnras/stx2742) | dynamical halo | **extracted** | no | yes | yes | **selected — compare in 5C-B** |
+| `lopez_fune_salucci_corbelli_2017` | The radial dependence of dark matter distribution in M33 | 2017 | [10.1093/mnras/stx2742](https://doi.org/10.1093/mnras/stx2742) | dynamical halo | **extracted** | no | yes | yes | **5C-B upper-bound compared** |
 | `kam_et_al_2018_m33_hi_masses` | Hi Kinematics and Mass Distribution of Messier 33 | 2018 | [10.3847/1538-3881/aa79f3](https://doi.org/10.3847/1538-3881/aa79f3) | dynamical halo | located | no | yes | yes | alternate |
 | `corbelli_salucci_2000` | Extended rotation curve and DM halo of M33 | 2000 | [astro-ph/9909252](https://arxiv.org/abs/astro-ph/9909252) | dynamical | located | no | marginal | yes | no (superseded) |
 | `mcconnachie_2012_local_group` | Dwarf galaxies in and around the Local Group | 2012 | [10.1088/0004-6256/144/1/4](https://doi.org/10.1088/0004-6256/144/1/4) | Local Group | located | no | no | yes | no |
@@ -308,7 +321,7 @@ No τ comparison. `observational_limits.enabled: false`.
 | `combo17_weak_lensing_statistical` | COMBO-17 weak lensing of field galaxies | 2007 | [astro-ph/0412615](https://arxiv.org/abs/astro-ph/0412615) | weak lensing (statistical) | rejected | no | no | no | no — not M33 |
 | `m33_direct_weak_lensing_gap` | No M33-specific WL map identified (5B-B review) | — | `docs/lensing_constraint_source_review.md` | review synthesis | documented | no | no | yes | no |
 
-**Phase 5C-B (planned):** Compare enclosed-mass-style proxies using extracted CSVs; `limits_source_id` and `enabled: true` only after review. Comparison remains `upper_bound_consistency` on dynamical mass, not arcsec deflection, until physical calibration is documented.
+**Phase 5C-B (complete):** Enclosed-mass proxy compared to López Fune `M_enclosed_23kpc` at ~23 kpc. `observational_limits.enabled` remains **false**; no arcsec deflection calibration. Physical lensing and weak-lensing comparison remain deferred.
 
 Config keys: `tdf.lensing.observational_limits.limits_source_id` must match a registry row before `enabled: true`.
 

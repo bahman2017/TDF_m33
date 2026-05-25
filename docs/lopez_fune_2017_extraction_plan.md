@@ -60,4 +60,4 @@ No numbered data tables were identified in the acquired PDF text layer. Numerica
 |-------|--------|
 | **5B-C** | Acquire PDF + checksum; document extraction plan |
 | **5C-A (complete)** | Extract to `lopez_fune_2017_dm_profile_raw.csv` and `lopez_fune_2017_halo_parameters_raw.csv`; audit via `validate_lopez_fune_2017_extracted_constraints.py` |
-| **5C-B (next)** | Upper-bound dynamical consistency vs TDF (no τ tuning; still `normalized_proxy`) |
+| **5C-B (complete)** | `run_phase5c_upper_bound_consistency.py` — `M_tau_eff` vs `M_enclosed_23kpc`; no τ tuning; still `normalized_proxy` |

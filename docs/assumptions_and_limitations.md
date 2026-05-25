@@ -74,7 +74,9 @@ Explicit scope control for reviewers and future paper text.
 
 20. **Phase 5B-C López Fune 2017 acquisition.** PDF (arXiv accepted manuscript) and SHA-256 recorded; extraction plan identifies figure-based quantities (no machine tables). **Not** direct lensing; **not** for τ or `alpha_tau_scale` tuning; circularity with Corbelli 2014 inputs documented. Comparison remains disabled.
 
-21. **Phase 5C-A López Fune extraction.** Raw CSVs for Fig. 6 DM profile (approximate digitization) and quoted halo parameters. **Extraction only**—no τ comparison, no `observational_limits` enablement. Registry status **extracted**. Phase 5C-B may use enclosed-mass references only.
+21. **Phase 5C-A López Fune extraction.** Raw CSVs for Fig. 6 DM profile (approximate digitization) and quoted halo parameters. **Extraction only**—no τ comparison, no `observational_limits` enablement. Registry status **extracted**.
+
+22. **Phase 5C-B upper-bound consistency.** Compares Newtonian-equivalent τ mass proxy `M_tau_eff = r v_τ²/G` from frozen `tdf_lowparam_3knot` to López Fune 2017 `M_enclosed_23kpc` at ~23 kpc. **Not** weak lensing; **not** DM replacement; **not** deflection arcsec calibration; `observational_limits.enabled` remains false. Partial circularity with Corbelli 2014 rotation inputs.
 
 ## Claim control (mandatory framing)
 

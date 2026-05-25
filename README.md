@@ -72,7 +72,7 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 5B-B** | Complete — constraint source review; no comparison yet |
 | **Phase 5B-C** | Complete — López Fune et al. 2017 PDF + extraction plan (documented) |
 | **Phase 5C-A** | Complete — López Fune 2017 constraint tables extracted (no comparison) |
-| Phase 5C-B | Planned — dynamical upper-bound consistency check |
+| **Phase 5C-B** | Complete — enclosed-mass upper-bound consistency vs López Fune 2017 (not lensing) |
 
 ## Data provenance status
 

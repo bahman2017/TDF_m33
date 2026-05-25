@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 5C-A  # Extract López Fune 2017 dynamical constraints (no comparison)
+  phase: 5C-B  # Upper-bound dynamical consistency vs López Fune 2017 (no lensing fit)
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -164,6 +164,9 @@ tdf:
         extraction_status: extracted
         profile_csv: data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv
         parameters_csv: data/raw/extracted/lopez_fune_2017_halo_parameters_raw.csv
+        upper_bound_consistency_status: compared
+      upper_bound_target_radius_kpc: 23.0
+    phase3c_profiles_csv: outputs/tables/phase3c_tdf_lowparam_profiles.csv
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys

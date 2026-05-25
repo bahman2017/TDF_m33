@@ -72,9 +72,16 @@ All comparisons must use `comparison_mode: upper_bound_consistency` unless a ful
 
 **`lopez_fune_salucci_corbelli_2017`** — PDF at `data/raw/downloads/lopez_fune_salucci_corbelli_2017_m33.pdf` (arXiv 1611.01409 accepted manuscript); SHA-256 sidecar committed; extraction plan in `docs/lopez_fune_2017_extraction_plan.md`. Registry status: **documented**. Comparison still **disabled**.
 
-## Next steps (Phase 5C)
+## Phase 5C-B — upper-bound consistency (complete)
 
-1. Digitize Fig. 6 / transcribe NFW–Burkert parameters → `data/raw/extracted/lopez_fune_2017_*.csv`.
-2. Run upper-bound enclosed-mass consistency (not arcsec deflection; not τ tuning).
-3. Physical calibration (`alpha_tau_scale` physical units) remains separate and undocumented.
-4. Do **not** enable `observational_limits` until extracted tables are reviewed.
+**Script:** `python scripts/run_phase5c_upper_bound_consistency.py`
+
+- Compares frozen `tdf_lowparam_3knot` effective mass proxy `M_tau_eff(<r) = r v_τ²/G` to López Fune 2017 BRK `M_enclosed_23kpc` (6.7±1.2×10¹⁰ M☉).
+- **Not** weak lensing; **not** τ-map deflection comparison; **not** arcsec calibration; **not** `alpha_tau_scale` fitting.
+- `observational_limits.enabled` remains **false**.
+
+## Next steps (post–5C-B)
+
+1. Document physical `alpha_tau_scale` / arcsec calibration path if pursued (separate phase).
+2. Weak-lensing comparison remains blocked (`m33_direct_weak_lensing_gap`).
+3. Do **not** enable `observational_limits` for arcsec claims without calibration review.

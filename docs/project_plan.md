@@ -410,7 +410,30 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Status:** Complete.
 
-**Phase 5C-B (planned):** Upper-bound dynamical-mass consistency using extracted tables for `selected_source_id`; deflection remains `normalized_proxy` until calibration documented.
+---
+
+## Phase 5C-B: Upper-bound dynamical consistency (López Fune 2017)
+
+**Goal:** Conservative enclosed-mass-style scale check between frozen TDF τ branch and López Fune dynamical reference—not lensing.
+
+**Deliverables:**
+
+- `src/tdf_m33/lensing/phase5c_upper_bound_consistency.py`
+- `scripts/run_phase5c_upper_bound_consistency.py`
+- `outputs/tables/phase5c_tau_mass_proxy_profile.csv`
+- `outputs/tables/phase5c_upper_bound_consistency_summary.csv`
+- `outputs/reports/phase5c_upper_bound_consistency_report.md`
+- `outputs/figures/phase5c_tau_mass_proxy_vs_lopez_fune.png`
+
+**Acceptance criteria:**
+
+- [x] `M_tau_eff = r v_τ²/G` from `tdf_lowparam_3knot`; `K_τ` fixed; no new fit
+- [x] Compare to `M_enclosed_23kpc` from extracted parameters CSV
+- [x] `observational_limits.enabled: false`; deflection remains `normalized_proxy`
+- [x] No arcsec conversion; no `alpha_tau_scale` fit; no separate halo
+- [x] Circularity and not-lensing language in report
+
+**Status:** Complete.
 
 ---
 
@@ -497,7 +520,7 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Phase 5C-A (complete):** Extract López Fune 2017 dynamical tables (see section above).
 
-**Phase 5C-B (planned):** Upper-bound dynamical comparison for selected source; physical calibration still deferred unless documented.
+**Phase 5C-B (complete):** Upper-bound enclosed-mass proxy vs López Fune `M_enclosed_23kpc` (see section above). Physical lensing calibration and weak lensing still deferred.
 
 **Acceptance criteria (5A):**
 

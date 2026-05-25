@@ -44,7 +44,8 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - **Phase 5B-A:** Calibration and observational-limits **planning only**; no physical units; no limit comparison; see `docs/lensing_calibration_and_limits_plan.md`.
 - **Phase 5B-B:** Constraint **source review only**; candidates registered (López Fune et al. 2017 selected for future dynamical check); no M33 weak-lensing map found; see `docs/lensing_constraint_source_review.md`.
 - **Phase 5B-C:** López Fune et al. 2017 PDF acquired + extraction plan; **documented** in registry.
-- **Phase 5C-A:** Raw DM profile + halo parameter tables extracted; no τ comparison yet.
+- **Phase 5C-A:** Raw DM profile + halo parameter tables extracted; no τ comparison.
+- **Phase 5C-B:** Enclosed-mass proxy vs López Fune `M_enclosed_23kpc` — dynamical upper-bound scale check only; deflection still `normalized_proxy`.
 - No gas morphology, spiral structure, or non-axisymmetric regularization yet.
 - Qualify any TDF vs NFW comparison — not a DM disproof.
 - Physical lensing units deferred; observational comparison deferred to Phase 5C after table extraction for selected source.
