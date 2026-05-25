@@ -88,7 +88,15 @@ Phase 3A applies the inversion algebraically at each radius on the canonical gri
 - **Input:** Phase 3C primary model `tdf_lowparam_3knot` (`phase3c_tdf_lowparam_profiles.csv`); **no new fit**, no halo residuals.
 - **Extrapolation:** pixels with \(R\) outside the radial tabulation are **masked** (NaN), not silently extrapolated.
 - **Consistency check:** azimuthal average of \(\tau_{2\mathrm{D}}\) compared to the input radial \(\tau(R)\).
-- **Not included yet:** sky projection/inclination, gas morphology, spiral structure, non-axisymmetric regularization, lensing.
+- **Not included yet:** gas morphology, spiral structure, non-axisymmetric regularization, lensing.
+
+## Phase 4B-A (disk-to-sky projection)
+
+- **Input:** Phase 4A `phase4a_tau_2d_map.npz` (disk-plane kpc).
+- **Operation:** thin-disk coordinate transform (inclination + position angle); τ values **unchanged** at each grid index (no resampling, no new fit).
+- **Geometry:** `inclination_deg` and `position_angle_deg` from config; if null and `allow_placeholder_geometry=true`, documented ballpark placeholders are used and flagged in metadata.
+- **Output:** sky-plane coordinate arrays + same τ field for Phase 5 deflection preparation.
+- **Not included:** lensing predictions, morphology corrections, halo residuals.
 
 ## Reconstruction from rotation, use for lensing
 

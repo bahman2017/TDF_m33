@@ -40,6 +40,12 @@ from tdf_m33.models.tdf_map2d import (
     make_disk_plane_grid,
     radial_interpolate_to_grid,
 )
+from tdf_m33.models.tdf_projection import (
+    deproject_sky_to_disk_coordinates,
+    project_disk_to_sky_coordinates,
+    project_tau_map_to_sky_plane,
+    resolve_projection_geometry,
+)
 
 __all__ = [
     "DiskGravityGrid",
@@ -66,6 +72,10 @@ __all__ = [
     "compute_azimuthal_average_from_map",
     "make_disk_plane_grid",
     "radial_interpolate_to_grid",
+    "deproject_sky_to_disk_coordinates",
+    "project_disk_to_sky_coordinates",
+    "project_tau_map_to_sky_plane",
+    "resolve_projection_geometry",
     "nfw_mass_enclosed",
     "nfw_velocity",
 ]

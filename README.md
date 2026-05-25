@@ -66,6 +66,7 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 3C** | Complete — low-parameter knot τ; AIC/BIC vs NFW/Burkert |
 | **Phase 3D** | Complete — sensitivity audit (K_τ, mask, smoothing) |
 | **Phase 4A** | Complete — axisymmetric disk-plane 2D τ map from Phase 3C |
+| **Phase 4B-A** | Complete — disk-to-sky τ projection (geometry only) |
 | Phase 4B+ / 5 | Not started — morphology-aware τ, lensing |
 
 ## Data provenance status
@@ -89,6 +90,7 @@ python scripts/run_phase3b_tdf_regularized_reconstruction.py
 python scripts/run_phase3c_tdf_lowparam_model.py
 python scripts/run_phase3d_tdf_sensitivity.py
 python scripts/run_phase4a_tdf_2d_map.py
+python scripts/run_phase4b_tau_projection.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```

@@ -96,3 +96,10 @@ python scripts/run_phase3d_tdf_sensitivity.py
 python scripts/run_phase3c_tdf_lowparam_model.py  # prerequisite
 python scripts/run_phase4a_tdf_2d_map.py
 ```
+
+**Phase 4B-A — disk-to-sky τ projection (geometry only):**
+
+```bash
+python scripts/run_phase4a_tdf_2d_map.py  # prerequisite
+python scripts/run_phase4b_tau_projection.py
+```

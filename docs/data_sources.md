@@ -208,6 +208,18 @@ k=3,4,5 knot dτ/dr fitted; K_τ=1 fixed. Combined with Phase 2B baryonic/NFW/Bu
 
 Source: `tdf_lowparam_3knot` from `phase3c_tdf_lowparam_profiles.csv`. Disk-plane kpc; masked outside radial tabulation. No lensing.
 
+### Phase 4B-A — Disk-to-sky projection (2026-05-24)
+
+**Script:** `python scripts/run_phase4b_tau_projection.py` (requires Phase 4A NPZ)
+
+| Output | Path |
+|--------|------|
+| Sky-projected map | `outputs/maps/phase4b_tau_sky_projected_map.npz` |
+| Metadata | `outputs/tables/phase4b_tau_projection_metadata.csv` |
+| Figures | `outputs/figures/phase4b_tau_sky_projected_map.png`, `phase4b_projection_geometry_check.png` |
+
+Geometry: `tdf.projection` in `configs/m33_default.yaml`. Placeholder i/PA used when null (`placeholder_geometry_flag` in metadata). No lensing.
+
 ## Canonical processed CSV schema
 
 File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  

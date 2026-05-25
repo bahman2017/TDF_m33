@@ -9,6 +9,7 @@ from tdf_m33.fitting.phase3b_tdf_regularized import run_phase3b_tdf_regularized
 from tdf_m33.fitting.phase3c_tdf_lowparam import run_phase3c_tdf_lowparam
 from tdf_m33.fitting.phase3d_tdf_sensitivity import run_phase3d_tdf_sensitivity
 from tdf_m33.fitting.phase4a_tdf_2d_map import run_phase4a_tdf_2d_map
+from tdf_m33.fitting.phase4b_tau_projection import run_phase4b_tau_projection
 
 __all__ = [
     "FitMetrics",
@@ -21,4 +22,5 @@ __all__ = [
     "run_phase3c_tdf_lowparam",
     "run_phase3d_tdf_sensitivity",
     "run_phase4a_tdf_2d_map",
+    "run_phase4b_tau_projection",
 ]

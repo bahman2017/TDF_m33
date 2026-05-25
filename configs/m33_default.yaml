@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 4A  # Axisymmetric disk-plane 2D tau map from Phase 3C
+  phase: 4B-A  # Disk-to-sky tau map projection (geometry only)
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 
@@ -110,6 +110,17 @@ tdf:
     n_pixels: 300
     radial_extrapolation: mask
     azimuthal_check_bins: 58
+  projection:
+    enabled: true
+    source_map: outputs/maps/phase4a_tau_2d_map.npz
+    coordinate_frame_in: disk_plane
+    coordinate_frame_out: sky_plane
+    inclination_deg: null  # set explicit values when adopted; see data.inclination_deg
+    position_angle_deg: null
+    placeholder_inclination_deg: 56.0  # ballpark M33 literature; NOT from Corbelli Table 1
+    placeholder_position_angle_deg: 23.0  # config placeholder only
+    geometry_source: corbelli_et_al_2014_or_config_placeholder
+    allow_placeholder_geometry: true
 
 tdf_model:
   K_tau: 1.0  # mirrors tdf.k_tau for legacy config keys

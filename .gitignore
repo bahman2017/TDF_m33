@@ -109,6 +109,10 @@ outputs/tables/*
 outputs/maps/*
 !outputs/maps/README.md
 !outputs/maps/phase4a_tau_2d_map.npz
+!outputs/maps/phase4b_tau_sky_projected_map.npz
+!outputs/tables/phase4b_tau_projection_metadata.csv
+!outputs/figures/phase4b_tau_sky_projected_map.png
+!outputs/figures/phase4b_projection_geometry_check.png
 outputs/reports/*
 !outputs/reports/README.md
 !outputs/reports/phase2c_model_audit_report.md

@@ -292,11 +292,30 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
-## Phase 4B / 5 (planned)
+## Phase 4B-A: Disk-to-sky τ projection (geometry only)
 
-**Phase 4B (optional):** morphology-aware or non-axisymmetric τ extensions (gas, spiral structure) after 4A review.
+**Goal:** Project the Phase 4A disk-plane τ map to documented sky-plane coordinates for future lensing—without changing τ values or fitting new parameters.
 
-**Phase 5:** Lensing/deflection consistency using the same τ-map hypothesis.
+**Deliverables:**
+
+- `tdf_m33.models.tdf_projection`, `tdf_m33.fitting.phase4b_tau_projection`, `scripts/run_phase4b_tau_projection.py`
+- `phase4b_tau_sky_projected_map.npz`, projection metadata, geometry check figures
+
+**Acceptance criteria:**
+
+- [x] Inclination/PA from config (placeholders flagged when null)
+- [x] τ array unchanged at grid indices; masked regions preserved
+- [x] No lensing; no morphology; no new τ fit
+
+**Status:** Complete.
+
+---
+
+## Phase 4B+ / 5 (planned)
+
+**Phase 4B+ (optional):** morphology-aware or non-axisymmetric τ extensions after projection review.
+
+**Phase 5A:** Lensing/deflection consistency using the sky-projected τ map.
 
 ---
 
