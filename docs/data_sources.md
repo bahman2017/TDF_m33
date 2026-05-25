@@ -46,11 +46,13 @@ Do not advance status without a real file and validation (see `docs/data_acquisi
 | `lopez_fune_salucci_corbelli_2017` | López Fune et al. 2017 | located | NFW/Burkert baselines (Phase 2) |
 | `hi_map_placeholder` | TBD | planned | Optional 2D τ-map |
 | `co_map_placeholder` | TBD | planned | Optional CO map |
-| `m33_weak_lensing_placeholder` | TBD (M33 weak-lensing mass/shear) | planned | Phase 5B upper-bound consistency |
-| `local_group_m33_mass_placeholder` | TBD (Local Group / M33 dynamical mass) | planned | Enclosed-mass consistency |
-| `m33_stream_satellite_placeholder` | TBD (stellar streams / satellite dynamics) | planned | Outer-halo upper bounds |
-| `m33_lensing_upper_bound_placeholder` | TBD (published limit papers) | planned | One-sided consistency checks |
-| `m33_direct_deflection_placeholder` | TBD (direct deflection / time-delay) | planned | Future direct lensing source |
+| `lopez_fune_salucci_corbelli_2017` | López Fune et al. 2017 MNRAS | located | Phase 5C dynamical candidate |
+| `kam_et_al_2018_m33_hi_masses` | Kam et al. 2018 AJ (arXiv 1706.04248) | located | Alternate dynamical candidate |
+| `m33_direct_weak_lensing_gap` | Phase 5B-B literature synthesis | documented | Context — no M33 WL map found |
+| `corbelli_salucci_2000` | Corbelli & Salucci 2000 MNRAS | located | Superseded dynamical context |
+| `mcconnachie_2012_local_group` | McConnachie 2012 AJ | located | LG context only |
+| `putman_et_al_2009_m33_tidal` | Putman et al. 2009 tidal H i | located | Outer-disk context |
+| `combo17_weak_lensing_statistical` | Parker et al. 2007 COMBO-17 | rejected | Not M33-specific |
 
 Acquisition workflow: `docs/data_acquisition_plan.md`.  
 Download/extraction audit: `docs/extraction_log.md`.
@@ -249,19 +251,35 @@ Source: `outputs/maps/phase4b_tau_sky_projected_map.npz`; `source_model: tdf_low
 
 Plan: `docs/lensing_calibration_and_limits_plan.md`. Physical calibration and observational comparison remain **disabled** in config until sources below are documented with real files.
 
-### Lensing / deflection constraint registry (Phase 5B+)
+### Phase 5B-B — Constraint source review audit (2026-05-24)
 
-**Do not invent numerical limits.** Set `acquisition_status: planned` until raw/processed files and citations are added.
+**Script:** `python scripts/run_phase5b_constraint_source_audit.py`
 
-| source_id | Constraint class | acquisition_status | comparison_mode | Notes |
-|-----------|------------------|-------------------|-----------------|-------|
-| `m33_weak_lensing_placeholder` | M33 weak-lensing (κ, shear, mass map) | planned | upper_bound_consistency | Enable when paper + data path documented |
-| `local_group_m33_mass_placeholder` | Local Group / M33 dynamical mass | planned | upper_bound_consistency | Enclosed mass vs radius |
-| `m33_stream_satellite_placeholder` | Stellar streams / satellite dynamics | planned | upper_bound_consistency | Outer halo if relevant to M33 |
-| `m33_lensing_upper_bound_placeholder` | Published limit-only studies | planned | upper_bound_consistency | Non-detection / limit tables |
-| `m33_direct_deflection_placeholder` | Direct deflection / time-delay / strong lensing | planned | profile_consistency | Future if applicable to M33 |
+| Output | Path |
+|--------|------|
+| Status table | `outputs/tables/phase5b_constraint_source_status.csv` |
+| Audit report | `outputs/reports/phase5b_constraint_source_audit.md` |
 
-Config keys: `tdf.lensing.observational_limits.limits_source_id` must match a row here before `enabled: true`.
+Review: `docs/lensing_constraint_source_review.md`. No observational comparison; `observational_limits.enabled: false`.
+
+### Lensing / deflection constraint registry (Phase 5B-B)
+
+**Do not invent numerical limits.** Review: `docs/lensing_constraint_source_review.md`. Audit: `python scripts/run_phase5b_constraint_source_audit.py`.
+
+| source_id | Title (short) | Year | DOI / URL | Constraint class | acquisition_status | calibration | upper-bound | context | Phase 5C |
+|-----------|---------------|------|-----------|------------------|-------------------|-------------|-------------|---------|----------|
+| `corbelli_et_al_2014` | Corbelli et al. 2014 A&A 572 A23 | 2014 | [10.1051/0004-6361/201424033](https://doi.org/10.1051/0004-6361/201424033) | dynamical + rotation (primary) | downloaded | no | no (circular) | yes | no |
+| `lopez_fune_salucci_corbelli_2017` | The radial dependence of dark matter distribution in M33 | 2017 | [10.1093/mnras/stx2742](https://doi.org/10.1093/mnras/stx2742) | dynamical halo | located | no | yes | yes | **candidate (selected)** |
+| `kam_et_al_2018_m33_hi_masses` | Hi Kinematics and Mass Distribution of Messier 33 | 2018 | [10.3847/1538-3881/aa79f3](https://doi.org/10.3847/1538-3881/aa79f3) | dynamical halo | located | no | yes | yes | alternate |
+| `corbelli_salucci_2000` | Extended rotation curve and DM halo of M33 | 2000 | [astro-ph/9909252](https://arxiv.org/abs/astro-ph/9909252) | dynamical | located | no | marginal | yes | no (superseded) |
+| `mcconnachie_2012_local_group` | Dwarf galaxies in and around the Local Group | 2012 | [10.1088/0004-6256/144/1/4](https://doi.org/10.1088/0004-6256/144/1/4) | Local Group | located | no | no | yes | no |
+| `putman_et_al_2009_m33_tidal` | M31–M33 tidal H i (see also McConnachie et al. 2010) | 2009 | literature | tidal / outer disk | located | no | context | yes | no |
+| `combo17_weak_lensing_statistical` | COMBO-17 weak lensing of field galaxies | 2007 | [astro-ph/0412615](https://arxiv.org/abs/astro-ph/0412615) | weak lensing (statistical) | rejected | no | no | no | no — not M33 |
+| `m33_direct_weak_lensing_gap` | No M33-specific WL map identified (5B-B review) | — | `docs/lensing_constraint_source_review.md` | review synthesis | documented | no | no | yes | no |
+
+**Phase 5C (planned):** `tdf.lensing.observational_limits.selected_source_id` = `lopez_fune_salucci_corbelli_2017` until tables are extracted; set `limits_source_id` and `enabled: true` only after processed constraint file exists. Comparison remains `upper_bound_consistency` on dynamical mass, not arcsec deflection, until physical calibration is documented.
+
+Config keys: `tdf.lensing.observational_limits.limits_source_id` must match a registry row before `enabled: true`.
 
 **Corbelli 2014 geometry notes (PDF audit):**
 

@@ -121,3 +121,11 @@ python scripts/run_phase5b_lensing_calibration_audit.py
 ```
 
 Outputs: `outputs/tables/phase5b_lensing_calibration_status.csv`, `outputs/reports/phase5b_lensing_calibration_audit.md`. Plan: `docs/lensing_calibration_and_limits_plan.md`. Physical calibration and observational limits remain disabled in config.
+
+**Phase 5B-B — constraint source review (no comparison):**
+
+```bash
+python scripts/run_phase5b_constraint_source_audit.py
+```
+
+Outputs: `outputs/tables/phase5b_constraint_source_status.csv`, `outputs/reports/phase5b_constraint_source_audit.md`. Review: `docs/lensing_constraint_source_review.md`. Selected Phase 5C candidate: `lopez_fune_salucci_corbelli_2017` (dynamical mass; not weak lensing).

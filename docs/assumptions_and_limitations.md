@@ -70,6 +70,8 @@ Explicit scope control for reviewers and future paper text.
 
 18. **Phase 5B-A calibration/limits planning.** Documents requirements for physical units and M33 constraints (`docs/lensing_calibration_and_limits_plan.md`). **No arcsec conversion**, **no observational comparison**, **no fitting** of `alpha_tau_scale` or a lensing-only τ field. Config keeps `physical_calibration.enabled: false` and `observational_limits.enabled: false`. Future Phase 5B-B/5C may add physical units or upper-bound checks only when sources are registered with real files.
 
+19. **Phase 5B-B constraint source review.** Registers candidate literature (`docs/lensing_constraint_source_review.md`, `docs/data_sources.md` registry). **No M33-specific weak-lensing map** identified for direct deflection comparison. Selected Phase 5C candidate: López Fune et al. 2017 (dynamical enclosed-mass / halo profile, `located` not `documented` until tables extracted). **No numeric limits** in repo tables; comparison still disabled.
+
 ## Claim control (mandatory framing)
 
 Use language equivalent to:

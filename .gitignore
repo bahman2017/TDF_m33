@@ -116,6 +116,7 @@ outputs/maps/*
 !outputs/tables/phase5a_lensing_prediction_metadata.csv
 !outputs/tables/phase5a_deflection_summary.csv
 !outputs/tables/phase5b_lensing_calibration_status.csv
+!outputs/tables/phase5b_constraint_source_status.csv
 !outputs/figures/phase4b_tau_sky_projected_map.png
 !outputs/figures/phase4b_projection_geometry_check.png
 !outputs/figures/phase5a_deflection_magnitude_map.png
@@ -127,6 +128,7 @@ outputs/reports/*
 !outputs/reports/phase3d_tdf_sensitivity_report.md
 !outputs/reports/phase5a_lensing_prediction_report.md
 !outputs/reports/phase5b_lensing_calibration_audit.md
+!outputs/reports/phase5b_constraint_source_audit.md
 
 # Jupyter
 .ipynb_checkpoints/

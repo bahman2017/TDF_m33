@@ -69,7 +69,8 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 4B** | Complete — disk-to-sky τ projection; Corbelli 2014 geometry locked (4B-B) |
 | **Phase 5A** | Complete — normalized deflection-proxy from frozen sky τ (no lensing fit) |
 | **Phase 5B-A** | Complete — calibration/limits planning audit (no physical units yet) |
-| Phase 4B+ / 5B-B | Planned — morphology-aware τ; physical calibration and documented limits |
+| **Phase 5B-B** | Complete — constraint source review; no comparison yet |
+| Phase 4B+ / 5C | Planned — dynamical upper-bound check; physical calibration when documented |
 
 ## Data provenance status
 
@@ -95,6 +96,7 @@ python scripts/run_phase4a_tdf_2d_map.py
 python scripts/run_phase4b_tau_projection.py
 python scripts/run_phase5a_lensing_prediction.py
 python scripts/run_phase5b_lensing_calibration_audit.py
+python scripts/run_phase5b_constraint_source_audit.py
 python scripts/check_sources_manifest.py data/raw/sources_manifest.yaml
 python scripts/audit_m33_sources.py
 ```

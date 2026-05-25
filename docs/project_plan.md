@@ -389,6 +389,31 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 5B-B: Constraint source review and registration
+
+**Goal:** Identify and register candidate observational constraints for future M33 τ-map consistency checks—**without** comparison, physical conversion, or invented limits.
+
+**Deliverables:**
+
+- `docs/lensing_constraint_source_review.md`
+- Expanded lensing registry in `docs/data_sources.md`
+- `scripts/run_phase5b_constraint_source_audit.py`
+- `outputs/tables/phase5b_constraint_source_status.csv`
+- `outputs/reports/phase5b_constraint_source_audit.md`
+
+**Acceptance criteria:**
+
+- [x] At least one Phase 5C candidate (`lopez_fune_salucci_corbelli_2017`) with citation and `located` status
+- [x] Documented finding: no M33-specific weak-lensing map (`m33_direct_weak_lensing_gap`)
+- [x] `observational_limits.enabled: false`; no numeric comparison outputs
+- [x] No arcsec conversion; no `alpha_tau_scale` tuning
+
+**Status:** Complete.
+
+**Phase 5C (planned):** Upper-bound dynamical-mass consistency using extracted tables for `selected_source_id`; deflection remains `normalized_proxy` until calibration documented.
+
+---
+
 ## Phase 3 (overview): τ-gradient and radial τ-profile
 
 **Goal:** Full TDF radial pathway from rotation residuals without an independent halo in the TDF branch.
@@ -422,7 +447,9 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 **Phase 5B-A (complete):** Calibration/limits planning audit (see section above).
 
-**Phase 5B-B / 5C (planned):** Physical calibration and limit comparison when sources exist in `docs/data_sources.md`.
+**Phase 5B-B (complete):** Constraint source review and registration (see section above).
+
+**Phase 5C (planned):** Upper-bound dynamical comparison for selected source; physical calibration still deferred unless documented.
 
 **Acceptance criteria (5A):**
 
