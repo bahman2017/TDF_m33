@@ -34,6 +34,12 @@ from tdf_m33.models.tdf_regularization import (
     smooth_tau_gradient,
     smoothing_spline,
 )
+from tdf_m33.models.tdf_map2d import (
+    compare_radial_profile_to_map_average,
+    compute_azimuthal_average_from_map,
+    make_disk_plane_grid,
+    radial_interpolate_to_grid,
+)
 
 __all__ = [
     "DiskGravityGrid",
@@ -56,6 +62,10 @@ __all__ = [
     "tdf_velocity_model",
     "smooth_tau_gradient",
     "smoothing_spline",
+    "compare_radial_profile_to_map_average",
+    "compute_azimuthal_average_from_map",
+    "make_disk_plane_grid",
+    "radial_interpolate_to_grid",
     "nfw_mass_enclosed",
     "nfw_velocity",
 ]

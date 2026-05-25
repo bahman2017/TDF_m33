@@ -89,3 +89,10 @@ python scripts/run_phase3c_tdf_lowparam_model.py
 python scripts/run_phase3c_tdf_lowparam_model.py  # prerequisite
 python scripts/run_phase3d_tdf_sensitivity.py
 ```
+
+**Phase 4A — axisymmetric disk-plane 2D τ map (from Phase 3C 3-knot model):**
+
+```bash
+python scripts/run_phase3c_tdf_lowparam_model.py  # prerequisite
+python scripts/run_phase4a_tdf_2d_map.py
+```

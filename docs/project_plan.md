@@ -273,9 +273,30 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
-## Phase 4: 2D τ-map (planned)
+## Phase 4A: Axisymmetric disk-plane 2D τ map
 
-**Goal:** Optional 2D τ extension; proceed after Phase 3D stability review.
+**Goal:** Extend the validated Phase 3C radial τ model to a controlled 2D disk-plane map before morphology or lensing.
+
+**Deliverables:**
+
+- `tdf_m33.models.tdf_map2d`, `tdf_m33.fitting.phase4a_tdf_2d_map`, `scripts/run_phase4a_tdf_2d_map.py`
+- `phase4a_tau_2d_map.npz`, consistency/metadata tables, summary figures
+
+**Acceptance criteria:**
+
+- [x] τ₂D(x,y)=τ_rad(R) from `tdf_lowparam_3knot`; K_τ=1 fixed; no new parameters
+- [x] Outside radial range masked; azimuthal average consistency reported
+- [x] No lensing; no NFW/Burkert residuals; baryonic/K_τ caveats preserved
+
+**Status:** Complete.
+
+---
+
+## Phase 4B / 5 (planned)
+
+**Phase 4B (optional):** morphology-aware or non-axisymmetric τ extensions (gas, spiral structure) after 4A review.
+
+**Phase 5:** Lensing/deflection consistency using the same τ-map hypothesis.
 
 ---
 

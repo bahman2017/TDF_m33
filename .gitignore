@@ -101,6 +101,14 @@ outputs/tables/*
 !outputs/tables/phase3d_fitmask_sensitivity.csv
 !outputs/tables/phase3d_smoothing_sensitivity.csv
 !outputs/figures/phase3d_tdf_sensitivity_summary.png
+!outputs/tables/phase4a_tau_2d_radial_consistency.csv
+!outputs/tables/phase4a_tau_2d_map_metadata.csv
+!outputs/figures/phase4a_tau_2d_map.png
+!outputs/figures/phase4a_tau_gradient_2d_map.png
+!outputs/figures/phase4a_tau_2d_radial_consistency.png
+outputs/maps/*
+!outputs/maps/README.md
+!outputs/maps/phase4a_tau_2d_map.npz
 outputs/reports/*
 !outputs/reports/README.md
 !outputs/reports/phase2c_model_audit_report.md

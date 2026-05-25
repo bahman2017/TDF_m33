@@ -82,6 +82,14 @@ Phase 3A applies the inversion algebraically at each radius on the canonical gri
 - **K_τ sweep:** refitting knot values at K_τ ∈ {0.5, 1, 2} tests whether velocity fits change materially; often they do not (scale degeneracy in v_τ² = r K_τ dτ/dr).
 - Gaussian σ and alternate fit masks: qualitative stability checks only.
 
+## Phase 4A (axisymmetric 2D disk-plane τ map)
+
+- **Construction:** \(\tau_{2\mathrm{D}}(x,y) = \tau_{\mathrm{rad}}(R)\) with \(R=\sqrt{x^2+y^2}\) in the M33 disk plane (kpc).
+- **Input:** Phase 3C primary model `tdf_lowparam_3knot` (`phase3c_tdf_lowparam_profiles.csv`); **no new fit**, no halo residuals.
+- **Extrapolation:** pixels with \(R\) outside the radial tabulation are **masked** (NaN), not silently extrapolated.
+- **Consistency check:** azimuthal average of \(\tau_{2\mathrm{D}}\) compared to the input radial \(\tau(R)\).
+- **Not included yet:** sky projection/inclination, gas morphology, spiral structure, non-axisymmetric regularization, lensing.
+
 ## Reconstruction from rotation, use for lensing
 
 **Step 1 (rotation):** Using \(v_{\mathrm{obs}}(r)\) and a documented \(v_{\mathrm{bar}}(r)\), infer \(d\tau/dr\) and \(\tau(r)\) (or a 2D \(\tau\) map in Phase 4) subject to smoothness and config choices.

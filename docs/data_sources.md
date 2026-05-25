@@ -195,6 +195,19 @@ k=3,4,5 knot dτ/dr fitted; K_τ=1 fixed. Combined with Phase 2B baryonic/NFW/Bu
 | Smoothing σ | `outputs/tables/phase3d_smoothing_sensitivity.csv` |
 | Report | `outputs/reports/phase3d_tdf_sensitivity_report.md` |
 
+### Phase 4A — Axisymmetric 2D τ map (2026-05-24)
+
+**Script:** `python scripts/run_phase4a_tdf_2d_map.py` (requires Phase 3C profiles)
+
+| Output | Path |
+|--------|------|
+| 2D map archive | `outputs/maps/phase4a_tau_2d_map.npz` |
+| Radial consistency | `outputs/tables/phase4a_tau_2d_radial_consistency.csv` |
+| Metadata | `outputs/tables/phase4a_tau_2d_map_metadata.csv` |
+| Figures | `outputs/figures/phase4a_tau_2d_map.png`, `phase4a_tau_gradient_2d_map.png`, `phase4a_tau_2d_radial_consistency.png` |
+
+Source: `tdf_lowparam_3knot` from `phase3c_tdf_lowparam_profiles.csv`. Disk-plane kpc; masked outside radial tabulation. No lensing.
+
 ## Canonical processed CSV schema
 
 File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  

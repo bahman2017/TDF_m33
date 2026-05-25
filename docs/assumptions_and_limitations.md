@@ -25,8 +25,9 @@ Explicit scope control for reviewers and future paper text.
 | Phase 3B-A regularization | 3B-A | Gaussian/spline smoothing of \(d\tau/dr\); parameters fixed in config—not fitted; not evidence vs NFW by itself |
 | Phase 3C low-parameter TDF | 3C | k knot dτ/dr values fitted; K_τ fixed; first fair AIC/BIC row for TDF; 3A/3B excluded from formal comparison |
 | Phase 3D sensitivity | 3D | Robustness audit only; K_τ sweep tests scale degeneracy; not independent physical calibration |
+| Phase 4A 2D τ-map | 4A | Axisymmetric disk-plane extension τ₂D(x,y)=τ_rad(R) from Phase 3C; not separately fitted; no sky projection yet |
 | τ smoothness | 3B-A | Raw spikes reduced; interpretive claims still require Phase 3C comparison |
-| 2D τ-map | 4 | Optional; may impose additional symmetry |
+| 2D τ-map (morphology) | 4B+ | Gas/spiral/non-axisymmetric structure not yet included |
 | Lensing geometry | 5 | Line-of-sight and thin-lens approximations as documented in lensing module |
 
 ## Limitations
@@ -56,6 +57,8 @@ Explicit scope control for reviewers and future paper text.
 12. **Phase 3C low-parameter TDF.** Knot models (k=3,4,5) enable AIC/BIC vs NFW (k=2). Better AIC alone does not disprove DM or validate TDF microphysics. No lensing. Baryonic PASS_WITH_CAVEAT unchanged.
 
 13. **Phase 3D sensitivity.** K_τ refits mostly rescale knot gradients; velocity metrics often nearly unchanged—normalization audit, not new evidence. Phase 4 (2D τ) only after reviewing mask/K_τ stability.
+
+14. **Phase 4A 2D τ-map.** First spatial extension: axisymmetric disk-plane map from `tdf_lowparam_3knot` radial profile only. No new parameters, no lensing, no gas morphology or spiral arms. Not the final physical τ map. Baryonic PASS_WITH_CAVEAT and K_τ=1 normalization unchanged.
 
 ## Claim control (mandatory framing)
 
