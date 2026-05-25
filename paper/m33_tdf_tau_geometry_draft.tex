@@ -1,4 +1,4 @@
-% Phase 6D — readable draft with verified bibliography (M33 TDF tau-geometry)
+% Phase 6E — submission package polish (journal-neutral; M33 TDF tau-geometry)
 % Numerical values: outputs/tables/phase6a_key_results_table.csv (fit mask 0.4--23 kpc).
 % Bibliography: Corbelli2014 and LopezFune2017 verified — see docs/manuscript_bibliography_verification.md
 
@@ -11,18 +11,37 @@
 \usepackage{array}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue}
 
-% Figures optional until pipeline PNGs are copied beside the draft.
+% Figures: prefer paper/figures/ (Phase 6E), else outputs/figures/, else placeholder.
 \newcommand{\includefig}[2][]{%
-  \IfFileExists{#2}{%
-    \includegraphics[#1]{#2}%
+  \def\figfn{#2}%
+  \IfFileExists{figures/\figfn}{%
+    \includegraphics[#1]{figures/\figfn}%
   }{%
-    \fbox{\parbox[c][0.2\linewidth][c]{0.92\linewidth}{\centering\small
-      [Figure placeholder]\\[0.4em]
-      \texttt{\detokenize{#2}}}}}%
+    \IfFileExists{../outputs/figures/\figfn}{%
+      \includegraphics[#1]{../outputs/figures/\figfn}%
+    }{%
+      \IfFileExists{#2}{%
+        \includegraphics[#1]{#2}%
+      }{%
+        \fbox{\parbox[c][0.2\linewidth][c]{0.92\linewidth}{\centering\small
+          [Figure placeholder]\\[0.4em]
+          \texttt{\detokenize{#2}}}}}%
+    }}%
 }
 
 \title{Reconstructing the Missing Acceleration of M33 as a Low-Parameter Time-Delay Field Geometry}
-\author{M33 TDF $\tau$-Geometry Collaboration\\ \textit{Phase 6D draft --- claim review required; bibliography verified for cited sources}}
+
+% TODO (Phase 6E): Replace with verified author names, affiliations, and corresponding author.
+\author{%
+  \textbf{[Author One]}$^{1}$\thanks{Corresponding author: \texttt{[email@institution.edu]}} \and
+  \textbf{[Author Two]}$^{2}$ \and
+  \textbf{[Author Three]}$^{1,2}$\\[0.5em]
+  {\small
+  $^{1}$[Department, Institution, City, Country]\\
+  $^{2}$[Department, Institution, City, Country]\\
+  \textit{Phase 6E submission package --- author block intentionally incomplete}
+  }%
+}
 \date{\today}
 
 \begin{document}
@@ -125,7 +144,7 @@ We therefore describe Burkert as \textbf{boundary-limited in this processed data
 
 \begin{figure}[ht]
   \centering
-  \includefig[width=0.88\linewidth]{../outputs/figures/phase2a_baryonic_only_rotation_curve.png}
+  \includefig[width=0.88\linewidth]{fig1_rotation_baryonic.png}
   \caption{Figure~1: Observed M33 rotation curve compared to the baryonic-only model (Phase~2A). Command: \texttt{run\_phase2a\_baryonic\_only.py}.}
   \label{fig:rot-baryon}
 \end{figure}
@@ -159,14 +178,14 @@ This is a rotation-dynamics consistency statement only.
 
 \begin{figure}[ht]
   \centering
-  \includefig[width=0.88\linewidth]{../outputs/figures/phase3c_tdf_lowparam_rotation_comparison.png}
+  \includefig[width=0.88\linewidth]{fig2_model_comparison.png}
   \caption{Figure~2: Rotation-curve comparison for NFW, Burkert, and TDF models (Phase~3C).}
   \label{fig:rot-compare}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
-  \includefig[width=0.88\linewidth]{../outputs/figures/phase3c_tdf_lowparam_tau_gradient.png}
+  \includefig[width=0.88\linewidth]{fig3_tau_gradient.png}
   \caption{Figure~3: Reconstructed $\tau$-gradient and $\tau$-profile for \texttt{tdf\_lowparam\_3knot}.}
   \label{fig:tau-profile}
 \end{figure}
@@ -218,9 +237,9 @@ Metadata in \texttt{phase4a\_tau\_2d\_map\_metadata.csv} and \texttt{phase4b\_ta
 
 \begin{figure}[ht]
   \centering
-  \includefig[width=0.44\linewidth]{../outputs/figures/phase4a_tau_2d_map.png}
+  \includefig[width=0.44\linewidth]{fig4_tau_map_disk.png}
   \hfill
-  \includefig[width=0.44\linewidth]{../outputs/figures/phase4b_tau_sky_projected_map.png}
+  \includefig[width=0.44\linewidth]{fig4_tau_map_sky.png}
   \caption{Figure~4: Disk-plane $\tau$ map (left) and sky-projected $\tau$ (right).}
   \label{fig:2dmap}
 \end{figure}
@@ -239,7 +258,7 @@ The deflection proxy is \textbf{not} a physical arcsecond prediction.
 
 \begin{figure}[ht]
   \centering
-  \includefig[width=0.78\linewidth]{../outputs/figures/phase5a_deflection_magnitude_map.png}
+  \includefig[width=0.78\linewidth]{fig5_deflection_proxy.png}
   \caption{Figure~5: Magnitude of the normalized deflection proxy (Phase~5A).}
   \label{fig:deflection}
 \end{figure}
@@ -309,9 +328,31 @@ Physical lensing calibration and weak-lensing comparison remain necessary before
   \end{tabular}
 \end{table}
 
-\section*{Reproducibility}
-Scripts and phase order are listed in \texttt{outputs/reports/phase6a\_reproducibility\_commands.md}.
-Phase~6A--6D audits: \texttt{run\_phase6a\_publication\_audit.py} through \texttt{run\_phase6d\_manuscript\_polish\_audit.py}.
+\section*{Data and Code Availability}
+\label{sec:availability}
+
+Processed data, configuration, and analysis scripts for this study are maintained in the project repository.
+The canonical rotation table is \texttt{data/processed/m33\_rotation.csv} (Corbelli et al.\ 2014 Table~1; D1-derived baryonic velocities with PASS\_WITH\_CAVEAT).
+Reproducibility commands are listed in \texttt{outputs/reports/phase6a\_reproducibility\_commands.md}.
+Phase~6A--6E audits (\texttt{run\_phase6a\_publication\_audit.py} through \texttt{run\_phase6e\_submission\_package\_audit.py}) enforce claim control; no new science results are introduced in packaging phases.
+
+\section*{Acknowledgments}
+\label{sec:acknowledgments}
+
+% TODO (Phase 6E): Add funding agencies, compute resources, and colleague acknowledgments.
+[Acknowledgments placeholder: funding sources, institutions, and helpful discussions to be added before journal submission.]
+
+\section*{Conflict of Interest}
+\label{sec:coi}
+
+The authors declare no competing interests.
+% TODO (Phase 6E): Update if any author has relevant disclosures.
+
+\section*{Funding}
+\label{sec:funding}
+
+% TODO (Phase 6E): Add grant numbers and funding body names when available.
+[Funding placeholder: specify grants and supporting institutions before submission.]
 
 \bibliographystyle{plain}
 \begin{thebibliography}{99}

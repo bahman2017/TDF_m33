@@ -57,9 +57,13 @@ def test_caveats_in_manuscript() -> None:
 
 
 def test_figure_paths_referenced() -> None:
+    from tdf_m33.reporting.phase6c_manuscript_draft_audit import FIGURE_REF_GROUPS
+
     tex = (REPO_ROOT / MANUSCRIPT_TEX).read_text(encoding="utf-8")
-    assert "phase5a_deflection_magnitude_map" in tex
-    assert "phase4b_tau_sky_projected_map" in tex
+    for pipeline_stem, packaged_stem in FIGURE_REF_GROUPS:
+        assert pipeline_stem in tex or packaged_stem in tex, (
+            f"expected {pipeline_stem!r} or {packaged_stem!r}"
+        )
 
 
 def test_bibliography_verified_or_todo() -> None:

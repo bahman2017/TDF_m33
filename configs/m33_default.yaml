@@ -5,7 +5,7 @@
 project:
   name: tdf-m33-tau-geometry
   galaxy: M33
-  phase: 6D  # Bibliography verification and LaTeX compile readiness
+  phase: 6E  # Journal-neutral submission package polish
   random_seed: null  # PLACEHOLDER: set integer for reproducible fits
   output_root: outputs/
 

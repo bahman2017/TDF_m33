@@ -54,13 +54,14 @@ REQUIRED_ALLOWED_PHRASES = (
     "upper-bound consistency",
 )
 
-FIGURE_PATH_SNIPPETS = (
-    "phase2a_baryonic_only_rotation_curve",
-    "phase3c_tdf_lowparam_rotation_comparison",
-    "phase3c_tdf_lowparam_tau_gradient",
-    "phase4a_tau_2d_map",
-    "phase4b_tau_sky_projected_map",
-    "phase5a_deflection_magnitude_map",
+# Each group: pipeline filename stem OR Phase 6E packaged figure name.
+FIGURE_REF_GROUPS: tuple[tuple[str, str], ...] = (
+    ("phase2a_baryonic_only_rotation_curve", "fig1_rotation_baryonic"),
+    ("phase3c_tdf_lowparam_rotation_comparison", "fig2_model_comparison"),
+    ("phase3c_tdf_lowparam_tau_gradient", "fig3_tau_gradient"),
+    ("phase4a_tau_2d_map", "fig4_tau_map_disk"),
+    ("phase4b_tau_sky_projected_map", "fig4_tau_map_sky"),
+    ("phase5a_deflection_magnitude_map", "fig5_deflection_proxy"),
 )
 
 BIB_TODO_MARKERS = ("todo", "placeholder", "verify")
@@ -83,9 +84,17 @@ def audit_phase6c_draft(repo: Path) -> list[str]:
 
     # Phase 6C: expanded draft markers
     if not any(
-        m in tex for m in ("phase 6c", "phase 6d", "first readable draft", "readable draft")
+        m in tex
+        for m in (
+            "phase 6c",
+            "phase 6d",
+            "phase 6e",
+            "first readable draft",
+            "readable draft",
+            "submission package",
+        )
     ):
-        errors.append("manuscript missing Phase 6C/6D draft marker")
+        errors.append("manuscript missing Phase 6C/6D/6E draft marker")
 
     for sec in REQUIRED_SECTIONS:
         if sec.lower() not in tex and sec not in tex_raw:
@@ -101,9 +110,11 @@ def audit_phase6c_draft(repo: Path) -> list[str]:
     if not any(p in tex for p in REQUIRED_ALLOWED_PHRASES):
         errors.append("manuscript missing allowed framing phrase (competitive / deflection / upper-bound)")
 
-    for fig in FIGURE_PATH_SNIPPETS:
-        if fig not in tex_raw:
-            errors.append(f"missing figure path reference: {fig!r}")
+    for pipeline_stem, packaged_stem in FIGURE_REF_GROUPS:
+        if pipeline_stem not in tex_raw and packaged_stem not in tex_raw:
+            errors.append(
+                f"missing figure reference (need {pipeline_stem!r} or {packaged_stem!r})"
+            )
 
     bib_lower = tex_raw.split(r"\begin{thebibliography}")[-1].lower() if "thebibliography" in tex_raw else ""
     if bib_lower:
