@@ -169,6 +169,29 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 2C: Model comparison audit and Phase 3 readiness
+
+**Goal:** Consolidate Phase 2A/2B results, document Burkert boundary limits, and export baryonic \(\Delta v^2\) readiness for TDF Phase 3.
+
+**Deliverables:**
+
+- `tdf_m33.fitting.phase2c_model_audit`, `scripts/run_phase2c_model_audit.py`
+- `outputs/tables/phase2c_model_audit_summary.csv`, `phase2c_residual_readiness.csv`
+- `outputs/reports/phase2c_model_audit_report.md`
+- Optional `outputs/figures/phase2c_model_audit_summary.png`
+
+**Acceptance criteria:**
+
+- [x] Reads Phase 2A/2B tables; no TDF τ reconstruction
+- [x] Fit mask 0.4–23 kpc (56/58) documented; Burkert r₀ bound flagged
+- [x] NFW documented as ΛCDM baseline only; D1 baryonic PASS_WITH_CAVEAT preserved
+- [x] Phase 3 input fixed to \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) (Phase 2A)
+- [x] Residual smoothness / spike diagnostics for regularization planning
+
+**Status:** Complete.
+
+---
+
 ## Phase 3: τ-gradient and radial τ-profile reconstruction
 
 **Goal:** Reconstruct \(d\tau/dr\) and a radial \(\tau(r)\) profile from rotation residuals using TDF relations, without an independent halo in the TDF branch.

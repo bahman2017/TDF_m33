@@ -75,8 +75,12 @@ outputs/tables/*
 !outputs/tables/phase2b_model_comparison.csv
 !outputs/tables/phase2b_halo_fit_parameters.csv
 !outputs/tables/phase2b_rotation_profiles.csv
+!outputs/tables/phase2c_model_audit_summary.csv
+!outputs/tables/phase2c_residual_readiness.csv
+!outputs/figures/phase2c_model_audit_summary.png
 outputs/reports/*
 !outputs/reports/README.md
+!outputs/reports/phase2c_model_audit_report.md
 
 # Jupyter
 .ipynb_checkpoints/

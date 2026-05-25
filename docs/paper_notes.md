@@ -26,6 +26,15 @@ M33 is used as an intermediate-scale test of whether the missing acceleration in
 - Single τ-map hypothesis linking rotation and lensing predictions.
 - Explicit limitations when lensing data are weak or limit-based only.
 
+**Phase 2 status (2026-05-24, Phase 2C audit):**
+
+- Baryonic-only: large RMSE/χ² (expected; missing halo).
+- NFW: good fit on fit mask (reduced χ² ≈ 1.2)—**ΛCDM comparison baseline**, not TDF.
+- Burkert: poor fit; r₀ at upper bound (~200 kpc)—**do not over-interpret** vs Corbelli BVI reference.
+- Baryonic velocities: D1-derived, `PASS_WITH_CAVEAT`.
+- **No τ-profile reconstructed yet.** Phase 3 uses \(\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2\) from Phase 2A only.
+- No dark-matter replacement claim at this stage.
+
 ## Planned figures
 
 | Fig. | Content | Phase |

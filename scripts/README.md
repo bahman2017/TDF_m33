@@ -54,3 +54,11 @@ python scripts/run_phase2a_baryonic_only.py
 ```bash
 python scripts/run_phase2b_halo_baselines.py
 ```
+
+**Phase 2C — audit Phase 2 comparison and Phase 3 residual readiness:**
+
+```bash
+python scripts/run_phase2a_baryonic_only.py   # prerequisite
+python scripts/run_phase2b_halo_baselines.py  # prerequisite
+python scripts/run_phase2c_model_audit.py
+```

@@ -133,6 +133,19 @@ Contains **observed rotation** (\(V_r\), \(\sigma_V\)) and **surface densities**
 
 **Models:** `v_model² = v_bar² + v_halo²`; NFW and Burkert k=2; baryonic_only k=0 (recomputed on same mask). **Not TDF.** Phase 3 uses Phase 2A baryonic \(\Delta v^2\), not halo-subtracted residuals.
 
+### Phase 2C — Model comparison audit (2026-05-24)
+
+**Script:** `python scripts/run_phase2c_model_audit.py` (requires Phase 2A and 2B outputs)
+
+| Output | Path |
+|--------|------|
+| Audit summary | `outputs/tables/phase2c_model_audit_summary.csv` |
+| Phase 3 residual readiness | `outputs/tables/phase2c_residual_readiness.csv` |
+| Report | `outputs/reports/phase2c_model_audit_report.md` |
+| Figure (optional) | `outputs/figures/phase2c_model_audit_summary.png` |
+
+Consolidates fit-mask metrics, Burkert r₀ boundary flag, NFW enclosed-mass sanity at 23 kpc, and Phase 2A \(\Delta v^2\) smoothness for τ reconstruction planning. **No τ columns or lensing outputs.**
+
 ## Canonical processed CSV schema
 
 File: `data/processed/m33_rotation.csv` (canonical processed table, Phase 1D-D2-B).  
