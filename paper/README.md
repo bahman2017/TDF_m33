@@ -4,7 +4,7 @@ This directory holds a **manuscript draft skeleton** for the M33 TDF τ-geometry
 
 ## What this is
 
-- `m33_tdf_tau_geometry_draft.tex` — LaTeX structure, narrative framing, and figure/table placeholders.
+- `m33_tdf_tau_geometry_draft.tex` — Phase 6C first readable draft (expanded sections, optional figure placeholders via `\includefig`).
 - Content is aligned with **existing reproducible pipeline outputs** (Phases 1D–6A).
 - Numerical values in the draft match `outputs/tables/phase6a_key_results_table.csv` and related tables at generation time.
 
@@ -33,4 +33,7 @@ latexmk -pdf m33_tdf_tau_geometry_draft.tex
 
 ```bash
 python scripts/run_phase6b_manuscript_audit.py
+python scripts/run_phase6c_manuscript_draft_audit.py
 ```
+
+Drafting log: `docs/manuscript_drafting_notes.md`.

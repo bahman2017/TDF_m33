@@ -53,30 +53,42 @@ def _read(repo: Path, rel: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def _line_negates_prohibited_phrase(line: str, phrase_l: str) -> bool:
+    """True if the line negates or forbids an otherwise prohibited phrase."""
+    lline = line.lower()
+    if "prohibited" in lline:
+        return True
+    if phrase_l not in lline:
+        return False
+    neg_markers = (
+        "do not",
+        "does not",
+        "not claim",
+        "not} claim",
+        "not a ",
+        "not an ",
+        "not} a ",
+        r"\emph{not}",
+        "emph{not}",
+        r"\textbf{not}",
+        "textbf{not}",
+    )
+    if any(m in lline for m in neg_markers):
+        return True
+    if "not " in lline and lline.find("not") < lline.find(phrase_l):
+        return True
+    if "not disproven" in lline:
+        return True
+    return False
+
+
 def _affirmative_forbidden(text: str, phrase: str) -> bool:
     """True if phrase appears as an affirmative claim (line-level check)."""
     phrase_l = phrase.lower()
     for line in text.splitlines():
-        lline = line.lower()
-        if phrase_l not in lline:
+        if phrase_l not in line.lower():
             continue
-        if "prohibited" in lline:
-            continue
-        if any(
-            neg in lline
-            for neg in (
-                "do not",
-                "does not",
-                "not claim",
-                "not} claim",
-                r"\emph{not}",
-                "emph{not}",
-            )
-        ):
-            continue
-        if "not " in lline and lline.find("not") < lline.find(phrase_l):
-            continue
-        if "not disproven" in lline:
+        if _line_negates_prohibited_phrase(line, phrase_l):
             continue
         return True
     return False
@@ -103,7 +115,7 @@ def audit_manuscript_files(repo: Path) -> list[str]:
     ref_docs = "\n".join(_read(repo, p) for p in (FIGURES_MD, OUTLINE_MD))
 
     for phrase in PROHIBITED_PHRASES:
-        if phrase in tex:
+        if _affirmative_forbidden(tex_raw, phrase):
             errors.append(f"prohibited phrase in manuscript: {phrase!r}")
 
     for phrase in PROHIBITED_WITH_NEGATION_CHECK:

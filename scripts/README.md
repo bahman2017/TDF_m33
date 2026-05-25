@@ -162,6 +162,14 @@ python scripts/run_phase6a_publication_audit.py
 
 Outputs: `outputs/reports/phase6a_publication_results_summary.md`, key-results and claim-traceability tables, `phase6a_reproducibility_commands.md`. Does not refit models or enable physical lensing calibration.
 
+**Phase 6C — expanded manuscript draft audit:**
+
+```bash
+python scripts/run_phase6c_manuscript_draft_audit.py
+```
+
+Checks readable draft sections, required metrics, figure paths, bibliography TODO markers. See `docs/manuscript_drafting_notes.md`.
+
 **Phase 6B — manuscript skeleton audit:**
 
 ```bash

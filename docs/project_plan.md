@@ -578,6 +578,28 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 6C: First readable manuscript draft
+
+**Goal:** Expand Phase 6B skeleton into prose draft using existing metrics only.
+
+**Deliverables:**
+
+- Expanded `paper/m33_tdf_tau_geometry_draft.tex`
+- `docs/manuscript_drafting_notes.md`
+- `scripts/run_phase6c_manuscript_draft_audit.py`
+
+**Acceptance criteria:**
+
+- [x] All outline sections present with expanded prose
+- [x] Metrics from phase6a table only; no new fits
+- [x] Prohibited claims absent; caveats present
+- [x] Figure paths referenced; `\includefig` allows build without PNGs
+- [x] Bibliography TODO/placeholder marked
+
+**Status:** Complete.
+
+---
+
 ## Cross-cutting requirements
 
 - All science parameters in YAML config, not hard-coded in library code.

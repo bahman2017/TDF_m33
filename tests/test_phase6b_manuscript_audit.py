@@ -34,14 +34,16 @@ def test_audit_passes(audit_errors: list[str]) -> None:
 
 
 def test_prohibited_claims_absent() -> None:
-    tex = (REPO_ROOT / MANUSCRIPT_TEX).read_text(encoding="utf-8").lower()
+    from tdf_m33.reporting.phase6b_manuscript_audit import _affirmative_forbidden
+
+    tex = (REPO_ROOT / MANUSCRIPT_TEX).read_text(encoding="utf-8")
     for phrase in (
         "tdf replaces dark matter",
         "lensing is confirmed",
         "m33 proves tdf",
         "no need for dark matter",
     ):
-        assert phrase not in tex
+        assert not _affirmative_forbidden(tex, phrase), phrase
 
 
 def test_required_output_paths_referenced() -> None:

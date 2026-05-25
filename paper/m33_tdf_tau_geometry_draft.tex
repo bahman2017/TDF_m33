@@ -1,6 +1,6 @@
-% Phase 6B manuscript skeleton — M33 TDF tau-geometry
-% Numerical values from outputs/tables/phase6a_key_results_table.csv (fit mask 0.4--23 kpc).
-% Bibliography: placeholders only — verify before submission.
+% Phase 6C — first readable manuscript draft (M33 TDF tau-geometry)
+% Numerical values: outputs/tables/phase6a_key_results_table.csv (fit mask 0.4--23 kpc).
+% Bibliography: TODO placeholders — verify before submission.
 
 \documentclass[11pt,a4paper]{article}
 \usepackage[margin=2.5cm]{geometry}
@@ -8,54 +8,83 @@
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{array}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue}
 
+% Figures optional until pipeline PNGs are copied beside the draft.
+\newcommand{\includefig}[2][]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fbox{\parbox[c][0.2\linewidth][c]{0.92\linewidth}{\centering\small
+      [Figure placeholder]\\[0.4em]
+      \texttt{\detokenize{#2}}}}}%
+}
+
 \title{Reconstructing the Missing Acceleration of M33 as a Low-Parameter Time-Delay Field Geometry}
-\author{M33 TDF $\tau$-Geometry Collaboration\\ \textit{Draft skeleton --- Phase 6B; not for distribution without claim review}}
+\author{M33 TDF $\tau$-Geometry Collaboration\\ \textit{Phase 6C first readable draft --- claim review required}}
 \date{\today}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We use the nearby spiral galaxy M33 as an intermediate-scale test of whether the missing acceleration inferred from its rotation curve can be represented as a smooth, low-parameter time-delay field ($\tau$) geometry, and whether the same reconstructed $\tau$-map can generate deflection-\emph{proxy} predictions without introducing a separate halo component or a lensing-only $\tau$ fit.
-Using the Corbelli et al.\ (2014) rotation sample and a documented baryonic decomposition (PASS\_WITH\_CAVEAT), we compare baryonic-only, NFW, and Burkert baselines to low-parameter $\tau$-gradient knot models.
-On the standard fit mask ($0.4$--$23$\,kpc, $n{=}56$), the three-knot TDF model achieves RMSE $\approx 3.51$\,km\,s$^{-1}$ and AIC $\approx 63.0$, competitive with the NFW baseline (AIC $\approx 68.0$).
-An axisymmetric two-dimensional $\tau$-map and sky-plane projection are built from the frozen radial solution; a normalized deflection proxy (not arcseconds) follows from the same map.
-A dynamical upper-bound consistency check against L\'opez Fune et al.\ (2017) enclosed mass at $\sim 23$\,kpc yields PASS\_WITH\_CAVEAT.
-We do \emph{not} claim that dark matter is disproven, that TDF replaces $\Lambda$CDM, or that lensing has been observationally confirmed; physical lensing calibration and M33 weak-lensing comparison remain future work.
+We present a reproducible analysis pipeline for the nearby spiral galaxy M33 as an \textbf{intermediate-scale test} of whether the missing acceleration inferred from rotation dynamics can be reconstructed as a smooth, low-parameter time-delay field ($\tau$) geometry, and whether the \textbf{same reconstructed $\tau$-map} yields \textbf{normalized deflection-proxy} predictions without adding a separate halo component or performing a lensing-only $\tau$ fit.
+Using the Corbelli et al.\ (2014) rotation curve and an in-repository baryonic decomposition (quality flag PASS\_WITH\_CAVEAT), we compare a baryonic-only diagnostic, standard NFW and Burkert halo baselines, and low-parameter $\tau$-gradient knot models on a fixed fit mask ($0.4$--$23$\,kpc, $n{=}56$).
+The low-parameter three-knot TDF model is \textbf{competitive with the NFW baseline} on this processed M33 dataset (RMSE $\approx 3.51$\,km\,s$^{-1}$, AIC $\approx 63.0$ vs.\ NFW AIC $\approx 68.0$, BIC $\approx 72.0$).
+A five-knot variant attains the lowest RMSE ($\approx 3.35$\,km\,s$^{-1}$) but incurs a higher BIC penalty ($\approx 76.5$).
+Phase~3D sensitivity audits yield a PASS\_WITH\_CAVEAT stability conclusion under tested mask and $K_\tau$ variants.
+An axisymmetric two-dimensional $\tau$-map and Corbelli-based sky projection are generated from the frozen radial solution; Phase~5A produces a \texttt{normalized\_proxy} deflection field from that map.
+A L\'opez Fune et al.\ (2017) comparison of an enclosed-mass-style proxy $M_{\tau,\mathrm{eff}}=r v_\tau^2/G$ to literature $M_{\mathrm{enclosed}}$ at $\sim 23$\,kpc gives PASS\_WITH\_CAVEAT (ratio $\approx 1.12$) as a \textbf{dynamical upper-bound consistency check}, not weak lensing.
+We do \emph{not} claim that dark matter is disproven, that TDF replaces $\Lambda$CDM, or that lensing is confirmed; physical arcsecond calibration and M33 weak-lensing data remain future work.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:intro}
 
-Rotation curves of disk galaxies require mass components beyond visible baryons in standard interpretations.
-M33 offers a nearby laboratory where gas-rich kinematics and literature halo models are well documented \citep{Corbelli2014}.
-The time-delay field (TDF) framework posits that the ``missing'' acceleration can be organized as a radial $\tau$-geometry coupled to baryons through a low-parameter gradient model, rather than introducing an independent dark-matter halo in the TDF analysis branch.
+Rotation curves of disk galaxies remain a central diagnostic of mass distribution.
+For M33---a gas-rich Local Group spiral---the observed rotation curve exceeds what visible baryons typically explain when using standard disk-halo decompositions \citep{Corbelli2014}.
+In $\Lambda$CDM interpretations, this ``missing'' acceleration is attributed to a dark-matter halo, often parameterized with NFW or cored profiles.
+Alternative organizing pictures ask whether the missing acceleration can be described by additional dynamical structure in the baryonic problem itself, rather than introducing a separate collisionless component in a given analysis branch.
 
-This work is deliberately scoped: we test \emph{consistency} of a frozen $\tau$ reconstruction with rotation data and with a \emph{normalized} deflection proxy derived from the same map.
-We do not claim cosmological validation, dark-matter replacement, or observational lensing detection.
+The time-delay field (TDF) framework treated here introduces a radial $\tau$-geometry coupled to baryons through a low-parameter gradient model.
+The scientific question is intentionally narrow: on a \textbf{single galaxy} and a \textbf{documented processed dataset}, can we (i) represent rotation residuals with a smooth, low-parameter $\tau$ model competitive with a standard halo baseline, and (ii) propagate the \textbf{same frozen $\tau$-map} to a deflection \emph{proxy} without refitting $\tau$ for lensing or adding a separate halo?
+
+This manuscript reports results from a version-controlled pipeline (Phases~1D--6C).
+We emphasize \textbf{consistency and claim control} over cosmological inference.
+The analysis does not constitute evidence that dark matter is disproven, does not replace $\Lambda$CDM, and does not confirm gravitational lensing in physical units.
 
 \section{Data and provenance}
 \label{sec:data}
 
-The processed rotation table \texttt{data/processed/m33\_rotation.csv} contains 58 radii from Corbelli et al.\ (2014) Table~1.
-Baryonic velocities are derived in-repo (Phase~1D-D1) rather than taken as published decomposition columns; quality flag \texttt{derived\_baryonic\_velocity\_pass\_with\_caveat} applies throughout.
-Model comparison uses fit mask $0.4 \le r \le 23$\,kpc ($n{=}56$ points).
-Table~\ref{tab:provenance} summarizes sources and validation scripts (see \texttt{docs/data\_sources.md}).
+\subsection{Rotation sample}
+
+The canonical processed table is \texttt{data/processed/m33\_rotation.csv}, containing 58 radii with observed velocities from Corbelli et al.\ (2014) Table~1 \citep{Corbelli2014}.
+Each row records $r$, $v_{\mathrm{obs}}$, uncertainty, and derived baryonic components used downstream.
+Provenance, extraction steps, and validation are documented in \texttt{docs/data\_sources.md} and enforced by \texttt{scripts/validate\_m33\_data.py}.
+
+\subsection{Fit mask and comparison design}
+
+Fair comparison among baryonic-only, halo, and TDF models uses a common fit mask $0.4 \le r \le 23$\,kpc, yielding $n{=}56$ points.
+This mask matches the Phase~2C/3C audit convention and the outer radius of the low-parameter TDF fits.
+Metrics quoted in Table~\ref{tab:models} are taken from \texttt{outputs/tables/phase6a\_key\_results\_table.csv}, which consolidates \texttt{phase3c\_combined\_model\_comparison.csv}.
+
+\subsection{Geometry for projection}
+
+Sky-plane projection (Phase~4B) uses Corbelli et al.\ (2014) tilted-ring geometry (\texttt{corbelli2014\_tilted\_ring\_geometry\_model\_shape.csv}), not ad hoc placeholder inclinations.
 
 \begin{table}[ht]
   \centering
-  \caption{Data provenance (placeholder --- expand from manifest before submission).}
+  \caption{Data provenance summary (Table~1). Repository paths; expand before journal submission.}
   \label{tab:provenance}
-  \begin{tabular}{lll}
+  \begin{tabular}{>{\raggedright\arraybackslash}p{0.22\linewidth}p{0.34\linewidth}p{0.34\linewidth}}
     \toprule
-    Item & Source & In-repo artifact \\
+    Data product & Literature / method & Repository artifact \\
     \midrule
-    Rotation & Corbelli et al.\ 2014 Table~1 & \texttt{m33\_rotation.csv} \\
-    Baryons & D1 disk-gravity derivation & same table; PASS\_WITH\_CAVEAT \\
-    Geometry & Corbelli tilted-ring Fig.~3 & \texttt{corbelli2014\_tilted\_ring\_...} \\
-    Validation & Phase~1A schema & \texttt{validate\_m33\_data.py} \\
+    Observed rotation & Corbelli et al.\ 2014 Table~1 & \texttt{m33\_rotation.csv} \\
+    Baryonic $v_{\mathrm{gas}}$, $v_{\mathrm{disk}}$ & Phase~1D-D1 disk gravity & same; PASS\_WITH\_CAVEAT \\
+    Tilted-ring geometry & Corbelli Fig.~3 / Appendix & extracted CSV \\
+    Model metrics & Phases~2C, 3C, 6A & \texttt{phase6a\_key\_results\_table.csv} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -63,67 +92,98 @@ Table~\ref{tab:provenance} summarizes sources and validation scripts (see \textt
 \section{Baryonic decomposition and caveats}
 \label{sec:baryons}
 
-Gas and stellar disk contributions follow the documented axisymmetric pipeline.
-Fig.~12 digitized curves are sanity checks only, not canonical velocities.
-All halo and TDF fits inherit the baryonic caveat: offsets of order $\sim 7$--$10$\,km\,s$^{-1}$ may appear at some radii in spot checks.
+Baryonic velocities are \textbf{not} taken directly from published Corbelli decomposition columns.
+Instead, gas and stellar disk contributions are derived from Tabulated surface densities using the documented axisymmetric pipeline (Phase~1D-D1), including helium and molecular gas prescriptions stated in \texttt{docs/data\_sources.md}.
+
+A corrected Fig.~12 sanity comparison yields PASS\_WITH\_CAVEAT: derived velocities can differ from spot-checked literature curves by approximately $7$--$10$\,km\,s$^{-1}$ at some radii.
+Digitized Fig.~12 curves are \textbf{not} used as canonical velocities.
+
+\textbf{Implication.} Every halo and TDF fit in this paper inherits the baryonic caveat.
+Comparative statements (e.g.\ TDF vs.\ NFW) are conditional on this processed baryonic model, not on an independent third-party decomposition.
 
 \section{Baseline models}
 \label{sec:baselines}
 
-\textbf{Baryonic-only.} On the fit mask, RMSE $\approx 58.6$\,km\,s$^{-1}$ and $\chi^2 \approx 2.0 \times 10^4$ (Table~\ref{tab:models}), demonstrating that baryons alone do not explain the observed rotation curve in this processed dataset.
+We report three baselines before the TDF branch: baryonic-only, NFW, and Burkert.
+All use the same mask and D1 baryonic inputs.
 
-\textbf{NFW.} Two-parameter NFW halo on D1 baryons: RMSE $\approx 4.16$\,km\,s$^{-1}$, reduced $\chi^2 \approx 1.21$, AIC $\approx 68.0$ --- treated as a $\Lambda$CDM \emph{comparison baseline}, not as proof of TDF.
+\subsection{Baryonic-only diagnostic}
 
-\textbf{Burkert.} RMSE $\approx 23.0$\,km\,s$^{-1}$; core radius often at the upper fit bound ($r_0 \approx 200$\,kpc) --- \emph{boundary-limited} in this dataset; not used as a preferred anchor.
+With no halo or $\tau$ term, the baryonic-only curve fails to match observations on the fit mask: RMSE $\approx 58.6$\,km\,s$^{-1}$, $\chi^2 \approx 2.0\times 10^4$, reduced $\chi^2 \approx 365$ (Table~\ref{tab:models}).
+This supports the standard statement that \textbf{baryons alone do not explain the rotation curve} on this processed dataset, while noting the derived-baryonic caveat above.
+
+\subsection{NFW ($\Lambda$CDM comparison baseline)}
+
+A two-parameter NFW halo fit yields RMSE $\approx 4.16$\,km\,s$^{-1}$, reduced $\chi^2 \approx 1.21$, AIC $\approx 68.0$, and BIC $\approx 72.0$.
+We treat NFW as a strong \textbf{$\Lambda$CDM comparison baseline} on D1 baryons---not as validation of TDF microphysics and not as a refutation of alternative frameworks.
+
+\subsection{Burkert (boundary-limited here)}
+
+The Burkert fit achieves RMSE $\approx 23.0$\,km\,s$^{-1}$ with AIC $\approx 2342$.
+In the Phase~2C audit, the core radius often sits at the \textbf{upper fit bound} ($r_0 \approx 200$\,kpc), with mismatches versus Corbelli BVI reference scales documented in \texttt{phase2c\_model\_audit\_summary.csv}.
+We therefore describe Burkert as \textbf{boundary-limited in this processed dataset} and avoid using it as a preferred publication anchor.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.85\linewidth]{../outputs/figures/phase2a_baryonic_only_rotation_curve.png}
-  \caption{Figure~1 (placeholder): observed rotation and baryonic-only model. \texttt{run\_phase2a\_baryonic\_only.py}.}
+  \includefig[width=0.88\linewidth]{../outputs/figures/phase2a_baryonic_only_rotation_curve.png}
+  \caption{Figure~1: Observed M33 rotation curve compared to the baryonic-only model (Phase~2A). Command: \texttt{run\_phase2a\_baryonic\_only.py}.}
   \label{fig:rot-baryon}
 \end{figure}
 
 \section{TDF radial reconstruction}
 \label{sec:tdf-radial}
 
-Phases~3A--3B reconstruct $\tau$-gradients from $\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2$ with fixed $K_\tau{=}1$ (normalization convention, not physical calibration).
-Direct and regularized reconstructions are diagnostic; formal AIC/BIC comparison uses Phase~3C knot models only.
+The TDF branch begins from the squared residual acceleration proxy $\Delta v^2 = v_{\mathrm{obs}}^2 - v_{\mathrm{bar}}^2$ on the processed table.
+Phases~3A and~3B implement direct and regularized reconstructions of $\tau$-gradients with fixed $K_\tau=1$.
+
+\textbf{Important distinction.} Phase~3A/3B reconstructions are useful diagnostics of $\Delta v^2$ structure and smoothing trade-offs; they are \textbf{not} fair low-parameter competitors in AIC/BIC.
+The formal model comparison uses Phase~3C knot models with a small, explicit parameter count.
+
+The velocity-squared contribution follows the project convention $v_\tau^2 = r\,K_\tau\,\mathrm{d}\tau/\mathrm{d}r$ with $K_\tau=1$ as a \textbf{normalization convention}, not an independently calibrated physical constant (see Phase~3D).
 
 \section{Low-parameter TDF comparison}
 \label{sec:tdf-compare}
 
-We fit $\tau$-gradient knot values (3, 4, and 5 knots) with $K_\tau$ fixed.
-The three-knot model (\texttt{tdf\_lowparam\_3knot}) attains RMSE $\approx 3.51$\,km\,s$^{-1}$, $\chi^2 \approx 57.0$, AIC $\approx 63.0$, and BIC $\approx 69.0$.
-The five-knot model has the lowest RMSE ($\approx 3.35$\,km\,s$^{-1}$) but a higher BIC penalty ($\approx 76.5$).
-Relative to NFW, the three-knot TDF model is \emph{competitive} on AIC/BIC on this mask; this is rotation-dynamics consistency, not evidence against dark matter.
+\subsection{Model family}
+
+We fit piecewise-linear $\tau$-gradient knot values for $k\in\{3,4,5\}$ with $K_\tau$ fixed (\texttt{tdf\_lowparam\_3knot}, etc.).
+The primary science model for maps and lensing is the \textbf{three-knot} solution, selected for balance of fit quality and parameter economy.
+
+\subsection{Metrics}
+
+On the fit mask, the three-knot model attains RMSE $\approx 3.51$\,km\,s$^{-1}$, $\chi^2 \approx 57.0$, AIC $\approx 63.0$, and BIC $\approx 69.0$.
+The five-knot model achieves the lowest RMSE ($\approx 3.35$\,km\,s$^{-1}$, $\chi^2 \approx 56.3$) but higher AIC/BIC ($\approx 66.3$ / $76.5$) due to parameter penalty.
+
+\textbf{Conservative statement.} The low-parameter three-knot TDF model is \textbf{competitive with the NFW baseline} on this processed M33 dataset under AIC/BIC on the standard mask.
+This is a rotation-dynamics consistency statement only.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.85\linewidth]{../outputs/figures/phase3c_tdf_lowparam_rotation_comparison.png}
-  \caption{Figure~2 (placeholder): NFW, Burkert, and TDF rotation curves. \texttt{run\_phase3c\_tdf\_lowparam\_model.py}.}
+  \includefig[width=0.88\linewidth]{../outputs/figures/phase3c_tdf_lowparam_rotation_comparison.png}
+  \caption{Figure~2: Rotation-curve comparison for NFW, Burkert, and TDF models (Phase~3C).}
   \label{fig:rot-compare}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.85\linewidth]{../outputs/figures/phase3c_tdf_lowparam_tau_gradient.png}
-  \caption{Figure~3 (placeholder): $\tau$-gradient and profile for three-knot model.}
+  \includefig[width=0.88\linewidth]{../outputs/figures/phase3c_tdf_lowparam_tau_gradient.png}
+  \caption{Figure~3: Reconstructed $\tau$-gradient and $\tau$-profile for \texttt{tdf\_lowparam\_3knot}.}
   \label{fig:tau-profile}
 \end{figure}
 
 \begin{table}[ht]
   \centering
-  \caption{Model comparison on fit mask $0.4$--$23$\,kpc (from \texttt{phase6a\_key\_results\_table.csv}).}
+  \caption{Model comparison on fit mask $0.4$--$23$\,kpc (Table~2; \texttt{phase6a\_key\_results\_table.csv}).}
   \label{tab:models}
-  \begin{tabular}{lrrrr}
+  \begin{tabular}{lrrrrr}
     \toprule
-    Model & RMSE [km\,s$^{-1}$] & $\chi^2$ & AIC & BIC \\
+    Model & $n_{\mathrm{fit}}$ & RMSE [km\,s$^{-1}$] & $\chi^2$ & AIC & BIC \\
     \midrule
-    Baryonic only & 58.56 & 20096 & 20096 & 20096 \\
-    NFW & 4.16 & 64.0 & 68.0 & 72.0 \\
-    Burkert & 23.02 & 2338 & 2342 & 2346 \\
-    TDF 3-knot & 3.51 & 57.0 & 63.0 & 69.0 \\
-    TDF 5-knot & 3.35 & 56.3 & 66.3 & 76.5 \\
+    Baryonic only & 56 & 58.56 & 20096 & 20096 & 20096 \\
+    NFW & 56 & 4.16 & 64.0 & 68.0 & 72.0 \\
+    Burkert & 56 & 23.02 & 2338 & 2342 & 2346 \\
+    TDF 3-knot & 56 & 3.51 & 57.0 & 63.0 & 69.0 \\
+    TDF 5-knot & 56 & 3.35 & 56.3 & 66.3 & 76.5 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -131,91 +191,136 @@ Relative to NFW, the three-knot TDF model is \emph{competitive} on AIC/BIC on th
 \section{Sensitivity and stability}
 \label{sec:sensitivity}
 
-Phase~3D audits knot count, $K_\tau$ sweeps, smoothing, and fit-mask variants.
-The three-knot model beats NFW on AIC at the default mask; ranking is \emph{caveated} under stricter masks and documents $K_\tau$ scale degeneracy (max RMSE spread $\approx 0.42$\,km\,s$^{-1}$ across $K_\tau$ sweep).
-See \texttt{outputs/tables/phase3d\_tdf\_sensitivity\_summary.csv}.
+Phase~3D (\texttt{outputs/tables/phase3d\_tdf\_sensitivity\_summary.csv}) audits knot count, $K_\tau$ sweeps, Gaussian smoothing (diagnostic), and fit-mask variants.
+
+Findings relevant to manuscript language:
+\begin{itemize}
+  \item \texttt{tdf\_lowparam\_3knot} is the best TDF model by AIC/BIC among knot counts, beating NFW on AIC at the default mask.
+  \item $K_\tau$ exhibits expected \textbf{scale degeneracy} when knots are refit; velocity RMSE spread across the sweep is modest ($\max \approx 0.42$\,km\,s$^{-1}$) but $K_\tau$ must not be over-interpreted as a measured constant.
+  \item Stricter masks (e.g.\ $1.0$--$22.0$\,kpc) can change AIC rankings; we summarize this as \textbf{PASS\_WITH\_CAVEAT} stability, not universal robustness.
+\end{itemize}
+
+We do not claim that TDF is insensitive to all systematics or independent of baryonic derivation choices.
 
 \section{Two-dimensional $\tau$-map and sky projection}
 \label{sec:2dmap}
 
-Phase~4A extends the frozen \texttt{tdf\_lowparam\_3knot} radial profile axisymmetrically: $\tau_{2\mathrm{D}}(x,y)=\tau_{\mathrm{radial}}(R)$.
-Phase~4B projects to the sky plane using Corbelli et al.\ (2014) tilted-ring geometry (no placeholder geometry in production runs).
+\subsection{Disk-plane map (Phase~4A)}
+
+The two-dimensional map is an \textbf{axisymmetric extension} of the frozen three-knot radial profile:
+$\tau_{2\mathrm{D}}(x,y)=\tau_{\mathrm{radial}}(R)$.
+No additional spatial parameters are fitted; spiral arms and non-axisymmetric gas features are not modeled.
+
+\subsection{Sky projection (Phase~4B)}
+
+The disk-plane map is projected to sky coordinates using Corbelli tilted-ring geometry, producing \texttt{outputs/maps/phase4b\_tau\_sky\_projected\_map.npz}.
+Metadata in \texttt{phase4a\_tau\_2d\_map\_metadata.csv} and \texttt{phase4b\_tau\_projection\_metadata.csv} records source model \texttt{tdf\_lowparam\_3knot} and geometry flags.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.42\linewidth]{../outputs/figures/phase4a_tau_2d_map.png}
+  \includefig[width=0.44\linewidth]{../outputs/figures/phase4a_tau_2d_map.png}
   \hfill
-  \includegraphics[width=0.42\linewidth]{../outputs/figures/phase4b_tau_sky_projected_map.png}
-  \caption{Figure~4 (placeholder): disk-plane $\tau$ map and sky-projected map.}
+  \includefig[width=0.44\linewidth]{../outputs/figures/phase4b_tau_sky_projected_map.png}
+  \caption{Figure~4: Disk-plane $\tau$ map (left) and sky-projected $\tau$ (right).}
   \label{fig:2dmap}
 \end{figure}
 
 \section{Deflection proxy and upper-bound consistency}
 \label{sec:lensing}
 
-Phase~5A computes a \textbf{normalized\_proxy} deflection field from the sky $\tau$-map ($\alpha_\tau$ scale $=1$; no arcsecond calibration).
-This is a prediction \emph{scaffold}, not observational lensing confirmation.
-No separate halo is added; $\tau$ is not refit for lensing.
+\subsection{Normalized deflection proxy (Phase~5A)}
 
-Phase~5C-B compares a Newtonian-equivalent enclosed-mass proxy $M_{\tau,\mathrm{eff}} = r\,v_\tau^2/G$ to L\'opez Fune et al.\ (2017) Burkert $M_{\mathrm{enclosed}}$ at $\sim 23$\,kpc ($6.7 \pm 1.2 \times 10^{10}\,M_\odot$).
-At $r{=}22.72$\,kpc, $M_{\tau,\mathrm{eff}} \approx 7.5 \times 10^{10}\,M_\odot$ (ratio $\approx 1.12$) --- \textbf{PASS\_WITH\_CAVEAT} within the quoted upper envelope.
-This is a \emph{dynamical} upper-bound consistency check with partial circularity (Corbelli inputs); it is \textbf{not} weak lensing.
+From the sky-plane $\tau$-map, Phase~5A constructs deflection and convergence \textbf{proxies} in \texttt{normalized\_proxy} units ($\alpha_\tau$ scale $=1$).
+\textbf{The same reconstructed $\tau$-map produces normalized deflection-proxy fields without adding a separate halo.}
+$\tau$ is not refit for lensing; no lensing-only degrees of freedom are introduced.
+
+This is a \textbf{prediction scaffold} for future calibration, not a claim of observational lensing detection.
+The deflection proxy is \textbf{not} a physical arcsecond prediction.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.75\linewidth]{../outputs/figures/phase5a_deflection_magnitude_map.png}
-  \caption{Figure~5 (placeholder): normalized deflection-proxy magnitude (not arcsec).}
+  \includefig[width=0.78\linewidth]{../outputs/figures/phase5a_deflection_magnitude_map.png}
+  \caption{Figure~5: Magnitude of the normalized deflection proxy (Phase~5A).}
   \label{fig:deflection}
 \end{figure}
+
+\subsection{L\'opez Fune dynamical upper bound (Phase~5C-B)}
+
+We compare a Newtonian-equivalent enclosed-mass proxy $M_{\tau,\mathrm{eff}}(<r)=r\,v_\tau^2/G$ (with $G=4.30091\times 10^{-6}$ in kpc\,km$^2$\,M$_\odot^{-1}$) to the L\'opez Fune et al.\ (2017) Burkert enclosed-mass reference $M_{\mathrm{enclosed}}\approx 6.7\pm 1.2\times 10^{10}\,M_\odot$ at $\sim 23$\,kpc \citep{LopezFune2017}.
+
+At the maximum profile radius $r=22.72$\,kpc, the pipeline gives $M_{\tau,\mathrm{eff}}\approx 7.5\times 10^{10}\,M_\odot$ and ratio $M_{\tau,\mathrm{eff}}/M_{\mathrm{L\'opez}}\approx 1.12$.
+The audit status is \textbf{PASS\_WITH\_CAVEAT} because $M_{\tau,\mathrm{eff}}$ lies below the $1\sigma$ upper envelope ($\approx 7.9\times 10^{10}\,M_\odot$).
+
+\textbf{The L\'opez Fune comparison is a dynamical upper-bound consistency check.}
+It uses rotation-based literature with partial circularity through shared Corbelli inputs; it is \textbf{not} a weak-lensing test of the deflection map.
 
 \section{Limitations}
 \label{sec:limits}
 
-\begin{itemize}
-  \item Single galaxy; D1-derived baryonic velocities (PASS\_WITH\_CAVEAT).
-  \item $K_\tau{=}1$ is a normalization convention; Phase~3D documents scale degeneracy.
-  \item Burkert baseline hits parameter bounds; do not over-interpret.
-  \item 2D map is axisymmetric; no independent spiral-arm $\tau$ fit.
-  \item Deflection remains \texttt{normalized\_proxy}; physical calibration deferred.
-  \item No M33-specific weak-lensing map in repository (\texttt{m33\_direct\_weak\_lensing\_gap}).
-  \item Dark matter is \textbf{not disproven}; NFW remains the $\Lambda$CDM reference.
-\end{itemize}
+\begin{enumerate}
+  \item \textbf{Single galaxy.} Results are specific to M33 and this processed table; they do not by themselves establish a general replacement for dark matter or $\Lambda$CDM.
+  \item \textbf{Baryonic systematics.} D1-derived velocities carry PASS\_WITH\_CAVEAT; all comparative metrics shift if baryonic inputs change.
+  \item \textbf{$K_\tau$ normalization.} $K_\tau=1$ is a convention; Phase~3D documents degeneracy with refit knot amplitudes.
+  \item \textbf{Burkert baseline.} Boundary-limited here; not a reliable secondary anchor for M33 in this setup.
+  \item \textbf{Axisymmetric 2D map.} No independent 2D $\tau$ fit; not a morphological model of gas or arms.
+  \item \textbf{Lensing units.} Deflection remains \texttt{normalized\_proxy}; no arcsecond calibration or source-plane inference.
+  \item \textbf{Weak lensing.} No M33-specific weak-lensing map is integrated (\texttt{m33\_direct\_weak\_lensing\_gap}); weak-lensing comparison is future work.
+  \item \textbf{Dark matter.} Dark matter is \textbf{not disproven}; NFW remains the reference $\Lambda$CDM baseline for comparison.
+\end{enumerate}
 
 \section{Future work}
 \label{sec:future}
 
-Physical $\alpha_\tau$ calibration to arcseconds; independent weak-lensing data; improved baryonic systematics; multi-galaxy tests.
+Near-term extensions, without changing the numerical results reported here:
+\begin{itemize}
+  \item Document and implement physical $\alpha_\tau$ calibration to arcseconds if independent constraints become available.
+  \item Incorporate M33 weak-lensing or other lensing data when a documented map exists in the repository.
+  \item Improve baryonic velocities (reduce PASS\_WITH\_CAVEAT severity) and propagate uncertainties through $\tau$ and deflection proxies.
+  \item Extend to additional galaxies with the same claim-control discipline.
+\end{itemize}
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-M33 supports the \emph{hypothesis-level} statement that a smooth, low-parameter $\tau$-geometry can reconstruct missing rotation acceleration competitively with an NFW baseline on a documented processed dataset, and that the same frozen $\tau$-map propagates to a normalized deflection proxy without a separate halo.
-L\'opez Fune dynamical mass provides a caveated upper-bound consistency check only.
-Stronger lensing claims require calibration and data beyond this pipeline.
+We have implemented an end-to-end, reproducible M33 pipeline that tests a low-parameter $\tau$-geometry interpretation of missing rotation acceleration and propagates the same frozen map to normalized deflection proxies.
+
+On the standard $0.4$--$23$\,kpc mask, the three-knot TDF model is \textbf{competitive with the NFW baseline} (RMSE $\approx 3.51$\,km\,s$^{-1}$, AIC $\approx 63.0$ vs.\ NFW $\approx 68.0$), while baryons alone fail dramatically (RMSE $\approx 58.6$\,km\,s$^{-1}$).
+Sensitivity audits support a \textbf{PASS\_WITH\_CAVEAT} stability summary, not a claim of universal insensitivity.
+The same $\tau$-map yields sky-projected fields and a \textbf{normalized deflection-proxy} without a separate halo.
+L\'opez Fune enclosed mass provides a \textbf{dynamical upper-bound consistency check} (PASS\_WITH\_CAVEAT, ratio $\approx 1.12$), not lensing confirmation.
+
+We do \emph{not} claim that M33 proves TDF, that lensing is confirmed, or that dark matter is disproven.
+Physical lensing calibration and weak-lensing comparison remain necessary before observational lensing statements.
 
 \begin{table}[ht]
   \centering
-  \caption{Claim control summary (excerpt --- full matrix in \texttt{phase6a\_claim\_traceability\_matrix.csv}).}
+  \caption{Claim and caveat summary (Table~3; excerpt from \texttt{phase6a\_claim\_traceability\_matrix.csv}).}
   \label{tab:claims}
-  \begin{tabular}{p{0.35\linewidth}p{0.18\linewidth}p{0.35\linewidth}}
+  \begin{tabular}{>{\raggedright\arraybackslash}p{0.38\linewidth}p{0.14\linewidth}p{0.38\linewidth}}
     \toprule
     Claim & Status & Caveat \\
     \midrule
     3-knot TDF competitive with NFW & supported & Rotation-only; D1 baryons \\
-    Normalized deflection proxy & supported & Not arcsec; not detection \\
-    L\'opez Fune consistency & supported & Dynamics; not WL \\
-    Weak lensing comparison & future work & No M33 WL map \\
+    Same $\tau$-map $\to$ deflection proxy & supported & \texttt{normalized\_proxy}; no separate halo \\
+    L\'opez Fune upper-bound check & supported & Dynamics; PASS\_WITH\_CAVEAT; not WL \\
+    Weak lensing comparison & future work & No M33 WL map in repo \\
     Dark matter disproven & \textbf{prohibited} & Do not state \\
     \bottomrule
   \end{tabular}
 \end{table}
 
+\section*{Reproducibility}
+Scripts and phase order are listed in \texttt{outputs/reports/phase6a\_reproducibility\_commands.md}.
+Phase~6A/6B/6C audits: \texttt{run\_phase6a\_publication\_audit.py}, \texttt{run\_phase6b\_manuscript\_audit.py}, \texttt{run\_phase6c\_manuscript\_draft\_audit.py}.
+
 \bibliographystyle{plain}
 \begin{thebibliography}{99}
 \bibitem[Corbelli et al.(2014)]{Corbelli2014}
+% TODO: verify journal volume, pages, and full author list before submission.
 Corbelli, E., et al.\ 2014, A\&A, 572, A23 --- \textit{placeholder; verify bibliographic data}.
 \bibitem[L\'opez Fune et al.(2017)]{LopezFune2017}
-L\'opez Fune, M.~C., Salucci, P., \& Corbelli, E.\ 2017, MNRAS, 474, 4010 --- \textit{placeholder}.
+% TODO: verify MNRAS volume, pages, DOI.
+L\'opez Fune, M.~C., Salucci, P., \& Corbelli, E.\ 2017, MNRAS, 474, 4010 --- \textit{placeholder; verify}.
 \end{thebibliography}
 
 \end{document}
