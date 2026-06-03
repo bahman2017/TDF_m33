@@ -622,6 +622,68 @@ Phased roadmap for the computational companion. Each phase has explicit acceptan
 
 ---
 
+## Phase 6E: Submission package audit
+
+**Goal:** Journal-neutral manuscript packaging; figure staging; submission checklist — no new science.
+
+**Deliverables:**
+
+- `scripts/run_phase6e_submission_package_audit.py`
+- `docs/manuscript_submission_checklist.md`
+- `paper/figures/` staging from pipeline outputs
+
+**Acceptance criteria:**
+
+- [x] Phase 6C draft preserved; packaging audits pass
+- [x] No new numerical results
+- [x] Claim boundaries unchanged
+
+**Status:** Complete.
+
+---
+
+## Phase 6F: Mass-constrained smooth τ-map protocol (M33 pilot)
+
+**Goal:** Documentation-first pre-registration of a **joint** reconstruction protocol where map smoothness and baryonic mass geometry enter the objective **before** freezing τ — distinguishing true \(\tau(x,y)\) from Phase 4A axisymmetric radial extension.
+
+**Type:** Design phase only — **no** code, map, benchmark, or deflection changes.
+
+**Deliverables:**
+
+- `docs/phase6f_mass_constrained_tau_map_protocol.md` — scientific question, \(\mathcal{L}_{\mathrm{total}}\) structure, hard gates
+- `docs/phase6f_data_requirements_for_physical_tau_map.md` — 2D HI/stellar/geometry requirements
+- `outputs/reports/phase6f_m33_design_summary.md`
+- `docs/project_status.md`, `docs/roadmap.md`, `docs/reproducibility_commands.md`, `docs/cursor_work_log.md`
+
+**Acceptance criteria:**
+
+- [x] Documentation states Phase 4A/4B maps are **not** full mass-constrained physical τ-maps
+- [x] Phase 6F framed as next pre-registered step after 6E
+- [x] M33 positioned as pilot before SPARC-scale validation
+- [x] Claim boundaries conservative (no DM disproof; no lensing confirmation; proxy not physical)
+- [x] Future output filenames listed; **not** generated in design phase
+- [x] No modifications to `src/`, existing maps, tables, figures, or benchmark numbers
+- [x] Reproducibility placeholders only (no fake command outputs)
+
+**Status:** Design complete (implementation deferred to Phase 6F-impl).
+
+---
+
+## Phase 6F-impl (future): Mass-constrained τ-map implementation
+
+**Goal:** Ingest 2D baryonic maps; implement gated objective; emit `phase6f_*` artifacts; re-evaluate deflection proxy only if all hard gates pass.
+
+**Prerequisites:** Data readiness checklist in `docs/phase6f_data_requirements_for_physical_tau_map.md`.
+
+**Acceptance criteria (draft):**
+
+- [ ] All Phase 6F hard gates pass with logged metrics
+- [ ] `phase6f_m33_decision_gate_report.md` published
+- [ ] Prior Phase 3–5 outputs unchanged unless versioned re-run explicitly tagged
+- [ ] Claim matrix updated; still no DM disproof / lensing detection language
+
+---
+
 ## Cross-cutting requirements
 
 - All science parameters in YAML config, not hard-coded in library code.

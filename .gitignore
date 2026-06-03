@@ -139,6 +139,7 @@ outputs/reports/*
 !outputs/reports/phase6a_reproducibility_commands.md
 !outputs/reports/phase6d_manuscript_polish_audit.md
 !outputs/reports/phase6e_submission_package_audit.md
+!outputs/reports/phase6f_m33_design_summary.md
 !outputs/tables/phase5b_lopez_fune_source_status.csv
 !outputs/tables/phase5c_lopez_fune_extraction_status.csv
 !outputs/tables/phase5c_tau_mass_proxy_profile.csv
