@@ -4,6 +4,35 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
+## 2026-05-24 — Phase 6F-data (data acquisition & provenance)
+
+**Branch:** `feature/phase6f-data-acquisition-provenance`
+
+**Task:** Catalog external 2D products for physical M33 τ-map; define provenance gates; block 6F-impl until ready.
+
+**Created:**
+
+- `docs/phase6f_data_acquisition_plan.md`
+- `docs/phase6f_data_provenance_checklist.md`
+- `outputs/reports/phase6f_data_readiness_report.md`
+
+**Updated:**
+
+- `README.md`, `docs/project_status.md`, `docs/roadmap.md`, `docs/reproducibility_commands.md`
+
+**Explicitly not done:**
+
+- No τ reconstruction or `phase6f_*` map outputs
+- No deflection/lensing proxy runs
+- No changes to `src/`, benchmarks, Phase 3–5 numerical results
+- No fabricated downloads or 2D pixel maps
+
+**Gate snapshot:** G1–G3, G6 FAIL (2D maps absent); G4–G5 PARTIAL; G7–G8 PASS.
+
+**Next handoff:** Acquire Corbelli 2014 2D HI + stellar products; pass checklist → Phase 6F-impl.
+
+---
+
 ## 2026-05-24 — Phase 6F design (documentation-first)
 
 **Branch:** `feature/phase6f-mass-constrained-tau-map`
