@@ -1,0 +1,191 @@
+# Phase 6F source registry — verified manifests for 2D τ-map inputs
+# Human-readable companion: docs/phase6f_source_manifest.md
+# Validate checksums: shasum -a 256 -c ../CHECKSUMS.sha256
+
+registry_version: "2026-06-03"
+phase: phase6f-source-acquisition-manifest
+impl_blocked: true
+primary_stack_ready: false
+
+sources:
+
+  - source_id: corbelli2014_hi_2d_vla_gbt
+    tier: primary_required
+    title: "Corbelli et al. 2014 — VLA+GBT HI surface-density map"
+    citation_key: Corbelli2014
+    doi: "10.1051/0004-6361/201424033"
+    paper_url: "https://www.aanda.org/articles/aa/full_html/2014/12/aa24033-14/aa24033-14.html"
+    data_product: "2D HI column / surface-density (moment-0); combined VLA+GBT datacube reduction"
+    expected_format: "FITS cube or moment map"
+    expected_units: "N_HI or M_sun/pc^2 (confirm from header / paper)"
+    coordinate_system: "Equatorial WCS (RA/Dec)"
+    angular_resolution: "~20 arcsec (VLA inner) + ~130 arcsec (GBT outer); merged product per paper"
+    coverage: "M33 HI disk to ~23 kpc"
+    uncertainty: "Noise / rms maps from cube reduction (if provided)"
+    license_access: "A&A article; 2D FITS not linked on publisher page — author/archive request likely"
+    download_method: manual
+    automated_download: false
+    acquisition_status: not_acquired
+    repo_path: null
+    sha256: null
+    notes: >
+      Primary HI product for Phase 6F-impl. Gratier VLA-only maps in this repo are NOT a substitute
+      (Corbelli 2014 adds GBT total-power). See docs/phase6f_dataset_access_notes.md §1.
+
+  - source_id: corbelli2014_stellar_mass_bvigi_2d
+    tier: primary_required
+    title: "Corbelli et al. 2014 — BVIgi stellar mass surface-density map"
+    citation_key: Corbelli2014
+    doi: "10.1051/0004-6361/201424033"
+    paper_url: "https://www.aanda.org/articles/aa/full_html/2014/12/aa24033-14/aa24033-14.html"
+    data_product: "2D stellar mass surface density from pixel-SED fitting (LGS BVI + SDSS gi)"
+    expected_format: "FITS or author-provided array"
+    expected_units: "M_sun/pc^2"
+    coordinate_system: "Aligned with optical/HI analysis grid (confirm on receipt)"
+    angular_resolution: "Optical pixel scale of combined mosaics (arcsec; see paper Sect. 3.1)"
+    coverage: "M33 optical disk; outer disk uses Spitzer 3.6 um + deep fields"
+    uncertainty: "PDF inter-percentile ~0.06–0.1 dex per pixel (paper); not always shipped as map"
+    license_access: "No public FITS URL identified; contact corresponding authors"
+    download_method: author_request
+    automated_download: false
+    acquisition_status: not_acquired
+    repo_path: null
+    sha256: null
+    notes: "1D Table 1 sigma_star in repo is insufficient for 2D L_mass."
+
+  - source_id: corbelli2014_hi_velocity_field_2d
+    tier: primary_recommended
+    title: "Corbelli et al. 2014 — HI velocity field (moment-1 / tilted-ring)"
+    citation_key: Corbelli2014
+    doi: "10.1051/0004-6361/201424033"
+    data_product: "2D line-of-sight velocity field"
+    expected_format: "FITS moment-1 map or derived from cube"
+    expected_units: "km/s (document frame: heliocentric vs barycentric)"
+    coordinate_system: "Equatorial WCS"
+    angular_resolution: "Same family as primary HI map"
+    coverage: "HI-detected disk"
+    uncertainty: "Moment-1 error maps if available"
+    license_access: "Same as corbelli2014_hi_2d_vla_gbt"
+    download_method: manual
+    automated_download: false
+    acquisition_status: not_acquired
+    repo_path: null
+    sha256: null
+
+  - source_id: corbelli2014_tilted_ring_geometry
+    tier: geometry_partial
+    title: "Corbelli et al. 2014 — tilted-ring i(R), PA(R) model-shape"
+    citation_key: Corbelli2014
+    doi: "10.1051/0004-6361/201424033"
+    data_product: "Radial tilted-ring geometry table (12 rings, 0.8–23 kpc)"
+    file_name: corbelli2014_tilted_ring_geometry_model_shape.csv
+    format: CSV
+    units: "deg (i, PA); kpc (r)"
+    coordinate_system: "Disk-centric radii; not a 2D WCS grid"
+    angular_resolution: "12 radial bins"
+    coverage: "0.8–23 kpc"
+    uncertainty: "Phase 4B envelope i in [49,57] deg, PA in [-16,23] deg"
+    license_access: "Extracted from published figure; same paper DOI"
+    download_method: repo_extract_copy
+    automated_download: false
+    acquisition_status: acquired
+    repo_path: data/raw/phase6f/geometry/corbelli2014_tilted_ring_geometry_model_shape.csv
+    canonical_source: data/raw/extracted/corbelli2014_tilted_ring_geometry_model_shape.csv
+    sha256: "7060a0eaa0fad96a67b39fb0bde02fa0cf96b868835fe4acd01ef8e02c90fc1c"
+    notes: "Extend to 2D grid when primary maps arrive."
+
+  - source_id: gratier2010_vla_hi_12sec_area
+    tier: reference_only
+    title: "Gratier et al. 2010 — VLA HI integrated intensity (12 arcsec)"
+    citation_key: Gratier2010
+    doi: "10.1051/0004-6361/201014843"
+    archive_url: "https://perso.astrophy.u-bordeaux.fr/~pgratier/data/fits/M33_HI_12sec-area.fits"
+    data_product: "HI integrated intensity (moment-0 style map)"
+    file_name: M33_HI_12sec-area.fits
+    format: FITS
+    units: "BUNIT='T(K)' in header; page states Kelvin intensity — convert to N_HI / Sigma_HI"
+    coordinate_system: "RA---SIN / DEC--SIN; CRVAL1=23.4625 deg, CRVAL2=30.6597 deg"
+    angular_resolution: "BMAJ ~ 0.00333 deg (~12 arcsec); pixel CDELT ~ 4 arcsec"
+    coverage: "811 x 1201 pixels over M33 VLA field"
+    uncertainty: "Companion noise map gratier2010_vla_hi_12sec_noise"
+    license_access: "Gratier data page: free use with citation to Gratier et al. 2010"
+    download_method: "curl -L -O https://perso.astrophy.u-bordeaux.fr/~pgratier/data/fits/M33_HI_12sec-area.fits"
+    automated_download: true
+    acquisition_status: acquired_reference
+    repo_path: data/raw/phase6f/reference/gratier2010_vla_hi_12sec/M33_HI_12sec-area.fits
+    sha256: "c5e7a8d202e86a1613b1b935154a41354187fd40e27639ed37698c9a2db830e2"
+    satisfies_primary_hi_gate: false
+
+  - source_id: gratier2010_vla_hi_12sec_cent
+    tier: reference_only
+    title: "Gratier et al. 2010 — VLA HI velocity centroid (12 arcsec)"
+    citation_key: Gratier2010
+    doi: "10.1051/0004-6361/201014843"
+    archive_url: "https://perso.astrophy.u-bordeaux.fr/~pgratier/data/fits/M33_HI_12sec-cent.fits"
+    file_name: M33_HI_12sec-cent.fits
+    format: FITS
+    units: "BUNIT='T(K)' (verify velocity axis / conversion)"
+    coordinate_system: "Same WCS as area map"
+    angular_resolution: "~12 arcsec beam"
+    coverage: "811 x 1201"
+    uncertainty: "See noise map"
+    license_access: "Same as gratier2010_vla_hi_12sec_area"
+    download_method: "curl -L -O https://perso.astrophy.u-bordeaux.fr/~pgratier/data/fits/M33_HI_12sec-cent.fits"
+    automated_download: true
+    acquisition_status: acquired_reference
+    repo_path: data/raw/phase6f/reference/gratier2010_vla_hi_12sec/M33_HI_12sec-cent.fits
+    sha256: "181d76d1d82469ff64d243a783048efdf466db2dc2a44e32882bbc3456bbda9c"
+    satisfies_primary_hi_gate: false
+
+  - source_id: gratier2010_vla_hi_12sec_noise
+    tier: reference_only
+    title: "Gratier et al. 2010 — VLA HI noise (12 arcsec)"
+    citation_key: Gratier2010
+    doi: "10.1051/0004-6361/201014843"
+    archive_url: "https://perso.astrophy.u-bordeaux.fr/~pgratier/data/fits/M33_HI_12sec-noise.fits"
+    file_name: M33_HI_12sec-noise.fits
+    format: FITS
+    units: "BUNIT='T(K)'"
+    coordinate_system: "Same WCS as area map"
+    angular_resolution: "~12 arcsec beam"
+    coverage: "811 x 1201"
+    uncertainty: "This product IS the noise map"
+    license_access: "Same as gratier2010_vla_hi_12sec_area"
+    download_method: "curl -L -O https://perso.astrophy.u-bordeaux.fr/~pgratier/data/fits/M33_HI_12sec-noise.fits"
+    automated_download: true
+    acquisition_status: acquired_reference
+    repo_path: data/raw/phase6f/reference/gratier2010_vla_hi_12sec/M33_HI_12sec-noise.fits
+    sha256: "2e2b186bac0593956b700d24efc5e2c736d8600fecf0c983078888a1df47bbe6"
+    satisfies_primary_hi_gate: false
+
+  - source_id: iram_lp006_co21_integrated
+    tier: optional
+    title: "IRAM LP006 — M33 CO(2-1) integrated intensity map"
+    citation_key: Druard2014
+    doi: "10.1051/0004-6361/201423682"
+    archive_url: "https://www.iram.fr/ILPA/LP006/ico.fits"
+    portal_url: "https://iram-institute.org/science-portal/proposals/lp/completed/lp006-the-complete-co2-1-map-of-m33/"
+    data_product: "CO(2-1) line-integrated map"
+    file_name: ico.fits
+    format: FITS
+    units: "K km/s on T_a* scale (convert per Druard et al. 2014)"
+    coordinate_system: "Equatorial WCS in FITS"
+    angular_resolution: "12 arcsec native; papers often smooth to 18.2 arcsec"
+    coverage: "M33 disk R < 7 kpc"
+    uncertainty: "rms.fits companion (~3.9 MB)"
+    license_access: "IRAM LP public archive; cite Gratier et al. 2010 and Druard et al. 2014"
+    download_method: "curl -L -O https://www.iram.fr/ILPA/LP006/ico.fits"
+    automated_download: true
+    acquisition_status: not_acquired
+    repo_path: null
+    sha256: null
+    notes: "Optional for L_mass; cube ~599 MB — do not commit without explicit scope."
+
+  - source_id: things_survey
+    tier: reference_not_applicable
+    title: "THINGS HI Nearby Galaxy Survey"
+    citation_key: Walter2008
+    doi: "10.1088/0004-6256/136/6/2563"
+    archive_url: "https://www2.mpia-hd.mpg.de/THINGS/Data.html"
+    data_product: "HI cubes and moment maps"
+    notes: "M33 is NOT in the THINGS sample (34 galaxies, D ~ 2–15 Mpc). Listed for provenance only."

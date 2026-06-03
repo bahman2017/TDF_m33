@@ -79,11 +79,12 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 6D** | Complete — verified bibliography + LaTeX compile readiness audit |
 | **Phase 6E** | Complete — submission package audit + paper figure packaging |
 | **Phase 6F (design)** | Complete — mass-constrained τ-map protocol (PR #1) |
-| **Phase 6F-data** | **In progress** — data acquisition & provenance; **no τ reconstruction** |
+| **Phase 6F-data** | Complete — data acquisition plan & provenance gates (PR #2) |
+| **Phase 6F-source** | **In progress** — verified source manifests; reference HI staged |
 
 **Phase 6F (design):** Pre-registered protocol for **joint** rotation + smoothness + baryonic mass-geometry τ reconstruction on M33 — **not implemented yet**. See `docs/phase6f_mass_constrained_tau_map_protocol.md` and `outputs/reports/phase6f_m33_design_summary.md`.
 
-**Phase 6F-data (current):** Catalog 2D HI, stellar mass, geometry, and optional CO/velocity products; define provenance gates. **Data-readiness only** — no downloads of fake maps, no τ maps, no deflection re-runs. See `docs/phase6f_data_acquisition_plan.md`, `docs/phase6f_data_provenance_checklist.md`, and `outputs/reports/phase6f_data_readiness_report.md`. Phase 6F-impl is **blocked** until gates pass.
+**Phase 6F-source (current):** Authoritative source manifests, access notes, and checksum-verified staging under `data/raw/phase6f/`. **Reference** Gratier 2010 VLA HI FITS committed; **primary** Corbelli 2014 VLA+GBT HI and BVIgi stellar maps **not yet acquired**. Phase 6F-impl remains **blocked**. See `docs/phase6f_source_manifest.md` and `outputs/reports/phase6f_source_acquisition_status.md`.
 
 Current Phase 4A/4B maps remain **axisymmetric radial extensions** (`τ₂D = τ_radial(R)`), **not** full physical mass-constrained τ-maps.
 
@@ -194,7 +195,10 @@ This repository is intended to be **cited alongside a future peer-reviewed paper
 | [docs/phase6f_data_requirements_for_physical_tau_map.md](docs/phase6f_data_requirements_for_physical_tau_map.md) | 2D data requirements for physical τ-map |
 | [docs/phase6f_data_acquisition_plan.md](docs/phase6f_data_acquisition_plan.md) | Phase 6F-data candidate catalog & acquisition order |
 | [docs/phase6f_data_provenance_checklist.md](docs/phase6f_data_provenance_checklist.md) | Data readiness gates (blocks 6F-impl) |
+| [docs/phase6f_source_manifest.md](docs/phase6f_source_manifest.md) | Phase 6F-source verified manifest catalog |
+| [docs/phase6f_dataset_access_notes.md](docs/phase6f_dataset_access_notes.md) | Download / author-request procedures |
 | [outputs/reports/phase6f_data_readiness_report.md](outputs/reports/phase6f_data_readiness_report.md) | Phase 6F-data executive readiness snapshot |
+| [outputs/reports/phase6f_source_acquisition_status.md](outputs/reports/phase6f_source_acquisition_status.md) | Phase 6F-source acquisition status |
 | [docs/reproducibility_commands.md](docs/reproducibility_commands.md) | Full pipeline command reference |
 | [docs/project_status.md](docs/project_status.md) | Living project status |
 | [docs/roadmap.md](docs/roadmap.md) | High-level phase roadmap |

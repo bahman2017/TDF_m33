@@ -4,6 +4,35 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
+## 2026-06-03 — Phase 6F-source (verified manifests)
+
+**Branch:** `feature/phase6f-source-acquisition-manifest`
+
+**Task:** Authoritative source manifests, access notes, checksum-verified staging for 2D τ inputs.
+
+**Created:**
+
+- `docs/phase6f_source_manifest.md`
+- `docs/phase6f_dataset_access_notes.md`
+- `outputs/reports/phase6f_source_acquisition_status.md`
+- `data/raw/phase6f/manifest/phase6f_source_registry.yaml`
+- `data/raw/phase6f/CHECKSUMS.sha256`
+
+**Staged (small, license-allowed):**
+
+- Gratier 2010 VLA HI 12″ reference FITS (area, cent, noise) — **not** primary Corbelli VLA+GBT stack
+- Corbelli 2014 tilted-ring geometry CSV copy
+
+**Explicitly not done:**
+
+- No Corbelli 2014 primary HI / stellar FITS (author request required)
+- No τ reconstruction, deflection, or model changes
+- No fabricated checksums for absent files
+
+**Next handoff:** Author acquisition of Corbelli primary products → update registry → pass G1–G6.
+
+---
+
 ## 2026-05-24 — Phase 6F-data (data acquisition & provenance)
 
 **Branch:** `feature/phase6f-data-acquisition-provenance`
