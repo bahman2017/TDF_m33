@@ -106,7 +106,54 @@ cat outputs/reports/phase6f_m33_design_summary.md
 
 ---
 
-## Phase 6F-data — data acquisition & provenance (current)
+## Phase 6F-source — verified manifests (current)
+
+**Manifest + reference staging.** Primary Corbelli stack not acquired. No τ reconstruction.
+
+Docs and registry:
+
+```bash
+cat docs/phase6f_source_manifest.md
+cat docs/phase6f_dataset_access_notes.md
+cat outputs/reports/phase6f_source_acquisition_status.md
+cat data/raw/phase6f/manifest/phase6f_source_registry.yaml
+```
+
+Verify committed checksums:
+
+```bash
+cd data/raw/phase6f && shasum -a 256 -c CHECKSUMS.sha256
+```
+
+Reproducible reference HI download (Gratier 2010 — **reference only**):
+
+```bash
+mkdir -p data/raw/phase6f/reference/gratier2010_vla_hi_12sec
+BASE=https://perso.astrophy.u-bordeaux.fr/~pgratier/data/fits
+for f in M33_HI_12sec-area.fits M33_HI_12sec-cent.fits M33_HI_12sec-noise.fits; do
+  curl -L -o "data/raw/phase6f/reference/gratier2010_vla_hi_12sec/$f" "$BASE/$f"
+done
+cd data/raw/phase6f && shasum -a 256 -c CHECKSUMS.sha256
+```
+
+Optional CO integrated map (not committed; ~3.7 MB):
+
+```bash
+# curl -L -o /tmp/ico.fits https://www.iram.fr/ILPA/LP006/ico.fits
+```
+
+**Future placeholders (blocked until primary stack verified):**
+
+```bash
+# python scripts/acquire_phase6f_primary_corbelli2014.py
+# python scripts/verify_phase6f_checksums.py --root data/raw/phase6f
+# python scripts/validate_phase6f_baryonic_maps.py
+# python scripts/run_phase6f_mass_constrained_tau_map.py
+```
+
+---
+
+## Phase 6F-data — data acquisition & provenance
 
 **Data-readiness only.** No τ reconstruction, no new maps, no deflection runs.
 

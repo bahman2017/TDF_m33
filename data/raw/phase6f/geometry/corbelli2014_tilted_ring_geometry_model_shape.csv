@@ -1,0 +1,13 @@
+r_kpc,inclination_deg,position_angle_deg,method,geometry_source,notes
+0.8,54.0,22.0,model_shape,corbelli_et_al_2014_fig3,"Digitized from Corbelli et al. 2014 A&A 572 A23 Fig. 3 open triangles (shape method); Sect. 4.1"
+2.8,55.0,22.5,model_shape,corbelli_et_al_2014_fig3,11 equally spaced free tilted rings (Fig. 3 abscissa 0-20 kpc)
+4.8,56.0,23.0,model_shape,corbelli_et_al_2014_fig3,Used for HI rotation deconvolution in Sect. 4.2 (model-shape)
+6.8,57.0,22.0,model_shape,corbelli_et_al_2014_fig3,Inner disk PA ~20-23 deg; i ~54-58 deg per paper text
+8.8,56.0,20.0,model_shape,corbelli_et_al_2014_fig3,Warp onset ~8 kpc (abstract); PA rotates toward M31
+10.8,54.0,10.0,model_shape,corbelli_et_al_2014_fig3,Intermediate rings more robust than outermost (Sect. 4.1)
+12.8,53.0,0.0,model_shape,corbelli_et_al_2014_fig3,
+14.8,52.0,-8.0,model_shape,corbelli_et_al_2014_fig3,
+16.8,51.0,-12.0,model_shape,corbelli_et_al_2014_fig3,
+18.8,50.0,-15.0,model_shape,corbelli_et_al_2014_fig3,
+20.0,49.0,-16.0,model_shape,corbelli_et_al_2014_fig3,Outermost ring fixed to second-last in paper deconvolution
+23.0,49.0,-16.0,model_shape,corbelli_et_al_2014_fig3,Extension to R=23 kpc for Phase 4A/Table 1 mask (same as outer ring per Sect. 4.1 fix)

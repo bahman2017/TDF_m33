@@ -56,6 +56,16 @@ data/raw/extracted/*
 !data/raw/extracted/corbelli2014_tilted_ring_geometry_model_shape.csv
 !data/raw/extracted/lopez_fune_2017_dm_profile_raw.csv
 !data/raw/extracted/lopez_fune_2017_halo_parameters_raw.csv
+!data/raw/phase6f/
+!data/raw/phase6f/README.md
+!data/raw/phase6f/CHECKSUMS.sha256
+!data/raw/phase6f/manifest/
+!data/raw/phase6f/manifest/phase6f_source_registry.yaml
+!data/raw/phase6f/geometry/
+!data/raw/phase6f/geometry/corbelli2014_tilted_ring_geometry_model_shape.csv
+!data/raw/phase6f/reference/
+!data/raw/phase6f/reference/gratier2010_vla_hi_12sec/
+!data/raw/phase6f/reference/gratier2010_vla_hi_12sec/*.fits
 data/processed/*
 !data/processed/README.md
 !data/processed/m33_rotation_schema_template.csv
@@ -141,6 +151,7 @@ outputs/reports/*
 !outputs/reports/phase6e_submission_package_audit.md
 !outputs/reports/phase6f_m33_design_summary.md
 !outputs/reports/phase6f_data_readiness_report.md
+!outputs/reports/phase6f_source_acquisition_status.md
 !outputs/tables/phase5b_lopez_fune_source_status.csv
 !outputs/tables/phase5c_lopez_fune_extraction_status.csv
 !outputs/tables/phase5c_tau_mass_proxy_profile.csv

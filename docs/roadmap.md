@@ -10,8 +10,9 @@ Phase 4     Axisymmetric 2D map + disk-to-sky projection  [scaffold, not mass-co
 Phase 5     Normalized deflection proxy + dynamical limit audits  [not calibrated lensing]
 Phase 6A–E  Publication summary, manuscript, submission packaging
 Phase 6F    Mass-constrained τ-map protocol (M33 pilot)  [design complete]
-Phase 6F-data  Data acquisition & provenance  ← CURRENT (documentation only)
-Phase 6F-impl  Mass-constrained τ reconstruction  [blocked until data gates pass]
+Phase 6F-data  Data acquisition & provenance plan  [complete, PR #2]
+Phase 6F-source  Verified manifests + reference staging  ← CURRENT
+Phase 6F-impl  Mass-constrained τ reconstruction  [blocked — primary HI/stellar missing]
 Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 ```
 
@@ -44,7 +45,9 @@ Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 | 6F data requirements | `docs/phase6f_data_requirements_for_physical_tau_map.md` |
 | 6F-data acquisition | `docs/phase6f_data_acquisition_plan.md` |
 | 6F-data gates | `docs/phase6f_data_provenance_checklist.md` |
-| 6F-data status | `outputs/reports/phase6f_data_readiness_report.md` |
+| 6F-source manifest | `docs/phase6f_source_manifest.md` |
+| 6F-source access | `docs/phase6f_dataset_access_notes.md` |
+| 6F-source status | `outputs/reports/phase6f_source_acquisition_status.md` |
 | Theory | `docs/theory_summary.md` |
 | Claims | `docs/manuscript_allowed_language.md` |
 | Repro | `docs/reproducibility_commands.md` |
