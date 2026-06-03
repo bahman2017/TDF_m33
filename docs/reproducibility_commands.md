@@ -93,18 +93,41 @@ python scripts/prepare_paper_figures.py
 
 ## Phase 6F — mass-constrained τ-map (design phase)
 
-**Documentation only in Phase 6F design.** No implementation scripts yet.
+**Documentation only.** Design merged to `main` (PR #1).
 
 Design docs:
 
 ```bash
-# Read-only — no pipeline execution required for design acceptance
+# Read-only — no pipeline execution required
 cat docs/phase6f_mass_constrained_tau_map_protocol.md
 cat docs/phase6f_data_requirements_for_physical_tau_map.md
 cat outputs/reports/phase6f_m33_design_summary.md
 ```
 
-**Future placeholders (not implemented; do not invent outputs):**
+---
+
+## Phase 6F-data — data acquisition & provenance (current)
+
+**Data-readiness only.** No τ reconstruction, no new maps, no deflection runs.
+
+Readiness docs:
+
+```bash
+cat docs/phase6f_data_acquisition_plan.md
+cat docs/phase6f_data_provenance_checklist.md
+cat outputs/reports/phase6f_data_readiness_report.md
+```
+
+**Future acquisition placeholders (not implemented; do not invent files):**
+
+```bash
+# python scripts/acquire_corbelli2014_hi_2d_map.py --manifest data/raw/sources_manifest.yaml
+# python scripts/acquire_corbelli2014_stellar_mass_2d_map.py --manifest data/raw/sources_manifest.yaml
+# python scripts/validate_phase6f_baryonic_maps.py --hi ... --stars ... --geometry ...
+# python scripts/run_phase6f_data_readiness_audit.py
+```
+
+**Phase 6F-impl placeholders (blocked until data gates pass):**
 
 ```bash
 # python scripts/run_phase6f_mass_constrained_tau_map.py
@@ -112,10 +135,10 @@ cat outputs/reports/phase6f_m33_design_summary.md
 # python scripts/run_phase6f_mass_alignment_diagnostics.py
 ```
 
-Expected future artifacts (when implemented): see protocol §7 in `docs/phase6f_mass_constrained_tau_map_protocol.md`.
+Expected future artifacts: protocol §7 in `docs/phase6f_mass_constrained_tau_map_protocol.md`.
 
 ---
 
 ## Claim control reminder
 
-Prior phase outputs are **read-only** inputs to audits. Phase 6F design does not refit or overwrite Phases 2–5 maps. Deflection remains `normalized_proxy` until a future gated calibration phase is pre-registered.
+Prior phase outputs are **read-only** inputs to audits. Phase 6F-data does not refit or overwrite Phases 2–5 maps. Phase 6F-impl is blocked until data readiness gates pass. Deflection remains `normalized_proxy` until a future gated calibration phase is pre-registered.

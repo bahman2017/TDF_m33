@@ -78,9 +78,14 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 6C** | Complete — first readable manuscript draft (`paper/`) + draft audit |
 | **Phase 6D** | Complete — verified bibliography + LaTeX compile readiness audit |
 | **Phase 6E** | Complete — submission package audit + paper figure packaging |
-| **Phase 6F** | **In progress (design)** — mass-constrained τ-map protocol; documentation only |
+| **Phase 6F (design)** | Complete — mass-constrained τ-map protocol (PR #1) |
+| **Phase 6F-data** | **In progress** — data acquisition & provenance; **no τ reconstruction** |
 
-**Phase 6F (design):** Pre-registered protocol for **joint** rotation + smoothness + baryonic mass-geometry τ reconstruction on M33 — **not implemented yet**. Current Phase 4A/4B maps are **axisymmetric radial extensions** (`τ₂D = τ_radial(R)`), **not** full physical mass-constrained τ-maps. See `docs/phase6f_mass_constrained_tau_map_protocol.md` and `outputs/reports/phase6f_m33_design_summary.md`.
+**Phase 6F (design):** Pre-registered protocol for **joint** rotation + smoothness + baryonic mass-geometry τ reconstruction on M33 — **not implemented yet**. See `docs/phase6f_mass_constrained_tau_map_protocol.md` and `outputs/reports/phase6f_m33_design_summary.md`.
+
+**Phase 6F-data (current):** Catalog 2D HI, stellar mass, geometry, and optional CO/velocity products; define provenance gates. **Data-readiness only** — no downloads of fake maps, no τ maps, no deflection re-runs. See `docs/phase6f_data_acquisition_plan.md`, `docs/phase6f_data_provenance_checklist.md`, and `outputs/reports/phase6f_data_readiness_report.md`. Phase 6F-impl is **blocked** until gates pass.
+
+Current Phase 4A/4B maps remain **axisymmetric radial extensions** (`τ₂D = τ_radial(R)`), **not** full physical mass-constrained τ-maps.
 
 **Phase 6A audit:** `python scripts/run_phase6a_publication_audit.py` → `outputs/reports/phase6a_publication_results_summary.md`. Strongest result: rotation-dynamics consistency of low-parameter τ (not lensing detection). Deflection remains `normalized_proxy`; López Fune check is dynamical upper-bound only; dark matter is not claimed disproven.
 
@@ -187,6 +192,9 @@ This repository is intended to be **cited alongside a future peer-reviewed paper
 | [docs/extraction_log.md](docs/extraction_log.md) | Download and Table 1 extraction audit |
 | [docs/phase6f_mass_constrained_tau_map_protocol.md](docs/phase6f_mass_constrained_tau_map_protocol.md) | Phase 6F pre-registered τ-map protocol |
 | [docs/phase6f_data_requirements_for_physical_tau_map.md](docs/phase6f_data_requirements_for_physical_tau_map.md) | 2D data requirements for physical τ-map |
+| [docs/phase6f_data_acquisition_plan.md](docs/phase6f_data_acquisition_plan.md) | Phase 6F-data candidate catalog & acquisition order |
+| [docs/phase6f_data_provenance_checklist.md](docs/phase6f_data_provenance_checklist.md) | Data readiness gates (blocks 6F-impl) |
+| [outputs/reports/phase6f_data_readiness_report.md](outputs/reports/phase6f_data_readiness_report.md) | Phase 6F-data executive readiness snapshot |
 | [docs/reproducibility_commands.md](docs/reproducibility_commands.md) | Full pipeline command reference |
 | [docs/project_status.md](docs/project_status.md) | Living project status |
 | [docs/roadmap.md](docs/roadmap.md) | High-level phase roadmap |

@@ -9,8 +9,9 @@ Phase 3     Radial τ reconstruction (direct, regularized, low-param, sensitivit
 Phase 4     Axisymmetric 2D map + disk-to-sky projection  [scaffold, not mass-constrained]
 Phase 5     Normalized deflection proxy + dynamical limit audits  [not calibrated lensing]
 Phase 6A–E  Publication summary, manuscript, submission packaging
-Phase 6F    Mass-constrained τ-map protocol (M33 pilot)  ← CURRENT (design)
-Phase 6F+   Implementation + gated maps + optional deflection re-compute
+Phase 6F    Mass-constrained τ-map protocol (M33 pilot)  [design complete]
+Phase 6F-data  Data acquisition & provenance  ← CURRENT (documentation only)
+Phase 6F-impl  Mass-constrained τ reconstruction  [blocked until data gates pass]
 Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 ```
 
@@ -21,6 +22,7 @@ Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 1. **One galaxy done right (M33)** before scaling claims.
 2. **Separate** rotation success from lensing language until gates pass.
 3. **Mass geometry in the objective**, not post-hoc smoothing, is the Phase 6F differentiator from Phase 4A.
+4. **Data readiness before fit** — 2D HI/stellar maps must be traceable before Phase 6F-impl.
 
 ---
 
@@ -30,6 +32,7 @@ Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 - Physical arcsec lensing calibration (`alpha_tau_scale` fit)
 - Dark-matter replacement claims
 - Retroactive changes to Phase 3–5 numerical outputs without new phase tag
+- τ reconstruction or deflection re-runs during Phase 6F-data
 
 ---
 
@@ -38,7 +41,10 @@ Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 | Phase | Doc |
 |-------|-----|
 | 6F design | `docs/phase6f_mass_constrained_tau_map_protocol.md` |
-| 6F data | `docs/phase6f_data_requirements_for_physical_tau_map.md` |
+| 6F data requirements | `docs/phase6f_data_requirements_for_physical_tau_map.md` |
+| 6F-data acquisition | `docs/phase6f_data_acquisition_plan.md` |
+| 6F-data gates | `docs/phase6f_data_provenance_checklist.md` |
+| 6F-data status | `outputs/reports/phase6f_data_readiness_report.md` |
 | Theory | `docs/theory_summary.md` |
 | Claims | `docs/manuscript_allowed_language.md` |
 | Repro | `docs/reproducibility_commands.md` |
