@@ -2,7 +2,7 @@
 
 Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.md`.
 
-**Last updated:** Phase 6F public data acquisition audit (Tier A/B/C).
+**Last updated:** Phase 6F first Tier B public pilot batch validation (no local FITS staged).
 
 ---
 
@@ -20,7 +20,7 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 | Phase 6F design / data / source | Complete (PR #1–#3) |
 | Phase 6F engine + bootstrap | Implemented (PR #4/#5) — **scientific τ-map blocked** |
 | Phase 6F public data audit | Tier A/B/C documented (PR #7) |
-| Phase 6F public pilot staging | Folders + P1–P6 gates — **downloads pending** |
+| Phase 6F public pilot staging | Folders + P1–P6 gates; **first-batch validated, 0 FITS staged** |
 
 ---
 
@@ -28,7 +28,11 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 
 **Tier A (preferred):** Exact Corbelli 2014 primary HI + BVIgi stellar FITS — author request; **no direct public FITS found** (audit 2026-05-23).
 
-**Tier B (optional pilot):** Staging under `data/raw/phase6f/public_pilot/`; manual download protocol in `docs/phase6f_public_pilot_download_instructions.md`. P1–P6 gates via `run_phase6f_public_pilot_gates.py`. **Cannot PASS G1/G2.**
+**Tier B (optional pilot):** Staging under `data/raw/phase6f/public_pilot/`; manual download protocol in `docs/phase6f_public_pilot_download_instructions.md`. P1–P6 gates via `run_phase6f_public_pilot_gates.py`. **Cannot PASS G1/G2.** Label: `PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY`.
+
+**Tier B staged products (local):** none as of first-batch validation. Remaining downloads: IRAM LP006 CO, S4G/LVL IRAC 3.6+4.5 µm, LGLBS HI (or Koch 2018 alternative).
+
+**Public pilot gates:** P1–P4 PENDING, P5 PASS, P6 FAIL, `public_pilot_ready=False`. No scientific τ-map from Tier B until P6 validated reprojection and P1–P5 pass.
 
 **Scientific status:** **BLOCKED** — G1/G2 primary Corbelli maps missing; G8 validated reprojection not implemented.
 

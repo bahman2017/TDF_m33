@@ -27,6 +27,8 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "Preferred public HI route. CADC account required."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
 
   - id: lglbs_hi_v1_moment1
     tier: Tier_B
@@ -46,6 +48,8 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "Optional velocity field for diagnostics."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
 
   - id: koch2018_hi_products
     tier: Tier_B
@@ -65,6 +69,8 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "Alternative HI path if LGLBS unavailable; requires pipeline rebuild."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
 
   - id: s4g_irac_36
     tier: Tier_B
@@ -84,6 +90,8 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "Stellar surface-density proxy via M/L -  not Corbelli BVIgi."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
 
   - id: s4g_irac_45
     tier: Tier_B
@@ -103,6 +111,8 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "Pair with 3.6 µm for M/L-derived M_* proxy."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
 
   - id: lvl_irac_36_45
     tier: Tier_B
@@ -122,6 +132,8 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "Fallback if S4G products insufficient."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
 
   - id: iram_lp006_co21_integrated
     tier: Tier_B
@@ -141,6 +153,8 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "H2 proxy via X_CO conversion (document assumptions)."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
 
   - id: iram_lp006_co21_cube
     tier: Tier_B
@@ -160,3 +174,10 @@ sources:
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
     notes: "Optional; large file -  manual download only."
+    local_file_patterns: []
+    inventory_report_path: outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md
+
+last_inventory_validation:
+  total_staged_fits: 0
+  claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+  raw_fits_committed_to_git: false

@@ -189,9 +189,11 @@ python scripts/audit_phase6f_public_data_sources.py
 Public pilot staging (Tier B; manual download — not Corbelli primary):
 
 ```bash
-python scripts/inventory_phase6f_public_pilot_data.py
+python scripts/inventory_phase6f_public_pilot_data.py   # summary + file-level FITS headers
 python scripts/update_phase6f_public_pilot_checksums.py
 python scripts/run_phase6f_public_pilot_gates.py
+# outputs: outputs/tables/phase6f/phase6f_public_pilot_inventory.csv
+#          outputs/tables/phase6f/phase6f_public_pilot_file_inventory.csv
 python scripts/download_phase6f_public_pilot_sources.py   # dry-run
 python scripts/check_text_file_unicode_hygiene.py
 ```

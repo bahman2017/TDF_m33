@@ -2,6 +2,8 @@
 
 Explicit limitations for a **Tier B public-data** M33 τ-map pilot.
 
+**First-batch validation (2026-05-23):** No Tier B FITS staged locally yet. P1–P4 **PENDING**, P5 **PASS** (registry citations complete), P6 **FAIL**, `public_pilot_ready=False`. Strict Corbelli G1/G2/G8 remain **FAIL**; no scientific τ-map until P6 and Tier A primary maps exist.
+
 ---
 
 ## What a Tier B pilot is
