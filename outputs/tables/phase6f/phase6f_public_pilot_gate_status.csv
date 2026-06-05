@@ -1,6 +1,6 @@
 gate_id,status,message,details
 P1_public_hi_map_available,PENDING,No public HI FITS in hi_lglbs/ or hi_koch2018/. Manual download required (LGLBS or Koch 2018).,{}
-P2_public_stellar_irac_available,PENDING,No IRAC FITS staged (need 3.6 and 4.5 µm mosaics). IRAC proxy — not Corbelli BVIgi map.,{}
+P2_public_stellar_irac_available,PENDING,No IRAC FITS staged (need 3.6 and 4.5 µm mosaics). IRAC proxy - not Corbelli BVIgi map.,{}
 P3_public_co_or_h2_available,PENDING,No CO(2-1) FITS in co_iram_lp006/. IRAM LP006 manual download.,{}
 P4_public_wcs_metadata_available,PENDING,No staged public pilot maps to verify WCS.,{}
 P5_public_license_and_citation_documented,PARTIAL,Registry citations and license notes documented; confirm per-file on download.,"{'registry': 'data/raw/phase6f/public_pilot/manifest/phase6f_public_pilot_source_registry.yaml', 'n_sources': 8}"

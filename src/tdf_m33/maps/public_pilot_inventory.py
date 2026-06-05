@@ -121,7 +121,7 @@ def scan_public_pilot_inventory(repo_root: Path) -> PublicPilotInventoryReport:
 def write_public_pilot_inventory_csv(path: Path, report: PublicPilotInventoryReport) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = list(asdict(PublicPilotInventoryRow("", "", "", "PENDING_DOWNLOAD", 0, "", "", "")).keys())
-    with path.open("w", newline="", encoding="utf-8") as handle:
+    with path.open("w", newline="\n", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         for row in report.rows:

@@ -1,4 +1,4 @@
-# Phase 6F — Public pilot limitations
+# Phase 6F - Public pilot limitations
 
 Explicit limitations for a **Tier B public-data** M33 τ-map pilot.
 
@@ -6,7 +6,7 @@ Explicit limitations for a **Tier B public-data** M33 τ-map pilot.
 
 ## What a Tier B pilot is
 
-A reproducible computational experiment using **publicly accessible** M33 HI, stellar-mass-proxy, and CO products to test whether the Phase 6F disk-plane field engine can ingest real 2D baryonic structure — **without** claiming equivalence to Corbelli et al. 2014 primary dynamical maps.
+A reproducible computational experiment using **publicly accessible** M33 HI, stellar-mass-proxy, and CO products to test whether the Phase 6F disk-plane field engine can ingest real 2D baryonic structure -  **without** claiming equivalence to Corbelli et al. 2014 primary dynamical maps.
 
 ---
 
@@ -74,7 +74,7 @@ Corbelli BVIgi map includes pixel-SED history not reproduced by simple IRAC colo
 
 ## CO / H2 caveats (Tier B)
 
-- CO(2-1) traces molecular gas via X_CO conversion — not identical to Corbelli H₂ prescription
+- CO(2-1) traces molecular gas via X_CO conversion -  not identical to Corbelli H₂ prescription
 - 12″ CO beam vs HI/optical resolution mismatch requires documented smoothing
 
 ---

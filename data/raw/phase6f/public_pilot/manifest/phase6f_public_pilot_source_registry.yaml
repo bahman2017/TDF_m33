@@ -12,7 +12,7 @@ sources:
   - id: lglbs_hi_v1_moment0
     tier: Tier_B
     product_type: hi_surface_density_or_column
-    source_name: "LGLBS HI Data Release v1.0 — M33 moment-0 / cube"
+    source_name: "LGLBS HI Data Release v1.0 - M33 moment-0 / cube"
     citation: "Koch et al. 2025, ApJS, 279, 35; DOI 10.3847/1538-4365/ade0ad"
     source_url_or_doi: "https://www.canfar.net/storage/vault/list/LGLBS/RELEASES/LGLBS-HI-v1.0"
     download_method: manual
@@ -31,7 +31,7 @@ sources:
   - id: lglbs_hi_v1_moment1
     tier: Tier_B
     product_type: hi_velocity_field
-    source_name: "LGLBS HI Data Release v1.0 — M33 moment-1"
+    source_name: "LGLBS HI Data Release v1.0 - M33 moment-1"
     citation: "Koch et al. 2025, ApJS, 279, 35"
     source_url_or_doi: "https://www.lglbs.org/data"
     download_method: manual
@@ -50,7 +50,7 @@ sources:
   - id: koch2018_hi_products
     tier: Tier_B
     product_type: hi_cube_moments
-    source_name: "Koch et al. 2018 MNRAS — M33 L-band HI (rebuild path)"
+    source_name: "Koch et al. 2018 MNRAS -  M33 L-band HI (rebuild path)"
     citation: "Koch et al. 2018, MNRAS, 479, 2505; arXiv:1806.11218"
     source_url_or_doi: "https://github.com/e-koch/VLA_Lband"
     download_method: manual_or_scripted
@@ -69,7 +69,7 @@ sources:
   - id: s4g_irac_36
     tier: Tier_B
     product_type: stellar_mass_proxy_irac
-    source_name: "Spitzer S4G — M33 IRAC 3.6 micron mosaic"
+    source_name: "Spitzer S4G -  M33 IRAC 3.6 micron mosaic"
     citation: "Sheth et al. 2010; Querejeta et al. 2015; DOI 10.26131/IRSA425"
     source_url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/S4G/"
     download_method: manual
@@ -83,12 +83,12 @@ sources:
     claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
-    notes: "Stellar surface-density proxy via M/L — not Corbelli BVIgi."
+    notes: "Stellar surface-density proxy via M/L -  not Corbelli BVIgi."
 
   - id: s4g_irac_45
     tier: Tier_B
     product_type: stellar_mass_proxy_irac
-    source_name: "Spitzer S4G — M33 IRAC 4.5 micron mosaic"
+    source_name: "Spitzer S4G -  M33 IRAC 4.5 micron mosaic"
     citation: "Sheth et al. 2010; Querejeta et al. 2015"
     source_url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/S4G/"
     download_method: manual
@@ -107,7 +107,7 @@ sources:
   - id: lvl_irac_36_45
     tier: Tier_B
     product_type: stellar_mass_proxy_irac
-    source_name: "Spitzer LVL — M33 IRAC 3.6 and 4.5 micron (fallback)"
+    source_name: "Spitzer LVL -  M33 IRAC 3.6 and 4.5 micron (fallback)"
     citation: "Dale et al. 2009, ApJ, 703, 517"
     source_url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/LVL/"
     download_method: manual
@@ -126,7 +126,7 @@ sources:
   - id: iram_lp006_co21_integrated
     tier: Tier_B
     product_type: co21_integrated_intensity
-    source_name: "IRAM LP006 — M33 CO(2-1) integrated map"
+    source_name: "IRAM LP006 -  M33 CO(2-1) integrated map"
     citation: "Druard et al. 2014, A&A, 567, A118; Gratier et al. 2010"
     source_url_or_doi: "https://www.iram.fr/ILPA/LP006/"
     download_method: manual
@@ -145,7 +145,7 @@ sources:
   - id: iram_lp006_co21_cube
     tier: Tier_B
     product_type: co21_datacube
-    source_name: "IRAM LP006 — M33 CO(2-1) datacube"
+    source_name: "IRAM LP006 -  M33 CO(2-1) datacube"
     citation: "Druard et al. 2014, A&A, 567, A118"
     source_url_or_doi: "https://www.iram.fr/ILPA/LP006/"
     download_method: manual
@@ -159,4 +159,4 @@ sources:
     claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
     can_satisfy_primary_corbelli_gate: false
     can_satisfy_public_pilot_gate: true
-    notes: "Optional; large file — manual download only."
+    notes: "Optional; large file -  manual download only."

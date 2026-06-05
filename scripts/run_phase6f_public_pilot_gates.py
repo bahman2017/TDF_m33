@@ -38,7 +38,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"public_pilot_ready={report.public_pilot_ready}")
     print(f"claim_label={PUBLIC_PILOT_CLAIM_LABEL}")
     for g in report.gates:
-        print(f"  {g.gate_id}: {g.status} — {g.message}")
+        print(f"  {g.gate_id}: {g.status} - {g.message}")
 
     write_public_pilot_gate_csv(args.csv, report)
     write_public_pilot_gate_report_md(args.report_md, report)

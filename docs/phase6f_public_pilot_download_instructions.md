@@ -1,4 +1,4 @@
-# Phase 6F — Public pilot manual download instructions (Tier B)
+# Phase 6F - Public pilot manual download instructions (Tier B)
 
 **Claim label (all products):** `PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY`
 
@@ -18,10 +18,10 @@ Never commit multi-GB cubes unless explicitly license-safe and repo-size approve
 
 ## Recommended download order
 
-1. **IRAM LP006 CO(2-1)** — smallest public FITS set, no login  
-2. **Spitzer S4G IRAC** — 3.6 + 4.5 µm mosaics via IRSA (no login)  
-3. **LGLBS HI v1.0** — CANFAR (CADC login)  
-4. **Koch 2018 HI** — optional if rebuilding from GitHub scripts  
+1. **IRAM LP006 CO(2-1)** -  smallest public FITS set, no login  
+2. **Spitzer S4G IRAC** -  3.6 + 4.5 µm mosaics via IRSA (no login)  
+3. **LGLBS HI v1.0** -  CANFAR (CADC login)  
+4. **Koch 2018 HI** -  optional if rebuilding from GitHub scripts  
 
 ---
 
@@ -34,7 +34,7 @@ Never commit multi-GB cubes unless explicitly license-safe and repo-size approve
 
 - Portal: https://www.lglbs.org/data  
 - Data release: https://www.canfar.net/storage/vault/list/LGLBS/RELEASES/LGLBS-HI-v1.0  
-- **CADC account required** — request at https://www.canfar.net/ (no credentials in this repo)
+- **CADC account required** -  request at https://www.canfar.net/ (no credentials in this repo)
 
 ### Expected products
 
@@ -51,7 +51,7 @@ Confirm `BUNIT` in FITS header (column density N_HI or brightness temperature).
 
 ### Citation
 
-Koch et al. 2025, ApJS, 279, 35 — https://doi.org/10.3847/1538-4365/ade0ad
+Koch et al. 2025, ApJS, 279, 35 -  https://doi.org/10.3847/1538-4365/ade0ad
 
 ### Notes
 
@@ -76,7 +76,7 @@ Koch et al. 2025, ApJS, 279, 35 — https://doi.org/10.3847/1538-4365/ade0ad
 
 ### Citation
 
-Koch et al. 2018 — https://ui.adsabs.harvard.edu/abs/2018MNRAS.479.2505K/abstract
+Koch et al. 2018 -  https://ui.adsabs.harvard.edu/abs/2018MNRAS.479.2505K/abstract
 
 ---
 
@@ -90,7 +90,7 @@ Koch et al. 2018 — https://ui.adsabs.harvard.edu/abs/2018MNRAS.479.2505K/abstr
 
 ### Access
 
-- S4G: https://irsa.ipac.caltech.edu/data/SPITZER/S4G/ — search **M33**  
+- S4G: https://irsa.ipac.caltech.edu/data/SPITZER/S4G/ -  search **M33**  
 - LVL: https://irsa.ipac.caltech.edu/data/SPITZER/LVL/  
 - **No login** for IRSA Atlas downloads
 
@@ -148,7 +148,7 @@ python scripts/download_phase6f_public_pilot_sources.py
 python scripts/download_phase6f_public_pilot_sources.py --source iram_lp006_co21_integrated
 ```
 
-Default is **dry-run only** — prints URLs and target paths, no network fetch.
+Default is **dry-run only** -  prints URLs and target paths, no network fetch.
 
 ---
 

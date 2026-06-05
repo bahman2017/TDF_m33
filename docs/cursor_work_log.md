@@ -4,6 +4,13 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
+## 2026-05-23 — Unicode hygiene for public pilot text files
+
+**Patch:** Added `check_text_file_unicode_hygiene.py`; normalized LF and removed em-dash
+from machine-readable Tier B staging files. No gate or scientific logic changes.
+
+---
+
 ## 2026-05-23 — Phase 6F public pilot source staging
 
 **Branch:** `feature/phase6f-public-pilot-source-staging`

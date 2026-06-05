@@ -95,7 +95,7 @@ def check_p2_public_stellar(repo_root: Path) -> GateResult:
     return GateResult(
         "P2_public_stellar_irac_available",
         "PENDING",
-        f"{msg}. IRAC proxy — not Corbelli BVIgi map.",
+        f"{msg}. IRAC proxy - not Corbelli BVIgi map.",
     )
 
 
@@ -237,7 +237,7 @@ def write_public_pilot_gate_csv(path: Path, report: PublicPilotGateReport) -> No
     rows = report.to_rows()
     if not rows:
         return
-    with path.open("w", newline="", encoding="utf-8") as handle:
+    with path.open("w", newline="\n", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows(rows)

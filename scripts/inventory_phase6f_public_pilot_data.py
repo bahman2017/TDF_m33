@@ -43,7 +43,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Wrote: {args.csv}")
     print(f"Wrote: {args.report_md}")
     if report.total_staged_files == 0:
-        print("All sources pending_download — see docs/phase6f_public_pilot_download_instructions.md")
+        print("All sources pending_download - see docs/phase6f_public_pilot_download_instructions.md")
     return 0
 
 
