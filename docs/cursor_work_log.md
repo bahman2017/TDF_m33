@@ -4,6 +4,20 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
+## 2026-05-23 — Phase 6F script import bootstrap (PR #4 follow-up)
+
+**Branch:** `feature/phase6f-nonspherical-disk-tau-map-engine`
+
+**Fix:** Added `scripts/_bootstrap.py` and wired Phase 6F scripts to insert `src/` on
+`sys.path` before importing `tdf_m33`, so direct execution from repo root works without
+prior `pip install -e .`.
+
+**Unchanged:** G1–G8 gate logic, G8 validated reprojection requirement, strict-mode block
+(`BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS`), reference-proxy marking
+(`REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS`).
+
+---
+
 ## 2026-06-03 — PR #4 review fix: G8 reprojection gate
 
 **Patch:** Added G8_primary_map_reprojection_ready; blocked scientific mode on placeholder zoom; Neumann BC disabled (NotImplementedError).
