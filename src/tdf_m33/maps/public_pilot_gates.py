@@ -10,7 +10,11 @@ from tdf_m33.maps.gates import GateResult, run_data_gates
 from tdf_m33.maps.public_pilot_inventory import (
     PUBLIC_PILOT_CLAIM_LABEL,
     PUBLIC_PILOT_REGISTRY,
+    co_files_with_metadata,
+    hi_files_with_metadata,
+    irac_channels_present,
     load_public_pilot_registry,
+    scan_public_pilot_files,
     _find_data_files,
 )
 from tdf_m33.maps.reprojection import VALIDATED_WCS_REPROJECTION_AVAILABLE
@@ -78,9 +82,22 @@ def _has_co_staged(repo_root: Path) -> tuple[bool, str]:
 
 
 def check_p1_public_hi(repo_root: Path) -> GateResult:
+    file_records = scan_public_pilot_files(repo_root)
+    hi_ok = hi_files_with_metadata(file_records)
+    if hi_ok:
+        names = ", ".join(r.filename for r in hi_ok[:3])
+        return GateResult(
+            "P1_public_hi_map_available",
+            "PASS",
+            f"{len(hi_ok)} HI FITS with celestial WCS: {names}",
+        )
     ok, msg = _has_hi_staged(repo_root)
     if ok:
-        return GateResult("P1_public_hi_map_available", "PASS", msg)
+        return GateResult(
+            "P1_public_hi_map_available",
+            "PENDING",
+            f"{msg}; WCS/units not sufficient for PASS yet.",
+        )
     return GateResult(
         "P1_public_hi_map_available",
         "PENDING",
@@ -89,9 +106,26 @@ def check_p1_public_hi(repo_root: Path) -> GateResult:
 
 
 def check_p2_public_stellar(repo_root: Path) -> GateResult:
+    file_records = scan_public_pilot_files(repo_root)
+    stellar = [
+        r
+        for r in file_records
+        if "stellar_s4g_irac" in r.target_folder or "stellar_lvl_irac" in r.target_folder
+    ]
+    found_36, found_45 = irac_channels_present(stellar)
+    if found_36 and found_45:
+        return GateResult(
+            "P2_public_stellar_irac_available",
+            "PASS",
+            f"IRAC 3.6 and 4.5 um staged ({len(stellar)} file(s)); stellar proxy only.",
+        )
     ok, msg = _has_irac_staged(repo_root)
     if ok:
-        return GateResult("P2_public_stellar_irac_available", "PASS", msg)
+        return GateResult(
+            "P2_public_stellar_irac_available",
+            "PENDING",
+            f"{msg}; channel identification incomplete.",
+        )
     return GateResult(
         "P2_public_stellar_irac_available",
         "PENDING",
@@ -100,9 +134,21 @@ def check_p2_public_stellar(repo_root: Path) -> GateResult:
 
 
 def check_p3_public_co(repo_root: Path) -> GateResult:
+    file_records = scan_public_pilot_files(repo_root)
+    co_ok = co_files_with_metadata(file_records)
+    if co_ok:
+        return GateResult(
+            "P3_public_co_or_h2_available",
+            "PASS",
+            f"{len(co_ok)} CO FITS inspected under co_iram_lp006/",
+        )
     ok, msg = _has_co_staged(repo_root)
     if ok:
-        return GateResult("P3_public_co_or_h2_available", "PASS", msg)
+        return GateResult(
+            "P3_public_co_or_h2_available",
+            "PENDING",
+            f"{msg}; header inspection incomplete.",
+        )
     return GateResult(
         "P3_public_co_or_h2_available",
         "PENDING",
@@ -111,46 +157,37 @@ def check_p3_public_co(repo_root: Path) -> GateResult:
 
 
 def check_p4_public_wcs(repo_root: Path, p1: GateResult, p2: GateResult, p3: GateResult) -> GateResult:
-    if p1.status != "PASS" and p2.status != "PASS" and p3.status != "PASS":
+    file_records = scan_public_pilot_files(repo_root)
+    if not file_records:
         return GateResult(
             "P4_public_wcs_metadata_available",
             "PENDING",
             "No staged public pilot maps to verify WCS.",
         )
-    try:
-        from astropy.io import fits
-        from astropy.wcs import WCS
-    except ImportError:
+    inspected = [r for r in file_records if r.inspect_status == "INSPECTED"]
+    if not inspected:
         return GateResult(
             "P4_public_wcs_metadata_available",
             "PENDING",
-            "astropy required for WCS verification on staged files.",
+            "Staged FITS present but astropy header inspection unavailable.",
         )
-
-    checked = 0
-    wcs_ok = 0
-    for rel in (*PUBLIC_PILOT_HI_DIRS, *PUBLIC_PILOT_STELLAR_DIRS, PUBLIC_PILOT_CO_DIR):
-        for path in _find_data_files(repo_root / rel)[:3]:
-            checked += 1
-            try:
-                with fits.open(path, memmap=False) as hdul:
-                    wcs = WCS(hdul[0].header)
-                    if wcs.has_celestial:
-                        wcs_ok += 1
-            except Exception:
-                pass
-    if checked == 0:
-        return GateResult("P4_public_wcs_metadata_available", "PENDING", "No files to check.")
-    if wcs_ok == checked:
+    wcs_ok = [r for r in inspected if r.has_wcs == "true"]
+    if not wcs_ok:
+        return GateResult(
+            "P4_public_wcs_metadata_available",
+            "FAIL",
+            f"No celestial WCS on {len(inspected)} inspected FITS.",
+        )
+    if len(wcs_ok) == len(inspected):
         return GateResult(
             "P4_public_wcs_metadata_available",
             "PASS",
-            f"WCS present on {wcs_ok}/{checked} sampled FITS.",
+            f"WCS on all {len(inspected)} inspected FITS; BUNIT reported where present.",
         )
     return GateResult(
         "P4_public_wcs_metadata_available",
-        "FAIL",
-        f"WCS incomplete: {wcs_ok}/{checked} sampled FITS have celestial WCS.",
+        "PARTIAL",
+        f"WCS on {len(wcs_ok)}/{len(inspected)} inspected FITS.",
     )
 
 
@@ -178,6 +215,16 @@ def check_p5_public_license(repo_root: Path) -> GateResult:
             "P5_public_license_and_citation_documented",
             "PARTIAL",
             f"Citations missing for: {missing_citation}",
+        )
+    if all(
+        isinstance(s, dict) and s.get("citation") and s.get("license_or_usage_note")
+        for s in sources
+    ):
+        return GateResult(
+            "P5_public_license_and_citation_documented",
+            "PASS",
+            "Registry citations and license_or_usage_note complete for all Tier B sources.",
+            {"registry": str(reg_path.relative_to(repo_root)), "n_sources": len(sources)},
         )
     return GateResult(
         "P5_public_license_and_citation_documented",

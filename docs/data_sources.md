@@ -345,21 +345,25 @@ python scripts/audit_phase6f_public_data_sources.py
 
 ### Phase 6F public pilot staging (Tier B)
 
-**Not Corbelli primary data.** Label: `PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY`.
+**Not Corbelli primary data.** Label: `PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY`. Cannot satisfy G1/G2.
 
-| Folder | Source |
-|--------|--------|
-| `public_pilot/hi_lglbs/` | LGLBS HI v1.0 (CANFAR) |
-| `public_pilot/hi_koch2018/` | Koch 2018 HI (optional rebuild) |
-| `public_pilot/stellar_s4g_irac/` | Spitzer S4G IRAC 3.6 + 4.5 µm |
-| `public_pilot/stellar_lvl_irac/` | Spitzer LVL IRAC (fallback) |
-| `public_pilot/co_iram_lp006/` | IRAM LP006 CO(2-1) |
+**First-batch validation (2026-05-23):** No FITS staged locally; registry entries `pending_download`. Reports and checksum placeholder only (no raw FITS in git).
+
+| Folder | Source | Staged |
+|--------|--------|--------|
+| `public_pilot/hi_lglbs/` | LGLBS HI v1.0 (CANFAR) | pending |
+| `public_pilot/hi_koch2018/` | Koch 2018 HI (optional rebuild) | pending |
+| `public_pilot/stellar_s4g_irac/` | Spitzer S4G IRAC 3.6 + 4.5 µm | pending |
+| `public_pilot/stellar_lvl_irac/` | Spitzer LVL IRAC (fallback) | pending |
+| `public_pilot/co_iram_lp006/` | IRAM LP006 CO(2-1) | pending |
 
 ```bash
 python scripts/inventory_phase6f_public_pilot_data.py
 python scripts/update_phase6f_public_pilot_checksums.py
 python scripts/run_phase6f_public_pilot_gates.py
 ```
+
+Inventory outputs: `outputs/tables/phase6f/phase6f_public_pilot_inventory.csv`, `phase6f_public_pilot_file_inventory.csv`, `outputs/reports/phase6f/phase6f_public_pilot_inventory_report.md`.
 
 **Corbelli 2014 geometry notes (PDF audit):**
 

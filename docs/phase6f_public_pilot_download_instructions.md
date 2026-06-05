@@ -16,6 +16,21 @@ Never commit multi-GB cubes unless explicitly license-safe and repo-size approve
 
 ---
 
+## First-batch validation status (2026-05-23)
+
+| Product | Staged locally | Registry status |
+|---------|----------------|-----------------|
+| IRAM LP006 CO(2-1) | **No** | `pending_download` |
+| S4G / LVL IRAC 3.6 + 4.5 µm | **No** | `pending_download` |
+| LGLBS HI v1.0 | **No** | `pending_download` |
+| Koch 2018 HI | **No** | `pending_download` |
+
+**Raw FITS in git:** none (checksums and inventory reports only).
+
+After staging files under the target folders below, re-run inventory and gates. P1–P3 move to **PASS** only when FITS are present and header inspection confirms WCS (and IRAC channels for P2). P6 stays **FAIL** until validated public-pilot reprojection exists.
+
+---
+
 ## Recommended download order
 
 1. **IRAM LP006 CO(2-1)** -  smallest public FITS set, no login  

@@ -45,11 +45,14 @@ def test_public_pilot_gates_mostly_pending_on_main() -> None:
     p1 = next(g for g in report.gates if g.gate_id == "P1_public_hi_map_available")
     p2 = next(g for g in report.gates if g.gate_id == "P2_public_stellar_irac_available")
     p3 = next(g for g in report.gates if g.gate_id == "P3_public_co_or_h2_available")
+    p5 = next(g for g in report.gates if g.gate_id == "P5_public_license_and_citation_documented")
     p6 = next(g for g in report.gates if g.gate_id == "P6_public_reprojection_ready")
     assert p1.status == "PENDING"
     assert p2.status == "PENDING"
     assert p3.status == "PENDING"
+    assert p5.status == "PASS"
     assert p6.status == "FAIL"
+    assert report.public_pilot_ready is False
 
 
 def test_tier_b_cannot_pass_corbelli_g1_g2() -> None:

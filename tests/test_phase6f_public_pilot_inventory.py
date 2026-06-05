@@ -9,6 +9,7 @@ import pytest
 
 from tdf_m33.maps.public_pilot_inventory import (
     PUBLIC_PILOT_CLAIM_LABEL,
+    inspect_fits_file,
     scan_public_pilot_inventory,
     sha256_file,
     update_public_pilot_checksums,
@@ -81,3 +82,45 @@ def test_inventory_script_exits_zero() -> None:
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     assert mod.main([]) == 0
+
+
+def test_inspect_fits_header_fields(tmp_path: Path) -> None:
+    astropy = pytest.importorskip("astropy")
+    from astropy.io import fits
+    import numpy as np
+
+    registry_dir = tmp_path / "data/raw/phase6f/public_pilot/manifest"
+    registry_dir.mkdir(parents=True)
+    reg_src = REPO_ROOT / "data/raw/phase6f/public_pilot/manifest/phase6f_public_pilot_source_registry.yaml"
+    (registry_dir / "phase6f_public_pilot_source_registry.yaml").write_text(
+        reg_src.read_text(encoding="utf-8")
+    )
+    co_dir = tmp_path / "data/raw/phase6f/public_pilot/co_iram_lp006"
+    co_dir.mkdir(parents=True)
+    fits_path = co_dir / "m33_co_int.fits"
+    hdu = fits.PrimaryHDU(np.ones((4, 4), dtype=np.float32))
+    hdu.header["BUNIT"] = "K km/s"
+    hdu.header["CTYPE1"] = "RA---TAN"
+    hdu.header["CTYPE2"] = "DEC--TAN"
+    hdu.header["CDELT1"] = -0.0001
+    hdu.header["CDELT2"] = 0.0001
+    hdu.header["CRVAL1"] = 23.5
+    hdu.header["CRVAL2"] = 30.5
+    hdu.header["CRPIX1"] = 2.0
+    hdu.header["CRPIX2"] = 2.0
+    hdu.header["BMAJ"] = 12.0
+    hdu.header["BMIN"] = 8.0
+    hdu.header["BPA"] = 45.0
+    hdu.writeto(fits_path, overwrite=True)
+
+    rec = inspect_fits_file(
+        fits_path,
+        tmp_path,
+        source_id="iram_lp006_co21_integrated",
+        product_type="co21_integrated_intensity",
+        target_folder="data/raw/phase6f/public_pilot/co_iram_lp006",
+    )
+    assert rec.bunit == "K km/s"
+    assert rec.ctype1.startswith("RA")
+    assert rec.bmaj_arcsec == "12.0"
+    assert rec.inspect_status == "INSPECTED"

@@ -160,6 +160,24 @@ prior `pip install -e .`.
 
 ---
 
+## 2026-05-23 — Phase 6F first Tier B public pilot batch validation
+
+**Branch:** `feature/phase6f-public-pilot-first-data-batch`
+
+**Task:** Validate first locally staged Tier B public pilot FITS (inventory, checksums, P gates). No scientific τ-map; no Corbelli primary claim.
+
+**Local staging:** 0 FITS under `data/raw/phase6f/public_pilot/` (folders only). Raw FITS not committed.
+
+**Code:** Extended `public_pilot_inventory.py` (per-file FITS header fields, file CSV, registry sync). Tightened P1–P4 PASS criteria; P5 PASS when registry citations complete; P6 remains FAIL.
+
+**Gates:** G1/G2/G8 unchanged FAIL; `scientific_ready=False`; `public_pilot_ready=False`.
+
+**Commands:** inventory, checksums, public pilot gates, unicode hygiene, pytest, strict tau-map gates/build (exit 2).
+
+**Next:** Manual download per `docs/phase6f_public_pilot_download_instructions.md` (IRAM LP006 → IRAC → LGLBS HI).
+
+---
+
 ## Prior work (summary)
 
 Phases 0–6E implemented and audited on `main` per README status table. See `outputs/reports/phase6a_publication_results_summary.md` for supported results snapshot.
