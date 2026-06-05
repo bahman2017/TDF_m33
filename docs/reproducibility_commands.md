@@ -186,6 +186,16 @@ Public data alternatives audit (Tier A/B/C; no downloads):
 python scripts/audit_phase6f_public_data_sources.py
 ```
 
+Public pilot staging (Tier B; manual download — not Corbelli primary):
+
+```bash
+python scripts/inventory_phase6f_public_pilot_data.py
+python scripts/update_phase6f_public_pilot_checksums.py
+python scripts/run_phase6f_public_pilot_gates.py
+python scripts/download_phase6f_public_pilot_sources.py   # dry-run
+python scripts/check_text_file_unicode_hygiene.py
+```
+
 ---
 
 ## Phase 6F-data — data acquisition & provenance
