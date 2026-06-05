@@ -4,13 +4,20 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import sys
 from pathlib import Path
 
+_bootstrap_path = Path(__file__).resolve().parent / "_bootstrap.py"
+_bootstrap_spec = importlib.util.spec_from_file_location("_bootstrap", _bootstrap_path)
+if _bootstrap_spec is None or _bootstrap_spec.loader is None:
+    raise ImportError(f"Cannot load bootstrap from {_bootstrap_path}")
+_bootstrap = importlib.util.module_from_spec(_bootstrap_spec)
+_bootstrap_spec.loader.exec_module(_bootstrap)
+REPO_ROOT = _bootstrap.REPO_ROOT
+
 from tdf_m33.maps.gates import BLOCKED_MESSAGE
 from tdf_m33.maps.pipeline import build_tau_map
-
-REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG = REPO_ROOT / "configs" / "phase6f_nonspherical_tau_map.yaml"
 
 
