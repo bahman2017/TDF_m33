@@ -4,7 +4,21 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
-## 2026-05-23 — Phase 6F script import bootstrap (PR #4 follow-up)
+## 2026-05-23 — Phase 6F primary data receipt + reprojection readiness
+
+**Branch:** `feature/phase6f-primary-data-and-reprojection-readiness`
+
+**Added:** Primary data receipt protocol, author-request package/email draft, validated
+reprojection design doc, `validate_phase6f_primary_maps.py`, `update_phase6f_primary_checksums.py`,
+`src/tdf_m33/maps/primary_data.py`, reprojection stubs in `reprojection.py`, tests.
+
+**Unchanged:** G8 FAIL, `VALIDATED_WCS_REPROJECTION_AVAILABLE = False`, strict mode blocked
+(`BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS`), reference-proxy marking
+(`REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS`). No scientific τ-map run or claim.
+
+---
+
+## 2026-05-23 — Phase 6F script import bootstrap (PR #5 hotfix)
 
 **Branch:** `feature/phase6f-nonspherical-disk-tau-map-engine`
 

@@ -2,11 +2,11 @@
 
 Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.md`.
 
-**Last updated:** Phase 6F non-spherical τ-map engine (strict gates).
+**Last updated:** Phase 6F primary data receipt + reprojection readiness (docs/tooling).
 
 ---
 
-## Completed through Phase 6E + 6F design/data/source
+## Completed through Phase 6E + 6F design/data/source/engine
 
 | Area | Status |
 |------|--------|
@@ -18,13 +18,14 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 | Dynamical upper bound | Phase 5C-B vs López Fune 2017 (**not lensing**) |
 | Publication + manuscript | Phases 6A–6E complete |
 | Phase 6F design / data / source | Complete (PR #1–#3) |
-| Phase 6F engine | Implemented — **scientific τ-map blocked** |
+| Phase 6F engine | Implemented (PR #4, #5 bootstrap) — **scientific τ-map blocked** |
+| Phase 6F primary receipt prep | Docs + validation tooling — **primary FITS not acquired** |
 
 ---
 
-## Active: Phase 6F engine (gated implementation)
+## Active: Phase 6F primary data + G8 reprojection
 
-**Goal:** Non-spherical disk-plane τ field solver with data gates (Kg, κ_τ notation).
+**Goal:** Receive Corbelli 2014 primary maps and implement validated WCS→disk-plane reprojection.
 
 **Scientific status:** **BLOCKED** — primary Corbelli 2014 HI + stellar maps missing; **validated WCS reprojection (G8) not implemented**.
 
@@ -33,6 +34,8 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 Placeholder zoom alignment (`PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION`) cannot be used in scientific mode.
 
 **Reference mode:** `--allow-reference-proxy` only; outputs marked `REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS`.
+
+**New tooling:** `validate_phase6f_primary_maps.py`, `update_phase6f_primary_checksums.py`; receipt protocol in `docs/phase6f_primary_data_receipt_protocol.md`.
 
 ---
 

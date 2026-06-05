@@ -1,0 +1,5 @@
+filename,relative_path,product_type,gate_contribution,status,shape,has_wcs,bunit,beam_major_arcsec,beam_minor_arcsec,pixel_scale_arcsec,checksum_sha256,notes
+,data/raw/phase6f/primary/corbelli2014_hi,corbelli2014_hi,G1_primary_hi_surface_density_map,MISSING_DIRECTORY,,,,,,,,Expected directory not present. Corbelli 2014 VLA+GBT HI surface-density map
+,data/raw/phase6f/primary/corbelli2014_stellar_mass,corbelli2014_stellar_mass,G2_primary_stellar_surface_density_or_mass_map,MISSING_DIRECTORY,,,,,,,,Expected directory not present. Corbelli 2014 BVIgi stellar surface-density or mass map
+,data/raw/phase6f/primary/corbelli2014_velocity_field,corbelli2014_velocity_field,supplementary_velocity_field,MISSING_DIRECTORY,,,,,,,,Expected directory not present. 2D HI velocity field (optional; supports G4 metadata)
+,data/raw/phase6f/primary/corbelli2014_uncertainty_masks,corbelli2014_uncertainty_masks,G6_mask_or_uncertainty,MISSING_DIRECTORY,,,,,,,,"Expected directory not present. Uncertainty maps, noise, or masks (supports G6)"

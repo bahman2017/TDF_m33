@@ -325,6 +325,35 @@ Dynamical scale check only (`M_tau_eff = r v_τ²/G` vs López Fune `M_enclosed_
 
 Config keys: `tdf.lensing.observational_limits.limits_source_id` must match a registry row before `enabled: true`.
 
+## Phase 6F primary Corbelli maps (G1/G2 — not acquired)
+
+**Receipt protocol:** `docs/phase6f_primary_data_receipt_protocol.md`  
+**Requirements:** `docs/phase6f_primary_data_requirements.md`  
+**Author request:** `docs/corbelli2014_author_request_email.md`
+
+| Product | Target path | Gate | Status |
+|---------|-------------|------|--------|
+| VLA+GBT HI Σ map | `data/raw/phase6f/primary/corbelli2014_hi/` | G1 | **missing** |
+| BVIgi stellar Σ / M_* | `data/raw/phase6f/primary/corbelli2014_stellar_mass/` | G2 | **missing** |
+| HI velocity field | `data/raw/phase6f/primary/corbelli2014_velocity_field/` | — | optional |
+| Uncertainty / masks | `data/raw/phase6f/primary/corbelli2014_uncertainty_masks/` | G6 | optional |
+
+**Validation:**
+
+```bash
+python scripts/update_phase6f_primary_checksums.py
+python scripts/validate_phase6f_primary_maps.py
+```
+
+Outputs: `outputs/tables/phase6f/phase6f_primary_data_inventory.csv`,  
+`outputs/reports/phase6f/phase6f_primary_data_validation_report.md`.
+
+Primary checksums: `data/raw/phase6f/primary/CHECKSUMS.sha256` (never overwrite raw FITS).
+
+**Not primary:** Gratier 2010 VLA HI reference FITS under `reference/gratier2010_vla_hi_12sec/`.
+
+**Reprojection (G8):** Design in `docs/phase6f_validated_reprojection_design.md`; implementation **not** in this phase. Placeholder zoom blocked for scientific mode.
+
 **Corbelli 2014 geometry notes (PDF audit):**
 
 - §4.1 + Fig. 3: 11 free tilted rings; i and PA vary with R; model-shape vs model-mean methods (Appendix A).
