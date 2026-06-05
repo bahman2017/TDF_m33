@@ -80,11 +80,12 @@ Controlled framing (also in `docs/paper_notes.md`):
 | **Phase 6E** | Complete — submission package audit + paper figure packaging |
 | **Phase 6F (design)** | Complete — mass-constrained τ-map protocol (PR #1) |
 | **Phase 6F-data** | Complete — data acquisition plan & provenance gates (PR #2) |
-| **Phase 6F-source** | **In progress** — verified source manifests; reference HI staged |
+| **Phase 6F-source** | Complete — verified manifests; reference HI staged (PR #3) |
+| **Phase 6F engine** | **Implemented (gated)** — non-spherical disk-plane τ solver; **scientific run blocked** |
 
-**Phase 6F (design):** Pre-registered protocol for **joint** rotation + smoothness + baryonic mass-geometry τ reconstruction on M33 — **not implemented yet**. See `docs/phase6f_mass_constrained_tau_map_protocol.md` and `outputs/reports/phase6f_m33_design_summary.md`.
+**Phase 6F engine:** Disk-plane field reconstruction (`src/tdf_m33/maps/`) with strict data gates. Default build stops with `BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS` until Corbelli 2014 **primary** VLA+GBT HI and BVIgi stellar maps exist. Gratier 2010 reference FITS do **not** satisfy primary gates. See `docs/phase6f_nonspherical_tau_map_engine.md`.
 
-**Phase 6F-source (current):** Authoritative source manifests, access notes, and checksum-verified staging under `data/raw/phase6f/`. **Reference** Gratier 2010 VLA HI FITS committed; **primary** Corbelli 2014 VLA+GBT HI and BVIgi stellar maps **not yet acquired**. Phase 6F-impl remains **blocked**. See `docs/phase6f_source_manifest.md` and `outputs/reports/phase6f_source_acquisition_status.md`.
+**Phase 6F (design):** Pre-registered protocol — see `docs/phase6f_mass_constrained_tau_map_protocol.md`.
 
 Current Phase 4A/4B maps remain **axisymmetric radial extensions** (`τ₂D = τ_radial(R)`), **not** full physical mass-constrained τ-maps.
 
@@ -198,7 +199,7 @@ This repository is intended to be **cited alongside a future peer-reviewed paper
 | [docs/phase6f_source_manifest.md](docs/phase6f_source_manifest.md) | Phase 6F-source verified manifest catalog |
 | [docs/phase6f_dataset_access_notes.md](docs/phase6f_dataset_access_notes.md) | Download / author-request procedures |
 | [outputs/reports/phase6f_data_readiness_report.md](outputs/reports/phase6f_data_readiness_report.md) | Phase 6F-data executive readiness snapshot |
-| [outputs/reports/phase6f_source_acquisition_status.md](outputs/reports/phase6f_source_acquisition_status.md) | Phase 6F-source acquisition status |
+| [docs/phase6f_nonspherical_tau_map_engine.md](docs/phase6f_nonspherical_tau_map_engine.md) | Phase 6F disk-plane τ engine (Kg, kappa_tau) |
 | [docs/reproducibility_commands.md](docs/reproducibility_commands.md) | Full pipeline command reference |
 | [docs/project_status.md](docs/project_status.md) | Living project status |
 | [docs/roadmap.md](docs/roadmap.md) | High-level phase roadmap |

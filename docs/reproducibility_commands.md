@@ -153,6 +153,28 @@ Optional CO integrated map (not committed; ~3.7 MB):
 
 ---
 
+## Phase 6F-engine — non-spherical disk-plane τ-map (strict gates)
+
+Config: `configs/phase6f_nonspherical_tau_map.yaml`
+
+```bash
+python scripts/run_phase6f_tau_map_gates.py
+python scripts/build_phase6f_nonspherical_tau_map.py
+python scripts/plot_phase6f_tau_map_diagnostics.py
+```
+
+Expected strict-mode result: exit code 2, `BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS`, gate report at
+`outputs/reports/phase6f/phase6f_tau_map_gate_report.md`.
+
+Reference-only smoke test (not for scientific claims):
+
+```bash
+python scripts/build_phase6f_nonspherical_tau_map.py --allow-reference-proxy
+python scripts/plot_phase6f_tau_map_diagnostics.py --reference-only
+```
+
+---
+
 ## Phase 6F-data — data acquisition & provenance
 
 **Data-readiness only.** No τ reconstruction, no new maps, no deflection runs.

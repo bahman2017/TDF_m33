@@ -4,6 +4,20 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
+## 2026-06-03 — Phase 6F non-spherical τ-map engine
+
+**Branch:** `feature/phase6f-nonspherical-disk-tau-map-engine`
+
+**Task:** Disk-plane field solver with G1–G7 data gates; Kg / kappa_tau notation.
+
+**Created:** `src/tdf_m33/maps/*`, scripts, config, tests, `docs/phase6f_nonspherical_tau_map_engine.md`
+
+**Strict mode:** blocked until primary Corbelli HI + stellar FITS acquired.
+
+**Not done:** scientific τ-map claims, deflection re-runs, Phase 3–5 output changes.
+
+---
+
 ## 2026-06-03 — Phase 6F-source (verified manifests)
 
 **Branch:** `feature/phase6f-source-acquisition-manifest`

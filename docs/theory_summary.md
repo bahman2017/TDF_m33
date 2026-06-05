@@ -125,6 +125,45 @@ This does **not** imply that dark matter is absent in nature; halo models (NFW, 
 
 Model comparison will use quantitative metrics (e.g. χ², AIC/BIC where appropriate) documented in Phase 2–3 reports.
 
+## Phase 6F non-spherical disk-plane engine (notation migration)
+
+Phase 3 radial code uses historical **K_τ** coupling. **New Phase 6F code** uses:
+
+| Symbol | Role |
+|--------|------|
+| **Kg** | Gravitational projection coefficient |
+| **κ_τ (`kappa_tau`)** | Dynamical field stiffness |
+| **τ(x,y)** | Physical delay-time field on the disk plane |
+
+\[
+\mathbf{g}_\tau = -K_g \,\nabla\tau
+\]
+
+\[
+\kappa_\tau \,\nabla^2\tau - m_\tau^2\,\tau = J_\tau
+\]
+
+Baryonic source on the disk plane:
+
+\[
+J_\tau(x,y) = \alpha_{\mathrm{gas}}\,\Sigma_{\mathrm{gas}}(x,y) + \alpha_\*\,\Sigma_\*(x,y)
+\]
+
+\[
+\Sigma_{\mathrm{gas}} = f_{\mathrm{He}}\,(\Sigma_{\mathrm{HI}} + \Sigma_{\mathrm{H_2}}), \quad
+\Sigma_b = \Sigma_{\mathrm{gas}} + \Sigma_\*
+\]
+
+Pipeline: **Σ_b(x,y) → J_τ → τ(x,y) → ∇τ → g_τ(x,y)** (diagnostic rotation consistency when primary maps exist).
+
+This is **not** an NFW/Burkert replacement, **not** τ(R) copied to 2D, and **not** a spherical halo model.
+
+Phase **4A** remains \(\tau_{2\mathrm{D}}=\tau_{\mathrm{radial}}(R)\) — an axisymmetric scaffold only.
+
+Implementation: `src/tdf_m33/maps/`, config `configs/phase6f_nonspherical_tau_map.yaml`. Scientific runs blocked until primary Corbelli 2014 HI + stellar maps pass data gates.
+
+---
+
 ## References and framework notes
 
 - Full TDF theoretical references will be added when the manuscript bibliography is fixed.
