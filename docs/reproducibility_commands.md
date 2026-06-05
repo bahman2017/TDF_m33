@@ -11,9 +11,14 @@ A Phase 6A snapshot also lives at `outputs/reports/phase6a_reproducibility_comma
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -e .
+python -m pip install -e .   # recommended; not required for Phase 6F scripts below
 python -m pytest -v
 ```
+
+Phase 6F scripts (`run_phase6f_tau_map_gates.py`, `build_phase6f_nonspherical_tau_map.py`,
+`plot_phase6f_tau_map_diagnostics.py`) bootstrap `src/` on `sys.path` automatically, so they
+can be run directly from the repository root without a prior editable install. Editable install
+remains recommended for development and for other scripts in this repository.
 
 ---
 
@@ -156,6 +161,8 @@ Optional CO integrated map (not committed; ~3.7 MB):
 ## Phase 6F-engine — non-spherical disk-plane τ-map (strict gates)
 
 Config: `configs/phase6f_nonspherical_tau_map.yaml`
+
+Direct execution from repository root (no editable install required):
 
 ```bash
 python scripts/run_phase6f_tau_map_gates.py
