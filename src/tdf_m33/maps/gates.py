@@ -9,7 +9,7 @@ from typing import Any, Literal
 
 import yaml
 
-GateStatus = Literal["PASS", "FAIL", "PARTIAL", "N/A"]
+GateStatus = Literal["PASS", "FAIL", "PARTIAL", "PENDING", "N/A"]
 
 REFERENCE_ONLY_MARKER = "REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS"
 BLOCKED_MESSAGE = "BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS"

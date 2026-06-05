@@ -1,0 +1,162 @@
+# Phase 6F Tier B public pilot source registry
+# Claim label on all products: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+# Cannot satisfy Corbelli G1/G2 primary gates.
+
+registry_version: "2026-05-23"
+phase: phase6f-public-pilot-source-staging
+claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+corbelli_primary_replication: false
+
+sources:
+
+  - id: lglbs_hi_v1_moment0
+    tier: Tier_B
+    product_type: hi_surface_density_or_column
+    source_name: "LGLBS HI Data Release v1.0 — M33 moment-0 / cube"
+    citation: "Koch et al. 2025, ApJS, 279, 35; DOI 10.3847/1538-4365/ade0ad"
+    source_url_or_doi: "https://www.canfar.net/storage/vault/list/LGLBS/RELEASES/LGLBS-HI-v1.0"
+    download_method: manual
+    login_required: true
+    expected_file_patterns: ["*.fits", "*mom0*", "*cube*"]
+    expected_units: "column density or brightness temperature (confirm header)"
+    target_folder: data/raw/phase6f/public_pilot/hi_lglbs
+    checksum_status: pending
+    license_or_usage_note: "CANFAR/CADC terms; cite Koch et al. 2025"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "Preferred public HI route. CADC account required."
+
+  - id: lglbs_hi_v1_moment1
+    tier: Tier_B
+    product_type: hi_velocity_field
+    source_name: "LGLBS HI Data Release v1.0 — M33 moment-1"
+    citation: "Koch et al. 2025, ApJS, 279, 35"
+    source_url_or_doi: "https://www.lglbs.org/data"
+    download_method: manual
+    login_required: true
+    expected_file_patterns: ["*mom1*", "*vel*"]
+    expected_units: "km/s"
+    target_folder: data/raw/phase6f/public_pilot/hi_lglbs
+    checksum_status: pending
+    license_or_usage_note: "CANFAR/CADC terms"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "Optional velocity field for diagnostics."
+
+  - id: koch2018_hi_products
+    tier: Tier_B
+    product_type: hi_cube_moments
+    source_name: "Koch et al. 2018 MNRAS — M33 L-band HI (rebuild path)"
+    citation: "Koch et al. 2018, MNRAS, 479, 2505; arXiv:1806.11218"
+    source_url_or_doi: "https://github.com/e-koch/VLA_Lband"
+    download_method: manual_or_scripted
+    login_required: false
+    expected_file_patterns: ["*.fits"]
+    expected_units: "K, K km/s (see Koch pipeline)"
+    target_folder: data/raw/phase6f/public_pilot/hi_koch2018
+    checksum_status: pending
+    license_or_usage_note: "MIT scripts; cite Koch et al. 2018 if using products"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "Alternative HI path if LGLBS unavailable; requires pipeline rebuild."
+
+  - id: s4g_irac_36
+    tier: Tier_B
+    product_type: stellar_mass_proxy_irac
+    source_name: "Spitzer S4G — M33 IRAC 3.6 micron mosaic"
+    citation: "Sheth et al. 2010; Querejeta et al. 2015; DOI 10.26131/IRSA425"
+    source_url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/S4G/"
+    download_method: manual
+    login_required: false
+    expected_file_patterns: ["*3.6*", "*i1*", "*ch1*", "*maic*"]
+    expected_units: "MJy/sr"
+    target_folder: data/raw/phase6f/public_pilot/stellar_s4g_irac
+    checksum_status: pending
+    license_or_usage_note: "IRSA terms; cite S4G papers"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "Stellar surface-density proxy via M/L — not Corbelli BVIgi."
+
+  - id: s4g_irac_45
+    tier: Tier_B
+    product_type: stellar_mass_proxy_irac
+    source_name: "Spitzer S4G — M33 IRAC 4.5 micron mosaic"
+    citation: "Sheth et al. 2010; Querejeta et al. 2015"
+    source_url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/S4G/"
+    download_method: manual
+    login_required: false
+    expected_file_patterns: ["*4.5*", "*i2*", "*ch2*", "*maic*"]
+    expected_units: "MJy/sr"
+    target_folder: data/raw/phase6f/public_pilot/stellar_s4g_irac
+    checksum_status: pending
+    license_or_usage_note: "IRSA terms"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "Pair with 3.6 µm for M/L-derived M_* proxy."
+
+  - id: lvl_irac_36_45
+    tier: Tier_B
+    product_type: stellar_mass_proxy_irac
+    source_name: "Spitzer LVL — M33 IRAC 3.6 and 4.5 micron (fallback)"
+    citation: "Dale et al. 2009, ApJ, 703, 517"
+    source_url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/LVL/"
+    download_method: manual
+    login_required: false
+    expected_file_patterns: ["*.fits"]
+    expected_units: "MJy/sr"
+    target_folder: data/raw/phase6f/public_pilot/stellar_lvl_irac
+    checksum_status: pending
+    license_or_usage_note: "IRSA terms; cite Dale et al. 2009"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "Fallback if S4G products insufficient."
+
+  - id: iram_lp006_co21_integrated
+    tier: Tier_B
+    product_type: co21_integrated_intensity
+    source_name: "IRAM LP006 — M33 CO(2-1) integrated map"
+    citation: "Druard et al. 2014, A&A, 567, A118; Gratier et al. 2010"
+    source_url_or_doi: "https://www.iram.fr/ILPA/LP006/"
+    download_method: manual
+    login_required: false
+    expected_file_patterns: ["*co*", "*int*", "*.fits"]
+    expected_units: "K km/s (main-beam brightness temperature integral)"
+    target_folder: data/raw/phase6f/public_pilot/co_iram_lp006
+    checksum_status: pending
+    license_or_usage_note: "IRAM LP archive; cite Druard et al. 2014"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "H2 proxy via X_CO conversion (document assumptions)."
+
+  - id: iram_lp006_co21_cube
+    tier: Tier_B
+    product_type: co21_datacube
+    source_name: "IRAM LP006 — M33 CO(2-1) datacube"
+    citation: "Druard et al. 2014, A&A, 567, A118"
+    source_url_or_doi: "https://www.iram.fr/ILPA/LP006/"
+    download_method: manual
+    login_required: false
+    expected_file_patterns: ["*cube*", "*.fits"]
+    expected_units: "K per channel"
+    target_folder: data/raw/phase6f/public_pilot/co_iram_lp006
+    checksum_status: pending
+    license_or_usage_note: "IRAM LP archive"
+    status: pending_download
+    claim_label: PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: "Optional; large file — manual download only."

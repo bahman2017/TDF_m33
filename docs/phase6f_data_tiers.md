@@ -43,7 +43,9 @@ Policy for M33 2D inputs to the non-spherical disk-plane τ-map engine.
 | P5_public_license_and_citation_documented | Registry + extraction log updated |
 | P6_public_reprojection_ready | Validated WCS→disk-plane reprojection for Tier B grid |
 
-**Status:** P-gates are **documented only** in this PR. Not wired into `run_data_gates()` strict Corbelli pipeline.
+**Status:** P-gates are evaluated by `scripts/run_phase6f_public_pilot_gates.py` — **separate** from Corbelli G gates.
+
+**Staging layout:** `data/raw/phase6f/public_pilot/` (see `docs/phase6f_public_pilot_download_instructions.md`).
 
 **Labeling rule:** All Tier B τ-map outputs must be marked  
 `PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY`.

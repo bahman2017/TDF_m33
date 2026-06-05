@@ -85,9 +85,19 @@ Derive stellar mass surface density using a **documented M/L prescription** (Que
 
 ---
 
-## Future public pilot gates (P1–P6)
+## Public pilot staging (Tier B workflow)
 
-Defined in `docs/phase6f_data_tiers.md`. **Not active** in strict Corbelli pipeline in this PR.
+**Registry:** `data/raw/phase6f/public_pilot/manifest/phase6f_public_pilot_source_registry.yaml`  
+**Instructions:** `docs/phase6f_public_pilot_download_instructions.md`
+
+```bash
+python scripts/inventory_phase6f_public_pilot_data.py
+python scripts/run_phase6f_public_pilot_gates.py
+```
+
+## Public pilot gates (P1–P6)
+
+Defined in `docs/phase6f_data_tiers.md`. Checked by `run_phase6f_public_pilot_gates.py` — **not** Corbelli G1/G2/G8.
 
 | Gate | Requirement |
 |------|-------------|

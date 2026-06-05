@@ -14,9 +14,10 @@ Phase 6F-data  Data acquisition & provenance plan  [complete, PR #2]
 Phase 6F-source  Verified manifests + reference staging  [complete, PR #3]
 Phase 6F-engine  Non-spherical disk-plane τ solver + gates  [merged PR #4/#5]
 Phase 6F-primary  Primary data receipt + reprojection readiness  [PR #6 or merged]
-Phase 6F-public-audit  Public M33 data alternatives (Tier A/B/C)  ← CURRENT
+Phase 6F-public-audit  Public M33 data alternatives (Tier A/B/C)  [PR #7]
+Phase 6F-public-staging  Tier B public pilot folders + P gates  ← CURRENT
 Phase 6F-impl  Scientific τ-map (Corbelli Tier A)  [blocked — G1/G2/G8]
-Phase 6F-pilot  Public-data Tier B pilot  [documented; not ingested]
+Phase 6F-pilot  Public-data Tier B τ-map  [blocked — P1–P6 + downloads]
 Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 ```
 

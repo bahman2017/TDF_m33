@@ -19,7 +19,8 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 | Publication + manuscript | Phases 6A–6E complete |
 | Phase 6F design / data / source | Complete (PR #1–#3) |
 | Phase 6F engine + bootstrap | Implemented (PR #4/#5) — **scientific τ-map blocked** |
-| Phase 6F public data audit | Tier A/B/C documented — **no Tier B ingest yet** |
+| Phase 6F public data audit | Tier A/B/C documented (PR #7) |
+| Phase 6F public pilot staging | Folders + P1–P6 gates — **downloads pending** |
 
 ---
 
@@ -27,7 +28,7 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 
 **Tier A (preferred):** Exact Corbelli 2014 primary HI + BVIgi stellar FITS — author request; **no direct public FITS found** (audit 2026-05-23).
 
-**Tier B (optional pilot):** LGLBS HI v1.0 + Spitzer S4G IRAC + IRAM LP006 CO — public routes documented; **not Corbelli replication**; cannot PASS G1/G2.
+**Tier B (optional pilot):** Staging under `data/raw/phase6f/public_pilot/`; manual download protocol in `docs/phase6f_public_pilot_download_instructions.md`. P1–P6 gates via `run_phase6f_public_pilot_gates.py`. **Cannot PASS G1/G2.**
 
 **Scientific status:** **BLOCKED** — G1/G2 primary Corbelli maps missing; G8 validated reprojection not implemented.
 

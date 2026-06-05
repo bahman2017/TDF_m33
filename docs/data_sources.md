@@ -343,6 +343,24 @@ Config keys: `tdf.lensing.observational_limits.limits_source_id` must match a re
 python scripts/audit_phase6f_public_data_sources.py
 ```
 
+### Phase 6F public pilot staging (Tier B)
+
+**Not Corbelli primary data.** Label: `PUBLIC_DATA_PILOT_NOT_CORBELLI_PRIMARY`.
+
+| Folder | Source |
+|--------|--------|
+| `public_pilot/hi_lglbs/` | LGLBS HI v1.0 (CANFAR) |
+| `public_pilot/hi_koch2018/` | Koch 2018 HI (optional rebuild) |
+| `public_pilot/stellar_s4g_irac/` | Spitzer S4G IRAC 3.6 + 4.5 µm |
+| `public_pilot/stellar_lvl_irac/` | Spitzer LVL IRAC (fallback) |
+| `public_pilot/co_iram_lp006/` | IRAM LP006 CO(2-1) |
+
+```bash
+python scripts/inventory_phase6f_public_pilot_data.py
+python scripts/update_phase6f_public_pilot_checksums.py
+python scripts/run_phase6f_public_pilot_gates.py
+```
+
 **Corbelli 2014 geometry notes (PDF audit):**
 
 - §4.1 + Fig. 3: 11 free tilted rings; i and PA vary with R; model-shape vs model-mean methods (Appendix A).

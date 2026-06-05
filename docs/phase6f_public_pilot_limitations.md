@@ -101,3 +101,9 @@ BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS
 ```
 
 until Tier A G1/G2/G8 satisfied. Tier B work proceeds on a **separate track**.
+
+## Staging workflow (this phase)
+
+- Raw folders: `data/raw/phase6f/public_pilot/{hi_lglbs,hi_koch2018,stellar_s4g_irac,stellar_lvl_irac,co_iram_lp006}/`
+- No scientific τ-map or lensing/deflection runs during staging.
+- Future public-pilot τ-map must wait for P1–P6 PASS and frozen validation.

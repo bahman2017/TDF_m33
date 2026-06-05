@@ -4,6 +4,17 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
+## 2026-05-23 — Phase 6F public pilot source staging
+
+**Branch:** `feature/phase6f-public-pilot-source-staging`
+
+**Added:** `public_pilot/` folder layout, source registry, P1–P6 gate checker, inventory/checksum
+scripts, dry-run downloader, download instructions.
+
+**Unchanged:** Corbelli G1/G2/G8 FAIL, strict mode blocked, no scientific τ-map, no lensing.
+
+---
+
 ## 2026-05-23 — Phase 6F public data acquisition audit
 
 **Branch:** `feature/phase6f-public-data-acquisition-audit`
