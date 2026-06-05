@@ -12,8 +12,11 @@ Phase 6A–E  Publication summary, manuscript, submission packaging
 Phase 6F    Mass-constrained τ-map protocol (M33 pilot)  [design complete]
 Phase 6F-data  Data acquisition & provenance plan  [complete, PR #2]
 Phase 6F-source  Verified manifests + reference staging  [complete, PR #3]
-Phase 6F-engine  Non-spherical disk-plane τ solver + gates  ← CURRENT (scientific blocked)
-Phase 6F-impl  Scientific τ-map from primary Corbelli data  [blocked — G1/G2]
+Phase 6F-engine  Non-spherical disk-plane τ solver + gates  [merged PR #4/#5]
+Phase 6F-primary  Primary data receipt + reprojection readiness  [PR #6 or merged]
+Phase 6F-public-audit  Public M33 data alternatives (Tier A/B/C)  ← CURRENT
+Phase 6F-impl  Scientific τ-map (Corbelli Tier A)  [blocked — G1/G2/G8]
+Phase 6F-pilot  Public-data Tier B pilot  [documented; not ingested]
 Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 ```
 
@@ -50,6 +53,8 @@ Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 | 6F-source access | `docs/phase6f_dataset_access_notes.md` |
 | 6F-source status | `outputs/reports/phase6f_source_acquisition_status.md` |
 | 6F engine | `docs/phase6f_nonspherical_tau_map_engine.md` |
+| 6F public data audit | `docs/phase6f_public_data_acquisition_audit.md` |
+| 6F data tiers | `docs/phase6f_data_tiers.md` |
 | 6F gate reports | `outputs/reports/phase6f/phase6f_tau_map_gate_report.md` |
 | Theory | `docs/theory_summary.md` |
 | Claims | `docs/manuscript_allowed_language.md` |

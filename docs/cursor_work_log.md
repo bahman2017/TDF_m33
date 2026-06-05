@@ -4,7 +4,21 @@ Chronological notes for agent/human handoff. Not a substitute for `docs/project_
 
 ---
 
-## 2026-05-23 — Phase 6F script import bootstrap (PR #4 follow-up)
+## 2026-05-23 — Phase 6F public data acquisition audit
+
+**Branch:** `feature/phase6f-public-data-acquisition-audit`
+
+**Added:** Tier A/B/C policy docs, public candidate YAML registry, audit script, tests.
+
+**Finding:** No exact Corbelli 2014 primary HI/BVIgi FITS on public archives (2026-05-23).
+Fastest Tier B pilot: LGLBS HI v1.0 + Spitzer S4G IRAC + IRAM LP006 CO.
+
+**Unchanged:** G1/G2/G8 FAIL, strict Corbelli mode blocked, no scientific τ-map claim.
+Tier B cannot PASS Corbelli primary gates.
+
+---
+
+## 2026-05-23 — Phase 6F script import bootstrap (PR #5 hotfix)
 
 **Branch:** `feature/phase6f-nonspherical-disk-tau-map-engine`
 
