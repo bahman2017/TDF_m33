@@ -180,6 +180,13 @@ python scripts/build_phase6f_nonspherical_tau_map.py --allow-reference-proxy
 python scripts/plot_phase6f_tau_map_diagnostics.py --reference-only
 ```
 
+Primary data validation (receipt prep; no scientific τ-map):
+
+```bash
+python scripts/update_phase6f_primary_checksums.py
+python scripts/validate_phase6f_primary_maps.py
+```
+
 ---
 
 ## Phase 6F-data — data acquisition & provenance
