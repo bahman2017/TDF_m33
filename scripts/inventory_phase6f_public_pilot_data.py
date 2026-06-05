@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 6F: inventory staged Tier B public pilot data."""
+"""Phase 6F: inventory staged Tier B public pilot data (.fits and compressed .fits.gz)."""
 
 from __future__ import annotations
 

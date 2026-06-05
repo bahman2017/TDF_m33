@@ -20,6 +20,19 @@ INVENTORY_REPORT_REL = "outputs/reports/phase6f/phase6f_public_pilot_inventory_r
 FILES_CSV_REL = "outputs/tables/phase6f/phase6f_public_pilot_file_inventory.csv"
 SUMMARY_CSV_REL = "outputs/tables/phase6f/phase6f_public_pilot_inventory.csv"
 
+# Longest-first matching for double suffixes (.fits.gz).
+PUBLIC_PILOT_FITS_EXTENSIONS: tuple[str, ...] = (
+    ".fits.gz",
+    ".fit.gz",
+    ".fts.gz",
+    ".fits",
+    ".fit",
+    ".fts",
+)
+PUBLIC_PILOT_FITS_EXTENSIONS_LOWER: frozenset[str] = frozenset(
+    e.lower() for e in PUBLIC_PILOT_FITS_EXTENSIONS
+)
+# Backward-compatible alias for tests/docs referencing uncompressed suffixes only.
 FITS_SUFFIXES = {".fits", ".fit", ".fts"}
 
 InventoryStatus = Literal["PENDING_DOWNLOAD", "STAGED", "EMPTY_FOLDER", "BLOCKED"]
@@ -69,6 +82,9 @@ class FitsFileRecord:
     bpa_deg: str = ""
     restfrq_hz: str = ""
     has_wcs: str = ""
+    compressed: str = "false"
+    original_extension: str = ""
+    header_read_status: str = ""
     inspect_status: str = ""
     inspect_notes: str = ""
     irac_channel: str = ""
@@ -145,6 +161,21 @@ def _infer_irac_channel(filename: str) -> str:
     return ""
 
 
+def public_pilot_fits_extension(path: Path) -> str:
+    """Return normalized extension (.fits, .fits.gz, etc.) or empty if not a pilot FITS file."""
+    name = path.name.lower()
+    for ext in PUBLIC_PILOT_FITS_EXTENSIONS:
+        if name.endswith(ext):
+            return ext
+    return ""
+
+
+def is_public_pilot_fits_file(path: Path) -> bool:
+    if not path.is_file() or path.name == ".gitkeep":
+        return False
+    return bool(public_pilot_fits_extension(path))
+
+
 def _header_val(header: Any, key: str) -> str:
     if key not in header:
         return ""
@@ -162,6 +193,9 @@ def inspect_fits_file(
 ) -> FitsFileRecord:
     rel = path.relative_to(repo_root)
     size = path.stat().st_size
+    ext = public_pilot_fits_extension(path)
+    compressed = ext.endswith(".gz")
+    original_ext = ext[:-3] if compressed else ext
     record = FitsFileRecord(
         relative_path=str(rel),
         source_id=source_id,
@@ -169,9 +203,11 @@ def inspect_fits_file(
         target_folder=target_folder,
         filename=path.name,
         size_bytes=size,
-        extension=path.suffix.lower(),
+        extension=ext,
         checksum_sha256=sha256_file(path),
         claim_label=PUBLIC_PILOT_CLAIM_LABEL,
+        compressed=str(compressed).lower(),
+        original_extension=original_ext,
         irac_channel=_infer_irac_channel(path.name),
     )
     try:
@@ -206,11 +242,14 @@ def inspect_fits_file(
                 record.has_wcs = "false"
                 record.inspect_notes = f"WCS parse: {exc}"
             record.inspect_status = "INSPECTED"
+            record.header_read_status = "ok"
     except ImportError:
         record.inspect_status = "NO_ASTROPY"
+        record.header_read_status = "no_astropy"
         record.inspect_notes = "astropy required for FITS header inspection"
     except Exception as exc:
         record.inspect_status = "INSPECT_FAILED"
+        record.header_read_status = "failed"
         record.inspect_notes = str(exc)
     return record
 
@@ -218,13 +257,7 @@ def inspect_fits_file(
 def _find_data_files(directory: Path) -> list[Path]:
     if not directory.is_dir():
         return []
-    return sorted(
-        p
-        for p in directory.rglob("*")
-        if p.is_file()
-        and p.suffix.lower() in FITS_SUFFIXES
-        and p.name != ".gitkeep"
-    )
+    return sorted(p for p in directory.rglob("*") if is_public_pilot_fits_file(p))
 
 
 def scan_public_pilot_files(repo_root: Path) -> list[FitsFileRecord]:
@@ -380,15 +413,15 @@ def write_public_pilot_inventory_report_md(
                 "",
                 "## Staged file detail",
                 "",
-                "| file | size_B | WCS | BUNIT | shape | BMAJ | checksum |",
-                "|------|--------|-----|-------|-------|------|----------|",
+                "| file | size_B | compressed | header | WCS | BUNIT | checksum |",
+                "|------|--------|------------|--------|-----|-------|----------|",
             ]
         )
         for rec in report.file_records:
             lines.append(
-                f"| `{rec.filename}` | {rec.size_bytes} | {rec.has_wcs} | "
-                f"{rec.bunit or '-'} | {rec.shape or '-'} | {rec.bmaj_arcsec or '-'} | "
-                f"{rec.checksum_sha256[:12]}... |"
+                f"| `{rec.filename}` | {rec.size_bytes} | {rec.compressed} | "
+                f"{rec.header_read_status or '-'} | {rec.has_wcs} | "
+                f"{rec.bunit or '-'} | {rec.checksum_sha256[:12]}... |"
             )
     else:
         lines.extend(
@@ -415,16 +448,14 @@ def collect_public_pilot_fits(repo_root: Path) -> list[Path]:
     manifest = root / "manifest"
     files: list[Path] = []
     for path in root.rglob("*"):
-        if not path.is_file() or path.suffix.lower() not in FITS_SUFFIXES:
-            continue
-        if manifest in path.parents:
+        if manifest in path.parents or not is_public_pilot_fits_file(path):
             continue
         files.append(path)
     return sorted(files)
 
 
 def update_public_pilot_checksums(repo_root: Path) -> tuple[Path, int]:
-    """Write SHA-256 for staged public pilot FITS. Never modifies raw files."""
+    """Write SHA-256 for staged public pilot FITS (.fits and .fits.gz). Never modifies raw files."""
     checksum_path = repo_root / PUBLIC_PILOT_CHECKSUMS
     checksum_path.parent.mkdir(parents=True, exist_ok=True)
     root = repo_root / PUBLIC_PILOT_ROOT
