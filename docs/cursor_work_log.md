@@ -176,6 +176,24 @@ prior `pip install -e .`.
 
 **Next:** Manual download per `docs/phase6f_public_pilot_download_instructions.md` (IRAM LP006 → IRAC → LGLBS HI).
 
+**Merged:** PR #9 (`454d2ef`).
+
+---
+
+## 2026-05-24 — Tier B public pilot re-validation (post-download)
+
+**Task:** Re-run inventory/checksums/P and G gates after user-reported FITS staging. No τ-map, no lensing.
+
+**Agent workspace scan:** `find data/raw/phase6f/public_pilot -iname '*.fits'` → **0 files** (only `.gitkeep` in staging folders). If FITS exist on the host, confirm they are under:
+
+- `data/raw/phase6f/public_pilot/co_iram_lp006/`
+- `data/raw/phase6f/public_pilot/stellar_s4g_irac/` or `stellar_lvl_irac/`
+- `data/raw/phase6f/public_pilot/hi_lglbs/` or `hi_koch2018/`
+
+Use `.fits` / `.fit` / `.fts` suffixes (not committed unless small). Re-run validation when files are visible locally.
+
+**Results:** P1–P4 PENDING, P5 PASS, P6 FAIL; G1/G2/G8 FAIL; strict build exit 2; pytest 234 passed.
+
 ---
 
 ## Prior work (summary)
