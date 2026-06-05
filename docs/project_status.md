@@ -2,11 +2,11 @@
 
 Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.md`.
 
-**Last updated:** Phase 6F non-spherical τ-map engine (strict gates).
+**Last updated:** Phase 6F public data acquisition audit (Tier A/B/C).
 
 ---
 
-## Completed through Phase 6E + 6F design/data/source
+## Completed through Phase 6E + 6F design/data/source/engine
 
 | Area | Status |
 |------|--------|
@@ -18,21 +18,22 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 | Dynamical upper bound | Phase 5C-B vs López Fune 2017 (**not lensing**) |
 | Publication + manuscript | Phases 6A–6E complete |
 | Phase 6F design / data / source | Complete (PR #1–#3) |
-| Phase 6F engine | Implemented — **scientific τ-map blocked** |
+| Phase 6F engine + bootstrap | Implemented (PR #4/#5) — **scientific τ-map blocked** |
+| Phase 6F public data audit | Tier A/B/C documented — **no Tier B ingest yet** |
 
 ---
 
-## Active: Phase 6F engine (gated implementation)
+## Active: Phase 6F data acquisition (Tier A preferred; Tier B pilot optional)
 
-**Goal:** Non-spherical disk-plane τ field solver with data gates (Kg, κ_τ notation).
+**Tier A (preferred):** Exact Corbelli 2014 primary HI + BVIgi stellar FITS — author request; **no direct public FITS found** (audit 2026-05-23).
 
-**Scientific status:** **BLOCKED** — primary Corbelli 2014 HI + stellar maps missing; **validated WCS reprojection (G8) not implemented**.
+**Tier B (optional pilot):** LGLBS HI v1.0 + Spitzer S4G IRAC + IRAM LP006 CO — public routes documented; **not Corbelli replication**; cannot PASS G1/G2.
 
-**Strict mode:** `build_phase6f_nonspherical_tau_map.py` → `BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS`
+**Scientific status:** **BLOCKED** — G1/G2 primary Corbelli maps missing; G8 validated reprojection not implemented.
 
-Placeholder zoom alignment (`PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION`) cannot be used in scientific mode.
+**Strict mode:** `BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS`
 
-**Reference mode:** `--allow-reference-proxy` only; outputs marked `REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS`.
+**Reference mode:** `--allow-reference-proxy` → `REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS`
 
 ---
 

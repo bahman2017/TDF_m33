@@ -180,6 +180,12 @@ python scripts/build_phase6f_nonspherical_tau_map.py --allow-reference-proxy
 python scripts/plot_phase6f_tau_map_diagnostics.py --reference-only
 ```
 
+Public data alternatives audit (Tier A/B/C; no downloads):
+
+```bash
+python scripts/audit_phase6f_public_data_sources.py
+```
+
 ---
 
 ## Phase 6F-data — data acquisition & provenance

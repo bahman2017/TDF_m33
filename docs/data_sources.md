@@ -325,6 +325,24 @@ Dynamical scale check only (`M_tau_eff = r v_τ²/G` vs López Fune `M_enclosed_
 
 Config keys: `tdf.lensing.observational_limits.limits_source_id` must match a registry row before `enabled: true`.
 
+**Reprojection (G8):** Design in `docs/phase6f_validated_reprojection_design.md` (if merged); implementation blocked.
+
+### Phase 6F public data alternatives (Tier A/B/C audit)
+
+**Audit:** `docs/phase6f_public_data_acquisition_audit.md`  
+**Tiers:** `docs/phase6f_data_tiers.md`  
+**Registry:** `data/raw/phase6f/manifest/phase6f_public_candidate_registry.yaml`
+
+| Tier | Role | Corbelli G1/G2? |
+|------|------|-----------------|
+| A | Exact Corbelli 2014 primary FITS | Required for PASS (author request) |
+| B | Public pilot (LGLBS HI, S4G IRAC, IRAM CO) | **Cannot PASS** |
+| C | Gratier reference / synthetic | Smoke test only |
+
+```bash
+python scripts/audit_phase6f_public_data_sources.py
+```
+
 **Corbelli 2014 geometry notes (PDF audit):**
 
 - §4.1 + Fig. 3: 11 free tilted rings; i and PA vary with R; model-shape vs model-mean methods (Appendix A).

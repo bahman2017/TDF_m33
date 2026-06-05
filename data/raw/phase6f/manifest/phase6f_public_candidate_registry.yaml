@@ -1,0 +1,294 @@
+# Phase 6F public M33 data candidate registry
+# Human-readable audit: docs/phase6f_public_data_acquisition_audit.md
+# Machine output: scripts/audit_phase6f_public_data_sources.py
+#
+# Tier A = exact Corbelli 2014 primary products (author/archive request likely)
+# Tier B = public-data pilot substitutes (NOT Corbelli replication)
+# Tier C = reference/proxy smoke tests only
+
+registry_version: "2026-05-23"
+audit_date: "2026-05-23"
+prepared_by: phase6f-public-data-acquisition-audit
+claim_control: >
+  Tier B entries must not PASS G1/G2 Corbelli primary gates.
+  Strict Corbelli scientific Phase 6F remains blocked until Tier A + G8.
+
+candidates:
+
+  - id: corbelli2014_aa_publisher_table1
+    tier: Tier_A
+    product_type: hi_stellar_1d_table
+    source_name: "Corbelli et al. 2014 A&A 572 A23 — Table 1"
+    citation: "Corbelli et al. 2014, A&A, 572, A23; DOI 10.1051/0004-6361/201424033"
+    url_or_doi: "https://doi.org/10.1051/0004-6361/201424033"
+    access_status: available_public
+    license_or_usage_note: "A&A article; table data via publisher HTML/PDF"
+    download_status: table_only
+    expected_file_type: "CSV/HTML table (not 2D FITS)"
+    expected_units: "V_r km/s; Sigma_HI, Sigma_star M_sun/pc^2 (1D radial)"
+    login_required: "no"
+    suitable_for: "rotation_curve, radial Sigma profiles — not 2D tau-map G1/G2"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: false
+    notes: >
+      Already partially ingested as corbelli2014_table1_raw.csv. Cannot substitute for
+      2D primary HI or stellar FITS required by G1/G2.
+
+  - id: corbelli2014_vizier_catalog
+    tier: Tier_A
+    product_type: hi_stellar_catalog
+    source_name: "CDS/VizieR J/A+A/572/A23"
+    citation: "Corbelli et al. 2014, A&A, 572, A23"
+    url_or_doi: "https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=J/A%2bA/572/A23"
+    access_status: catalog_search
+    license_or_usage_note: "CDS VizieR terms; cite original paper"
+    download_status: table_only
+    expected_file_type: "VOTable/ASCII catalog tables"
+    expected_units: "Table columns per paper"
+    login_required: "no"
+    suitable_for: "tabular verification — not 2D FITS primary maps"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: false
+    notes: >
+      VizieR hosts article tables; no confirmed public 2D VLA+GBT HI or BVIgi stellar
+      mass FITS for Corbelli 2014 primary reduction (searched 2026-05-23).
+
+  - id: corbelli2014_primary_hi_author_request
+    tier: Tier_A
+    product_type: hi_surface_density_2d
+    source_name: "Corbelli et al. 2014 — VLA+GBT HI surface-density map (author reduction)"
+    citation: "Corbelli et al. 2014, A&A, 572, A23"
+    url_or_doi: "https://www.aanda.org/articles/aa/full_html/2014/12/aa24033-14/aa24033-14.html"
+    access_status: author_request_required
+    license_or_usage_note: "Contact Corbelli / Thilker; cite A&A 572 A23"
+    download_status: not_public_direct
+    expected_file_type: "FITS cube and/or moment-0 surface-density map"
+    expected_units: "N_HI or M_sun/pc^2 (confirm header)"
+    login_required: "no_for_request"
+    suitable_for: "G1 primary HI if provenance matches paper reduction"
+    can_satisfy_primary_corbelli_gate: true
+    can_satisfy_public_pilot_gate: false
+    notes: >
+      Preferred Tier A HI product. No direct public FITS URL identified on A&A, arXiv,
+      or VizieR. Author/archive request remains primary route.
+
+  - id: corbelli2014_primary_stellar_author_request
+    tier: Tier_A
+    product_type: stellar_mass_surface_density_2d
+    source_name: "Corbelli et al. 2014 — BVIgi stellar mass map (pixel-SED)"
+    citation: "Corbelli et al. 2014, A&A, 572, A23"
+    url_or_doi: "https://arxiv.org/abs/1409.2665"
+    access_status: author_request_required
+    license_or_usage_note: "Contact Corbelli / Thilker; cite A&A 572 A23"
+    download_status: not_public_direct
+    expected_file_type: "FITS 2D stellar mass surface density"
+    expected_units: "M_sun/pc^2"
+    login_required: "no_for_request"
+    suitable_for: "G2 primary stellar if provenance matches BVIgi reduction"
+    can_satisfy_primary_corbelli_gate: true
+    can_satisfy_public_pilot_gate: false
+    notes: >
+      Preferred Tier A stellar product. Public IRAC-derived maps are Tier B proxies only.
+
+  - id: koch2018_mnras_hi_scripts
+    tier: Tier_B
+    product_type: hi_cube_moment_maps
+    source_name: "Koch et al. 2018 MNRAS — M33 L-band HI (VLA C + GBT short spacing)"
+    citation: "Koch et al. 2018, MNRAS, 479, 2505; arXiv:1806.11218"
+    url_or_doi: "https://github.com/e-koch/VLA_Lband"
+    access_status: scripts_public
+    license_or_usage_note: "MIT license on scripts; cite Koch et al. 2018 if using products"
+    download_status: rebuild_required
+    expected_file_type: "Processing scripts; FITS produced by re-running pipeline"
+    expected_units: "K (brightness temperature) in datacube; moment maps km/s, K km/s"
+    login_required: "no_for_scripts"
+    suitable_for: "HI, velocity — public Tier B pilot if cubes rebuilt"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      VLA project 14B-088 reduction in GitHub 14B-088/HI. Not the Corbelli 2014 merged
+      product; different reduction team/epoch. CANFAR scripts may exist separately.
+
+  - id: koch2018_canfar_archive
+    tier: Tier_B
+    product_type: hi_cube_archive
+    source_name: "CANFAR — Koch M33 HI products (if archived)"
+    citation: "Koch et al. 2018, MNRAS, 479, 2505"
+    url_or_doi: "https://www.canfar.net/"
+    access_status: archive_query
+    license_or_usage_note: "CANFAR/CADC terms; cite Koch et al. 2018"
+    download_status: login_required
+    expected_file_type: "FITS cubes / moment maps (if present)"
+    expected_units: "Telescope-native; confirm BUNIT"
+    login_required: "yes"
+    suitable_for: "HI, velocity — Tier B pilot"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      Search CANFAR vault for Koch / 14B-088 M33 products. No single canonical DOI
+      indexed in this audit; prefer LGLBS v1.0 for newer public HI release.
+
+  - id: lglbs_hi_v1_canfar
+    tier: Tier_B
+    product_type: hi_wide_field_21cm
+    source_name: "LGLBS HI Data Release v1.0 — M33"
+    citation: "Koch et al. 2025, ApJS, 279, 35; arXiv:2506.11792"
+    url_or_doi: "https://www.canfar.net/storage/vault/list/LGLBS/RELEASES/LGLBS-HI-v1.0"
+    access_status: available_public
+    license_or_usage_note: "CANFAR/CADC account required; cite Koch et al. 2025 ApJS"
+    download_status: login_required
+    expected_file_type: "FITS cubes and/or wide-field 21 cm products"
+    expected_units: "Column density / brightness temperature (see release docs)"
+    login_required: "yes"
+    suitable_for: "HI, velocity, uncertainty — fastest Tier B HI route"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      Recommended fastest public HI path. Includes VLA+GBT mosaic family used in LGLBS;
+      NOT labeled as Corbelli 2014 primary reduction. Portal: https://www.lglbs.org/data
+
+  - id: lockman2012_gbt_hi_short_spacing
+    tier: Tier_B
+    product_type: hi_gbt_cube
+    source_name: "Lockman et al. 2012 GBT M33 HI (short spacing for Koch/LGLBS)"
+    citation: "Lockman et al. 2012, ApJ, 758, 147; GBT 09A-017"
+    url_or_doi: "https://ui.adsabs.harvard.edu/abs/2012ApJ...758..147L"
+    access_status: archive_query
+    license_or_usage_note: "NRAO archive terms if applicable"
+    download_status: archive_query
+    expected_file_type: "GBT spectral cube FITS"
+    expected_units: "Antenna temperature / column density"
+    login_required: "likely"
+    suitable_for: "HI short-spacing component — ancillary to Tier B HI stack"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      Used with Koch 2018 / LGLBS pipelines. Not a standalone surface-density map.
+
+  - id: spitzer_s4g_irac_m33
+    tier: Tier_B
+    product_type: stellar_mass_proxy_irac
+    source_name: "Spitzer S4G — M33 IRAC 3.6 and 4.5 micron mosaics"
+    citation: "Sheth et al. 2010; Munoz-Mateos et al. 2013; Querejeta et al. 2015; DOI 10.26131/IRSA425"
+    url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/S4G/"
+    access_status: available_public
+    license_or_usage_note: "IRSA archive terms; cite S4G papers and dataset DOI"
+    download_status: direct_download
+    expected_file_type: "FITS mosaics (*maic.fits per channel)"
+    expected_units: "MJy/sr (derive M_sun/pc^2 via M/L prescription)"
+    login_required: "no"
+    suitable_for: "stellar mass proxy — Tier B P2"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      Derive stellar mass surface density using documented M/L (Querejeta/Meidt-style).
+      Not Corbelli BVIgi pixel-SED map.
+
+  - id: spitzer_lvl_irac_m33
+    tier: Tier_B
+    product_type: stellar_mass_proxy_irac
+    source_name: "Spitzer LVL — M33 IRAC maps"
+    citation: "Dale et al. 2009, ApJ, 703, 517"
+    url_or_doi: "https://irsa.ipac.caltech.edu/data/SPITZER/LVL/"
+    access_status: available_public
+    license_or_usage_note: "IRSA archive terms; cite Dale et al. 2009"
+    download_status: direct_download
+    expected_file_type: "FITS mosaics"
+    expected_units: "MJy/sr"
+    login_required: "no"
+    suitable_for: "stellar mass proxy — alternate Tier B route"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      Lower resolution than S4G for some products; useful fallback for IRAC coverage.
+
+  - id: iram_lp006_co21_m33
+    tier: Tier_B
+    product_type: h2_co21_map
+    source_name: "IRAM LP006 — M33 CO(2-1) survey"
+    citation: "Druard et al. 2014, A&A, 567, A118; Gratier et al. 2010"
+    url_or_doi: "https://www.iram.fr/ILPA/LP006/"
+    access_status: available_public
+    license_or_usage_note: "IRAM LP archive; cite Druard et al. 2014"
+    download_status: direct_download
+    expected_file_type: "FITS cube + integrated intensity map"
+    expected_units: "K km/s (main-beam brightness temperature integral)"
+    login_required: "no"
+    suitable_for: "H2/CO — Tier B P3"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      12 arcsec resolution; 2.6 km/s spectral sampling. Public archive confirmed.
+
+  - id: herschel_herm33es_dust
+    tier: Tier_B
+    product_type: dust_column_proxy
+    source_name: "Herschel HerM33es — dust column density maps"
+    citation: "Kramer et al. 2010; multiple HerM33es papers"
+    url_or_doi: "https://www.cosmos.esa.int/web/herschel/home"
+    access_status: archive_query
+    license_or_usage_note: "ESA Herschel archive terms"
+    download_status: archive_query
+    expected_file_type: "FITS maps (Herschel PDR)"
+    expected_units: "N_H or dust mass surface density"
+    login_required: "likely"
+    suitable_for: "ancillary gas/dust — optional Tier B context"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      Useful for H2/dust cross-checks with CO; not required for minimal Tier B pilot.
+
+  - id: nrao_archive_m33_vla
+    tier: Tier_B
+    product_type: hi_raw_calibrated
+    source_name: "NRAO archive — M33 VLA HI projects (various)"
+    citation: "Multiple programs (14B-088, 17B-162, etc.)"
+    url_or_doi: "https://archive.nrao.edu/"
+    access_status: archive_query
+    license_or_usage_note: "NRAO archive policy"
+    download_status: login_required
+    expected_file_type: "UVFITS / CASA MS — requires reduction to image"
+    expected_units: "Jy/beam after imaging"
+    login_required: "yes"
+    suitable_for: "HI rebuild path — high effort Tier B"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: true
+    notes: >
+      Raw/calibrated visibility data; not ready surface-density maps. Prefer LGLBS v1.0
+      over full custom reduction for fastest pilot.
+
+  - id: gratier2010_vla_hi_reference
+    tier: Tier_C
+    product_type: hi_moment_reference
+    source_name: "Gratier et al. 2010 VLA-only HI moment maps"
+    citation: "Gratier et al. 2010, A&A, 522, A3"
+    url_or_doi: "http://perso.astrophy.u-bordeaux.fr/~pgratier/data/"
+    access_status: available_public
+    license_or_usage_note: "Cite Gratier et al. 2010; VLA-only — no GBT"
+    download_status: direct_download
+    expected_file_type: "FITS moment maps (area, cent, noise, peak, fwhm)"
+    expected_units: "K, K km/s (see Gratier README)"
+    login_required: "no"
+    suitable_for: "reference-proxy smoke tests only"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: false
+    notes: >
+      Already staged under data/raw/phase6f/reference/gratier2010_vla_hi_12sec/.
+      REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS. Does not satisfy G1.
+
+  - id: synthetic_phase6f_fixtures
+    tier: Tier_C
+    product_type: synthetic_test_maps
+    source_name: "Repository synthetic / test fixtures"
+    citation: "TDF_m33 test suite"
+    url_or_doi: "local"
+    access_status: internal
+    license_or_usage_note: "MIT project license"
+    download_status: internal
+    expected_file_type: "Minimal FITS bytes in unit tests"
+    expected_units: "n/a"
+    login_required: "no"
+    suitable_for: "unit tests and gate plumbing only"
+    can_satisfy_primary_corbelli_gate: false
+    can_satisfy_public_pilot_gate: false
+    notes: "Not observational M33 evidence."
