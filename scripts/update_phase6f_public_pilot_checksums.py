@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 6F: SHA-256 checksums for staged public pilot FITS (read-only on raw files)."""
+"""Phase 6F: SHA-256 checksums for staged public pilot FITS (.fits/.fits.gz; read-only)."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from tdf_m33.maps.public_pilot_inventory import update_public_pilot_checksums
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Update checksums for public pilot FITS files."
+        description="Update checksums for public pilot FITS files (including .fits.gz)."
     )
     parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
     args = parser.parse_args(argv)
