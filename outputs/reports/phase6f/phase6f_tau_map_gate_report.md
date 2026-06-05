@@ -14,9 +14,19 @@
 - **G5_units_documented**: `PARTIAL` — Unit documentation exists but primary maps not present to verify headers.
 - **G6_mask_or_uncertainty**: `FAIL` — No primary HI map; uncertainty/mask rules not applicable.
 - **G7_provenance_and_license**: `PASS` — Source registry, access notes, and citations documented.
+- **G8_primary_map_reprojection_ready**: `FAIL` — Primary HI and stellar maps must be present before reprojection can be validated.
+
+## Gate roles
+
+**Required for scientific_ready:** G1, G2, G3, G4, G5, G7, G8.
+**G6 (diagnostic):** `FAIL` — uncertainty/mask; does not block scientific_ready but must be tracked.
 
 ## Claim control
 
-Phase 6F-impl scientific tau-map reconstruction requires primary Corbelli 2014 VLA+GBT HI and BVIgi stellar maps. Gratier 2010 reference FITS do not satisfy G1.
+Phase 6F scientific tau-map reconstruction requires:
+1. Primary Corbelli 2014 VLA+GBT HI and BVIgi stellar maps (G1, G2).
+2. Validated WCS/disk-plane reprojection (G8) — placeholder zoom resampling is blocked for scientific mode.
+
+Gratier 2010 reference FITS do not satisfy G1.
 
 No dark-matter-disproof or lensing-confirmation claim is made by this report.

@@ -6,3 +6,4 @@ G4_wcs_or_grid_metadata,FAIL,WCS/grid metadata cannot be verified without primar
 G5_units_documented,PARTIAL,Unit documentation exists but primary maps not present to verify headers.
 G6_mask_or_uncertainty,FAIL,No primary HI map; uncertainty/mask rules not applicable.
 G7_provenance_and_license,PASS,"Source registry, access notes, and citations documented."
+G8_primary_map_reprojection_ready,FAIL,Primary HI and stellar maps must be present before reprojection can be validated.

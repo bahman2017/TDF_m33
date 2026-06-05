@@ -25,16 +25,18 @@ def test_solver_finite_tau_gaussian_source() -> None:
     assert diag.residual_norm < 1e-2
 
 
-def test_neumann_boundary_runs() -> None:
+def test_neumann_boundary_raises_not_implemented() -> None:
+    import pytest
+
     grid = build_disk_grid(extent_kpc=3.0, pixel_scale_kpc=0.5, mask_radius_kpc=2.5)
     j = np.ones(grid.shape) * grid.mask
-    tau, diag = solve_tau_field(
-        j,
-        grid.mask,
-        grid.dx_kpc,
-        grid.dy_kpc,
-        kappa_tau=1.0,
-        m_tau=0.0,
-        boundary_condition="neumann",
-    )
-    assert np.all(np.isfinite(tau[grid.mask]))
+    with pytest.raises(NotImplementedError, match="Neumann boundary"):
+        solve_tau_field(
+            j,
+            grid.mask,
+            grid.dx_kpc,
+            grid.dy_kpc,
+            kappa_tau=1.0,
+            m_tau=0.0,
+            boundary_condition="neumann",
+        )

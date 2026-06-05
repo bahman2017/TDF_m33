@@ -31,6 +31,10 @@ field:
 solver:
   use_boundary_taper: false
 
+reprojection:
+  allow_placeholder_reprojection: false  # must remain false for scientific runs
+  validated_wcs_reprojection_available: false
+
 outputs:
   gate_status_csv: outputs/tables/phase6f/phase6f_data_gate_status.csv
   gate_report_md: outputs/reports/phase6f/phase6f_tau_map_gate_report.md

@@ -288,6 +288,45 @@ def check_g7_provenance(repo_root: Path) -> GateResult:
     )
 
 
+def check_g8_primary_map_reprojection_ready(
+    g1: GateResult,
+    g2: GateResult,
+    g4: GateResult,
+) -> GateResult:
+    """Validated WCS-to-disk-plane reprojection path (blocks scientific mode until implemented)."""
+    if g1.status != "PASS" or g2.status != "PASS":
+        return GateResult(
+            "G8_primary_map_reprojection_ready",
+            "FAIL",
+            "Primary HI and stellar maps must be present before reprojection can be validated.",
+        )
+    if g4.status != "PASS":
+        return GateResult(
+            "G8_primary_map_reprojection_ready",
+            "FAIL",
+            "WCS or documented pixel grid metadata required for reprojection validation.",
+            {"g4_status": g4.status},
+        )
+    from tdf_m33.maps.reprojection import (
+        PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION,
+        is_validated_wcs_reprojection_ready,
+    )
+
+    if not is_validated_wcs_reprojection_ready():
+        return GateResult(
+            "G8_primary_map_reprojection_ready",
+            "FAIL",
+            "Validated WCS/disk-plane reprojection not implemented; only "
+            f"{PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION} (scipy.ndimage.zoom) exists.",
+            {"alignment_method": PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION},
+        )
+    return GateResult(
+        "G8_primary_map_reprojection_ready",
+        "PASS",
+        "Validated primary-map reprojection to disk-plane grid is available.",
+    )
+
+
 def run_data_gates(
     repo_root: Path,
     *,
@@ -301,9 +340,10 @@ def run_data_gates(
     g5 = check_g5_units(repo_root, g1, g2)
     g6 = check_g6_uncertainty(repo_root, g1)
     g7 = check_g7_provenance(repo_root)
+    g8 = check_g8_primary_map_reprojection_ready(g1, g2, g4)
 
-    gates = [g1, g2, g3, g4, g5, g6, g7]
-    required_for_science = [g1, g2, g3, g4, g5, g7]
+    gates = [g1, g2, g3, g4, g5, g6, g7, g8]
+    required_for_science = [g1, g2, g3, g4, g5, g7, g8]
     scientific_ready = all(g.status == "PASS" for g in required_for_science)
 
     blocked = None

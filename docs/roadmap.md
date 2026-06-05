@@ -24,7 +24,7 @@ Phase 7     Multi-galaxy extension (e.g. SPARC) — only after M33 6F gates
 1. **One galaxy done right (M33)** before scaling claims.
 2. **Separate** rotation success from lensing language until gates pass.
 3. **Mass geometry in the objective**, not post-hoc smoothing, is the Phase 6F differentiator from Phase 4A.
-4. **Data readiness before fit** — 2D HI/stellar maps must be traceable before Phase 6F-impl.
+4. **Validated reprojection before science** — placeholder zoom alignment blocked by gate G8.
 
 ---
 

@@ -86,8 +86,9 @@ def _apply_boundary(
             A.data[k] = [1.0]
             b[k] = 0.0
     elif bc == "neumann":
-        # Mirror ghost cells: boundary Laplacian rows unchanged; zero-flux implicit
-        pass
+        raise NotImplementedError(
+            "Neumann boundary condition is not yet scientifically validated for Phase 6F."
+        )
     else:
         raise ValueError(f"Unknown boundary condition: {bc}")
 

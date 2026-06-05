@@ -71,13 +71,24 @@ def write_gate_reports(report: GateReport, cfg: dict[str, Any], repo_root: Path)
     lines.append("")
     for g in report.gates:
         lines.append(f"- **{g.gate_id}**: `{g.status}` — {g.message}")
+    g6 = next((g for g in report.gates if g.gate_id == "G6_mask_or_uncertainty"), None)
     lines.extend(
         [
             "",
+            "## Gate roles",
+            "",
+            "**Required for scientific_ready:** G1, G2, G3, G4, G5, G7, G8.",
+            f"**G6 (diagnostic):** `{g6.status if g6 else 'N/A'}` — uncertainty/mask; "
+            "does not block scientific_ready but must be tracked.",
+            "",
             "## Claim control",
             "",
-            "Phase 6F-impl scientific tau-map reconstruction requires primary Corbelli 2014 "
-            "VLA+GBT HI and BVIgi stellar maps. Gratier 2010 reference FITS do not satisfy G1.",
+            "Phase 6F scientific tau-map reconstruction requires:",
+            "1. Primary Corbelli 2014 VLA+GBT HI and BVIgi stellar maps (G1, G2).",
+            "2. Validated WCS/disk-plane reprojection (G8) — placeholder zoom resampling "
+            "is blocked for scientific mode.",
+            "",
+            "Gratier 2010 reference FITS do not satisfy G1.",
             "",
             "No dark-matter-disproof or lensing-confirmation claim is made by this report.",
         ]
@@ -114,10 +125,15 @@ def build_tau_map(
         blocked_lines = [
             "# Phase 6F tau-map run report",
             "",
-            "Phase 6F scientific tau-map reconstruction is blocked pending primary "
-            "Corbelli 2014 VLA+GBT HI and BVIgi stellar maps.",
+            "Phase 6F scientific tau-map reconstruction is blocked because:",
+            "1. Primary Corbelli 2014 VLA+GBT HI and BVIgi stellar maps are missing or "
+            "incomplete, and/or",
+            "2. Validated WCS/disk-plane reprojection (gate G8) is not implemented.",
             "",
             f"**Status:** `{BLOCKED_MESSAGE}`",
+            "",
+            "Placeholder scipy.ndimage.zoom alignment "
+            "(`PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION`) cannot be used in scientific mode.",
             "",
             "No scientific tau-map outputs were generated.",
         ]
@@ -147,12 +163,15 @@ def build_tau_map(
 
     field = cfg["field"]
     if report.scientific_ready:
+        repro_cfg = cfg.get("reprojection", {})
+        allow_ph = bool(repro_cfg.get("allow_placeholder_reprojection", False))
         sources = load_primary_source_maps(
             root,
             grid,
             alpha_gas=float(field["alpha_gas"]),
             alpha_star=float(field["alpha_star"]),
             helium_factor=float(field.get("helium_factor", 1.33)),
+            allow_placeholder_reprojection=allow_ph,
         )
         mode = "scientific"
         marker = None

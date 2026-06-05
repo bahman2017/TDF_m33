@@ -36,8 +36,8 @@ def main(argv: list[str] | None = None) -> int:
     if result is None:
         print(BLOCKED_MESSAGE)
         print(
-            "Phase 6F scientific tau-map reconstruction is blocked pending primary "
-            "Corbelli 2014 VLA+GBT HI and BVIgi stellar maps."
+            "Phase 6F scientific tau-map reconstruction is blocked: primary Corbelli 2014 "
+            "maps missing and/or validated WCS reprojection (G8) not implemented."
         )
         gate_md = args.repo_root / "outputs/reports/phase6f/phase6f_tau_map_gate_report.md"
         print(f"Gate report: {gate_md}")

@@ -12,6 +12,10 @@ from tdf_m33.constants import CORBELLI2014_HELIUM_FACTOR
 from tdf_m33.maps.gates import REFERENCE_ONLY_MARKER
 from tdf_m33.maps.grid import DiskGrid
 from tdf_m33.maps.io import read_fits_2d
+from tdf_m33.maps.reprojection import (
+    PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION,
+    is_validated_wcs_reprojection_ready,
+)
 
 SourceMode = Literal["scientific", "reference_proxy"]
 
@@ -64,8 +68,17 @@ def load_primary_source_maps(
     alpha_star: float,
     helium_factor: float = CORBELLI2014_HELIUM_FACTOR,
     h2_path: Path | None = None,
+    allow_placeholder_reprojection: bool = False,
 ) -> BaryonicSourceMaps:
     """Load primary Corbelli maps from data/raw/phase6f/primary/."""
+    if not allow_placeholder_reprojection and not is_validated_wcs_reprojection_ready():
+        raise RuntimeError(
+            "Scientific mode cannot use "
+            f"{PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION}; "
+            "validated WCS/disk-plane reprojection required (gate G8). "
+            "Set allow_placeholder_reprojection=true only for non-scientific debugging."
+        )
+
     hi_dir = repo_root / "data/raw/phase6f/primary/corbelli2014_hi"
     st_dir = repo_root / "data/raw/phase6f/primary/corbelli2014_stellar_mass"
     hi_files = sorted(hi_dir.glob("*.fits"))
@@ -73,12 +86,18 @@ def load_primary_source_maps(
     if not hi_files or not st_files:
         raise FileNotFoundError("Primary Corbelli FITS maps not found")
 
-    sigma_hi, hi_meta = _resample_primary_to_grid(read_fits_2d(hi_files[0])[0], grid)
-    sigma_star, st_meta = _resample_primary_to_grid(read_fits_2d(st_files[0])[0], grid)
+    sigma_hi, hi_meta = _placeholder_zoom_resample_to_disk_grid(
+        read_fits_2d(hi_files[0])[0], grid
+    )
+    sigma_star, st_meta = _placeholder_zoom_resample_to_disk_grid(
+        read_fits_2d(st_files[0])[0], grid
+    )
 
     sigma_h2 = np.zeros_like(sigma_hi)
     if h2_path is not None and h2_path.is_file():
-        sigma_h2, _ = _resample_primary_to_grid(read_fits_2d(h2_path)[0], grid)
+        sigma_h2, _ = _placeholder_zoom_resample_to_disk_grid(
+            read_fits_2d(h2_path)[0], grid
+        )
 
     sigma_gas = build_total_gas(sigma_hi, sigma_h2, helium_factor)
     sigma_b = sigma_gas + sigma_star
@@ -93,18 +112,20 @@ def load_primary_source_maps(
         j_tau=j_tau,
         mode="scientific",
         marker=None,
-        metadata={"hi": hi_meta, "stellar": st_meta, "hi_file": str(hi_files[0])},
+        metadata={
+            "hi": hi_meta,
+            "stellar": st_meta,
+            "hi_file": str(hi_files[0]),
+            "reprojection": hi_meta.get("alignment_method"),
+        },
     )
 
 
-def _resample_primary_to_grid(
+def _placeholder_zoom_resample_to_disk_grid(
     data: np.ndarray,
     grid: DiskGrid,
 ) -> tuple[np.ndarray, dict[str, Any]]:
-    """Nearest-neighbor resample a 2D array to the disk grid (placeholder alignment).
-
-    Full WCS alignment deferred until primary Corbelli products include documented grids.
-    """
+    """Placeholder zoom resample — NOT valid for scientific primary-map alignment."""
     from scipy.ndimage import zoom
 
     ny, nx = grid.shape
@@ -116,7 +137,12 @@ def _resample_primary_to_grid(
         resampled = resampled[:ny, :nx]
     out = _masked_array_like(grid, fill=np.nan)
     out[grid.mask] = resampled[grid.mask]
-    return out, {"resample": "scipy.ndimage.zoom", "source_shape": data.shape}
+    return out, {
+        "alignment_method": PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION,
+        "resample": "scipy.ndimage.zoom",
+        "source_shape": data.shape,
+        "scientific_alignment": False,
+    }
 
 
 def build_reference_proxy_maps(
@@ -138,7 +164,7 @@ def build_reference_proxy_maps(
         )
         if gratier_path.is_file():
             raw, wcs = read_fits_2d(gratier_path)
-            sigma_hi, _ = _resample_primary_to_grid(raw, grid)
+            sigma_hi, _ = _placeholder_zoom_resample_to_disk_grid(raw, grid)
             # Proxy conversion: proportional to T(K) — NOT physical Sigma_HI
             sigma_hi = np.where(grid.mask, np.maximum(sigma_hi, 0.0) * 1e-3, np.nan)
             hi_note = "Gratier2010_VLA_TK_proxy"
@@ -169,6 +195,7 @@ def build_reference_proxy_maps(
             "hi_source": hi_note,
             "stellar_source": "synthetic_exponential_reference_proxy",
             "not_primary_corbelli": True,
+            "alignment_method": PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION,
         },
     )
 

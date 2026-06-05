@@ -26,9 +26,11 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 
 **Goal:** Non-spherical disk-plane τ field solver with data gates (Kg, κ_τ notation).
 
-**Scientific status:** **BLOCKED** — primary Corbelli 2014 HI + stellar maps missing.
+**Scientific status:** **BLOCKED** — primary Corbelli 2014 HI + stellar maps missing; **validated WCS reprojection (G8) not implemented**.
 
 **Strict mode:** `build_phase6f_nonspherical_tau_map.py` → `BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS`
+
+Placeholder zoom alignment (`PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION`) cannot be used in scientific mode.
 
 **Reference mode:** `--allow-reference-proxy` only; outputs marked `REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS`.
 
@@ -52,4 +54,4 @@ No dark-matter disproof; no M33 lensing confirmation. Phase 3–5 outputs unchan
 
 ## Next milestone
 
-Acquire and validate primary Corbelli 2014 maps → pass G1–G7 → scientific Phase 6F build.
+Acquire primary Corbelli 2014 maps **and** implement validated WCS→disk-plane reprojection (G8) → pass all required gates → scientific Phase 6F build.
