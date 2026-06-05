@@ -1,0 +1,55 @@
+# Phase 6F non-spherical disk-plane tau-map engine configuration
+# Notation: Kg (gravitational projection), kappa_tau (field stiffness) — not K_tau
+
+phase: phase6f_nonspherical_tau_map
+mode: strict  # strict | reference_proxy (override via CLI)
+
+paths:
+  repo_root: null  # resolved at runtime
+  rotation_csv: data/processed/m33_rotation.csv
+  geometry_csv: data/raw/phase6f/geometry/corbelli2014_tilted_ring_geometry_model_shape.csv
+  primary_hi_dir: data/raw/phase6f/primary/corbelli2014_hi
+  primary_stellar_dir: data/raw/phase6f/primary/corbelli2014_stellar_mass
+  output_root: outputs/
+
+grid:
+  extent_kpc: 12.0
+  pixel_scale_kpc: 0.5
+  center_x_kpc: 0.0
+  center_y_kpc: 0.0
+  mask_radius_kpc: 11.0
+
+field:
+  Kg: 1.0  # gravitational projection coefficient (project units)
+  kappa_tau: 1.0  # dynamical stiffness
+  m_tau: 0.0  # mass term (0 = pure disk-plane Poisson-like limit)
+  alpha_gas: 1.0
+  alpha_star: 1.0
+  helium_factor: 1.33
+  boundary_condition: dirichlet  # dirichlet | neumann
+
+solver:
+  use_boundary_taper: false
+
+reprojection:
+  allow_placeholder_reprojection: false  # must remain false for scientific runs
+  validated_wcs_reprojection_available: false
+
+outputs:
+  gate_status_csv: outputs/tables/phase6f/phase6f_data_gate_status.csv
+  gate_report_md: outputs/reports/phase6f/phase6f_tau_map_gate_report.md
+  run_report_md: outputs/reports/phase6f/phase6f_tau_map_run_report.md
+  diagnostics_csv: outputs/tables/phase6f/phase6f_tau_map_diagnostics.csv
+  radial_consistency_csv: outputs/tables/phase6f/phase6f_radial_consistency.csv
+  tau_map_npz: outputs/maps/phase6f/phase6f_tau_map_disk_plane.npz
+  figures_dir: outputs/figures/phase6f/
+
+reference_proxy:
+  use_gratier_hi: true
+  grid_extent_kpc: 8.0
+  pixel_scale_kpc: 0.4
+
+claims:
+  note: >
+    Phase 4A/4B remain axisymmetric radial extensions. This engine does not produce
+    scientific M33 tau-map claims unless primary Corbelli 2014 maps pass all gates.

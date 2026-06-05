@@ -2,11 +2,11 @@
 
 Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.md`.
 
-**Last updated:** Phase 6F-source (verified manifests + reference staging).
+**Last updated:** Phase 6F non-spherical τ-map engine (strict gates).
 
 ---
 
-## Completed through Phase 6E + 6F design + 6F-data
+## Completed through Phase 6E + 6F design/data/source
 
 | Area | Status |
 |------|--------|
@@ -17,28 +17,22 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 | Deflection proxy | Phase 5A complete (**normalized_proxy**) |
 | Dynamical upper bound | Phase 5C-B vs López Fune 2017 (**not lensing**) |
 | Publication + manuscript | Phases 6A–6E complete |
-| Phase 6F design | Complete (PR #1) |
-| Phase 6F-data | Complete (PR #2) — acquisition plan & gates |
+| Phase 6F design / data / source | Complete (PR #1–#3) |
+| Phase 6F engine | Implemented — **scientific τ-map blocked** |
 
 ---
 
-## Active: Phase 6F-source (verified manifests)
+## Active: Phase 6F engine (gated implementation)
 
-**Goal:** Document authoritative 2D data sources; stage small verified reference files; record checksums.
+**Goal:** Non-spherical disk-plane τ field solver with data gates (Kg, κ_τ notation).
 
-**Type:** Provenance and selective download — **no** τ reconstruction, **no** deflection, **no** `src/` or Phase 3–5 output changes.
+**Scientific status:** **BLOCKED** — primary Corbelli 2014 HI + stellar maps missing; **validated WCS reprojection (G8) not implemented**.
 
-**Deliverables:**
+**Strict mode:** `build_phase6f_nonspherical_tau_map.py` → `BLOCKED_PENDING_PRIMARY_CORBELLI_MAPS`
 
-- `docs/phase6f_source_manifest.md`
-- `docs/phase6f_dataset_access_notes.md`
-- `outputs/reports/phase6f_source_acquisition_status.md`
-- `data/raw/phase6f/manifest/phase6f_source_registry.yaml`
-- Reference Gratier 2010 VLA HI FITS (3 files) + geometry CSV copy with `CHECKSUMS.sha256`
+Placeholder zoom alignment (`PLACEHOLDER_NOT_SCIENTIFIC_WCS_REPROJECTION`) cannot be used in scientific mode.
 
-**Primary stack:** Corbelli 2014 VLA+GBT HI and BVIgi stellar maps — **not acquired**.
-
-**Gate status:** **NOT READY** for Phase 6F-impl.
+**Reference mode:** `--allow-reference-proxy` only; outputs marked `REFERENCE_ONLY_NOT_FOR_SCIENTIFIC_CLAIMS`.
 
 ---
 
@@ -46,22 +40,18 @@ Living summary for reviewers. Detailed acceptance criteria: `docs/project_plan.m
 
 | Product | Physical mass-constrained τ-map? |
 |---------|----------------------------------|
-| Phase 3C \(\tau(r)\) | No — radial, rotation-driven |
-| Phase 4A \(\tau(R)\) disk map | **No** — \(\tau_{2\mathrm{D}}=\tau_{\mathrm{radial}}(R)\) |
-| Phase 4B sky projection | No — projection of 4A |
-| Phase 6F-source reference HI | No — VLA-only cross-check, not primary stack |
-| Phase 6F-impl (future) | **Target** — joint rotation + mass geometry + smoothness |
+| Phase 4A \(\tau(R)\) disk map | **No** — axisymmetric radial extension |
+| Phase 6F engine (blocked) | **Target** — non-spherical disk-plane field |
+| Phase 6F reference proxy | **No** — smoke test only |
 
 ---
 
 ## Claim posture
 
-Conservative framing maintained. Reference FITS do not weaken claim boundaries.
+No dark-matter disproof; no M33 lensing confirmation. Phase 3–5 outputs unchanged.
 
 ---
 
 ## Next milestone
 
-1. Obtain Corbelli 2014 **primary** HI + stellar FITS (author request).  
-2. Update registry, checksums, pass G1–G6.  
-3. **Then** Phase 6F-impl.
+Acquire primary Corbelli 2014 maps **and** implement validated WCS→disk-plane reprojection (G8) → pass all required gates → scientific Phase 6F build.
